@@ -1,4 +1,8 @@
 Hi guys! Have you received this  file. 
 If so, send "123" to the chatbox
 
+<<<<<<< HEAD
 HELLO
+=======
+hey whats up hello 
+>>>>>>> 5410732a02f56e73289bf2202c7304157d2fdf37
