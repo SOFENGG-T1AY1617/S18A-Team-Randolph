@@ -1,0 +1,69 @@
+ul {
+  list-style-type: none;
+}
+.green-rectangle{
+  width: auto;
+  height: 100px;
+  background-color: darkgreen;
+}
+
+.logo{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100px;
+
+}
+
+.container-reminder {
+  padding-top:100px;
+}
+ .reminder{
+   font-size: 25px;
+   font-family: "Arial";
+   color: red;
+   padding-top: 5px;
+   padding-left: 10px;
+
+
+ }
+
+.title{
+  font-family: "Arial";
+  font-size: 25px;
+  color: whitesmoke;
+  padding-top: 15px;
+  font-weight: bold;
+}
+
+.subtitle{
+  font-family: "Arial";
+  font-size: 20px;
+  color: whitesmoke;
+
+}
+
+
+@media (max-width: 980px) {
+  .logo{
+    padding-top: 20px;
+    padding-left: 5px;
+    width: 70px;
+  }
+  .green-rectangle{
+    height: 80px;
+  }
+  .container-reminder {
+    padding-top:0px;
+  }
+  .reminder {
+    font-size: 15px;
+  }
+  .title {
+    font-size: 15px;
+    padding-top: 25px;
+  }
+  .subtitle {
+    font-size: 10px;
+  }
+}
