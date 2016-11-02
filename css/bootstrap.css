@@ -6806,3 +6806,64 @@ button.close {
 	margin-left: -40px;
 	height: 500px;
 }
+
+.bg-homepage{
+	margin-left: -120px;
+	margin-top: -120px;
+	height: 722px;
+	width: 1373px;
+	position: relative;
+}
+
+.signum-fidei{
+	position: absolute;
+	top: 150px;
+	right: 600px;
+	height: 160px;
+	width: 145px;
+}
+
+.email-input{
+	color: white;
+	position: absolute;
+	top: 300px;
+	right: 520px;	
+}
+
+#usr, #pwd{
+	width: 300px;
+}
+
+.password-input{
+	color: white;
+	position: absolute;
+	top: 365px;
+	right: 520px;
+}
+
+.signup{
+	position: absolute;
+	top: 445px;
+	right: 545px;
+	color: #069150;
+}
+
+.line{
+	border: 1px solid #ffffff;
+	background-color: white;
+	width: 300px;
+    height: 1px; 
+	position: absolute;
+	top: 495px;
+	right: 520px;
+}
+
+.continueGuest{
+	position: absolute;
+	top: 525px;
+	right: 520px;
+	width: 300px;
+	height: 50px;
+	background-color: #069150;
+	border-color: #069150;
+}
