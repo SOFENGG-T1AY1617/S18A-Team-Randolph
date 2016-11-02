@@ -12,13 +12,14 @@
         <title>De La Salle University - Online Request for Documents</title>
 
     <!-- Bootstrap Core CSS -->
-     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
     <!-- Custom CSS -->
     <style>
     body {
         padding-top: 70px;
+        height: 100%;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
@@ -46,52 +47,47 @@
     </nav>
     
     <!-- PAGE CONTENT -->
-    
-    <div class="container"> 
 
-              
+     <div class="container">      
         <div class="section no-pad-bot" id="index-banner">
           <div id = "container">
            <div class = "row center"> 
-              <div class="col s6 offset-s3 z-depth-5 center-align" id = "content-div">
-                  <form class="col s16" id = "personal-info-form" method="post">
+              <div class="col s8 offset-s3 z-depth-5 center-align" id = "content-div">
+                  <form class="col s12" id = "academic-info-form" method="post">
                        <div class = "col s12 center-align">
-                          <h2> Personal Information </h2>
+                          <h4> Academic Information </h4>
                         </div>
 
                       <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Last Name</span>
-                            <input id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
-                       </div>
-                          
-                          <div class="input-field col s6" >
-                            <span class = "labels left">First Name</span>
-                            <input id="first_name" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-
+                          <div class="input-field col s3">
+                            <span class = "labels left">Level</span><br>
+                              <select name="select" id="level" class="browser-default" required = "">
+                                  <option value="" disabled selected>Choose Level</option>
+                                  <option value="Bachelor">Bachelor</option>
+                                  <option value="Masters">Masters</option>
+                                  <option value="Doctorate">Doctorate</option>
+                              </select>
+                          </div>
                       </div>
 
                       <div class="row">
                           <div class="input-field col s6">
-                                <span class = "labels left">Middle Name</span>
+                                <span class = "labels left">Degree</span>
                                 <input id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
                            </div>
-
-
-                           <div class="input-field col s6">
-                            <span class = "labels left">Gender</span><br>
-                              <select name="select" id="gender" class="browser-default" required = "">
-                                  <option value="" disabled selected>Choose Gender</option>
-                                  <option value="Female">Female</option>
-                                  <option value="Male">Male</option>
-                              </select>
-                          </div>
+                          
+                          <div class="input-field col s6">
+                                <span class = "labels left">Student Number</span>
+                                <input id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
+                           </div>     
                       </div>
                      
-                    <div class="row">
-                    <div class="input-field col s2">
-                            <span class = "labels left">Birthdate</span>
+                      <div class="row">
+                          <div class="input-field col s12">
+                                <span class = "labels left">Graduate?</span><br>
+                                <span class = "labels left">Yes, I graduated last</span>
+                                <div class="input-field col s2">
+                            <span class = "labels left">Month</span>
                             <select name="select" id="month" class="browser-default" required = "">
                                       <option value="" disabled selected></option>
 
@@ -175,67 +171,95 @@
                                       </optgroup>
                             </select>
                         </div>
-                    
+                    </div>
+                </div>
+                      
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <span class = "labels left">No, I last attended DLSU on</span>      
+                            <input placeholder="Term" id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
+                        </div>
                         
+                       <div class="input-field col s6">   
+                        <span class = "labels left">School Year</span> 
+                          <div class="input-field col s4">
+                            <select name="select" id="year" class="browser-default" required = "">
+                                      <option value="" disabled selected></option>
+
+                                       <!-- Year -->
+                                      <optgroup id="month">
+                                        <option value="1990" label = "1990">1990</option>
+                                        <option value="1991" label = "1991">1991</option>
+                                        <option value="1992" label = "1992">1992</option>
+                                        <option value="1993" label = "1993">1993</option>
+                                        <option value="1994" label = "1994">1994</option>
+                                        <option value="1995" label = "1995">1995</option>
+                                        <option value="1996" label = "1996">1996</option>
+                                        <option value="1997" label = "1997">1997</option>
+                                        <option value="1998" label = "1998">1998</option>
+                                        <option value="1999" label = "1999">1999</option>
+                                        <option value="2000" label = "2000">2000</option>
+                                        <option value="2001" label = "2001">2001</option>  
+                                      </optgroup>
+                            </select>
+                           </div>
+                           
+                           <div class="input-field col s4">     
+                            <select name="select" id="year" class="browser-default" required = "">
+                                      <option value="" disabled selected></option>
+
+                                       <!-- Year -->
+                                      <optgroup id="month">
+                                        <option value="1990" label = "1990">1990</option>
+                                        <option value="1991" label = "1991">1991</option>
+                                        <option value="1992" label = "1992">1992</option>
+                                        <option value="1993" label = "1993">1993</option>
+                                        <option value="1994" label = "1994">1994</option>
+                                        <option value="1995" label = "1995">1995</option>
+                                        <option value="1996" label = "1996">1996</option>
+                                        <option value="1997" label = "1997">1997</option>
+                                        <option value="1998" label = "1998">1998</option>
+                                        <option value="1999" label = "1999">1999</option>
+                                        <option value="2000" label = "2000">2000</option>
+                                        <option value="2001" label = "2001">2001</option>  
+                                      </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                      </div>
+                      
+                    <div class="row"> 
+                      <div class="input-field col s6">
+                        <span class = "labels left">Year Level</span><br>
+                          <select name="select" id="level" class="browser-default" required = "">
+                              <option value="" disabled selected>Choose Level</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="T">T</option>
+                          </select>
+                        </div> 
+                        
+                        <div class="row">
+                          <div class="input-field col s6">
+                            <span class = "labels left">Admitted As:</span><br>
+                              <select name="select" id="level" class="browser-default" required = "">
+                                  <option value="" disabled selected>Choose Level</option>
+                                  <option value="New Student">New Student</option>
+                                  <option value="Transferee">Transferee</option>
+                                  <option value="Cross Enrollee">Cross Enrollee</option>
+                              </select>
+                          </div>
+                      </div>      
                     </div>
                       
-                      <div class="row">
-                        <div class="input-field col s6" >
-                            <span class = "labels left">Citizenship</span>
-                            <input id="citizenship" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                          
-                        <div class="input-field col s6" >
-                            <span class = "labels left">Place of Birth</span>
-                            <input id="birthPlace" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                        
-                      </div>
-                      
-                      <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Current Address</span>
-                            <textarea id="currAddress" type="text" class="validate" required=""></textarea>
-                        </div>
-                          
-                         <div class="input-field col s6" >
-                            <span class = "labels left">Zipcode</span>
-                            <input id="citizenship" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                          
-                      </div>
-                            
-                      
-                      <div class="row">
-                          <div class="input-field col s6">
-                            <span class = "labels left">Email Address</span>
-                            <input id="email" type="email" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div>
-                          
-                          <div class="input-field col s6">
-                            <span class = "labels left">Alternate Email Address (optional)</span>
-                            <input id="alterEmail" type="email" minlength = "3" maxlength "254">
-                          </div> 
-                      </div>
-                      
-                      <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Contact Number</span>
-                            <input id="contactNum" type="text" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div>
-                          
-                          <div class="input-field col s6">
-                            <span class = "labels left">Highschool</span>
-                            <input id="highschool" type="text" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div> 
-                      
-                      </div>
-                        
+                
 
                     <br />
                     <center>
                       <div class='row col s6 offset-s3'>
-                        <button type='submit' name='btn_login' class='col s12 green btn btn-large waves-effect indigo'>Proceed</button>
+                        <button type='submit' name='btn_login' class='col s12 green btn btn-large waves-effect indigo'>Add Degree</button>
                       </div>
                     </center>
                   </form>
@@ -245,6 +269,12 @@
         </div>   
                   
     </div>
+
+        
+
+
+        <!-- /.container -->
+                
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
