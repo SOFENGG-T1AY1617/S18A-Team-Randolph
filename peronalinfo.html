@@ -1,18 +1,17 @@
-<html>
-	<head>
-		<title>DLSU - Online Request for Documents</title>
-        <link rel="stylesheet" href="css/progbar.css">
-         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<!DOCTYPE html>
+<html lang="en">
 
-        <title>De La Salle University - Online Request for Documents</title>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>De La Salle University - Online Request for Documents</title>
 
     <!-- Bootstrap Core CSS -->
-     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -22,12 +21,28 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
-	</head>
-    
+	
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script> <!--FIX THIS FOR DATE PICKER-->
+	
+	<script>
+		$(document).ready(function() {
+			$('#datetimepicker1').datepicker();
+		})
+	</script>
 
-	<body>
-    
-         <!-- Navigation -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,221 +56,133 @@
                 <a class="navbar-brand" href="#"><img class="dlsu-logo" src="img/dlsulogo.png"></img> &nbsp De La Salle University - Manila</a>
 				<p class="navbar-sub">Online Request for Documents </p>		<!--FIX THIS-->
             </div>
-            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>-->
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
     </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+		<!--btnStep-->
+		<div class="row btnStep">
+			<div class="col-xs-12">
+				<ul class="nav nav-pills nav-justified thumbnail">
+					<li class="active"><a href="#">
+						<h4 class="list-group-item-heading">Step 1</h4>
+						<p class="list-group-item-text">Personal and Academic Info</p>
+					</a></li>
+					<li><a href="#">
+						<h4 class="list-group-item-heading">Step 2</h4>
+						<p class="list-group-item-text">Order Documents</p>
+					</a></li>
+					<li><a href="#">
+						<h4 class="list-group-item-heading">Step 3</h4>
+						<p class="list-group-item-text">Mailing Info</p>
+					</a></li>
+					<li><a href="#">
+						<h4 class="list-group-item-heading">Step 4</h4>
+						<p class="list-group-item-text">Checkout</p>
+					</a></li>
+					<li><a href="#">
+						<h4 class="list-group-item-heading">Step 5</h4>
+						<p class="list-group-item-text">Done</p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.btnStep -->
+		
+		<!--Forms-->
+		<div class="personalInfoLabel-container">
+			<span class="txtPersonalInfo">Personal Information</span>
+		</div>
+		
+		<div class="personalInfo-container">
+			<div class="personalInfo-forms modal-body row">
+				<div class="col-md-6">
+					<div class="form-group">
+					  <label for="lastName">Last Name:</label>
+					  <input type="text" class="form-control" id="lastName">
+					</div>
+					
+					<div class="form-group">
+					  <label for="firstName">First Name:</label>
+					  <input type="text" class="form-control" id="firstName">
+					</div>
+					
+					<div class="form-group">
+					  <label for="middleName">Middle Name:</label>
+					  <input type="text" class="form-control" id="middleName">
+					</div>
+					
+					<div class="form-group">
+						<label for="optRadio">Gender: </label>
+						<span>&nbsp &nbsp </span>
+						<input type="radio" name="optradio">Male</input>
+						<span>&nbsp &nbsp </span>
+						<input type="radio" name="optradio">Female</input>
+					</div>
+					
+					<div class="form-group">
+						<label for="birthDate">Birthday: </label>
+						<div class='input-group date' id='datetimepicker1'>
+							<input type='text' class="form-control" name="birthDate"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					
+					
+				</div>
+				
+				<div class="col-md-6">
+					<div class="form-group">
+					  <label for="currAddress">Current Address:</label>
+					  <textarea class="form-control" rows="5" id="currAdress"></textarea>
+					</div>
+					
+					<div class="form-group">
+					  <label for="phoneNumber">Phone Number:</label>
+					  <input type="text" class="form-control" id="phoneNumber">
+					</div>
+					
+					<div class="form-group">
+						<label for="email">Email address:</label>
+						<input type="email" class="form-control" id="email">
+					 </div>
+					 
+					 
+				</div>
+				
+			</div>				
+		</div>
+		
+		
+	</div>
     
-    <!-- PAGE CONTENT -->
-    
-    <div class="container"> 
-
-              
-        <div class="section no-pad-bot" id="index-banner">
-          <div id = "container">
-           <div class = "row center"> 
-              <div class="col s6 offset-s3 z-depth-5 center-align" id = "content-div">
-                  <form class="col s16" id = "personal-info-form" method="post">
-                       <div class = "col s12 center-align">
-                          <h2> Personal Information </h2>
-                        </div>
-
-                      <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Last Name</span>
-                            <input id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
-                       </div>
-                          
-                          <div class="input-field col s6" >
-                            <span class = "labels left">First Name</span>
-                            <input id="first_name" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-
-                      </div>
-
-                      <div class="row">
-                          <div class="input-field col s6">
-                                <span class = "labels left">Middle Name</span>
-                                <input id="last_name" type="text" minlength "2" maxlength = "45" class="validate" required = "">
-                           </div>
-
-
-                           <div class="input-field col s6">
-                            <span class = "labels left">Gender</span><br>
-                              <select name="select" id="gender" class="browser-default" required = "">
-                                  <option value="" disabled selected>Choose Gender</option>
-                                  <option value="Female">Female</option>
-                                  <option value="Male">Male</option>
-                              </select>
-                          </div>
-                      </div>
-                     
-                    <div class="row">
-                    <div class="input-field col s2">
-                            <span class = "labels left">Birthdate</span>
-                            <select name="select" id="month" class="browser-default" required = "">
-                                      <option value="" disabled selected></option>
-
-                                       <!-- MONTH -->
-                                      <optgroup id="month">
-                                        <option value="January" label = "January">January</option>
-                                        <option value="February" label = "February">February</option>
-                                        <option value="March" label = "March">March</option>
-                                        <option value="April" label = "April">April</option>
-                                        <option value="May" label = "May">May</option>
-                                        <option value="June" label = "June">June</option>
-                                        <option value="July" label = "July">July</option>
-                                        <option value="August" label = "August">August</option>
-                                        <option value="September" label = "September">September</option>
-                                        <option value="October" label = "October">October</option>
-                                        <option value="November" label = "November">November</option>
-                                        <option value="December" label = "December">December</option>  
-                                      </optgroup>
-                            </select>
-                        </div>
-                              
-                         <div class="input-field col s2">
-                             <span class = "labels left">Day</span>
-                            <select name="select" id="day" class="browser-default" required = "">
-                                      <option value="" disabled selected></option>
-
-                              <option value=""></option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                              <option value="25">25</option>
-                              <option value="26">26</option>
-                              <option value="27">27</option>
-                              <option value="28">28</option>
-                              <option value="29">29</option>
-                              <option value="30">30</option>
-                              <option value="31">31</option>
-                            </select>
-                          </div>  
-                        
-                        <div class="input-field col s2">
-                            <span class = "labels left">Year</span>
-                            <select name="select" id="year" class="browser-default" required = "">
-                                      <option value="" disabled selected></option>
-
-                                       <!-- Year -->
-                                      <optgroup id="month">
-                                        <option value="1990" label = "1990">1990</option>
-                                        <option value="1991" label = "1991">1991</option>
-                                        <option value="1992" label = "1992">1992</option>
-                                        <option value="1993" label = "1993">1993</option>
-                                        <option value="1994" label = "1994">1994</option>
-                                        <option value="1995" label = "1995">1995</option>
-                                        <option value="1996" label = "1996">1996</option>
-                                        <option value="1997" label = "1997">1997</option>
-                                        <option value="1998" label = "1998">1998</option>
-                                        <option value="1999" label = "1999">1999</option>
-                                        <option value="2000" label = "2000">2000</option>
-                                        <option value="2001" label = "2001">2001</option>  
-                                      </optgroup>
-                            </select>
-                        </div>
-                    
-                        
-                    </div>
-                      
-                      <div class="row">
-                        <div class="input-field col s6" >
-                            <span class = "labels left">Citizenship</span>
-                            <input id="citizenship" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                          
-                        <div class="input-field col s6" >
-                            <span class = "labels left">Place of Birth</span>
-                            <input id="birthPlace" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                        
-                      </div>
-                      
-                      <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Current Address</span>
-                            <textarea id="currAddress" type="text" class="validate" required=""></textarea>
-                        </div>
-                          
-                         <div class="input-field col s6" >
-                            <span class = "labels left">Zipcode</span>
-                            <input id="citizenship" type="text" minlength = "2"maxlength = "45" class="validate" required = "">
-                        </div>
-                          
-                      </div>
-                            
-                      
-                      <div class="row">
-                          <div class="input-field col s6">
-                            <span class = "labels left">Email Address</span>
-                            <input id="email" type="email" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div>
-                          
-                          <div class="input-field col s6">
-                            <span class = "labels left">Alternate Email Address (optional)</span>
-                            <input id="alterEmail" type="email" minlength = "3" maxlength "254">
-                          </div> 
-                      </div>
-                      
-                      <div class="row">
-                        <div class="input-field col s6">
-                            <span class = "labels left">Contact Number</span>
-                            <input id="contactNum" type="text" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div>
-                          
-                          <div class="input-field col s6">
-                            <span class = "labels left">Highschool</span>
-                            <input id="highschool" type="text" minlength = "3" maxlength "254" class="validate" required = "">
-                          </div> 
-                      
-                      </div>
-                        
-
-                    <br />
-                    <center>
-                      <div class='row col s6 offset-s3'>
-                        <button type='submit' name='btn_login' class='col s12 green btn btn-large waves-effect indigo'>Proceed</button>
-                      </div>
-                    </center>
-                  </form>
-               </div>
-              </div>
-            </div>
-        </div>   
-                  
-    </div>
+    <!-- /.container -->
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>                
+    <script src="js/bootstrap.min.js"></script>
 
-
-	</body>
-  
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.js"></script>
+</body>
 
 </html>

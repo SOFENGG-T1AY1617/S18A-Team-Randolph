@@ -1097,7 +1097,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #00703c;
   text-decoration: none;
 }
 a:hover,
@@ -1608,6 +1608,7 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+
 .row {
   margin-right: -15px;
   margin-left: -15px;
@@ -4097,7 +4098,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #337ab7;
+  background-color: #00703c;
 }
 .nav-stacked > li {
   float: none;
@@ -6866,4 +6867,30 @@ button.close {
 	height: 50px;
 	background-color: #069150;
 	border-color: #069150;
+}
+
+.row.btnStep {
+    margin-top: 44px;
+}
+
+.personalInfoLabel-container{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #00703c;
+	background-color: #00703c;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+.personalInfo-container{
+	margin-top: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c9c9c9;
+	background-color: #f2f2f2;
+}
+
+.personalInfo-forms{
+	margin: 15px;
 }
