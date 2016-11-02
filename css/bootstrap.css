@@ -1586,7 +1586,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
+ }
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -4165,7 +4165,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 80px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4177,6 +4177,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
+	height: 85px;
   }
 }
 .navbar-collapse {
@@ -4274,16 +4275,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
+  padding: 10px 15px;
+  font-size: 25px;
   line-height: 20px;
+  font-family: "Helvetica Neue";
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+  display: inline-block;
+  margin-top: 5px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
@@ -4353,14 +4356,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-nav {
-    float: left;
+    float: right;
     margin: 0;
   }
   .navbar-nav > li {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
+    padding-top: 33px;
     padding-bottom: 15px;
   }
 }
@@ -4589,26 +4592,27 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: #00703c;
+  border-color: #00703c;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: #ffffff;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #fff;
+  color: #ffffff;
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
   color: #9d9d9d;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #9d9d9d;
+  color: #c9c9c9;
+
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #fff;
+  color: #a1d884;
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
@@ -4624,7 +4628,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #333;
+  border-color: #00703c;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
@@ -6755,3 +6759,50 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.dlsu-logo{
+	height: 60px;
+}
+
+.navbar-sub{
+	color: #ffffff;
+	margin-left: 78px;
+	font-size: 17px;
+}
+
+.reminders{
+	margin-top: 60px;
+}
+
+.wrapper{
+	display: inline-block;
+}
+
+.termsconditions-box{
+	background-color: #dcdfe1;
+	width: 100%;
+	height: 400px;
+	margin-top: 30px;
+	padding: 16px;
+}
+
+.creditcard{
+	height: 90px;
+	width: 300px;
+}
+
+.creditproceed-container{
+	margin-top: 20px;
+}
+
+.btnProceed{
+	margin-top: 20px;
+	width: 150px;
+	float: right;
+}
+
+.remindersImage{
+	margin-top: -40px;
+	margin-left: -40px;
+	height: 500px;
+}
