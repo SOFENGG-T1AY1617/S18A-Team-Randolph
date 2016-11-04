@@ -6900,6 +6900,7 @@ button.close {
     width: 200px;
 }
 
-.studentType{
-    align-content: center;
+#done{
+    font-size: 20px;
+    padding: 10px;
 }
