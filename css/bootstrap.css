@@ -6874,7 +6874,7 @@ button.close {
     margin-top: 44px;
 }
 
-.personalInfoLabel-container, .mailingInfoLabel-container{
+.personalInfoLabel-container, .mailingInfoLabel-container, .cartLabel-container, .orderLabel-container{
 	border-style: solid;
 	border-width: 1px;
 	border-color: #00703c;
