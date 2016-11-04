@@ -6873,7 +6873,7 @@ button.close {
     margin-top: 44px;
 }
 
-.personalInfoLabel-container{
+.personalInfoLabel-container, .mailingInfoLabel-container{
 	border-style: solid;
 	border-width: 1px;
 	border-color: #00703c;
@@ -6883,7 +6883,7 @@ button.close {
 	font-size: 20px;
 }
 
-.personalInfo-container{
+.personalInfo-container, .mailingInfo-container{
 	margin-top: 5px;
 	border-style: solid;
 	border-width: 1px;
@@ -6891,6 +6891,10 @@ button.close {
 	background-color: #f2f2f2;
 }
 
-.personalInfo-forms{
+.personalInfo-forms, .mailingInfo-forms{
 	margin: 15px;
+}
+
+.deliveryArea{
+    width: 200px;
 }
