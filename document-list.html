@@ -1,174 +1,221 @@
-<!DOCTYPE HTML>
-<html lang="en">
+    <!DOCTYPE HTML>
+    <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>De La Salle University - Online Request for Documents</title>
+        <title>De La Salle University - Online Request for Documents</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
 
-	
-	<style>
-		body {
-			padding-top: 120px;
-			/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-		}
-		
-		.panel-heading{
-			height:50px;
-		}
-	
-		#studtype{
-			font-size:17px;
-		}
-		
-		#headstudtype{
-			font-size: 20px;
-		}
-		
-		#listhead{
-			font-size: 22px;
-		}
-		
-		tbody{
-			font-size: 17px;
-		}
-		
-		#buttoncartback{
-			height: 50px;
-			width: 200px;
-			background-color: rgb(0,125,60);
-			color: white;
-			font-size: 20px;
-			
-		}
-		
-	</style>
-</head>
 
-<body>
+        <style>
+                body {
+                    padding-top: 70px;
+                    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+                }
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container" >
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img class="dlsu-logo" src="img/dlsulogo.png"></img> &nbsp De La Salle University - Manila</a>
-				<p class="navbar-sub">Online Request for Documents </p>		<!--FIX THIS-->
+            .panel-heading{
+                height:50px;
+            }
+
+            #studtype{
+                font-size:17px;
+            }
+
+            #headstudtype{
+                font-size: 20px;
+            }
+
+            #listhead{
+                font-size: 22px;
+            }
+
+            tbody{
+                font-size: 17px;
+            }
+
+            #buttoncartback{
+                height: 50px;
+                width: 200px;
+/*                background-color: rgb(0,125,60);*/
+/*                color: white;*/
+                font-size: 20px;
+
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container" >
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img class="dlsu-logo" src="img/dlsulogo.png"> &nbsp De La Salle University - Manila</a>
+                    <p class="navbar-sub">Online Request for Documents </p>		<!--FIX THIS-->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>-->
+                <!-- /.navbar-collapse -->
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>-->
-            <!-- /.navbar-collapse -->
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+            <!--btnStep-->
+            <div class="row btnStep">
+                <div class="col-xs-12">
+                    <ul class="nav nav-pills nav-justified thumbnail">
+                        <li><a href="#">
+                            <h4 class="list-group-item-heading">Step 1</h4>
+                            <p class="list-group-item-text">Personal and Academic Info</p>
+                        </a></li>
+                        <li class="active"><a href="#">
+                            <h4 class="list-group-item-heading">Step 2</h4>
+                            <p class="list-group-item-text">Order Documents</p>
+                        </a></li>
+                        <li><a href="#">
+                            <h4 class="list-group-item-heading">Step 3</h4>
+                            <p class="list-group-item-text">Mailing Info</p>
+                        </a></li>
+                        <li><a href="#">
+                            <h4 class="list-group-item-heading">Step 4</h4>
+                            <p class="list-group-item-text">Checkout</p>
+                        </a></li>
+                        <li><a href="#">
+                            <h4 class="list-group-item-heading">Step 5</h4>
+                            <p class="list-group-item-text">Done</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.btnStep -->
+        <!-- Page Content -->
+                <!-- for spacing -->
+
+
+                <div class="row">
+    <!--
+                    <ul class="col-md-2 container-reminder">	
+                        <div class="panel panel-success">
+                          <div class="panel-heading" id = "headstudtype">Student Type</div>
+                          <div class="panel-body" id = "studtype">
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Undergraduate</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Graduate</label>
+                            </div>
+                          </div>
+                        </div>
+                    </ul>
+    -->
+                    <div id="studentType" class="col-md-12" >
+                        <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Degree
+                                    <span class="caret"></span></button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Bachelor</a></li>
+                                <li><a href="#">Masters</a></li>
+                                <li><a href="#">Doctorate</a></li>
+                              </ul>
+
+                            <div class="btn-group">
+                              <button type="button" id="undergraduate" class="btn btn-success">Undergraduate</button>
+                              <button type="button" id="graduate" class="btn btn-success">Graduate</button>
+                            </div>
+                        </div>
+                    </div>
+                            
+
+                    <div class="col-sm-12" style="padding-top: 20px;">
+                        <div class="container">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr id = "listhead">
+                                <th>Document</th>
+                                <th>Regular Price</th>
+                                <th>Express Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Official Transcript of Records (for Employment)</td>
+                                <td>Php 150.00</td>
+                                <td>Php 300.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Order</button></td>
+                              </tr>
+                              <tr>
+                                <td>Course Description (Max of 5 Subjects)</td>
+                                <td>Php 110.00</td>
+                                <td>N/A</td>
+                                <td><button type="button" class="btn btn-default btn-md">Order</button></td>
+                              </tr>
+                              <tr>
+                                <td>Ranking by Degree Program</td>
+                                <td>Php 110.00</td>
+                                <td>Php 200.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Order</button></td>
+                              </tr>
+                              <tr>
+                                <td>Trimestral Calendar</td>
+                                <td>Php 110.00</td>
+                                <td>Php 220.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Order</button></td>
+                              </tr>
+                              <tr>
+                                <td>Cumulative GPA</td>
+                                <td>Php 110.00</td>
+                                <td>Php 220.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Order</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                </div>
+
+            <div class = "col-md-12">
+                <button type="button" id = "buttoncartback" class="btn btn-success" style="float:right" >View Cart</button>
+                <button type="button" id = "buttoncartback" class="btn btn-default" style="float:left" >Back</button>
+            </div>
         </div>
         <!-- /.container -->
-    </nav>
 
-    <!-- Page Content -->
-			<!-- for spacing -->
-			
-			
-			<div class="row">
-				<div class = "col-md-1">
-				</div>
-				<ul class="col-md-2 container-reminder">	
-					<div class="panel panel-success">
-					  <div class="panel-heading" id = "headstudtype">Student Type</div>
-					  <div class="panel-body" id = "studtype">
-						<div class="radio">
-							<label><input type="radio" name="optradio">Undergraduate</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="optradio">Graduate</label>
-						</div>
-					  </div>
-					</div>
-				</ul>
-				
-				<div class="col-sm-5" style="padding-top: 20px;">
-					<div class="container">
-					  <table class="table table-striped">
-						<thead>
-						  <tr id = "listhead">
-							<th>Document</th>
-							<th>Regular Price</th>
-							<th>Express Price</th>
-						  </tr>
-						</thead>
-						<tbody>
-						  <tr>
-							<td>Official Transcript of Records (for Employment)</td>
-							<td>Php 150.00</td>
-							<td>Php 300.00</td>
-							<td><button type="button" class="btn btn-default btn-md">Order</button></td>
-						  </tr>
-						  <tr>
-							<td>Course Description (Max of 5 Subjects)</td>
-							<td>Php 110.00</td>
-							<td>N/A</td>
-							<td><button type="button" class="btn btn-default btn-md">Order</button></td>
-						  </tr>
-						  <tr>
-							<td>Ranking by Degree Program</td>
-							<td>Php 110.00</td>
-							<td>Php 200.00</td>
-							<td><button type="button" class="btn btn-default btn-md">Order</button></td>
-						  </tr>
-						  <tr>
-							<td>Trimestral Calendar</td>
-							<td>Php 110.00</td>
-							<td>Php 220.00</td>
-							<td><button type="button" class="btn btn-default btn-md">Order</button></td>
-						  </tr>
-						  <tr>
-							<td>Cumulative GPA</td>
-							<td>Php 110.00</td>
-							<td>Php 220.00</td>
-							<td><button type="button" class="btn btn-default btn-md">Order</button></td>
-						  </tr>
-						</tbody>
-					  </table>
-					</div>
-				</div>
-			</div>
+        <!-- jQuery Version 1.11.1 -->
+        <script src="js/jquery.js"></script>
 
-		<div class = "col-md-11">
-			<button type="button" id = "buttoncartback" class="btn btn-default btn-lg" style="float:right" >View Cart</button>
-			<button type="button" id = "buttoncartback" class="btn btn-default btn-lg" style="float:right" >Back</button>
-		</div>
-    </div>
-    <!-- /.container -->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
+    </body>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-</body>
-
-  
- </html>
+     </html>
