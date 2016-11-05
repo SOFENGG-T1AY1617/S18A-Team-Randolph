@@ -1,0 +1,126 @@
+.dlsu-logo{
+	height: 60px;
+}
+
+.navbar-header {
+    float: left;
+	height: 85px;
+    margin-top: -20px; 
+}
+
+.navbar-brand {
+  float: left;
+  height: 50px;
+  font-size: 25px;
+  line-height: 20px;
+  font-family: "Helvetica Neue";
+    margin-top: 20px;
+}
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+.navbar-sub{
+	color: #ffffff;
+	margin-left: 78px;
+	font-size: 17px;
+}
+
+.reminders{
+	margin-top: 60px;
+}
+
+.wrapper{
+	display: inline-block;
+}
+
+.termsconditions-box{
+	background-color: #dcdfe1;
+	width: 100%;
+	height: 400px;
+	margin-top: 30px;
+	padding: 16px;
+}
+
+.creditcard{
+	height: 90px;
+	width: 300px;
+}
+
+.creditproceed-container{
+	margin-top: 20px;
+}
+
+.btnProceed{
+	margin-top: 20px;
+	width: 150px;
+	float: right;
+}
+
+.remindersImage{
+	margin-top: -40px;
+	margin-left: -40px;
+	height: 500px;
+}
+
+.bg-homepage{
+	margin-left: -120px;
+	margin-top: -120px;
+	height: 722px;
+	width: 1373px;
+	position: relative;
+}
+
+.signum-fidei{
+	position: absolute;
+	top: 150px;
+	right: 600px;
+	height: 160px;
+	width: 145px;
+}
+
+.email-input{
+	color: white;
+	position: absolute;
+	top: 300px;
+	right: 520px;	
+}
+
+#usr, #pwd{
+	width: 300px;
+}
+
+.password-input{
+	color: white;
+	position: absolute;
+	top: 365px;
+	right: 520px;
+}
+
+.signup{
+	position: absolute;
+	top: 445px;
+	right: 545px;
+	color: #069150;
+}
+
+.line{
+	border: 1px solid #ffffff;
+	background-color: white;
+	width: 300px;
+    height: 1px; 
+	position: absolute;
+	top: 495px;
+	right: 520px;
+}
+
+.continueGuest{
+	position: absolute;
+	top: 525px;
+	right: 520px;
+	width: 300px;
+	height: 50px;
+	background-color: #069150;
+	border-color: #069150;
+}

@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img class="dlsu-logo" src="img/dlsulogo.png"></img> &nbsp De La Salle University - Manila</a>
+                <a class="navbar-brand" href="#"><img class="dlsu-logo" src="img/dlsulogo.png"> &nbsp De La Salle University - Manila</a>
 				<p class="navbar-sub">Online Request for Documents </p>		<!--FIX THIS-->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,11 +81,11 @@
 		<div class="row btnStep">
 			<div class="col-xs-12">
 				<ul class="nav nav-pills nav-justified thumbnail">
-					<li class="active"><a href="#">
+					<li><a href="#">
 						<h4 class="list-group-item-heading">Step 1</h4>
 						<p class="list-group-item-text">Personal and Academic Info</p>
 					</a></li>
-					<li><a href="#">
+					<li class="active"><a href="#">
 						<h4 class="list-group-item-heading">Step 2</h4>
 						<p class="list-group-item-text">Order Documents</p>
 					</a></li>
@@ -107,70 +107,57 @@
 		<!-- /.btnStep -->
 		
 		<!--Forms-->
-		<div class="personalInfoLabel-container">
-			<span class="txtPersonalInfo">Personal Information</span>
+		<div class="cartLabel-container">
+			<span class="txtViewCartInfo">Cart</span>
 		</div>
 		
-		<div class="personalInfo-container">
-			<div class="personalInfo-forms modal-body row">
-				<div class="col-md-6">
-					<div class="form-group">
-					  <label for="lastName">Last Name:</label>
-					  <input type="text" class="form-control" id="lastName">
-					</div>
-					
-					<div class="form-group">
-					  <label for="firstName">First Name:</label>
-					  <input type="text" class="form-control" id="firstName">
-					</div>
-					
-					<div class="form-group">
-					  <label for="middleName">Middle Name:</label>
-					  <input type="text" class="form-control" id="middleName">
-					</div>
-					
-					<div class="form-group">
-						<label for="optRadio">Gender: </label>
-						<span>&nbsp &nbsp </span>
-						<input type="radio" name="optradio">Male</input>
-						<span>&nbsp &nbsp </span>
-						<input type="radio" name="optradio">Female</input>
-					</div>
-					
-					<div class="form-group">
-						<label for="birthDate">Birthday: </label>
-						<div class='input-group date' id='datetimepicker1'>
-							<input type='text' class="form-control" name="birthDate"/>
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
-					</div>
-					
-					
-				</div>
-				
-				<div class="col-md-6">
-					<div class="form-group">
-					  <label for="currAddress">Current Address:</label>
-					  <textarea class="form-control" rows="5" id="currAdress"></textarea>
-					</div>
-					
-					<div class="form-group">
-					  <label for="phoneNumber">Phone Number:</label>
-					  <input type="text" class="form-control" id="phoneNumber">
-					</div>
-					
-					<div class="form-group">
-						<label for="email">Email address:</label>
-						<input type="email" class="form-control" id="email">
-					 </div>
-					 
-					 
-				</div>
-				
-			</div>				
-		</div>
+        <div class="row">
+        <div class="col-md-12">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr id = "listhead">
+                                <th>Item</th>
+                                <th>Document</th>
+                                <th>Qty.</th>
+                                <th>Unit Price</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>Official Transcript of Records (for Employment)</td>
+                                <td>2</td>
+                                <td>Php 150.00</td>
+                                <td>Php 300.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Remove</button></td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Trimestral Calendar</td>
+                                <td>1</td>
+                                <td>Php 110.00</td>
+                                <td>Php 110.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Remove</button></td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>Cumulative GPA</td>
+                                <td>1</td>
+                                <td>Php 110.00</td>
+                                <td>Php 110.00</td>
+                                <td><button type="button" class="btn btn-default btn-md">Remove</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+        
+        <div class = "col-md-12">
+                    <br />
+                    <a href="mailinginfo.html"><button type="button" id = "buttoncartback" class="btn btn-success" style="float:right" >Proceed to Mailing Information</button></a>
+                    <a href="document-list.html"><button type="button" id = "buttoncartback" class="btn btn-error" style="float:right" >Continue ordering</button></a>
+                    <br /><br /><br />
+        </div>
 		
 		
 	</div>
@@ -178,10 +165,25 @@
     <!-- /.container -->
 
     <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    
+     <script>
+    $(document).ready(function(){
+        $("#pickupArea").hide();
+        $("#mailingAddress").hide();
+    $("#pickup").click(function(){
+        $("#pickupArea").show();
+        $("#mailingAddress").hide();
+    });
+    $("#shipping").click(function(){
+        $("#mailingAddress").show();
+        $("#pickupArea").hide();
+    });
+});
+</script>
 
 </body>
 

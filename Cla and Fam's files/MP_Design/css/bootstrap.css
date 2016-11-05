@@ -3514,7 +3514,6 @@ tbody.collapse.in {
 .dropup,
 .dropdown {
   position: relative;
-text-align: center;
 }
 .dropdown-toggle:focus {
   outline: 0;
@@ -3522,7 +3521,7 @@ text-align: center;
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 400px;
+  left: 0;
   z-index: 1000;
   display: none;
   float: left;
@@ -6872,35 +6871,4 @@ button.close {
 
 .row.btnStep {
     margin-top: 44px;
-}
-
-.personalInfoLabel-container, .mailingInfoLabel-container, .cartLabel-container, .orderLabel-container{
-	border-style: solid;
-	border-width: 1px;
-	border-color: #00703c;
-	background-color: #00703c;
-	text-align: center;
-	color: white;
-	font-size: 20px;
-}
-
-.personalInfo-container, .mailingInfo-container{
-	margin-top: 5px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #c9c9c9;
-	background-color: #f2f2f2;
-}
-
-.personalInfo-forms, .mailingInfo-forms{
-	margin: 15px;
-}
-
-.deliveryArea{
-    width: 200px;
-}
-
-#done{
-    font-size: 20px;
-    padding: 10px;
 }

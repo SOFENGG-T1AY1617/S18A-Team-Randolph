@@ -1,0 +1,47 @@
+.label-container{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #00703c;
+	background-color: #00703c;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+.info-container{
+	margin-top: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c9c9c9;
+	background-color: #f2f2f2;
+}
+
+.info-forms{
+	margin: 15px;
+}
+
+#termAttended{
+	width: 100px;
+}
+
+#startYearAttended, #endYearAttended{
+	width: 50px;
+}
+
+.proceed1{
+	width: 200px;
+	margin-top: -10px;
+	float: right;
+}
+
+.container{
+	margin-bottom: 15px;
+}
+
+#datetimepicker2{
+	width: 300px;
+}
+
+#idNumber, #degree{
+	width: 200px;
+}
