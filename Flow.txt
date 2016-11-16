@@ -1,0 +1,39 @@
+Flow:
+1. Login/Register/Guest
+2. Clearance
+3. Personal & Academic w/ edit
+4. Order Documents w/ Popup
+5. Mailing info (show all or make new one)
+6. Confirm (summary of transactions w/ mailing info)
+7. Done
+
+Header - Logo - Edit Profile (new page) - Help (tooltip)
+
+Pages:
+> Reminders (index)			//cla and fam
+> Login page				//cla and fam
+> Clearance
+> Personal/Academic			//cla and fam
+> Order page
+	- pop up for document		//cj and fam
+> View cart				//mica and fam
+> Mailing info				//mica and fam
+> Summary of transaction (confirm)	//cj and fam
+> Done					//mica and fam
+
+Groups:
+
+1
+Analyst: Clarisse
+Dev: Hazel
+QA: Eugene
+
+2
+Analyst: CJ
+Dev: Harry F
+QA: Neil
+
+3
+Analyst: Mica
+Dev: Harry C
+QA: Juan
