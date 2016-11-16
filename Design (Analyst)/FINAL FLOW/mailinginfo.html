@@ -27,10 +27,10 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
-	
+
 	<script src="js/bootstrap.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script> <!--FIX THIS FOR DATE PICKER-->
-	
+
 	<script>
 		$(document).ready(function() {
 			$('#datetimepicker1').datepicker();
@@ -57,34 +57,30 @@
             </div>
             <div class = "navbar-right" style = "margin-right: 10px; width: 260px; display:inline-block; text-align: right;">
                 <button class = "btn" style = "background-color: transparent; margin-top: 12px;"><span class="glyphicon glyphicon-user navicon" aria-hidden="true" style= "font-size: 18px;"><p class = "username"> Username</p></span></button>
-                
+
                 <button class = "btn" style = "background-color: transparent; margin-top: 10px;"><span class="glyphicon glyphicon-question-sign navicon" aria-hidden="true" style= "font-size: 24px;"></span></button>
             </div>
         </div>
-        
-        <div class="container contbig">    
+
+        <div class="container contbig">
             <!--btnStep-->
             <div class="row btnStep" style = "margin-top: 5px;">
                 <div class="col-xs-12">
                     <ul class="nav nav-pills nav-justified thumbnail">
                         <li><a href="#">
                             <h4 class="list-group-item-heading stephead">Step 1</h4>
-                            <p class="list-group-item-text">Personal and Academic Info</p>
-                        </a></li>
-                        <li><a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 2</h4>
                             <p class="list-group-item-text">Order Documents</p>
                         </a></li>
                         <li class="active"><a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 3</h4>
+                            <h4 class="list-group-item-heading stephead">Step 2</h4>
                             <p class="list-group-item-text">Mailing Info</p>
                         </a></li>
                         <li><a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 4</h4>
+                            <h4 class="list-group-item-heading stephead">Step 3</h4>
                             <p class="list-group-item-text">Checkout</p>
                         </a></li>
                         <li><a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 5</h4>
+                            <h4 class="list-group-item-heading stephead">Step 4</h4>
                             <p class="list-group-item-text">Done</p>
                         </a></li>
                     </ul>
@@ -92,8 +88,8 @@
             </div>
             <!-- /.btnStep -->
         </div>
-        
-        <div class="container contsmall">    
+
+        <div class="container contsmall">
             <!--btnStep-->
             <div class="row btnStep" style = "margin-top: 5px;">
                 <div class="col-xs-12 rowsmall">
@@ -126,19 +122,19 @@
 		<div class="label-container">
 			<span class="txtMailingInfo">Mailing Information</span>
 		</div>
-        
+
 		<div class="mailingInfo-container">
 			<div class="mailingInfo-forms modal-body row">
 				<div class="col-md-12">
-                    
+
                     <div class="form-group">
-						<label for="deliveryOption">Delivery Option: </label>	
+						<label for="deliveryOption">Delivery Option: </label>
                     <div class="btn-group">
                       <button type="button" id="pickup" class="btn btn-success">Pick-up</button>
                       <button type="button" id="shipping" class="btn btn-success">Shipping</button>
                     </div>
 					</div>
-                    
+
                     <div class="mailInfoOption">
                     <div id="mailingAddress">
 
@@ -146,14 +142,14 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <span>&nbsp &nbsp </span>
-                            <input type="text" placeholder="Zip Code" class="form-control" id="zipCode">    
+                            <input type="text" placeholder="Zip Code" class="form-control" id="zipCode">
                             <input type="text" placeholder="Street Name" class="form-control" id="streetName">
                             <input type="text" placeholder="City" class="form-control" id="City">
                             <input type="number" placeholder="Country" class="form-control" id="country">
                         </div>
                    </form>
-                    
-                    <br /> 
+
+                    <br />
                      <label for="deliveryArea">Delivery Area:</label>
                         <div class="form-group">
                             <div class="col-xs-3">
@@ -184,11 +180,11 @@
                             <div class = "col-md-12">
                                 <br />
                                 <button type="button" id = "saveMailingInfo" class="btn btn-success" style="float:right" >Save and Add Another Address</button>
-                            </div>	
-                        </div>   
+                            </div>
+                        </div>
                     </div>
-                    
-                    
+
+
                     <div id="pickupArea">
                     <label for="pickupArea">Pick-up Area:</label>
                     <div class="form-group">
@@ -199,13 +195,13 @@
                             <option>DLSU - Taft</option>
                         </select>
                         </div>
-                    </div>   
                     </div>
- 
+                    </div>
+
                     </div>
 				</div>
-			</div>	
-            
+			</div>
+
             <div class = "col-md-12">
                         <br />
                         <a href="#"><button type="button" id = "buttoncartback" class="btn btn-success" style="float:right" >Save & Proceed to Checkout</button></a>
@@ -213,10 +209,10 @@
                         <br /><br /><br />
             </div>
 		</div>
-		
-		
+
+
 	</div>
-    
+
     <!-- /.container -->
 
     <!-- jQuery Version 1.11.1 -->
@@ -224,7 +220,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
+
      <script>
     $(document).ready(function(){
         $("#pickupArea").hide();
