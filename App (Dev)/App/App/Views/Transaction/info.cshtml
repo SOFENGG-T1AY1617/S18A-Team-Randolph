@@ -1,8 +1,205 @@
 ﻿
 @{
-    ViewBag.Title = "info";
+    ViewBag.Title = "Mailing Information";
     Layout = "~/Views/Shared/_TransactionLayout.cshtml";
 }
 
-<h2>info</h2>
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#pickupArea").show();
+        $("#mailingAddress").hide();
+        $("#pickup").click(function () {
+            $("#pickupArea").show();
+            $("#mailingAddress").hide();
+        });
+        $("#shipping").click(function () {
+            $("#existingMform").show();
+            $("#newMform").show();
+            $("#mailingAddress").show();
+            $("#pickupArea").hide();
+        });
+    });
+</script>
+}
 
+
+@section btnStep {
+   <!--btnStep-->
+<div class="row btnStep" style="margin-top: 7px;">
+    <div class="col-xs-9 stepHeader">
+        <ul class="nav nav-pills nav-justified thumbnail" style="width: 810px;">
+            <li class="stepBtn">
+                <a href="#">
+                    <h4 class="list-group-item-heading stephead">Step 1</h4>
+                    <p class="list-group-item-text">Order Documents</p>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <h4 class="list-group-item-heading stephead">Step 2</h4>
+                    <p class="list-group-item-text">Mailing Info</p>
+                </a>
+            </li>
+            <li class="stepBtn">
+                <a href="#">
+                    <h4 class="list-group-item-heading stephead">Step 3</h4>
+                    <p class="list-group-item-text">Checkout</p>
+                </a>
+            </li>
+            <li class="stepBtn">
+                <a href="#">
+                    <h4 class="list-group-item-heading stephead">Step 4</h4>
+                    <p class="list-group-item-text">Done</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /.btnStep --> 
+}
+
+@section body {
+    <div class="container item-list-cont" style="margin-top: 170px;">
+    <div class="col-md-8">
+        <div class="page-header" style="margin: 0;">
+            <span style="font-size: 16px;font-family: lato;">Delivery Option</span> &nbsp; &nbsp;
+            <div class="btn-group">
+                <button type="button" id="pickup" class="btn btn-success" style="width: 100px;">Pick-up</button>
+                <button type="button" id="shipping" class="btn btn-success" style="width: 100px;">Shipping</button>
+            </div>
+        </div>
+        <br>
+        <div id="pickupArea">
+            <span style="font-size: 16px;font-family: lato;">Choose Area</span> &nbsp; &nbsp;
+            <select class="form-control" id="pickupArea" style="width: 400px;">
+                <option>De La Salle University - BGC</option>
+                <option>De La Salle University - Makati</option>
+                <option>De La Salle University - Taft</option>
+            </select>
+            <br><br>
+        </div>
+
+        <div id="mailingAddress">
+            <div class="row" id="existingMform">
+                <span style="font-size: 16px;font-family: lato;">Choose Existing Mailing Address</span>
+                <div class="line-separator"></div><br>
+
+                <form class="form-horizontal" role="form">
+                    <!-- Start Existing Form -->
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Address" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Street</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Street" class="form-control" disabled>
+                            </div>
+                            <label class="col-sm-2 control-label" for="textinput">Zip code</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Zip Code" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Country</label>
+                            <div class="col-sm-5">
+                                <input type="text" placeholder="Country" class="form-control" disabled>
+                            </div>
+                            <label class="col-sm-1 control-label" for="textinput">City</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="City" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success">Choose Address</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form> <!-- End Existing Form -->
+            </div>
+            <span style="font-size: 16px;font-family: lato;">Create New Mailing Address</span>
+            <div class="line-separator"></div><br>
+            <div class="row" id="newMform">
+                <!-- Form Start -->
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Address" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Street</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Street" class="form-control">
+                            </div>
+                            <label class="col-sm-2 control-label" for="textinput">Zip code</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Zip Code" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Country</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" id="deliveryArea">
+                                    <option>Africa</option>
+                                    <option>Australia</option>
+                                    <option>Brunei</option>
+                                    <option>Canada</option>
+                                    <option>Europe</option>
+                                    <option>Fiji Island</option>
+                                    <option>Guam</option>
+                                    <option>Hongkong/Singapore</option>
+                                    <option>Indonesia/Malaysia/Taiwan/Thailand</option>
+                                    <option>Japan</option>
+                                    <option>Luzon</option>
+                                    <option>Metro Manila</option>
+                                    <option>Mexico City</option>
+                                    <option>Middle East</option>
+                                    <option>Mindanao</option>
+                                    <option>New Zealand</option>
+                                    <option>Papua New Guinea</option>
+                                    <option>South America</option>
+                                    <option>USA</option>
+                                    <option>Vietnam</option>
+                                    <option>Visayas</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label" for="textinput">City</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="City" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Choose & Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div><!-- /.row --> <!-- Form End -->
+        </div>
+
+        <div class="line-separator"></div><br>
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-default">Go Back</button>
+                <button type="submit" class="btn btn-success">Proceed to Checkout <span class="glyphicon glyphicon-play"></button>
+            </div>
+        </div>
+    </div>
+</div>
+}

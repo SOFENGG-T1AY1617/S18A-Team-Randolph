@@ -2,6 +2,12 @@
     width: 200px;
 }
 
+.line-separator{
+    height:1px;
+    background:#717171;
+    border-bottom:1px solid #C7C7C7;
+}
+
 .active {
     width: 200px;
 }

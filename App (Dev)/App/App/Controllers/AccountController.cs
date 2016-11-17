@@ -9,13 +9,13 @@ namespace App.Controllers
 {
     public class AccountController : Controller
     {
-        //AccountManager manager = new AccountManager();
-        AccountModel accountModel = new AccountModel();
+        AccountManager manager = new AccountManager();
 
         public ActionResult Index()
         {
+            // working
             // must go to home index
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult login()
@@ -44,14 +44,59 @@ namespace App.Controllers
         }
 
         [HttpPost]
-        public void verify(string email, string password)
+        public ActionResult verify(string email, string password)
         {
-            Console.WriteLine(email, password);
-            ViewBag.Striing = "email: " + email + " password: " + password;
-            accountModel.Login(email, password);
+            //Console.WriteLine(email, password);
+            ViewBag.String = "email: " + email + " password: " + password;
+
+            //ViewData["string"] = "email " + email + " password " + password;
+
+            var acc = manager.getAccount(email, password);
+
+            // Means acc does not exist 
+            if (acc == null)
+            {
+                return RedirectToAction("error", "Account");
+            }
+            else
+            {
+                //ViewBag.exist = true;
+                //ViewBag.String = "Account exists!";
+                // ViewBag.acc = acc;
+                return RedirectToAction("order", "Transaction");
+
+            }
+
             //RedirectToRoute("Transaction/Step1");
         }
-        
-        
+
+        [HttpPost]
+        public ActionResult save(int userID, string lastName, string firstName, string middleName, char gender, int birthYear,
+                                     int birthMonth, int birthDay, string citizenship, string placeOfBirth, string currentAddress,
+                                     string phoneNo, string alternatePhoneNo, string email, string alternateEmail, string password)
+        {
+            Account acc = new Account();
+
+            acc.userID = userID;
+            acc.lastName = lastName;
+            acc.firstName = firstName;
+            acc.middleName = middleName;
+            acc.gender = gender;
+            acc.birthYear = birthYear;
+            acc.birthMonth = birthMonth;
+            acc.birthDay = birthDay;
+            acc.citizenship = citizenship;
+            acc.email = email;
+            acc.alternateEmail = alternateEmail;
+            acc.password = password;
+            acc.placeOfBirth = placeOfBirth;
+            acc.currentAddress = currentAddress;
+            acc.phoneNo = phoneNo;
+            acc.alternatePhoneNo = alternatePhoneNo;
+
+            manager.saveAccount(acc);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

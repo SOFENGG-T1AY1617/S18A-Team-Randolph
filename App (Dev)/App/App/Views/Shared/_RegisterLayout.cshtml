@@ -20,7 +20,135 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 </head>
 <body>
-    @RenderBody()
+
+
+    @using (Html.BeginForm("save", "Account", FormMethod.Post))
+    {
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="userID" class="form-control formstyle" id="userID" placeholder="userID" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="lastName" class="form-control formstyle" id="lastName" placeholder="last" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="firstName" class="form-control formstyle" id="firstName" placeholder="first" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                @*4*@
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="middleName" class="form-control formstyle" id="middleName" placeholder="middle" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="gender" class="form-control formstyle" id="gender" placeholder="gender" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="number" name="birthYear" class="form-control formstyle" id="birthYar" placeholder="year" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="number" name="birthMonth" class="form-control formstyle" id="birthMonth" placeholder="month" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                @*4*@
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="number" name="birthDay" class="form-control formstyle" id="birthDay" placeholder="day" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="citizenship" class="form-control formstyle" id="citizenship" placeholder="citizen" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="placeOfBirth" class="form-control formstyle" id="placeOfBirth" placeholder="place" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="currentAddress" class="form-control formstyle" id="currentAddress" placeholder="address" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                @*4*@
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="phoneNo" class="form-control formstyle" id="phoneNo" placeholder="phone" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="alternatePhoneNo" class="form-control formstyle" id="alternatePhoneNo" placeholder="altPhone" value="" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="email" class="form-control formstyle" id="email" placeholder="email" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="text" name="alternateEmail" class="form-control formstyle" id="alternateEmail" placeholder="altEmail" value="" style="height: 40px;">
+            </div>
+            <br>
+            <div class="input-group">
+                @*4*@
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input type="Password" name="password" class="form-control formstyle" id="password" placeholder="Password" style="height: 40px;">
+            </div>
+        </div>
+        <center>
+            <a href="/" class="formstyle">Forgot Password?</a>
+            @RenderBody()
+        </center>
+                    <input type="submit" value="Log in" class="btn btn-primary btn-block formstyle" style="background-color: #00703c; margin-bottom: 10px;" />
+    }
+
+
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/vendor/jquery-1.11.2.min.js"></script>

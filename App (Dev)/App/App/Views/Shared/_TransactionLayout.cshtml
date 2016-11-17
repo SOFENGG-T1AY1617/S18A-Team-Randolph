@@ -27,7 +27,7 @@
             
     </script>
 </head>
-<body>
+<body style = "padding-bottom: 30px;">
     <nav class="navbar-fixed-top">
         <div class="container-fluid" style="padding-left: 25px; padding-bottom: 3px; background-color: #fefefe; border-bottom: 1px solid #e0e0e0;">
             <a href="/">
@@ -40,81 +40,20 @@
             <div class="nav navbar-right navright" style="margin-right: 10px;">
                 <button class="btn btn-default navbtn namebtn" type="submit" style="background: transparent; border: none; border-radius: 0px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-top: 5px; color: #00703c;"></span> <span class="username">&nbsp;Hazel Anne</span></button>
 
-                <button class="btn btn-default navbtn circ dropdown-toggle" type="submit" style="border-radius: 100%; background-color: #00703c; color: #fefefe;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
+                <button class="btn btn-default navbtn circ" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
 
                 <button class="btn btn-default navbtn circ" type="submit" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="margin-top: 5px;"></span></button>
             </div>
         </div>
 
-        <!--btnStep-->
-        <div class="row btnStep" style="margin-top: 7px;">
-            <div class="col-xs-9 stepHeader">
-                <ul class="nav nav-pills nav-justified thumbnail" style="width: 810px;">
-                    <li class="@ViewBag.isActive">
-                        <a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 1</h4>
-                            <p class="list-group-item-text">Order Documents</p>
-                        </a>
-                    </li>
-                    <li class="stepBtn">
-                        <a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 2</h4>
-                            <p class="list-group-item-text">Mailing Info</p>
-                        </a>
-                    </li>
-                    <li class="stepBtn">
-                        <a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 3</h4>
-                            <p class="list-group-item-text">Checkout</p>
-                        </a>
-                    </li>
-                    <li class="stepBtn">
-                        <a href="#">
-                            <h4 class="list-group-item-heading stephead">Step 4</h4>
-                            <p class="list-group-item-text">Done</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.btnStep -->
+        @RenderSection("btnStep", true)
     </nav>
 
-    <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">One more separated link</a></li>
-    </ul>
-
-    <div style="position: fixed; bottom: 0; right: 0; margin-right: 180px; margin-bottom: 20px;">
-        <button class="btn" style="background-color: #1b5e20; color: white;">
-            Proceed to next step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-        </button>
-    </div>
-
-    <div style="position: fixed; bottom: 0; left: 0; margin-left: 260px; margin-bottom: 20px; ">
-        <button class="btn" style="background-color: #1b5e20; color: white;">
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Go Back
-        </button>
-    </div>
-
-    @RenderBody()
+    @RenderSection("body", true)
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
-          jQuery(function($) {
-            $(document).ready( function() {
-                $(function () {
-                  $('[data-toggle="popover"]').popover()
-                })
-            });
-          });
-    </script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
