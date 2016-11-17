@@ -45,7 +45,7 @@ CREATE TABLE `degreesofuser` (
 
 LOCK TABLES `degreesofuser` WRITE;
 /*!40000 ALTER TABLE `degreesofuser` DISABLE KEYS */;
-INSERT INTO `degreesofuser` VALUES (2,'Information Systems','3rd',2013,'DLSU-Manila','Undergraduate','No',3,11310162,'Philippine Cultural College'),(3,'Marketing','4th',2013,'DLSU-Manila','Undergraduate','No',4,11318724,'Philippine Cultural College'),(1,'Computer Science Major in Software Technology','3rd',2013,'DLSU-Manila','Undergraduate','No',3,11342498,'Muntinlupa Science High School'),(1,'Computer Science Major In Software Technology','3rd Year',2014,'DLSU-Manila','Undergraduate','No',3,11425598,'Philippine Cultural College'),(1,'Computer Science Major in Software Technology','3rd',2914,'DLSU-Manila','Undergraduate','No',3,11428236,'Ateneo De Manila High School');
+INSERT INTO `degreesofuser` VALUES (2,'Bachelors','3rd',2013,'DLSU-Manila','Undergraduate','No',3,11310162,'Philippine Cultural College'),(3,'Bachelors','4th',2013,'DLSU-Manila','Undergraduate','No',4,11318724,'Philippine Cultural College'),(1,'Bachelors','3rd',2013,'DLSU-Manila','Undergraduate','No',3,11342498,'Muntinlupa Science High School'),(1,'Bachelors','3rd Year',2014,'DLSU-Manila','Undergraduate','No',3,11425598,'Philippine Cultural College'),(1,'Bachelors','3rd',2914,'DLSU-Manila','Undergraduate','No',3,11428236,'Ateneo De Manila High School');
 /*!40000 ALTER TABLE `degreesofuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-18  4:26:05
+-- Dump completed on 2016-11-18  4:36:10
