@@ -9,7 +9,8 @@ namespace App.Controllers
 {
     public class AccountController : Controller
     {
-        AccountManager manager = new AccountManager();
+        //AccountManager manager = new AccountManager();
+        AccountModel accountModel = new AccountModel();
 
         public ActionResult Index()
         {
@@ -47,6 +48,7 @@ namespace App.Controllers
         {
             Console.WriteLine(email, password);
             ViewBag.Striing = "email: " + email + " password: " + password;
+            accountModel.Login(email, password);
             //RedirectToRoute("Transaction/Step1");
         }
         
