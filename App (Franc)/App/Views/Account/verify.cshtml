@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<p class="formstyle" style="color:red;">Verify</p>
+
+@{
+    if (ViewBag.exist == true)
+    {
+        @ViewBag.String
+        @ViewBag.acc.userID
+        @ViewBag.acc.firstName
+        @ViewBag.acc.lastName
+    }
+    else if(ViewBag.exist == false)
+    {
+        @ViewBag.String
+    }
+}
+
+
+
