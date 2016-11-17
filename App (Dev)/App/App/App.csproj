@@ -150,17 +150,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AccountManager.cs" />
-    <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
-    <Compile Include="Controllers\TransactionManager.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\DatabaseConnector.cs" />
-    <Compile Include="Models\Date.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\MailingInformation.cs" />
     <Compile Include="Models\Transaction.cs" />

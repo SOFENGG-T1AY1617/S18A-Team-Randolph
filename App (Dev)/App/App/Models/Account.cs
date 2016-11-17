@@ -1,259 +1,179 @@
-﻿using System;
+﻿using App.Controllers;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
 namespace App.Models
 {
-    class Account {
-        public string lastName { get; set; }
+    public class Account
+    {
+        public int userID { get; set; }
         public string firstName { get; set; }
+        public string lastName { get; set; }
         public string middleName { get; set; }
         public char gender { get; set; }
-        public Date birthday { get; set; }
-        public string placeOfBirth { get; set; }
+        public int birthYear { get; set; }
+        public int birthDay { get; set; }
+        public int birthMonth { get; set; }
         public string citizenship { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string placeOfBirth { get; set; }
         public string currentAddress { get; set; }
         public string phoneNo { get; set; }
         public string alternatePhoneNo { get; set; }
-        public string email { get; set; }
         public string alternateEmail { get; set; }
-        public string password { get; set; }
-        public string level { get; set; }
-        public int userID { get; set; }
-        public string degreeName { get; set; }
-        public bool graduated { get; set; }
-        // wtf is graduate -> YES || NO -> txtbox
-        public int yearLevel { get; set; }
-        public string admittedAs { get; set; }
-        public string LastSchoolAttendedPrevDLSU { get; set; }
-
-        public Account(string lastName, string firstName, string middleName, char gender, Date birthday, string placeOfBirth, 
-                        string citizenship, string currentAddress, string phoneNo, string alternatePhoneNo, string email, 
-                        string alternateEmail, string password, string level, int userID, string degreeName, bool graduated, 
-                        int yearLevel, string admittedAs, string LastSchoolAttendedPrevDLSU)
-        {
-            this.lastName = lastName;
-            this.firstName = firstName;
-            this.middleName = middleName;
-            this.gender = gender;
-            this.birthday = birthday;
-            this.placeOfBirth = placeOfBirth;
-            this.citizenship = citizenship;
-            this.currentAddress = currentAddress;
-            this.phoneNo = phoneNo;
-            this.alternatePhoneNo = alternatePhoneNo;
-            this.email = email;
-            this.alternateEmail = alternateEmail;
-            this.password = password;
-            this.level = level;
-            this.userID = userID;
-            this.degreeName = degreeName;
-            this.graduated = graduated;
-            // wtf is graduated -> YES || NO -> txtbox
-            this.yearLevel = yearLevel;
-            this.admittedAs = admittedAs;
-            this.LastSchoolAttendedPrevDLSU = LastSchoolAttendedPrevDLSU;
-        }
-
-        public string getPersonalString()
-        {
-            return lastName + ", " + firstName + ", " + middleName + ", " + gender + ", " + birthday.toString() + ", " + citizenship + ", " + placeOfBirth + ", " + currentAddress + ", " + phoneNo + ", " + alternatePhoneNo + ", " + email + ", " + alternateEmail + ", " + password;
-        }
-
-        public string getAcademicString()
-        {
-            return degreeName + ", " + level + ", " + admittedAs + ", " + graduated + ", " + yearLevel + ", " + userID + ", " + LastSchoolAttendedPrevDLSU;
-        }
     }
 
-    class AccountModel
+    class AccountManager
     {
-        private DatabaseConnector connection = new DatabaseConnector();
+        private DatabaseConnector db = new DatabaseConnector();
 
-        class queryBuilder_Account
+        public Account getAccount(string email, string password)
         {
-            private string columns { get; set; }
-            private string tables { get; set; }
-            private string conditions { get; set; }
+            Account account = new Models.Account();
+            MySqlConnection conn = null;
 
-            public queryBuilder_Account(string c, string t, string con)
+            using (conn = new MySqlConnection(db.getConnString()))
             {
-                columns = c;
-                tables = t;
-                conditions = con;
-            }
-
-            public string toSelectQuery_login()
-            {
-                Console.WriteLine("SELECT " + columns + " FROM " + tables + " WHERE " + conditions);
-                return "SELECT " + columns + " FROM " + tables + " WHERE " + conditions;
-            }
-
-            public string toSelectQuery_register()
-            {
-                //"INSERT INTO tables (columns) VALUES(conditions)";
-                Console.WriteLine("INSERT INTO " + tables + " (" + columns + ") VALUES (" + conditions + ")");
-                return "INSERT INTO " + tables + " (" + columns + ") VALUES (" + conditions + ")";
-            }
-        }
-
-        public Account Login(String userID, String password)
-        {
-            //HOW TO LOGIN !
-            //get the input (ID and Password)
-            //Check if userID exist and password is equal if the id exist
-
-            string columns = "userID, password";
-            string tables = "user";
-            string conditions = "userID LIKE " + "'" + userID + "'" + " AND password LIKE " + "'" + password + "'";
-            List<string> result;
-
-            queryBuilder_Account LoginQuery = new queryBuilder_Account(columns, tables, conditions);
-
-            result = connection.ExecuteQuery_yesReturn(LoginQuery.toSelectQuery_login());
-
-            if (result != null)
-            {
-                return new Models.Account();
-            }
-            else
-            {
-                //login failed
-                return false;
-            }
-        }
-
-
-        public bool Register(Account account, string retry_password, int userID, int degreeID)
-        {
-            if (retry_password.CompareTo(account.password) == 0 && !IsNullOrEmpty(retry_password) && !IsNullOrEmpty(account.getPersonalString()))
-            {
-                //"INSERT INTO tables (columns) VALUES(conditions)";
-                //user table
-                string columns = "lastName, firstName, middleName, gender, birthYear, birthMonth, birthDay, citizenship, placeOfBirth, currentAddress, phoneNo, alternatePhoneNo, email, alternateEmail, password";
-                string tables = "user";
-                string conditions = account.getPersonalString();
-
-                queryBuilder_Account RegQuery_Personal = new queryBuilder_Account(columns, tables, conditions);
-                if (!connection.ExecuteQuery_noReturn(RegQuery_Personal.toSelectQuery_register()))
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    Console.WriteLine("Error: Failed to insert to user table");
-                    return false;
-                }
+                    cmd.CommandText = "SELECT * FROM user WHERE email LIKE '" + email + "' and password like '" + password + "';";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            account.userID = reader.GetInt32(0);
+                            account.lastName = reader.GetString(1);
+                            account.firstName = reader.GetString(2);
+                            account.middleName = reader.GetString(3);
+                            account.gender = reader.GetChar(4);
+                            account.birthYear = reader.GetInt32(5);
+                            account.birthMonth = reader.GetInt32(6);
+                            account.birthDay = reader.GetInt32(7);
+                            account.citizenship = reader.GetString(8);
+                            account.email = reader.GetString(13);
+                            account.password = reader.GetString(15);
+                        }
 
-                //degreeofuser table
-                columns = "degreeName, level, admittedAs, graduated, yearLevel, userID , LastSchoolAttendedPrevDLSU";
-                tables = "degreeofuser";
-                conditions = account.getAcademicString();
-                queryBuilder_Account RegQuery_Academic = new queryBuilder_Account(columns, tables, conditions);
-                if (!connection.ExecuteQuery_noReturn(RegQuery_Academic.toSelectQuery_register()))
+                        if (!reader.HasRows)
+                        {
+                            account = null;
+                        }
+                    }
+                }
+            }
+
+
+
+            conn.Close();
+            return account;
+        }
+
+        public void saveAccount(Account acc)
+        {
+            Account account = acc;
+            MySqlConnection conn = new MySqlConnection(db.getConnString());
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+
+
+            using (conn)
+            {
+                using (adapter)
                 {
-                    Console.WriteLine("Error: Failed to insert to degreeofuser table");
-                    return false;
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.user", conn);
+
+                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.user"
+                                                             + " (userID, lastName, firstName, middleName, gender, birthYear, birthMonth,"
+                                                             + " birthDay, citizenship, placeOfBirth, currentAddress, phoneNo,"
+                                                             + " alternatePhoneNo, email, alternateEmail, password) "
+                                                             + "VALUES (@userID, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
+                                                             + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
+                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password)", conn);
+
+
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userId"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastName", MySqlDbType.VarChar, 100, "lastName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("firstName", MySqlDbType.VarChar, 100, "firstName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("middleName", MySqlDbType.VarChar, 100, "middleName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("gender", MySqlDbType.VarChar, 1, "gender"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthYear", MySqlDbType.Int32, 11, "birthYear"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthMonth", MySqlDbType.Int32, 11, "birthMonth"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthDay", MySqlDbType.Int32, 11, "birthDay"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("citizenship", MySqlDbType.VarChar, 100, "citizenship"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("placeOfBirth", MySqlDbType.VarChar, 500, "placeOfBirth"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("currentAddress", MySqlDbType.VarChar, 500, "currentAddress"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("phoneNo", MySqlDbType.VarChar, 50, "phoneNo"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("alternatePhoneNo", MySqlDbType.VarChar, 50, "alternatePhoneNo"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("email", MySqlDbType.VarChar, 100, "email"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("alternateEmail", MySqlDbType.VarChar, 100, "alternateEmail"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("password", MySqlDbType.VarChar, 100, "password"));
+
+                    using (DataSet dataSet = new DataSet())
+                    {
+                        adapter.Fill(dataSet, "user");
+
+                        Console.WriteLine("There are {0} rows in the table", dataSet.Tables[0].Rows.Count);
+
+                        DataRow newRow = dataSet.Tables[0].NewRow();
+
+                        newRow["userID"] = acc.userID;
+                        newRow["lastName"] = acc.lastName;
+                        newRow["firstName"] = acc.firstName;
+                        newRow["middleName"] = acc.middleName;
+                        newRow["gender"] = acc.gender;
+                        newRow["birthYear"] = acc.birthYear;
+                        newRow["birthMonth"] = acc.birthMonth;
+                        newRow["birthDay"] = acc.birthDay;
+                        newRow["citizenship"] = acc.citizenship;
+                        newRow["placeOfBirth"] = acc.placeOfBirth;
+                        newRow["currentAddress"] = acc.currentAddress;
+                        newRow["phoneNo"] = acc.phoneNo;
+                        newRow["alternatePhoneNo"] = acc.alternatePhoneNo;
+                        newRow["email"] = acc.email;
+                        newRow["alternateEmail"] = acc.alternateEmail;
+                        newRow["password"] = acc.password;
+
+                        dataSet.Tables[0].Rows.Add(newRow);
+
+                        adapter.Update(dataSet, "user");
+                    }
                 }
+            }
 
-                return true;
-            }
-            else
+            /*
+            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM requestdocdb.user", conn);
+
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
+
+            /*
+            using (conn)
             {
-                Console.WriteLine("Error: Your retry_password does not match to password");
-                return false;
+                conn.Open();
+                using (insert = conn.CreateCommand())
+                {
+                    insert.CommandText = " INSERT INTO user (userID, lastName, firstName, middleName, gender, birthYear, birthMonth,"
+                                                        + " birthDate, citizenship, placeOfBirth, currentAddress, phoneNo,"
+                                                        + " alternatePhoneNo, email, alternateEmail, password) " 
+                                                        + "VALUES ( " + acc.userID + ", " + acc.lastName + ", " + acc.firstName + ", " + acc.middleName + ", " + acc.gender + ", " + acc.birthYear + ", " + acc.birthMonth + ","
+                                                        + " " + acc.birthDay + ", " + acc.citizenship + ", " + acc.placeOfBirth + ", " + acc.currentAddress + ", " + acc.phoneNo + ","
+                                                        + " " + acc.alternatePhoneNo + ", " + acc.email + ", " + acc.alternateEmail + ", " + acc.password + ") ";
+
+                    adapter.InsertCommand = insert;
+                    adapter.Update(dataset, "user");
+                    dataset.AcceptChanges();
+                }
             }
+            */
+
+
+            conn.Close();
         }
-
-        private bool IsNullOrEmpty(string retry_password)
-        {
-            throw new NotImplementedException();
-        }
-
-        /*class date
-        {
-            private int year { get; set; }
-            private int month { get; set; }
-            private int day { get; set; }
-
-            public date(int year, int month, int day)
-            {
-                this.year = year;
-                this.month = month;
-                this.day = day;
-            }
-
-            public string toString()
-            {
-                return year + ", " + month + ", " + day;
-            }
-        }
-
-        class personal_info
-        {
-            private string lastName { get; set; }
-            private string firstName { get; set; }
-            private string middleName { get; set; }
-            private char gender { get; set; }
-            private date birthday { get; set; }
-            private string placeOfBirth { get; set; }
-            private string citizenship { get; set; }
-            private string currentAddress { get; set; }
-            private string phoneNo { get; set; }
-            private string alternatePhoneNo { get; set; }
-            private string email { get; set; }
-            private string alternateEmail { get; set; }
-            private string password { get; set; }
-
-            public personal_info(string lastName, string firstName, string middleName, char gender, date birthday, string placeOfBirth, string citizenship, string currentAddress, string phoneNo, string alternatePhoneNo, string email, string alternateEmail, string password)
-            {
-                this.lastName = lastName;
-                this.firstName = firstName;
-                this.middleName = middleName;
-                this.gender = gender;
-                this.birthday = birthday;
-                this.placeOfBirth = placeOfBirth;
-                this.citizenship = citizenship;
-                this.currentAddress = currentAddress;
-                this.phoneNo = phoneNo;
-                this.alternatePhoneNo = alternatePhoneNo;
-                this.email = email;
-                this.alternateEmail = alternateEmail;
-                this.password = password;
-            }
-
-            public string toString()
-            {
-                return lastName + ", " + firstName + ", " + middleName + ", " + gender + ", " + birthday.toString() + ", " + citizenship + ", " + placeOfBirth + ", " + currentAddress + ", " + phoneNo + ", " + alternatePhoneNo + ", " + email + ", " + alternateEmail + ", " + password;
-            }
-        }
-
-        class academic_info
-        {
-            private string level { get; set; }
-            private int userID { get; set; }
-            private string degreeName { get; set; }
-            private bool graduated { get; set; }
-            // wtf is graduate -> YES || NO -> txtbox
-            private int yearLevel { get; set; }
-            private string admittedAs { get; set; }
-            private string LastSchoolAttendedPrevDLSU { get; set; }
-
-            public academic_info(string level, int userID, string degreeName, bool graduated, int yearLevel, string admittedAs, string LastSchoolAttendedPrevDLSU)
-            {
-                this.level = level;
-                this.userID = userID;
-                this.degreeName = degreeName;
-                this.graduated = graduated;
-                // wtf is graduated -> YES || NO -> txtbox
-                this.yearLevel = yearLevel;
-                this.admittedAs = admittedAs;
-                this.LastSchoolAttendedPrevDLSU = LastSchoolAttendedPrevDLSU;
-            }
-
-            public string toString()
-            {
-                return degreeName + ", " + level + ", " + admittedAs + ", " + graduated + ", " + yearLevel + ", " + userID + ", " + LastSchoolAttendedPrevDLSU;
-            }
-        }*/
-
-
     }
 }
