@@ -38,9 +38,9 @@
             </a>
 
             <div class="nav navbar-right navright" style="margin-right: 10px;">
-                <button class="btn btn-default navbtn namebtn" type="submit" style="background: transparent; border: none; border-radius: 0px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-top: 5px; color: #00703c;"></span> <span class="username">&nbsp;Hazel Anne</span></button>
+                <button class="btn btn-default navbtn namebtn" type="submit" style="background: transparent; border: none; border-radius: 0px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-top: 5px; color: #00703c;"></span> <span class="username">&nbsp;@ViewBag.name</span></button>
 
-                <button class="btn btn-default navbtn circ" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
+                <button class="btn btn-default navbtn circ" style="border-radius: 100%; background-color: #00703c; color: #fefefe;" onclick="location.href='@Url.Action("cart", "Transaction")'"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
 
                 <button class="btn btn-default navbtn circ" type="submit" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="margin-top: 5px;"></span></button>
             </div>

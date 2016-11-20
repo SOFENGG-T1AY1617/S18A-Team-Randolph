@@ -26,6 +26,9 @@ namespace App.Models
         public string phoneNo { get; set; }
         public string alternatePhoneNo { get; set; }
         public string alternateEmail { get; set; }
+        public List<Degree> degrees { get; set; }
+        public List<Transaction> transactions { get; set; }
+        public List<MailingInformation> mailInfos { get; set; }
     }
 
     class AccountManager
@@ -35,6 +38,8 @@ namespace App.Models
         public Account getAccount(string email, string password)
         {
             Account account = new Models.Account();
+            degreeManager dm = new degreeManager();
+            MailingInfoModel mim = new MailingInfoModel();
             MySqlConnection conn = null;
 
             using (conn = new MySqlConnection(db.getConnString()))
@@ -58,6 +63,8 @@ namespace App.Models
                             account.citizenship = reader.GetString(8);
                             account.email = reader.GetString(13);
                             account.password = reader.GetString(15);
+                            account.degrees = dm.getDegree(account.userID);
+                            account.mailInfos = mim.getMailInfos(account.userID);
                         }
 
                         if (!reader.HasRows)
@@ -67,9 +74,7 @@ namespace App.Models
                     }
                 }
             }
-
-
-
+            
             conn.Close();
             return account;
         }
@@ -80,9 +85,7 @@ namespace App.Models
             MySqlConnection conn = new MySqlConnection(db.getConnString());
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-
-
+            
             using (conn)
             {
                 using (adapter)
@@ -146,33 +149,7 @@ namespace App.Models
                     }
                 }
             }
-
-            /*
-            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM requestdocdb.user", conn);
-
-            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
-
-            /*
-            using (conn)
-            {
-                conn.Open();
-                using (insert = conn.CreateCommand())
-                {
-                    insert.CommandText = " INSERT INTO user (userID, lastName, firstName, middleName, gender, birthYear, birthMonth,"
-                                                        + " birthDate, citizenship, placeOfBirth, currentAddress, phoneNo,"
-                                                        + " alternatePhoneNo, email, alternateEmail, password) " 
-                                                        + "VALUES ( " + acc.userID + ", " + acc.lastName + ", " + acc.firstName + ", " + acc.middleName + ", " + acc.gender + ", " + acc.birthYear + ", " + acc.birthMonth + ","
-                                                        + " " + acc.birthDay + ", " + acc.citizenship + ", " + acc.placeOfBirth + ", " + acc.currentAddress + ", " + acc.phoneNo + ","
-                                                        + " " + acc.alternatePhoneNo + ", " + acc.email + ", " + acc.alternateEmail + ", " + acc.password + ") ";
-
-                    adapter.InsertCommand = insert;
-                    adapter.Update(dataset, "user");
-                    dataset.AcceptChanges();
-                }
-            }
-            */
-
-
+            
             conn.Close();
         }
     }

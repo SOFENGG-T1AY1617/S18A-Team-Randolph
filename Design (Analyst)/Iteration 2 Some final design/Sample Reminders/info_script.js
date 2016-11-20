@@ -1,0 +1,11 @@
+ $("#pickupArea").show();
+    $("#mailingAddress").hide();
+    $("#pickup").click(function(){
+        $("#pickupArea").show();
+        $("#mailingAddress").hide();
+    });
+    $("#shipping").click(function(){
+        $("#existingMform").show();
+        $("#newMform").show();
+        $("#mailingAddress").show();
+        $("#pickupArea").hide();

@@ -25,6 +25,8 @@ namespace App.Models
 
     class degreeManager
     {
+        private DatabaseConnector db = new DatabaseConnector();
+
         public void saveDegree(Degree deg)
         {
             Degree degree = deg;
@@ -82,7 +84,49 @@ namespace App.Models
             conn.Close();
         }
 
-        
+        public List<Degree> getDegree(int userID)
+        {
+            List<Degree> listDeg = new List<Degree>();
+            MySqlConnection conn = null;
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM degreesofuser WHERE userID LIKE '" + userID + "';";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Degree degree = new Models.Degree();
+                            degree.degreeID = reader.GetInt32(0);
+                            degree.degreeName = reader.GetString(1);
+                            degree.level = reader.GetString(2);
+                            degree.yearAdmitted = reader.GetInt32(3);
+                            degree.campusAttended = reader.GetString(4);
+                            degree.admittedAs = reader.GetString(5);
+                            degree.graduated = reader.GetString(6);
+                            degree.yearLevel = reader.GetInt32(7);
+                            degree.userID = reader.GetInt32(8);
+                            degree.lastSchoolAttendedPrevDlsu = reader.GetString(9);
+
+                            listDeg.Add(degree);
+                            degree = new Models.Degree();
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            listDeg = null;
+                        }
+                    }
+                }
+            }
+            
+            conn.Close();
+            return listDeg;
+        }
+
     }
 
 }

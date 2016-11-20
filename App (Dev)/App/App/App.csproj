@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\DatabaseConnector.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\MailingInformation.cs" />
     <Compile Include="Models\Transaction.cs" />

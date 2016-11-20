@@ -30,25 +30,25 @@
     <div class="col-xs-9 stepHeader">
         <ul class="nav nav-pills nav-justified thumbnail" style="width: 810px;">
             <li class="stepBtn">
-                <a href="#">
+                <a href="order">
                     <h4 class="list-group-item-heading stephead">Step 1</h4>
                     <p class="list-group-item-text">Order Documents</p>
                 </a>
             </li>
             <li class="active">
-                <a href="#">
+                <a href="info">
                     <h4 class="list-group-item-heading stephead">Step 2</h4>
                     <p class="list-group-item-text">Mailing Info</p>
                 </a>
             </li>
             <li class="stepBtn">
-                <a href="#">
+                <a href="confirm">
                     <h4 class="list-group-item-heading stephead">Step 3</h4>
                     <p class="list-group-item-text">Checkout</p>
                 </a>
             </li>
             <li class="stepBtn">
-                <a href="#">
+                <a href="success">
                     <h4 class="list-group-item-heading stephead">Step 4</h4>
                     <p class="list-group-item-text">Done</p>
                 </a>
@@ -77,7 +77,14 @@
                 <option>De La Salle University - Makati</option>
                 <option>De La Salle University - Taft</option>
             </select>
-            <br><br>
+            <br>
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="pull-right">
+                    <br>
+                    <button type="submit" class="btn btn-default" onclick="location.href='@Url.Action("order", "Transaction")'">Go Back</button>
+                    <button type="submit" class="btn btn-success" onclick="location.href='@Url.Action("confirm", "Transaction")'">Proceed to Checkout <span class="glyphicon glyphicon-play"></button>
+                </div>
+            </div>
         </div>
 
         <div id="mailingAddress">
@@ -183,7 +190,6 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-default">Cancel</button>
                                     <button type="submit" class="btn btn-success">Choose & Save</button>
                                 </div>
                             </div>
@@ -194,12 +200,6 @@
         </div>
 
         <div class="line-separator"></div><br>
-        <div class="col-sm-offset-2 col-sm-10">
-            <div class="pull-right">
-                <button type="submit" class="btn btn-default">Go Back</button>
-                <button type="submit" class="btn btn-success">Proceed to Checkout <span class="glyphicon glyphicon-play"></button>
-            </div>
-        </div>
     </div>
 </div>
 }

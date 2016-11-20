@@ -9,8 +9,7 @@ namespace App.Controllers
 {
     public class AccountController : Controller
     {
-        AccountManager accManager = new AccountManager();
-        DegreeManager degManager = new DegreeManager();
+        AccountManager manager = new AccountManager();
 
         public ActionResult Index()
         {
@@ -52,7 +51,7 @@ namespace App.Controllers
 
             //ViewData["string"] = "email " + email + " password " + password;
 
-            var acc = accManager.getAccount(email, password);
+            var acc = manager.getAccount(email, password);
 
             // Means acc does not exist 
             if (acc == null)
@@ -64,6 +63,7 @@ namespace App.Controllers
                 //ViewBag.exist = true;
                 //ViewBag.String = "Account exists!";
                 // ViewBag.acc = acc;
+                Session["user"] = acc;
                 return RedirectToAction("order", "Transaction");
 
             }
@@ -74,9 +74,7 @@ namespace App.Controllers
         [HttpPost]
         public ActionResult save(int userID, string lastName, string firstName, string middleName, char gender, int birthYear,
                                      int birthMonth, int birthDay, string citizenship, string placeOfBirth, string currentAddress,
-                                     string phoneNo, string alternatePhoneNo, string email, string alternateEmail, string password,
-                                 int degreeID, string degreeName, string level, int yearAdmitted, string campusAttended, string admittedAs,
-                                     string graduated, int yearLevel, string lastSchoolAttendedPrevDlsu)
+                                     string phoneNo, string alternatePhoneNo, string email, string alternateEmail, string password)
         {
             Account acc = new Account();
 
@@ -97,23 +95,7 @@ namespace App.Controllers
             acc.phoneNo = phoneNo;
             acc.alternatePhoneNo = alternatePhoneNo;
 
-            accManager.saveAccount(acc);
-
-
-            Degree deg = new Degree();
-
-            deg.degreeID = degreeID;
-            deg.degreeName = degreeName;
-            deg.level = level;
-            deg.yearAdmitted = yearAdmitted;
-            deg.campusAttended = campusAttended;
-            deg.admittedAs = admittedAs;
-            deg.graduated = graduated;
-            deg.yearLevel = yearLevel;
-            deg.userID = userID;
-            deg.lastSchoolAttendedPrevDlsu = lastSchoolAttendedPrevDlsu;
-
-            degManager.saveDegree(deg);
+            manager.saveAccount(acc);
 
             return RedirectToAction("Index", "Home");
         }
