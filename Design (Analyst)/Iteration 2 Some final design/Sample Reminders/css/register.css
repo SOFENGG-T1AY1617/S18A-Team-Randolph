@@ -11,8 +11,17 @@
 }
 
 .logo {
-    width: 55px; 
-    height: 55px; 
-    display: inline; 
+    width: 55px;
+    height: 55px;
+    display: inline;
     padding: 0px;
+}
+.label-error{
+  color: red;
+  font-size: 12px;
+  margin-bottom: -10px;
+}
+.label-category{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }

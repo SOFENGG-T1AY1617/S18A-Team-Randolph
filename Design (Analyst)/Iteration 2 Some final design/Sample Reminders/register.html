@@ -16,11 +16,11 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Raleway:300,700,900,500' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <!-- Custom CSS-->
         <link href="css/register.css" rel="stylesheet">
-        <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->   
+        <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
     </head>
 
     <body style = "padding-bottom: 20px;">
@@ -32,11 +32,11 @@
                 </div></a>
             </div>
         </nav>
-       
+
         <div class = "container cont" style = "margin-top: 100px;">
               <div class="row">
                 <div class="col-md-12">
-                    <form class="form-horizontal" role="form"> <!-- Personal Information Start -->
+                    <form class="form-horizontal" name="registerForm" onsubmit="return validateForm()" role="form"> <!-- Personal Information Start -->
                     <fieldset>
                       <!-- Form Name -->
                       <legend>Personal Information</legend>
@@ -45,51 +45,59 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Full Name</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Dela Cruz" class="form-control">
+                          <input type="text" placeholder="Last Name" name="lastName" class="form-control">
+                          <label id="lastNameError" class="label-error"></label>
                         </div>
-                          
+
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Juan" class="form-control">
+                          <input type="text" placeholder="First Name" name="firstName" class="form-control">
+                          <label id="firstNameError" class="label-error"></label>
                         </div>
-                          
+
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Pacquiao" class="form-control">
+                          <input type="text" placeholder="Middle Name" name="middleName" class="form-control">
+                          <label id="middleNameError" class="label-error"></label>
                         </div>
                       </div>
-                        
+
                         <!-- Text input-->
                       <div class="form-group">
                           <label class="col-sm-3 control-label" for="textinput">Gender</label>
                         <div class="col-sm-3" style = "padding-top: 7px;">
-                                <input type="radio" name="optradio">&nbsp;&nbsp;Male</input>
-								<span>&nbsp &nbsp </span>
-								<input type="radio"name="optradio">&nbsp;&nbsp;Female</input>
+                                <input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male</input>
+								<span>&nbsp; &nbsp; </span>
+								<input type="radio"name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female</input>
+                <label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
                         </div>
-                          
-                        <label class="col-sm-2 control-label" for="textinput">Birthday</label>
-                        <div class="col-sm-4">
+
+                        <label class="col-sm-3 control-label" for="textinput">Birthday</label>
+                        <div class="col-sm-3">
             		      <input class="form-control" name="birthday" id="birthday" type="date">
+                      <label id="birthdayError" class="label-error"></label>
                         </div>
                       </div>
-                    
+
                     <!-- Text input-->
                       <div class="form-group">
                           <label class="col-sm-3 control-label" for="textinput">Citizenship</label>
                         <div class="col-sm-3">
-                            <input type="text" placeholder="e.g Filipino, Chinese" class="form-control">
+                            <input type="text" placeholder="e.g Filipino, Chinese" class="form-control" name="citizenship">
+                            <label id="citizenshipError" class="label-error"></label>
                         </div>
-                          
-                        <label class="col-sm-2 control-label" for="textinput">Birthplace</label>
-                        <div class="col-sm-4">
+
+                        <label class="col-sm-3 control-label" for="textinput">Birthplace</label>
+                        <div class="col-sm-3">
             		      <input type="text" placeholder="Place of Birth" class="form-control">
+                      <label id="birthPlaceError" class="label-error">Please Enter Birthplace</label>
                         </div>
                       </div>
-                    
+
                       <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Address</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="Current Address" class="form-control">
+                          <label id="addressError" class="label-error">Please Enter Address</label>
                         </div>
                       </div>
 
@@ -98,37 +106,43 @@
                         <label class="col-sm-3 control-label" for="textinput">Street</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="Street Name" class="form-control">
+                          <label id="streetError" class="label-error">Please Enter Street</label>
                         </div>
-                          
-                        <label class="col-sm-1 control-label" for="textinput">City</label>
-                        <div class="col-sm-5">
+
+                        <label class="col-sm-3 control-label" for="textinput">City</label>
+                        <div class="col-sm-3">
                           <input type="text" placeholder="City" class="form-control">
+                          <label id="cityError" class="label-error">Please Enter City</label>
                         </div>
                       </div>
-                    
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Country</label>
                         <div class="col-sm-4">
                           <input type="text" placeholder="Country" class="form-control">
+                          <label id="countryError" class="label-error">Please Enter Country</label>
                         </div>
-                          
+
                         <label class="col-sm-2 control-label" for="textinput">Zip Code</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="Zip Code" class="form-control">
+                          <label id="zipCodeError" class="label-error">Please Enter Zip Code</label>
                         </div>
                       </div>
-                    
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Phone Number</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Phone Number" class="form-control">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control">
+                          <label id="phoneNumberError" class="label-error">Please Enter Phone Number</label>
                         </div>
-                          
+
                         <label class="col-sm-3 control-label" for="textinput">Alt Phone Number*</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Alt Phone Number" class="form-control">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control">
+                          <label id="altPhoneNumberError" class="label-error">Please Enter Valid Number</label>
                         </div>
                       </div>
 
@@ -137,67 +151,78 @@
                         <label class="col-sm-3 control-label" for="textinput">Email Address</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="Email Address" class="form-control">
+                          <label id="emailError" class="label-error">Please Enter Valid Email</label>
                         </div>
                       </div>
-                    
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Alt Email Address*</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control">
+                          <label id="altEmailError" class="label-error">Please Enter Valid Email</label>
                         </div>
                       </div>
-                    
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Password</label>
                         <div class="col-sm-3">
                           <input type="password" placeholder="Password" class="form-control">
+                          <label id="passwordError" class="label-error">Password must be at least 6 characters</label>
                         </div>
-                          
+
                         <label class="col-sm-3 control-label" for="textinput">Re-Enter Password</label>
                         <div class="col-sm-3">
                           <input type="password" placeholder="Re-enter Password" class="form-control">
+                          <label id="rePasswordError" class="label-error">Please Password does not match</label>
                         </div>
                       </div>
                     </fieldset>
-                  </form> <!-- Personal Information End -->
+                   <!-- Personal Information End -->
                     <br>
-                    <form class="form-horizontal" role="form"> <!-- Academic Information Start -->
+                     <!-- Academic Information Start -->
                     <fieldset>
                       <!-- Form Name -->
                       <legend>Academic Information</legend>
 
                       <!-- Text input-->
+                      <label class="col-sm-12 label-category" style="padding-bottom: 10px;">High School Information</label>
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">High School</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="High School" class="form-control">
+                          <label id="highSchoolError" class="label-error">Please Enter High School</label>
                         </div>
                       </div>
 
                       <!-- Text input-->
+                      <label class="col-sm-12 label-category">College Information</label>
                       <div class="form-group">
-                          <label class="col-sm-3 control-label" for="textinput">Level</label>
+                          <label class="col-sm-3 control-label" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="col-sm-9" style = "padding-top: 7px;">
                             <input type="radio" name="optradio">&nbsp;&nbsp;Bachelor's Degree</input>
                             &nbsp; &nbsp; &nbsp;
                             <input type="radio" name="optradio">&nbsp;&nbsp;Masteral Degree</input>
                             &nbsp; &nbsp; &nbsp;
                             <input type="radio" name="optradio">&nbsp;&nbsp;Doctorate Degree</input>
+                            <label id="levelError" class="label-error">Please Select College Level</label>
                         </div>
+
                       </div>
-        
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">ID Number*</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="ID Number (Optional)" class="form-control">
+                          <label id="IDNumberError" class="label-error">Please Enter Valid ID Number Format</label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Degree Program</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="e.g BSCS-S, BSIT" class="form-control">
+                          <label id="DegreeError" class="label-error">Please Enter Degree Program</label>
                         </div>
                       </div>
 
@@ -211,9 +236,11 @@
                             <div class = "col-sm-7">
                                 <input class="form-control" name="graduateDate" id="graduateDate" type="date">
                             </div>
+                            <label id="graduateLastError" class="col-md-offset-5 label-error" style="padding-left:1em;">Please Enter Valid Date</label>
                         </div>
+
                       </div>
-        
+
                     <!-- Text input-->
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput"></label>
@@ -223,6 +250,7 @@
                             </div>
                             <div class = "col-sm-7">
                                 <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 100px; display: inline-block;">   Term, A.Y &nbsp;&nbsp;<input type="text" placeholder="14" class="form-control" style = "width: 50px; display: inline-block;"> - <input type="text" placeholder="15" class="form-control" style = "width: 50px; display: inline-block;">
+                                <label id="rePasswordError" class="label-error">Please Enter Term</label>
                             </div>
                         </div>
                       </div>
@@ -232,12 +260,13 @@
                         <label class="col-sm-3 control-label" for="textinput"></label>
                         <div class="col-sm-9">
                             <div class = "col-sm-5">
-                                
+
                             </div>
                             <div class = "col-sm-7">
                                 Year Level &nbsp;&nbsp; <input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st</input> &nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd</input>&nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd</input>&nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th</input>
-                                
+
                             </div>
+                            <label id="yearError" class="col-md-offset-5 label-error" style="padding-left:1em;">Please Select Year</label>
                         </div>
                       </div>
 
@@ -250,6 +279,12 @@
                             <input type="radio" name="optradio">&nbsp;&nbsp;Transferee</input>
                             &nbsp; &nbsp; &nbsp;
                             <input type="radio" name="optradio">&nbsp;&nbsp;Cross Enrollee</input>
+                            <br>
+                              <label id="admissionError" class="label-error">Please Select Admission</label>
+                        </div>
+                        <div class="row">
+
+
                         </div>
                       </div>
 
@@ -258,6 +293,7 @@
                         <label class="col-sm-3 control-label" for="textinput">Previous School</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="Last School Attended (Previous to DLSU)" class="form-control">
+                          <label id="lastSchoolError" class="label-error">Please Input Last School Attended</label>
                         </div>
                       </div>
 
@@ -266,22 +302,23 @@
                         <label class="col-sm-3 control-label" for="textinput">Year Admitted</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="e.g 2014, 2015" class="form-control">
+                          <label id="admissionError" class="label-error">Please Select Admission</label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Campus Attended</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="campusAdmitted">
-                                <option>DLSU - BGC</option>
-                                <option>DLSU - Makati</option>
-                                <option>DLSU - STC</option>
-                                <option>DLSU - Taft</option>
+                                <option>BGC</option>
+                                <option>Makati</option>
+                                <option>STC</option>
+                                <option>Taft</option>
                             </select>
                         </div>
                       </div>
                     </fieldset>
-                  </form> <!-- Academic Information End -->
+                   <!-- Academic Information End -->
                     <br>
-                  <form class="form-horizontal" role="form"> <!-- Mailing Information Start -->
+                   <!-- Mailing Information Start -->
                     <fieldset>
                       <!-- Form Name -->
                       <legend>Mailing Information</legend>
@@ -289,23 +326,28 @@
                                 <label class="col-sm-2 control-label" for="textinput">Address</label>
                                 <div class="col-sm-10">
                                   <input type="text" placeholder="Address" class="form-control">
+                                  <label id="mailingAddressError" class="label-error">Please Enter Mailing Address</label>
                                 </div>
                               </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Street</label>
                                 <div class="col-sm-4">
                                   <input type="text" placeholder="Street" class="form-control">
+                                  <label id="mailingStreetError" class="label-error">Please Enter Mailing Street</label>
                                 </div>
                                 <label class="col-sm-2 control-label" for="textinput">Zip code</label>
                                 <div class="col-sm-4">
                                   <input type="text" placeholder="Zip Code" class="form-control">
+                                  <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Country</label>
-                                <div class="col-sm-5">
+                                <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
+                                <div class="col-sm-3">
                                   <select class="form-control" id="deliveryArea">
-                                    <option>Africa</option>
+                                    <option value="">Select Country</option>
+                                    <option value="Africa">Africa</option>
                                     <option>Australia</option>
                                     <option>Brunei</option>
                                     <option>Canada</option>
@@ -328,9 +370,10 @@
                                     <option>Visayas</option>
                                 </select>
                                 </div>
-                                <label class="col-sm-1 control-label" for="textinput">City</label>
+                                <label class="col-sm-1 col-sm-offset-2 control-label" for="textinput">City</label>
                                 <div class="col-sm-4">
                                   <input type="text" placeholder="City" class="form-control">
+                                  <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
                                 </div>
                               </div>
                         <br>
@@ -338,7 +381,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                               <div class="pull-right">
                                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;&nbsp;Back</button>
-                                <button type="submit" class="btn btn-success" style = "width: 150px;">Register</button>
+                                <button type="submit" class="btn btn-success" onsubmit="return validateForm()" style = "width: 150px;">Register</button>
                               </div>
                             </div>
                           </div>
@@ -347,11 +390,11 @@
                 </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
         </div>
-        
+
         <!-- JavaScript -->
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/bootstrap.js"></script>
-        
+
         <script>
             function addNow() {
               nowDate = moment().tz("Europe/London").format('YYYY-MM-DD');
@@ -364,7 +407,35 @@
             function stopNow() {
               clearTimeout(set);
             }
+            function validateForm() {
+              var lastName = document.forms["registerForm"]["lastName"].value;
+              var firstName = document.forms["registerForm"]["firstName"].value;
+              var middleName = document.forms["registerForm"]["middleName"].value;
+              var birthday = document.forms["registerForm"]["birthday"].value;
+              var isValid = true;
+              if (lastName == "") {
+                 document.getElementById('lastNameError').innerHTML = "Please Enter your Last Name";
+                 isValid = false;
+              }
+              if (firstName == "") {
+                 document.getElementById('firstNameError').innerHTML = "Please Enter your First Name";
+                  isValid = false;
+              }
+              if (middleName == "") {
+                 document.getElementById('middleNameError').innerHTML = "Please Enter your Midddle Name";
+                  isValid = false;
+              }
+              if(!document.getElementById('genderMale').checked && !document.getElementById('genderFemale').checked){
+                document.getElementById('genderError').innerHTML = "Please Select your Gender";
+                 isValid = false;
+              }
+              if(birthday ==""){
+                document.getElementById('birthdayError').innerHTML = "Please Select your Birthday";
+                isValid= false;
+              }
+              return isValid;
+            }
         </script>
-        
+
     </body>
 </html>

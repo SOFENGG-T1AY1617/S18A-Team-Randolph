@@ -102,11 +102,12 @@
             <div class="info-forms modal-body row">
                 <div class="col-md-6">
 
-					<div class="row">
+					<div class="row" style="margin-bottom: 15px;">
 						<div class="col-md-5">
 							<div class="form-group">
 							  <label for="lastName">Last Name:</label>
 							  <input type="text" class="form-control" id="lastName">
+                <label id="lastNameError" class="label-error"></label>
 							</div>
 						</div>
 
@@ -114,6 +115,7 @@
 							<div class="form-group">
 							  <label for="firstName">First Name:</label>
 							  <input type="text" class="form-control" id="firstName">
+                  <label id="firstNameError" class="label-error">Please add valid input</label>
 							</div>
 						</div>
 
@@ -121,6 +123,7 @@
 							<div class="form-group">
 							  <label for="middleName">M.I.:</label>
 							  <input type="text" class="form-control" id="middleName">
+                  <label id="middleNameError" class="label-error"></label>
 							</div>
 						</div>
 
@@ -130,7 +133,7 @@
 							<br>
 								<label for="optRadio" style="padding-right:2em;">Gender: </label>
 								<input type="radio" name="optradio"> Male</input>
-								<input type="radio" name="optradio"> Female</input>
+								<input type="radio" name="optradio"style="margin-left:2em;"> Female</input>
 					</div>
 
 					<div class="row">

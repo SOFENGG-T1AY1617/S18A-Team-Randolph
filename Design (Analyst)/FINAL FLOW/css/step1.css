@@ -100,15 +100,15 @@ li {
     display:none;
 }
 
-@media (max-width: 991px) {    
+@media (max-width: 991px) {
     .titlenav {
         display: none;
     }
-    
+
     .username {
         display: none;
     }
-    
+
     .contsmall {
         display: flex;
         flex-direction: row;
@@ -116,19 +116,18 @@ li {
         align-items: center;
         justify-content: center;
     }
-    
+
     .contbig {
         display: none;
     }
-    
+
     .lismall {
         width: 40px;
         display: inline-block;
         align-self: center;
     }
-    
+
     .form-cont {
         margin-top: 130px;
     }
 }
-
