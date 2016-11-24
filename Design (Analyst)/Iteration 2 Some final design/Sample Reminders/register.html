@@ -87,8 +87,8 @@
 
                         <label class="col-sm-3 control-label" for="textinput">Birthplace</label>
                         <div class="col-sm-3">
-            		      <input type="text" placeholder="Place of Birth" class="form-control">
-                      <label id="birthPlaceError" class="label-error">Please Enter Birthplace</label>
+            		      <input type="text" placeholder="Place of Birth" class="form-control" name="birthPlace">
+                      <label id="birthPlaceError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -96,8 +96,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Address</label>
                         <div class="col-sm-9">
-                          <input type="text" placeholder="Current Address" class="form-control">
-                          <label id="addressError" class="label-error">Please Enter Address</label>
+                          <input type="text" placeholder="Current Address" class="form-control" name="address">
+                          <label id="addressError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -105,14 +105,14 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Street</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Street Name" class="form-control">
-                          <label id="streetError" class="label-error">Please Enter Street</label>
+                          <input type="text" placeholder="Street Name" class="form-control" name="street">
+                          <label id="streetError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">City</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="City" class="form-control">
-                          <label id="cityError" class="label-error">Please Enter City</label>
+                          <input type="text" placeholder="City" class="form-control" name="city">
+                          <label id="cityError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -120,14 +120,14 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Country</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="Country" class="form-control">
-                          <label id="countryError" class="label-error">Please Enter Country</label>
+                          <input type="text" placeholder="Country" class="form-control" name="country">
+                          <label id="countryError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-2 control-label" for="textinput">Zip Code</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="Zip Code" class="form-control">
-                          <label id="zipCodeError" class="label-error">Please Enter Zip Code</label>
+                          <input type="text" placeholder="Zip Code" class="form-control" name="zipCode">
+                          <label id="zipCodeError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -135,14 +135,14 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Phone Number</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control">
-                          <label id="phoneNumberError" class="label-error">Please Enter Phone Number</label>
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber">
+                          <label id="phoneNumberError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Alt Phone Number*</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control">
-                          <label id="altPhoneNumberError" class="label-error">Please Enter Valid Number</label>
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber">
+                          <label id="altPhoneNumberError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -150,8 +150,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Email Address</label>
                         <div class="col-sm-9">
-                          <input type="text" placeholder="Email Address" class="form-control">
-                          <label id="emailError" class="label-error">Please Enter Valid Email</label>
+                          <input type="text" placeholder="Email Address" class="form-control" name="email">
+                          <label id="emailError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -159,8 +159,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Alt Email Address*</label>
                         <div class="col-sm-9">
-                          <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control">
-                          <label id="altEmailError" class="label-error">Please Enter Valid Email</label>
+                          <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control" name="altEmail">
+                          <label id="altEmailError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -168,14 +168,14 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Password</label>
                         <div class="col-sm-3">
-                          <input type="password" placeholder="Password" class="form-control">
-                          <label id="passwordError" class="label-error">Password must be at least 6 characters</label>
+                          <input type="password" placeholder="Password" class="form-control" name="password">
+                          <label id="passwordError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Re-Enter Password</label>
                         <div class="col-sm-3">
-                          <input type="password" placeholder="Re-enter Password" class="form-control">
-                          <label id="rePasswordError" class="label-error">Please Password does not match</label>
+                          <input type="password" placeholder="Re-enter Password" class="form-control" name="rePassword">
+                          <label id="rePasswordError" class="label-error"></label>
                         </div>
                       </div>
                     </fieldset>
@@ -412,6 +412,19 @@
               var firstName = document.forms["registerForm"]["firstName"].value;
               var middleName = document.forms["registerForm"]["middleName"].value;
               var birthday = document.forms["registerForm"]["birthday"].value;
+              var citizenship = document.forms["registerForm"]["citizenship"];
+              var birthPlace = document.forms["registerForm"]["birthPlace"].value;
+              var address = document.forms["registerForm"]["address"].value;
+              var street = document.forms["registerForm"]["street"].value;
+              var city = document.forms["registerForm"]["city"].value;
+              var country = document.forms["registerForm"]["country"].value;
+              var zipCode = document.forms["registerForm"]["zipCode"].value;
+              var phoneNumber = document.forms["registerForm"]["phoneNumber"].value;
+              var altPhoneNumber = document.forms["registerForm"]["altPhoneNumber"].value;
+              var email = document.forms["registerForm"]["email"].value;
+              var altEmail = document.forms["registerForm"]["altEmail"].value;
+              var password = document.forms["registerForm"]["password"].value;
+              var rePassword = document.forms["registerForm"]["rePassword"].value;
               var isValid = true;
               if (lastName == "") {
                  document.getElementById('lastNameError').innerHTML = "Please Enter your Last Name";
@@ -431,6 +444,26 @@
               }
               if(birthday ==""){
                 document.getElementById('birthdayError').innerHTML = "Please Select your Birthday";
+                isValid= false;
+              }
+              if(citizenship ==""){
+                document.getElementById('citizenshipError').innerHTML = "Please enter your Citizenship";
+                isValid = false;
+              }
+              if(birthPlace=""){
+                document.getElementById('birthPlaceError').innerHTML = "Please Select your Birthplace";
+                isValid= false;
+              }
+              if(address=""){
+                document.getElementById('addressError').innerHTML = "Please Enter your Address";
+                isValid= false;
+              }
+              if(street=""){
+                document.getElementById('streetError').innerHTML = "Please Enter your street";
+                isValid= false;
+              }
+              if(city=""){
+                document.getElementById('cityError').innerHTML = "Please enter your City";
                 isValid= false;
               }
               return isValid;
