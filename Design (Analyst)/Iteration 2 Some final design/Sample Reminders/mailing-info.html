@@ -72,8 +72,8 @@
                 <div class = "page-header" style = "margin: 0;">
                     <span style = "font-size: 16px;font-family: lato;">Delivery Option</span> &nbsp; &nbsp;
                     <div class="btn-group">
-                      <button type="button" id="pickup" class="btn btn-success" style = "width: 100px;">Pick-up</button>
-                      <button type="button" id="shipping" class="btn btn-success" style = "width: 100px;">Shipping</button>
+                      <button type="button" value="pickup" id="pickup" class="btn btn-default" style = "width: 100px;">Pick-up</button>
+                      <button type="button" value="shipping" id="shipping" class="btn btn-default" style = "width: 100px;">Shipping</button>
                     </div>
                 </div>
             <br>
@@ -85,14 +85,7 @@
                         <option>De La Salle University - STC</option>
                         <option>De La Salle University - Taft</option>
                     </select>
-                    <br>
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="pull-right">
                           <br>
-                          <button type="submit" class="btn btn-default">Go Back</button>
-                          <button type="submit" class="btn btn-success">Proceed to Checkout <span class="glyphicon glyphicon-play"></button>
-                      </div>
-                    </div>
                 </div>
             
                 <div id = "mailingAddress">
@@ -205,8 +198,16 @@
                           </form> 
                     </div><!-- /.row --> <!-- Form End -->
                 </div>
+				
+				
                 
-                <div class="line-separator"></div><br>
+                <div class="line-separator"></div><br><br>
+				
+				<a href="order.html"><button type="submit" class="btn" style="background-color: #1b5e20; color: white; float: left">
+					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back</button></a>
+					
+			  <a href="checkout.html"><button type="submit" class="btn" style="background-color: #1b5e20; color: white; float: right">
+					  Proceed to Checkout <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
             </div>
         </div>
             
@@ -217,19 +218,23 @@
           jQuery(function($) {
             $(document).ready( function() {
                 $(function () {
-                    $("#pickupArea").show();
+                    $("#pickupArea").hide();
                     $("#mailingAddress").hide();
-                    $("#pickup").click(function(){
-                        $("#pickupArea").show();
-                        $("#mailingAddress").hide();
-                    });
-                    $("#shipping").click(function(){
-                        $("#existingMform").show();
-                        $("#newMform").show();
-                        $("#mailingAddress").show();
-                        $("#pickupArea").hide();
-                    });
-                })
+					
+				$("#pickup").click(function(){
+					$("#pickupArea").show();
+					$("#mailingAddress").hide();
+					setColor("pickup");
+				});
+					
+				$("#shipping").click(function(){
+					$("#existingMform").show();
+					$("#newMform").show();
+					$("#mailingAddress").show();
+					$("#pickupArea").hide();
+				});
+					
+                });
             });
           });	
         </script>
