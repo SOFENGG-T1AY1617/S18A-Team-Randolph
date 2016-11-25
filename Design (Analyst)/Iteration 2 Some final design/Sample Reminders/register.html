@@ -72,7 +72,7 @@
 
                         <label class="col-sm-3 control-label" for="textinput">Birthday</label>
                         <div class="col-sm-3">
-            		      <input class="form-control" name="birthday" id="birthday" type="date">
+            		      <input class="form-control" name="birthday" type="date">
                       <label id="birthdayError" class="label-error"></label>
                         </div>
                       </div>
@@ -135,13 +135,13 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Phone Number</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="phoneNumberError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Alt Phone Number*</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber"onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="altPhoneNumberError" class="label-error"></label>
                         </div>
                       </div>
@@ -191,8 +191,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">High School</label>
                         <div class="col-sm-9">
-                          <input type="text" placeholder="High School" class="form-control">
-                          <label id="highSchoolError" class="label-error">Please Enter High School</label>
+                          <input type="text" placeholder="High School" class="form-control" name="highSchool">
+                          <label id="highSchoolError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -201,12 +201,12 @@
                       <div class="form-group">
                           <label class="col-sm-3 control-label" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="col-sm-9" style = "padding-top: 7px;">
-                            <input type="radio" name="optradio">&nbsp;&nbsp;Bachelor's Degree</input>
+                            <input type="radio" name="degreeLevel" id="bachelor">&nbsp;&nbsp;Bachelor's Degree</input>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="optradio">&nbsp;&nbsp;Masteral Degree</input>
+                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree</input>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="optradio">&nbsp;&nbsp;Doctorate Degree</input>
-                            <label id="levelError" class="label-error">Please Select College Level</label>
+                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree</input>
+                            <label id="degreeLevelError" class="label-error"></label>
                         </div>
 
                       </div>
@@ -215,14 +215,14 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">ID Number*</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="ID Number (Optional)" class="form-control">
-                          <label id="IDNumberError" class="label-error">Please Enter Valid ID Number Format</label>
+                          <input type="text" placeholder="ID Number (Optional)" class="form-control" name="IDNumber">
+                          <label id="IDNumberError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Degree Program</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="e.g BSCS-S, BSIT" class="form-control">
-                          <label id="DegreeError" class="label-error">Please Enter Degree Program</label>
+                          <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degree">
+                          <label id="degreeError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -231,12 +231,12 @@
                         <label class="col-sm-3 control-label" for="textinput">Graduate?</label>
                         <div class="col-sm-9">
                             <div class = "col-sm-5">
-                                <input type="radio" name="gradRadio" style = "margin-top: 12px;">&nbsp;&nbsp;Yes, I graduated last: </input>
+                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last: </input>
                             </div>
                             <div class = "col-sm-7">
-                                <input class="form-control" name="graduateDate" id="graduateDate" type="date">
+                                <input class="form-control" name="graduateDate" type="date">
                             </div>
-                            <label id="graduateLastError" class="col-md-offset-5 label-error" style="padding-left:1em;">Please Enter Valid Date</label>
+                            <label id="graduateDateError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
                         </div>
 
                       </div>
@@ -246,11 +246,13 @@
                         <label class="col-sm-3 control-label" for="textinput"></label>
                         <div class="col-sm-9">
                             <div class = "col-sm-5">
-                                <input type="radio" name="gradRadio" style = "margin-top: 12px;">&nbsp;&nbsp;No, I attended DLSU on </input>
+                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on </input>
                             </div>
                             <div class = "col-sm-7">
-                                <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 100px; display: inline-block;">   Term, A.Y &nbsp;&nbsp;<input type="text" placeholder="14" class="form-control" style = "width: 50px; display: inline-block;"> - <input type="text" placeholder="15" class="form-control" style = "width: 50px; display: inline-block;">
-                                <label id="rePasswordError" class="label-error">Please Enter Term</label>
+                                <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 100px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">   Term, A.Y &nbsp;&nbsp;
+                                <input type="text" placeholder="14" class="form-control" style = "width: 50px; display: inline-block;" name="lastTermStart" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                - <input type="text" placeholder="15" class="form-control" style = "width: 50px; display: inline-block" name="lastTermEnd" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                <label id="lastTermError" class="label-error"></label>
                             </div>
                         </div>
                       </div>
@@ -263,10 +265,11 @@
 
                             </div>
                             <div class = "col-sm-7">
-                                Year Level &nbsp;&nbsp; <input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st</input> &nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd</input>&nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd</input>&nbsp;&nbsp;<input type="radio" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th</input>
+                                Year Level &nbsp;&nbsp; <input type="radio" id ="firstYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st</input> &nbsp;&nbsp;<input type="radio" id="secondYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd</input>&nbsp;&nbsp;
+                                <input type="radio" id= "thirdYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd</input>&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th</input>
 
                             </div>
-                            <label id="yearError" class="col-md-offset-5 label-error" style="padding-left:1em;">Please Select Year</label>
+                            <label id="yearLevelError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
                         </div>
                       </div>
 
@@ -274,13 +277,13 @@
                       <div class="form-group">
                           <label class="col-sm-3 control-label" for="textinput">Admitted as</label>
                         <div class="col-sm-9" style = "padding-top: 7px;">
-                            <input type="radio" name="optradio">&nbsp;&nbsp;New Student</input>
+                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student</input>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="optradio">&nbsp;&nbsp;Transferee</input>
+                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee</input>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="optradio">&nbsp;&nbsp;Cross Enrollee</input>
+                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee</input>
                             <br>
-                              <label id="admissionError" class="label-error">Please Select Admission</label>
+                              <label id="admissionError" class="label-error"></label>
                         </div>
                         <div class="row">
 
@@ -292,8 +295,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Previous School</label>
                         <div class="col-sm-9">
-                          <input type="text" placeholder="Last School Attended (Previous to DLSU)" class="form-control">
-                          <label id="lastSchoolError" class="label-error">Please Input Last School Attended</label>
+                          <input type="text" placeholder="Last School Attended (Previous to DLSU)" class="form-control" name="lastSchool">
+                          <label id="lastSchoolError" class="label-error"></label>
                         </div>
                       </div>
 
@@ -301,18 +304,20 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" for="textinput">Year Admitted</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="e.g 2014, 2015" class="form-control">
-                          <label id="admissionError" class="label-error">Please Select Admission</label>
+                          <input type="text" placeholder="e.g 2014, 2015" class="form-control" name="admissionYear">
+                          <label id="admissionYearError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-3 control-label" for="textinput">Campus Attended</label>
                         <div class="col-sm-3">
-                            <select class="form-control" id="campusAdmitted">
-                                <option>BGC</option>
-                                <option>Makati</option>
-                                <option>STC</option>
-                                <option>Taft</option>
+                            <select class="form-control" id="campusAttended">
+                                <option value="">Select Campus</option>
+                                <option value="BGC">BGC</option>
+                                <option value="Makati">Makati</option>
+                                <option value="STC">STC</option>
+                                <option value="Taft">Taft</option>
                             </select>
+                            <label id="campusAttendedError" class="label-error"></label>
                         </div>
                       </div>
                     </fieldset>
@@ -325,55 +330,55 @@
                               <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Address</label>
                                 <div class="col-sm-10">
-                                  <input type="text" placeholder="Address" class="form-control">
-                                  <label id="mailingAddressError" class="label-error">Please Enter Mailing Address</label>
+                                  <input type="text" placeholder="Address" class="form-control" name="mailingAddress">
+                                  <label id="mailingAddressError" class="label-error"></label>
                                 </div>
                               </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Street</label>
                                 <div class="col-sm-4">
-                                  <input type="text" placeholder="Street" class="form-control">
-                                  <label id="mailingStreetError" class="label-error">Please Enter Mailing Street</label>
+                                  <input type="text" placeholder="Street" class="form-control" name="mailingStreet">
+                                  <label id="mailingStreetError" class="label-error"></label>
                                 </div>
                                 <label class="col-sm-2 control-label" for="textinput">Zip code</label>
                                 <div class="col-sm-4">
-                                  <input type="text" placeholder="Zip Code" class="form-control">
-                                  <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
+                                  <input type="text" placeholder="Zip Code" class="form-control" name="mailingZipCode">
+                                  <label id="mailingZipCodeError" class="label-error"></label>
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="col-sm-2 control-label" for="textinput">Country</label>
-                                <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
+                                <label class="col-sm-2 control-label" for="textinput">Area</label>
                                 <div class="col-sm-3">
-                                  <select class="form-control" id="deliveryArea">
-                                    <option value="">Select Country</option>
-                                    <option value="Africa">Africa</option>
-                                    <option>Australia</option>
-                                    <option>Brunei</option>
-                                    <option>Canada</option>
-                                    <option>Europe</option>
-                                    <option>Fiji Island</option>
-                                    <option>Guam</option>
-                                    <option>Hongkong/Singapore</option>
-                                    <option>Indonesia/Malaysia/Taiwan/Thailand</option>
-                                    <option>Japan</option>
-                                    <option>Luzon</option>
-                                    <option>Metro Manila</option>
-                                    <option>Mexico City</option>
-                                    <option>Middle East</option>
-                                    <option>Mindanao</option>
-                                    <option>New Zealand</option>
-                                    <option>Papua New Guinea</option>
-                                    <option>South America</option>
-                                    <option>USA</option>
-                                    <option>Vietnam</option>
-                                    <option>Visayas</option>
+                                  <select class="form-control" id="mailingArea">
+                                    <option value ="">Select Area</option>
+                                    <option value ="Africa">Africa</option>
+                                    <option value = "Australia">Australia</option>
+                                    <option value ="Brunei">Brunei</option>
+                                    <option value = "Canada">Canada</option>
+                                    <option value = "Europe">Europe</option>
+                                    <option value = "Fiji Island">Fiji Island</option>
+                                    <option value = "Guam">Guam</option>
+                                    <option value = "Hongkong/Singapore">Hongkong/Singapore</option>
+                                    <option value = "Indonesia/Malaysia/Taiwan/Thailand">Indonesia/Malaysia/Taiwan/Thailand</option>
+                                    <option value = "Japan">Japan</option>
+                                    <option value = "Luzon">Luzon</option>
+                                    <option value = "Metro Manila">Metro Manila</option>
+                                    <option value = "Mexico City">Mexico City</option>
+                                    <option value = "Middle East">Middle East</option>
+                                    <option value = "Mindanao">Mindanao</option>
+                                    <option value = "New Zealand">New Zealand</option>
+                                    <option value = "Papua New Guinea">Papua New Guinea</option>
+                                    <option value = "South America">South America</option>
+                                    <option value = "USA">USA</option>
+                                    <option value = "Vietnam">Vietnam</option>
+                                    <option value = "Visayas">Visayas</option>
                                 </select>
+                                <label id="mailingAreaError" class="label-error"></label>
                                 </div>
                                 <label class="col-sm-1 col-sm-offset-2 control-label" for="textinput">City</label>
                                 <div class="col-sm-4">
-                                  <input type="text" placeholder="City" class="form-control">
-                                  <label id="mailingZipCodeError" class="label-error">Please Enter Mailing Zipcode</label>
+                                  <input type="text" placeholder="City" class="form-control" name="mailingCity">
+                                  <label id="mailingCityError" class="label-error"></label>
                                 </div>
                               </div>
                         <br>
@@ -407,12 +412,19 @@
             function stopNow() {
               clearTimeout(set);
             }
+
+            function validateEmail(email){
+              var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
             function validateForm() {
+
               var lastName = document.forms["registerForm"]["lastName"].value;
               var firstName = document.forms["registerForm"]["firstName"].value;
               var middleName = document.forms["registerForm"]["middleName"].value;
               var birthday = document.forms["registerForm"]["birthday"].value;
-              var citizenship = document.forms["registerForm"]["citizenship"];
+              var citizenship = document.forms["registerForm"]["citizenship"].value;
               var birthPlace = document.forms["registerForm"]["birthPlace"].value;
               var address = document.forms["registerForm"]["address"].value;
               var street = document.forms["registerForm"]["street"].value;
@@ -425,7 +437,23 @@
               var altEmail = document.forms["registerForm"]["altEmail"].value;
               var password = document.forms["registerForm"]["password"].value;
               var rePassword = document.forms["registerForm"]["rePassword"].value;
+              var highSchool =  document.forms["registerForm"]["highSchool"].value;
+              var IDNumber =  document.forms["registerForm"]["IDNumber"].value;
+              var degree =  document.forms["registerForm"]["degree"].value;
+              var graduateDate =  document.forms["registerForm"]["graduateDate"].value;
+              var lastTerm =  document.forms["registerForm"]["lastTerm"].value;
+              var lastTermStart = document.forms["registerForm"]["lastTermStart"].value;
+              var lastTermEnd = document.forms["registerForm"]["lastTermEnd"].value;
+              var lastSchool =  document.forms["registerForm"]["lastSchool"].value;
+              var admissionYear =  document.forms["registerForm"]["admissionYear"].value;
+              var campusAttended =  document.forms["registerForm"]["campusAttended"].value;
+              var mailingAddress = document.forms["registerForm"]["mailingAddress"].value;
+              var mailingCity = document.forms["registerForm"]["mailingCity"].value;
+              var mailingStreet = document.forms["registerForm"]["mailingStreet"].value;
+              var mailingZipCode = document.forms["registerForm"]["mailingZipCode"].value;
+              var mailingArea = document.forms["registerForm"]["mailingArea"].value;
               var isValid = true;
+
               if (lastName == "") {
                  document.getElementById('lastNameError').innerHTML = "Please Enter your Last Name";
                  isValid = false;
@@ -450,21 +478,133 @@
                 document.getElementById('citizenshipError').innerHTML = "Please enter your Citizenship";
                 isValid = false;
               }
-              if(birthPlace=""){
+              if(birthPlace==""){
                 document.getElementById('birthPlaceError').innerHTML = "Please Select your Birthplace";
                 isValid= false;
               }
-              if(address=""){
+              if(address==""){
                 document.getElementById('addressError').innerHTML = "Please Enter your Address";
                 isValid= false;
               }
-              if(street=""){
+              if(street==""){
                 document.getElementById('streetError').innerHTML = "Please Enter your street";
                 isValid= false;
               }
-              if(city=""){
+              if(city==""){
                 document.getElementById('cityError').innerHTML = "Please enter your City";
                 isValid= false;
+              }
+              if(country==""){
+                document.getElementById('countryError').innerHTML = "Please enter your Country";
+                isValid= false;
+              }
+              if(zipCode==""){
+                document.getElementById('zipCodeError').innerHTML = "Please enter your Zip Code";
+                isValid= false;
+              }
+              if(phoneNumber==""||phoneNumber.substring(0,1)!= "09"){
+                document.getElementById('phoneNumberError').innerHTML = "Please enter a valid Phone Number";
+                isValid= false;
+              }
+              if(altPhoneNumber==phoneNumber && altPhoneNumber!=""&&phoneNumber.substring(0,1)!= "09"){
+                if(phoneNumber.substring(0,1)!= "09"){
+                  document.getElementById('altPhoneNumberError').innerHTML = "Please enter a valid Number";
+                }else{
+                document.getElementById('altPhoneNumberError').innerHTML = "Please enter a different Number";
+                }
+              }
+              var isEmail = validateEmail(email);
+              if(email==""|| !isEmail){
+                document.getElementById('emailError').innerHTML = "Please enter a Valid Email";
+                isValid= false;
+              }
+              isEmail = validateEmail(altEmail);
+              if((altEmail==email && altEmail!="") ||!isEmail){
+                if(!validateEmail(altEmail) && altEmail!=""){
+                  document.getElementById('altEmailError').innerHTML = "Please enter a valid Email";
+                }else if(altEmail!=""){
+                  document.getElementById('altEmailError').innerHTML = "Please enter a different Email";
+                }
+                isValid = false;
+              }
+              var length = password.length;
+              if(password=="" || length<6){
+                if(password==""){
+                  document.getElementById('passwordError').innerHTML = "Please enter a password";
+                }else{
+                  document.getElementById('passwordError').innerHTML = "Password must at least be 6 characters";
+                }
+                isValid = false;
+              }
+              if(rePassword!=password){
+                document.getElementById('rePasswordError').innerHTML = "Password does not match";
+                isValid = false;
+              }
+
+              if(highSchool == ""){
+                    document.getElementById('highSchoolError').innerHTML = "Please enter your HighSchool";
+                    isValid = false;
+              }
+              if(!document.getElementById('bachelor').checked && !document.getElementById('masteral').checked &&  !document.getElementById('doctorate').checked){
+                document.getElementById('degreeLevelError').innerHTML = "Please Select your Degree Level";
+                 isValid = false;
+              }
+              if(document.getElementById('notGraduated').checked && !document.getElementById('firstYear').checked && !document.getElementById('secondYear').checked &&  !document.getElementById('thirdYear').checked
+                  &&  !document.getElementById('fourthYear').checked){
+                document.getElementById('yearLevelError').innerHTML = "Please Select your Year Level";
+                 isValid = false;
+              }
+              if(document.getElementById('notGraduated').checked && (lastTerm==""|| lastTermStart=="" || lastTermEnd =="")){
+                document.getElementById('lastTermError').innerHTML = "Please Enter your recent Term";
+                 isValid = false;
+              }
+              if(document.getElementById('isGraduated').checked && graduateDate ==""){
+                document.getElementById('graduateDateError').innerHTML = "Please Enter Date Graduated";
+                 isValid = false;
+              }
+              if(degree==""){
+                document.getElementById('degreeError').innerHTML = "Please Enter your degree";
+                 isValid = false;
+              }
+              if(IDNumber ==""){
+                document.getElementById('IDNumberError').innerHTML = "Please Enter your ID Number";
+                 isValid = false;
+              }
+              if(!document.getElementById('newStudent').checked &&!document.getElementById('transferee').checked && !document.getElementById('crossEnrollee').checked){
+                document.getElementById('admissionError').innerHTML = "Please Select your Admission";
+                 isValid = false;
+              }
+              if(lastSchool ==""){
+                document.getElementById('lastSchoolError').innerHTML = "Please Enter your Last School Attended";
+                 isValid = false;
+              }
+              if(admissionYear ==""){
+                document.getElementById('admissionYearError').innerHTML = "Please Enter year Admitted";
+                 isValid = false;
+              }
+              if(campusAttended ==""){
+                document.getElementById('campusAttendedError').innerHTML = "Please Select Campus Attended";
+                 isValid = false;
+              }
+              if(mailingAddress ==""){
+                document.getElementById('mailingAddressError').innerHTML = "Please Enter Mailing Address";
+                 isValid = false;
+              }
+              if(mailingCity ==""){
+                document.getElementById('mailingCityError').innerHTML = "Please Enter Mailing City";
+                 isValid = false;
+              }
+              if(mailingStreet ==""){
+                document.getElementById('mailingStreetError').innerHTML = "Please Enter Mailing Street";
+                 isValid = false;
+              }
+              if(mailingZipCode ==""){
+                document.getElementById('mailingZipCodeError').innerHTML = "Please Enter Mailing Zip Code";
+                 isValid = false;
+              }
+              if(mailingArea == ""){
+                document.getElementById('mailingAreaError').innerHTML = "Please Enter Mailing Area";
+                 isValid = false;
               }
               return isValid;
             }
