@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `requestfordocuments` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `requestfordocuments`;
--- MySQL dump 10.13  Distrib 5.6.24, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: localhost    Database: requestfordocuments
 -- ------------------------------------------------------
--- Server version	5.7.14-log
+-- Server version	5.6.26-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -87,7 +85,9 @@ CREATE TABLE `document` (
   `docuName` varchar(500) NOT NULL,
   `regularPrice` float NOT NULL,
   `expressPrice` float DEFAULT NULL,
-  `type` varchar(45) NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `note` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`docuID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,7 +98,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES (1,'Official Transcript of Records (for Employment) for Students with ID no. 80XXXX (those who entered DLSU-M in 1980) and below\n',150,NULL,'Transcript of Records'),(2,'Official Transcript of Records (for Employment) for Graduates',150,300,'Transcript of Records'),(3,'Official Transcript of Records (for Employment) for Undergraduates',150,300,'Transcript of Records'),(4,'Official Transcript of Records (for Evaluation) for Graduates',150,300,'Transcript of Records'),(5,'Official Transcript of Records (for Evaluation) for Undergraduates',150,300,'Transcript of Records'),(6,'Ranking in Degree Program (for Undergraduate Students Only)',110,200,'Transcript of Records'),(7,'Ranking by College (for Undergraduate Students only)',110,220,'Certification'),(8,'Trimestral Calendar',110,220,'Certification'),(9,'Completion for Academic Units (for Graduate Studies Students ONLY)',110,NULL,'Certification'),(10,'Cumulative GPA',110,220,'Certification'),(11,'Dean\'s List (for Undergraduate Studies Students ONLY)',110,220,'Certification'),(12,'Enrollment',110,220,'Certification'),(13,'Grading System',110,220,'Certification'),(14,'Graduation / With Honors',110,220,'Certification'),(15,'Medium of Instruction (English)',110,220,'Certification'),(16,'Tuition and Miscellaneous Fees Breakdown (Current Term)',40,NULL,'Certification'),(17,'Tuition and Miscellaneous Fees Breakdown (starting SY2000-01)',110,220,'Certification'),(18,'Units Earned',110,220,'Certification'),(19,'Course (Subject) Description - Max of 5 courses per certification) *IMPORTANT*: Indicate the title of the course in the *Other Instructions*',110,NULL,'Certification'),(20,'Official Transcript of Records (Previous to DLSU)',50,NULL,'Certified True Copy'),(21,'Form 137 (High School Transcript)',50,NULL,'Certified True Copy'),(22,'Form 138 (High School Card)',50,NULL,'Certified True Copy'),(23,'Espiritu, Paolo Montesa (CTC TOR-2 and Cert of Grad-2)',200,NULL,'Certified True Copy'),(24,'Special Credentials',0,NULL,'Others'),(25,'Special Handling (WES)',150,300,'Others');
+INSERT INTO `document` VALUES (1,'Official Transcript of Records for Employment',150,NULL,'Transcript of Records','both',' *for Students with ID no. 80XXXX (those who entered DLSU-M in 1980) and below'),(2,'Official Transcript of Records for Employment',150,300,'Transcript of Records','both',NULL),(3,'Official Transcript of Records for Evaluation',150,300,'Transcript of Records','both',NULL),(4,'Ranking in Degree Program',110,200,'Certification','undergrad',NULL),(5,'Ranking by College',110,220,'Certification','undergrad',NULL),(6,'Dean\'s List',110,220,'Certification','undergrad',NULL),(7,'Completion for Academic Units',110,NULL,'Certification','grad',NULL),(8,'Trimestral Calendar',110,220,'Certification','both',NULL),(10,'Cumulative GPA',110,220,'Certification','both',NULL),(12,'Enrollment',110,220,'Certification','both',NULL),(13,'Grading System',110,220,'Certification','both',NULL),(14,'Graduation / With Honors',110,220,'Certification','both',NULL),(15,'Medium of Instruction (English)',110,220,'Certification','both',NULL),(16,'Tuition and Miscellaneous Fees Breakdown (Current Term)',40,NULL,'Certification','both',NULL),(17,'Tuition and Miscellaneous Fees Breakdown (starting SY2000-01)',110,220,'Certification','both',NULL),(18,'Units Earned',110,220,'Certification','both',NULL),(19,'Course (Subject) Description',110,NULL,'Certification','both',' - Max of 5 courses per certification) *IMPORTANT*: Indicate the title of the course in the *Other Instructions*'),(20,'Official Transcript of Records (Previous to DLSU)',50,NULL,'Certified True Copy','both',NULL),(21,'Form 137 (High School Transcript)',50,NULL,'Certified True Copy','both',NULL),(22,'Form 138 (High School Card)',50,NULL,'Certified True Copy','both',NULL),(23,'Espiritu, Paolo Montesa',200,NULL,'Certified True Copy','both','(CTC TOR-2 and Cert of Grad-2)'),(24,'Special Credentials',0,NULL,'Others','both',NULL),(25,'Special Handling (WES)',150,300,'Others','both',NULL);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,4 +233,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-18 11:33:45
+-- Dump completed on 2016-11-25 20:47:35
