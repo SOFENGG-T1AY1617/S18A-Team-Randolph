@@ -20,6 +20,7 @@
 
         <!-- Custom CSS-->
         <link href="css/order.css" rel="stylesheet">
+        <link href="css/checkout.css" rel="stylesheet">
         <link href="css/event-list.css" rel="stylesheet">
         <link href="css/contact-panel.css" rel="stylesheet">
         <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->   
@@ -69,28 +70,13 @@
         </nav>
         
         <div class = "container item-list-cont" style = "margin-top: 170px;">   
-            <div class="row">
-                <div class = "col-sm-2 col-md-3" style = "padding: 1% 1% 1% 1%; border: 3px solid #81c784; margin-right: 50px;">
-                    <h4>Mailing Information</h4><hr style = "margin-top: 5px; margin-bottom: 15px;"></hr>
-                    <span class = "mtitle">Address</span><br>
-                    Block 7 Lot 4 Camella Homes Milan
-                    <br><br>
-                    <span class = "mtitle">Street</span><br>
-                    Sienna St.
-                    <br><br>
-                    <span class = "mtitle">City</span><br>
-                    San Pedro, Laguna
-                    <br><br>
-                    <span class = "mtitle">Country</span><br>
-                    Philippines
-                    <br><br>
-                    <span class = "mtitle">Zip Code</span><br>
-                    4023
-                </div>
-                
-                <div class="col-sm-10 col-md-8">
+            <div class="row">                
+                <div class="col-sm-10 col-md-8 stepHeader">
+                    <h3 class="text-label">Cart</h3>
+                    <hr>
+                    <br>
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="table-header">
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
@@ -125,25 +111,34 @@
                                 <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
-                                <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
+                                <td width="20%"><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
+                                
                                 <td class="text-right"><h5><strong>$24.59<br>$6.94</strong></h5><h3>$31.53</h3></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
-                                <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Add other items
-                                </button></td>
-                                <td>
-                                <button type="button" class="btn btn-success">
-                                    Checkout <span class="glyphicon glyphicon-play"></span>
-                                </button></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
+            </div><!--End of row-->  
+        </div> <!--End of container-->
+    
+        <div class="row">
+            <div class = "col-sm-8 col-md-8 mailing-container">
+                    <h3 class="text-label">Mailing Information</h3>
+                    <hr style = "margin-top: 5px; margin-bottom: 15px;"></hr>
+                    <span class = "mtitle">Address</span><br>
+                    Block 7 Lot 4 Camella Homes Milan
+                    <br><br>
+                    <span class = "mtitle">Street</span><br>
+                    Sienna St.
+                    <br><br>
+                    <span class = "mtitle">City</span><br>
+                    San Pedro, Laguna
+                    <br><br>
+                    <span class = "mtitle">Country</span><br>
+                    Philippines
+                    <br><br>
+                    <span class = "mtitle">Zip Code</span><br>
+                    4023
             </div>
         </div>
             
