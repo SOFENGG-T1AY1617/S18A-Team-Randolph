@@ -121,26 +121,30 @@
             </div><!--End of row-->  
         </div> <!--End of container-->
     
-        <div class="row">
-            <div class = "col-sm-8 col-md-8 mailing-container">
-                    <h3 class="text-label">Mailing Information</h3>
-                    <hr style = "margin-top: 5px; margin-bottom: 15px;"></hr>
-                    <span class = "mtitle">Address</span><br>
-                    Block 7 Lot 4 Camella Homes Milan
-                    <br><br>
-                    <span class = "mtitle">Street</span><br>
-                    Sienna St.
-                    <br><br>
-                    <span class = "mtitle">City</span><br>
-                    San Pedro, Laguna
-                    <br><br>
-                    <span class = "mtitle">Country</span><br>
-                    Philippines
-                    <br><br>
-                    <span class = "mtitle">Zip Code</span><br>
-                    4023
+        <div class="row mailing-container">
+            <div class = "col-sm-8 col-md-8 ">
+                <h3 class="text-label">Delivery Information</h3>
+                <hr>    
+                <br>
+                <p><b>Location:</b></p>
+                <select>
+                  <option value="mailing-address1">Block 7 Lot 4 Camella Homes Milan Sienna St. San Pedro, Laguna,   Philippines, 4023</option>
+                  <option value="mailing-address2">10 Pluto St. Bricktown Subdivision Barangay Moonwalk, Paranaque, Philippines, 1700</option>
+                 
+                </select>
             </div>
         </div>
+        
+        <div class="row button-container">
+             <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Add other items
+            </button>
+
+            <button type="button" class="btn btn-success">
+                Checkout <span class="glyphicon glyphicon-play"></span>
+            </button>
+        </div>
+       
             
         <!-- JavaScript -->
         <script src="js/jquery-1.10.2.js"></script>
