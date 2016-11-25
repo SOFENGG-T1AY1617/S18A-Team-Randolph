@@ -20,6 +20,7 @@
 
         <!-- Custom CSS-->
         <link href="css/order.css" rel="stylesheet">
+        <link href="css/checkout.css" rel="stylesheet">
         <link href="css/event-list.css" rel="stylesheet">
         <link href="css/contact-panel.css" rel="stylesheet">
         <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->   
@@ -46,15 +47,15 @@
             <div class="row btnStep" style = "margin-top: 7px;">
                 <div class="col-xs-9 stepHeader">
                     <ul class="nav nav-pills nav-justified thumbnail" style = "width: 810px;">
-                        <li class = "stepBtn"><a href="#">
+                        <li class = "stepBtn"><a href="order.html">
                             <h4 class="list-group-item-heading stephead">Step 1</h4>
                             <p class="list-group-item-text">Order Documents</p>
                         </a></li>
-                        <li class = "stepBtn"><a href="#">
+                        <li class = "stepBtn"><a href="mailing-info.html">
                             <h4 class="list-group-item-heading stephead">Step 2</h4>
                             <p class="list-group-item-text">Mailing Info</p>
                         </a></li>
-                        <li class = "active"><a href="#">
+                        <li class = "active"><a href="checkout.html">
                             <h4 class="list-group-item-heading stephead">Step 3</h4>
                             <p class="list-group-item-text">Checkout</p>
                         </a></li>
@@ -69,28 +70,13 @@
         </nav>
         
         <div class = "container item-list-cont" style = "margin-top: 170px;">   
-            <div class="row">
-                <div class = "col-sm-2 col-md-3" style = "padding: 1% 1% 1% 1%; border: 3px solid #81c784; margin-right: 50px;">
-                    <h4>Mailing Information</h4><hr style = "margin-top: 5px; margin-bottom: 15px;"></hr>
-                    <span class = "mtitle">Address</span><br>
-                    Block 7 Lot 4 Camella Homes Milan
-                    <br><br>
-                    <span class = "mtitle">Street</span><br>
-                    Sienna St.
-                    <br><br>
-                    <span class = "mtitle">City</span><br>
-                    San Pedro, Laguna
-                    <br><br>
-                    <span class = "mtitle">Country</span><br>
-                    Philippines
-                    <br><br>
-                    <span class = "mtitle">Zip Code</span><br>
-                    4023
-                </div>
-                
-                <div class="col-sm-10 col-md-8">
+            <div class="row">                
+                <div class="col-sm-10 col-md-8 stepHeader">
+                    <h3 class="text-label">Cart</h3>
+                    <hr>
+                    <br>
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="table-header">
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
@@ -125,27 +111,40 @@
                                 <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
-                                <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
+                                <td width="20%"><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
+                                
                                 <td class="text-right"><h5><strong>$24.59<br>$6.94</strong></h5><h3>$31.53</h3></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
-                                <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Add other items
-                                </button></td>
-                                <td>
-                                <button type="button" class="btn btn-success">
-                                    Checkout <span class="glyphicon glyphicon-play"></span>
-                                </button></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
+            </div><!--End of row-->  
+        </div> <!--End of container-->
+    
+        <div class="row mailing-container">
+            <div class = "col-sm-8 col-md-8 ">
+                <h3 class="text-label">Delivery Information</h3>
+                <hr>    
+                <br>
+                <p><b>Location:</b></p>
+                <select>
+                  <option value="mailing-address1">Block 7 Lot 4 Camella Homes Milan Sienna St. San Pedro, Laguna,   Philippines, 4023</option>
+                  <option value="mailing-address2">10 Pluto St. Bricktown Subdivision Barangay Moonwalk, Paranaque, Philippines, 1700</option>
+                 
+                </select>
             </div>
         </div>
+        
+        <div class="row button-container">
+             <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Add other items
+            </button>
+
+            <button type="button" class="btn btn-success">
+                Checkout <span class="glyphicon glyphicon-play"></span>
+            </button>
+        </div>
+       
             
         <!-- JavaScript -->
         <script src="js/jquery-1.10.2.js"></script>
