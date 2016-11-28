@@ -39,17 +39,50 @@
                     <form class="form-horizontal" name="registerForm" onsubmit="return validateForm()" role="form"> <!-- Personal Information Start -->
                     <fieldset>
                       <!-- Form Name -->
-                      <legend>Personal Information</legend>
+                      <legend>Account Information</legend>
+                        <div class="form-group">
+                        <label class="col-sm-2" for="textinput">Email Address</label>
+                        <div class="col-sm-4">
+                          <input type="text" placeholder="Email Address" class="form-control" name="email">
+                          <label id="emailError" class="label-error"></label>
+                        </div>
+						  
+						 <label class="col-sm-2" for="textinput">Alternate Email (optional)</label>
+                        <div class="col-sm-4">
+                          <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control" name="altEmail">
+                          <label id="altEmailError" class="label-error"></label>
+                        </div>
+                      </div>
+						<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-sm-2" for="textinput">Password</label>
+                        <div class="col-sm-4">
+                          <input type="password" placeholder="Password" class="form-control" name="password">
+                          <label id="passwordError" class="label-error"></label>
+                        </div>
 
+                        <label class="col-sm-3" for="textinput">Re-Enter Password</label>
+                        <div class="col-sm-3">
+                          <input type="password" placeholder="Re-enter Password" class="form-control" name="rePassword">
+                          <label id="rePasswordError" class="label-error"></label>
+                        </div>
+                      </div>
+						<br><br>
+				    </fieldset>
+						
+						<fieldset>
+                      <!-- Form Name -->
+                      <legend>Personal Information</legend>
+						
                       <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Full Name</label>
+                        <label class="col-sm-2" for="textinput">Full Name</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="Last Name" name="lastName" class="form-control">
                           <label id="lastNameError" class="label-error"></label>
                         </div>
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                           <input type="text" placeholder="First Name" name="firstName" class="form-control">
                           <label id="firstNameError" class="label-error"></label>
                         </div>
@@ -62,70 +95,268 @@
 
                         <!-- Text input-->
                       <div class="form-group">
-                          <label class="col-sm-3 control-label" for="textinput">Gender</label>
-                        <div class="col-sm-3" style = "padding-top: 7px;">
-                                <input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male</input>
+                          <label class="col-sm-2" for="textinput">Gender</label>
+							<div class="col-sm-4">
+								<input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male
 								<span>&nbsp; &nbsp; </span>
-								<input type="radio"name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female</input>
-                <label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
-                        </div>
+								<input type="radio"name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female
+								<label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
+							</div>
 
-                        <label class="col-sm-3 control-label" for="textinput">Birthday</label>
-                        <div class="col-sm-3">
-            		      <input class="form-control" name="birthday" type="date">
-                      <label id="birthdayError" class="label-error"></label>
-                        </div>
+							<label class="col-sm-2" for="textinput">Birthday</label>
+							<div class="col-sm-4">
+							  <input class="form-control" name="birthday" type="date">
+							  <label id="birthdayError" class="label-error"></label>
+							</div>
                       </div>
 
                     <!-- Text input-->
                       <div class="form-group">
-                          <label class="col-sm-3 control-label" for="textinput">Citizenship</label>
-                        <div class="col-sm-3">
-                            <input type="text" placeholder="e.g Filipino, Chinese" class="form-control" name="citizenship">
+                        <label class="col-sm-2" for="textinput">Citizenship</label>
+                        <div class="col-sm-4">
+							<select class="form-control" id="citizenship">
+							  <option value="">Select Citizenship</option>
+							  <option value="afghan">Afghan</option>
+							  <option value="albanian">Albanian</option>
+							  <option value="algerian">Algerian</option>
+							  <option value="american">American</option>
+							  <option value="andorran">Andorran</option>
+							  <option value="angolan">Angolan</option>
+							  <option value="antiguans">Antiguans</option>
+							  <option value="argentinean">Argentinean</option>
+							  <option value="armenian">Armenian</option>
+							  <option value="australian">Australian</option>
+							  <option value="austrian">Austrian</option>
+							  <option value="azerbaijani">Azerbaijani</option>
+							  <option value="bahamian">Bahamian</option>
+							  <option value="bahraini">Bahraini</option>
+							  <option value="bangladeshi">Bangladeshi</option>
+							  <option value="barbadian">Barbadian</option>
+							  <option value="barbudans">Barbudans</option>
+							  <option value="batswana">Batswana</option>
+							  <option value="belarusian">Belarusian</option>
+							  <option value="belgian">Belgian</option>
+							  <option value="belizean">Belizean</option>
+							  <option value="beninese">Beninese</option>
+							  <option value="bhutanese">Bhutanese</option>
+							  <option value="bolivian">Bolivian</option>
+							  <option value="bosnian">Bosnian</option>
+							  <option value="brazilian">Brazilian</option>
+							  <option value="british">British</option>
+							  <option value="bruneian">Bruneian</option>
+							  <option value="bulgarian">Bulgarian</option>
+							  <option value="burkinabe">Burkinabe</option>
+							  <option value="burmese">Burmese</option>
+							  <option value="burundian">Burundian</option>
+							  <option value="cambodian">Cambodian</option>
+							  <option value="cameroonian">Cameroonian</option>
+							  <option value="canadian">Canadian</option>
+							  <option value="cape verdean">Cape Verdean</option>
+							  <option value="central african">Central African</option>
+							  <option value="chadian">Chadian</option>
+							  <option value="chilean">Chilean</option>
+							  <option value="chinese">Chinese</option>
+							  <option value="colombian">Colombian</option>
+							  <option value="comoran">Comoran</option>
+							  <option value="congolese">Congolese</option>
+							  <option value="costa rican">Costa Rican</option>
+							  <option value="croatian">Croatian</option>
+							  <option value="cuban">Cuban</option>
+							  <option value="cypriot">Cypriot</option>
+							  <option value="czech">Czech</option>
+							  <option value="danish">Danish</option>
+							  <option value="djibouti">Djibouti</option>
+							  <option value="dominican">Dominican</option>
+							  <option value="dutch">Dutch</option>
+							  <option value="east timorese">East Timorese</option>
+							  <option value="ecuadorean">Ecuadorean</option>
+							  <option value="egyptian">Egyptian</option>
+							  <option value="emirian">Emirian</option>
+							  <option value="equatorial guinean">Equatorial Guinean</option>
+							  <option value="eritrean">Eritrean</option>
+							  <option value="estonian">Estonian</option>
+							  <option value="ethiopian">Ethiopian</option>
+							  <option value="fijian">Fijian</option>
+							  <option value="filipino">Filipino</option>
+							  <option value="finnish">Finnish</option>
+							  <option value="french">French</option>
+							  <option value="gabonese">Gabonese</option>
+							  <option value="gambian">Gambian</option>
+							  <option value="georgian">Georgian</option>
+							  <option value="german">German</option>
+							  <option value="ghanaian">Ghanaian</option>
+							  <option value="greek">Greek</option>
+							  <option value="grenadian">Grenadian</option>
+							  <option value="guatemalan">Guatemalan</option>
+							  <option value="guinea-bissauan">Guinea-Bissauan</option>
+							  <option value="guinean">Guinean</option>
+							  <option value="guyanese">Guyanese</option>
+							  <option value="haitian">Haitian</option>
+							  <option value="herzegovinian">Herzegovinian</option>
+							  <option value="honduran">Honduran</option>
+							  <option value="hungarian">Hungarian</option>
+							  <option value="icelander">Icelander</option>
+							  <option value="indian">Indian</option>
+							  <option value="indonesian">Indonesian</option>
+							  <option value="iranian">Iranian</option>
+							  <option value="iraqi">Iraqi</option>
+							  <option value="irish">Irish</option>
+							  <option value="israeli">Israeli</option>
+							  <option value="italian">Italian</option>
+							  <option value="ivorian">Ivorian</option>
+							  <option value="jamaican">Jamaican</option>
+							  <option value="japanese">Japanese</option>
+							  <option value="jordanian">Jordanian</option>
+							  <option value="kazakhstani">Kazakhstani</option>
+							  <option value="kenyan">Kenyan</option>
+							  <option value="kittian and nevisian">Kittian and Nevisian</option>
+							  <option value="kuwaiti">Kuwaiti</option>
+							  <option value="kyrgyz">Kyrgyz</option>
+							  <option value="laotian">Laotian</option>
+							  <option value="latvian">Latvian</option>
+							  <option value="lebanese">Lebanese</option>
+							  <option value="liberian">Liberian</option>
+							  <option value="libyan">Libyan</option>
+							  <option value="liechtensteiner">Liechtensteiner</option>
+							  <option value="lithuanian">Lithuanian</option>
+							  <option value="luxembourger">Luxembourger</option>
+							  <option value="macedonian">Macedonian</option>
+							  <option value="malagasy">Malagasy</option>
+							  <option value="malawian">Malawian</option>
+							  <option value="malaysian">Malaysian</option>
+							  <option value="maldivan">Maldivan</option>
+							  <option value="malian">Malian</option>
+							  <option value="maltese">Maltese</option>
+							  <option value="marshallese">Marshallese</option>
+							  <option value="mauritanian">Mauritanian</option>
+							  <option value="mauritian">Mauritian</option>
+							  <option value="mexican">Mexican</option>
+							  <option value="micronesian">Micronesian</option>
+							  <option value="moldovan">Moldovan</option>
+							  <option value="monacan">Monacan</option>
+							  <option value="mongolian">Mongolian</option>
+							  <option value="moroccan">Moroccan</option>
+							  <option value="mosotho">Mosotho</option>
+							  <option value="motswana">Motswana</option>
+							  <option value="mozambican">Mozambican</option>
+							  <option value="namibian">Namibian</option>
+							  <option value="nauruan">Nauruan</option>
+							  <option value="nepalese">Nepalese</option>
+							  <option value="new zealander">New Zealander</option>
+							  <option value="ni-vanuatu">Ni-Vanuatu</option>
+							  <option value="nicaraguan">Nicaraguan</option>
+							  <option value="nigerien">Nigerien</option>
+							  <option value="north korean">North Korean</option>
+							  <option value="northern irish">Northern Irish</option>
+							  <option value="norwegian">Norwegian</option>
+							  <option value="omani">Omani</option>
+							  <option value="pakistani">Pakistani</option>
+							  <option value="palauan">Palauan</option>
+							  <option value="panamanian">Panamanian</option>
+							  <option value="papua new guinean">Papua New Guinean</option>
+							  <option value="paraguayan">Paraguayan</option>
+							  <option value="peruvian">Peruvian</option>
+							  <option value="polish">Polish</option>
+							  <option value="portuguese">Portuguese</option>
+							  <option value="qatari">Qatari</option>
+							  <option value="romanian">Romanian</option>
+							  <option value="russian">Russian</option>
+							  <option value="rwandan">Rwandan</option>
+							  <option value="saint lucian">Saint Lucian</option>
+							  <option value="salvadoran">Salvadoran</option>
+							  <option value="samoan">Samoan</option>
+							  <option value="san marinese">San Marinese</option>
+							  <option value="sao tomean">Sao Tomean</option>
+							  <option value="saudi">Saudi</option>
+							  <option value="scottish">Scottish</option>
+							  <option value="senegalese">Senegalese</option>
+							  <option value="serbian">Serbian</option>
+							  <option value="seychellois">Seychellois</option>
+							  <option value="sierra leonean">Sierra Leonean</option>
+							  <option value="singaporean">Singaporean</option>
+							  <option value="slovakian">Slovakian</option>
+							  <option value="slovenian">Slovenian</option>
+							  <option value="solomon islander">Solomon Islander</option>
+							  <option value="somali">Somali</option>
+							  <option value="south african">South African</option>
+							  <option value="south korean">South Korean</option>
+							  <option value="spanish">Spanish</option>
+							  <option value="sri lankan">Sri Lankan</option>
+							  <option value="sudanese">Sudanese</option>
+							  <option value="surinamer">Surinamer</option>
+							  <option value="swazi">Swazi</option>
+							  <option value="swedish">Swedish</option>
+							  <option value="swiss">Swiss</option>
+							  <option value="syrian">Syrian</option>
+							  <option value="taiwanese">Taiwanese</option>
+							  <option value="tajik">Tajik</option>
+							  <option value="tanzanian">Tanzanian</option>
+							  <option value="thai">Thai</option>
+							  <option value="togolese">Togolese</option>
+							  <option value="tongan">Tongan</option>
+							  <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+							  <option value="tunisian">Tunisian</option>
+							  <option value="turkish">Turkish</option>
+							  <option value="tuvaluan">Tuvaluan</option>
+							  <option value="ugandan">Ugandan</option>
+							  <option value="ukrainian">Ukrainian</option>
+							  <option value="uruguayan">Uruguayan</option>
+							  <option value="uzbekistani">Uzbekistani</option>
+							  <option value="venezuelan">Venezuelan</option>
+							  <option value="vietnamese">Vietnamese</option>
+							  <option value="welsh">Welsh</option>
+							  <option value="yemenite">Yemenite</option>
+							  <option value="zambian">Zambian</option>
+							  <option value="zimbabwean">Zimbabwean</option>
+							</select>
                             <label id="citizenshipError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-3 control-label" for="textinput">Birthplace</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2" for="textinput">Birthplace</label>
+                        <div class="col-sm-4">
             		      <input type="text" placeholder="Place of Birth" class="form-control" name="birthPlace">
-                      <label id="birthPlaceError" class="label-error"></label>
+                      		<label id="birthPlaceError" class="label-error"></label>
                         </div>
                       </div>
 
                       <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Address</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2" for="textinput">Address</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="Current Address" class="form-control" name="address">
                           <label id="addressError" class="label-error"></label>
                         </div>
-                      </div>
-
-                      <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Street</label>
-                        <div class="col-sm-3">
-                          <input type="text" placeholder="Street Name" class="form-control" name="street">
-                          <label id="streetError" class="label-error"></label>
-                        </div>
-
-                        <label class="col-sm-3 control-label" for="textinput">City</label>
-                        <div class="col-sm-3">
+						  
+						<label class="col-sm-2" for="textinput">City</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="City" class="form-control" name="city">
                           <label id="cityError" class="label-error"></label>
                         </div>
                       </div>
 
+<!--
+                       Text input
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label" for="textinput">Street</label>
+                        <div class="col-sm-3">
+                          <input type="text" placeholder="Street Name" class="form-control" name="street">  
+                          <label id="streetError" class="label-error"></label>
+                        </div>
+
+                        
+                      </div>
+-->
+
                     <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Country</label>
+                        <label class="col-sm-2" for="textinput">Country</label>
                         <div class="col-sm-4">
                           <input type="text" placeholder="Country" class="form-control" name="country">
                           <label id="countryError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-2 control-label" for="textinput">Zip Code</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2" for="textinput">Zip Code</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="Zip Code" class="form-control" name="zipCode">
                           <label id="zipCodeError" class="label-error"></label>
                         </div>
@@ -133,63 +364,36 @@
 
                     <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Phone Number</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2" for="textinput">Cellphone Number</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="phoneNumberError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-3 control-label" for="textinput">Alt Phone Number*</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2" for="textinput">Alternate  Number*</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber"onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="altPhoneNumberError" class="label-error"></label>
                         </div>
                       </div>
 
                       <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Email Address</label>
-                        <div class="col-sm-9">
-                          <input type="text" placeholder="Email Address" class="form-control" name="email">
-                          <label id="emailError" class="label-error"></label>
-                        </div>
-                      </div>
 
-                    <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Alt Email Address*</label>
-                        <div class="col-sm-9">
-                          <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control" name="altEmail">
-                          <label id="altEmailError" class="label-error"></label>
-                        </div>
-                      </div>
 
-                    <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Password</label>
-                        <div class="col-sm-3">
-                          <input type="password" placeholder="Password" class="form-control" name="password">
-                          <label id="passwordError" class="label-error"></label>
-                        </div>
-
-                        <label class="col-sm-3 control-label" for="textinput">Re-Enter Password</label>
-                        <div class="col-sm-3">
-                          <input type="password" placeholder="Re-enter Password" class="form-control" name="rePassword">
-                          <label id="rePasswordError" class="label-error"></label>
-                        </div>
-                      </div>
+                    
                     </fieldset>
                    <!-- Personal Information End -->
                     <br>
                      <!-- Academic Information Start -->
                     <fieldset>
                       <!-- Form Name -->
-                      <legend>Academic Information</legend>
+                      <legend>&nbsp; Academic Information</legend>
 
                       <!-- Text input-->
-                      <label class="col-sm-12 label-category" style="padding-bottom: 10px;">High School Information</label>
+                      
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">High School</label>
+                        <label class="col-sm-12 label-category" style="padding-bottom: 10px;">High School Information</label>
+                        <label class="col-sm-2" for="textinput">High School</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="High School" class="form-control" name="highSchool">
                           <label id="highSchoolError" class="label-error"></label>
@@ -197,30 +401,32 @@
                       </div>
 
                       <!-- Text input-->
-                      <label class="col-sm-12 label-category">College Information</label>
+                     
                       <div class="form-group">
-                          <label class="col-sm-3 control-label" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <div class="col-sm-9" style = "padding-top: 7px;">
-                            <input type="radio" name="degreeLevel" id="bachelor">&nbsp;&nbsp;Bachelor's Degree</input>
+                          <label class="col-sm-12 label-category">College Information</label>
+                          <label class="col-sm-2" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div class="col-sm-10" style = "padding-top: 7px; margin-botton: 2px;">
+                            <input type="radio" name="degreeLevel" id="bachelor">&nbsp;&nbsp;Bachelor's Degree
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree</input>
+                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree</input>
+                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree
+							<br>
                             <label id="degreeLevelError" class="label-error"></label>
                         </div>
-
+						
                       </div>
-
+						
                     <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">ID Number*</label>
-                        <div class="col-sm-3">
+                      <div class="form-group padding-top: 7px;">
+                        <label class="col-sm-2" for="textinput">ID Number*</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="ID Number (Optional)" class="form-control" name="IDNumber">
                           <label id="IDNumberError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-3 control-label" for="textinput">Degree Program</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2" for="textinput">Degree Program</label>
+                        <div class="col-sm-4">
                           <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degree">
                           <label id="degreeError" class="label-error"></label>
                         </div>
@@ -228,12 +434,12 @@
 
                       <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Graduate?</label>
+                        <label class="col-sm-2" for="textinput">Graduate?</label>
                         <div class="col-sm-9">
                             <div class = "col-sm-5">
-                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last: </input>
+                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last: 
                             </div>
-                            <div class = "col-sm-7">
+                            <div class = "col-sm-4">
                                 <input class="form-control" name="graduateDate" type="date">
                             </div>
                             <label id="graduateDateError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
@@ -243,15 +449,15 @@
 
                     <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput"></label>
+                        <label class="col-sm-2" for="textinput"></label>
                         <div class="col-sm-9">
                             <div class = "col-sm-5">
-                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on </input>
+                                <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on
                             </div>
-                            <div class = "col-sm-7">
-                                <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 100px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">   Term, A.Y &nbsp;&nbsp;
-                                <input type="text" placeholder="14" class="form-control" style = "width: 50px; display: inline-block;" name="lastTermStart" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                                - <input type="text" placeholder="15" class="form-control" style = "width: 50px; display: inline-block" name="lastTermEnd" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <div class = "col-sm-6">
+                                <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 50px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">   Term, A.Y &nbsp;&nbsp;
+                                <input type="text" placeholder="14" class="form-control" style = "width: 30px; display: inline-block;" name="lastTermStart" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                - <input type="text" placeholder="15" class="form-control" style = "width: 30px; display: inline-block" name="lastTermEnd" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                 <label id="lastTermError" class="label-error"></label>
                             </div>
                         </div>
@@ -259,29 +465,24 @@
 
                      <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput"></label>
-                        <div class="col-sm-9">
-                            <div class = "col-sm-5">
-
-                            </div>
-                            <div class = "col-sm-7">
-                                Year Level &nbsp;&nbsp; <input type="radio" id ="firstYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st</input> &nbsp;&nbsp;<input type="radio" id="secondYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd</input>&nbsp;&nbsp;
-                                <input type="radio" id= "thirdYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd</input>&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th</input>
-
+                        <label class="col-sm-2" for="textinput">Year Level</label>
+                            <div class = "col-sm-10">
+                                <input type="radio" id ="firstYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st &nbsp;&nbsp;
+								<input type="radio" id="secondYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd&nbsp;&nbsp;
+                                <input type="radio" id= "thirdYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th
                             </div>
                             <label id="yearLevelError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
-                        </div>
                       </div>
 
                     <!-- Text input-->
                       <div class="form-group">
-                          <label class="col-sm-3 control-label" for="textinput">Admitted as</label>
+                          <label class="col-sm-2" for="textinput">Admitted as</label>
                         <div class="col-sm-9" style = "padding-top: 7px;">
-                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student</input>
+                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee</input>
+                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee</input>
+                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee
                             <br>
                               <label id="admissionError" class="label-error"></label>
                         </div>
@@ -293,7 +494,7 @@
 
                     <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Previous School</label>
+                        <label class="col-sm-2" for="textinput">Previous School</label>
                         <div class="col-sm-9">
                           <input type="text" placeholder="Last School Attended (Previous to DLSU)" class="form-control" name="lastSchool">
                           <label id="lastSchoolError" class="label-error"></label>
@@ -302,13 +503,13 @@
 
                     <!-- Text input-->
                       <div class="form-group">
-                        <label class="col-sm-3 control-label" for="textinput">Year Admitted</label>
+                        <label class="col-sm-2" for="textinput">Year Admitted</label>
                         <div class="col-sm-3">
                           <input type="text" placeholder="e.g 2014, 2015" class="form-control" name="admissionYear">
                           <label id="admissionYearError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-3 control-label" for="textinput">Campus Attended</label>
+                        <label class="col-sm-3" for="textinput">Campus Attended</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="campusAttended">
                                 <option value="">Select Campus</option>
@@ -320,79 +521,23 @@
                             <label id="campusAttendedError" class="label-error"></label>
                         </div>
                       </div>
-                    </fieldset>
+					  
+					  <div class="line-separator"></div>
+				
+				<div class="form-group">
+				<a href="index.html"><button type="button" class="btn" style="background-color: #5cb85c; color: white; float: left">
+					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back</button></a>
+					
+			 	<button type="submit" onsubmit="return validateForm()" class="btn" style="background-color: #5cb85c; color: white; float: right">
+					  Proceed to Checkout <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+                    </div>
+				</fieldset>
+					</form>
                    <!-- Academic Information End -->
-                    <br>
-                   <!-- Mailing Information Start -->
-                    <fieldset>
-                      <!-- Form Name -->
-                      <legend>Mailing Information</legend>
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label" for="textinput">Address</label>
-                                <div class="col-sm-10">
-                                  <input type="text" placeholder="Address" class="form-control" name="mailingAddress">
-                                  <label id="mailingAddressError" class="label-error"></label>
-                                </div>
-                              </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="textinput">Street</label>
-                                <div class="col-sm-4">
-                                  <input type="text" placeholder="Street" class="form-control" name="mailingStreet">
-                                  <label id="mailingStreetError" class="label-error"></label>
-                                </div>
-                                <label class="col-sm-2 control-label" for="textinput">Zip code</label>
-                                <div class="col-sm-4">
-                                  <input type="text" placeholder="Zip Code" class="form-control" name="mailingZipCode">
-                                  <label id="mailingZipCodeError" class="label-error"></label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label" for="textinput">Area</label>
-                                <div class="col-sm-3">
-                                  <select class="form-control" id="mailingArea">
-                                    <option value ="">Select Area</option>
-                                    <option value ="Africa">Africa</option>
-                                    <option value = "Australia">Australia</option>
-                                    <option value ="Brunei">Brunei</option>
-                                    <option value = "Canada">Canada</option>
-                                    <option value = "Europe">Europe</option>
-                                    <option value = "Fiji Island">Fiji Island</option>
-                                    <option value = "Guam">Guam</option>
-                                    <option value = "Hongkong/Singapore">Hongkong/Singapore</option>
-                                    <option value = "Indonesia/Malaysia/Taiwan/Thailand">Indonesia/Malaysia/Taiwan/Thailand</option>
-                                    <option value = "Japan">Japan</option>
-                                    <option value = "Luzon">Luzon</option>
-                                    <option value = "Metro Manila">Metro Manila</option>
-                                    <option value = "Mexico City">Mexico City</option>
-                                    <option value = "Middle East">Middle East</option>
-                                    <option value = "Mindanao">Mindanao</option>
-                                    <option value = "New Zealand">New Zealand</option>
-                                    <option value = "Papua New Guinea">Papua New Guinea</option>
-                                    <option value = "South America">South America</option>
-                                    <option value = "USA">USA</option>
-                                    <option value = "Vietnam">Vietnam</option>
-                                    <option value = "Visayas">Visayas</option>
-                                </select>
-                                <label id="mailingAreaError" class="label-error"></label>
-                                </div>
-                                <label class="col-sm-1 col-sm-offset-2 control-label" for="textinput">City</label>
-                                <div class="col-sm-4">
-                                  <input type="text" placeholder="City" class="form-control" name="mailingCity">
-                                  <label id="mailingCityError" class="label-error"></label>
-                                </div>
-                              </div>
-                        <br>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                              <div class="pull-right">
-                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;&nbsp;Back</button>
-                                <button type="submit" class="btn btn-success" onsubmit="return validateForm()" style = "width: 150px;">Register</button>
-                              </div>
-                            </div>
-                          </div>
-                    </fieldset>
-                  </form> <!-- Mailing Information End -->
-                </div><!-- /.col-lg-12 -->
+               
+        
+				
+                            </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
         </div>
 
@@ -427,7 +572,6 @@
               var citizenship = document.forms["registerForm"]["citizenship"].value;
               var birthPlace = document.forms["registerForm"]["birthPlace"].value;
               var address = document.forms["registerForm"]["address"].value;
-              var street = document.forms["registerForm"]["street"].value;
               var city = document.forms["registerForm"]["city"].value;
               var country = document.forms["registerForm"]["country"].value;
               var zipCode = document.forms["registerForm"]["zipCode"].value;
@@ -447,11 +591,6 @@
               var lastSchool =  document.forms["registerForm"]["lastSchool"].value;
               var admissionYear =  document.forms["registerForm"]["admissionYear"].value;
               var campusAttended =  document.forms["registerForm"]["campusAttended"].value;
-              var mailingAddress = document.forms["registerForm"]["mailingAddress"].value;
-              var mailingCity = document.forms["registerForm"]["mailingCity"].value;
-              var mailingStreet = document.forms["registerForm"]["mailingStreet"].value;
-              var mailingZipCode = document.forms["registerForm"]["mailingZipCode"].value;
-              var mailingArea = document.forms["registerForm"]["mailingArea"].value;
               var isValid = true;
 
               if (lastName == "") {
@@ -486,10 +625,7 @@
                 document.getElementById('addressError').innerHTML = "Please Enter your Address";
                 isValid= false;
               }
-              if(street==""){
-                document.getElementById('streetError').innerHTML = "Please Enter your street";
-                isValid= false;
-              }
+             
               if(city==""){
                 document.getElementById('cityError').innerHTML = "Please enter your City";
                 isValid= false;
@@ -586,29 +722,10 @@
                 document.getElementById('campusAttendedError').innerHTML = "Please Select Campus Attended";
                  isValid = false;
               }
-              if(mailingAddress ==""){
-                document.getElementById('mailingAddressError').innerHTML = "Please Enter Mailing Address";
-                 isValid = false;
-              }
-              if(mailingCity ==""){
-                document.getElementById('mailingCityError').innerHTML = "Please Enter Mailing City";
-                 isValid = false;
-              }
-              if(mailingStreet ==""){
-                document.getElementById('mailingStreetError').innerHTML = "Please Enter Mailing Street";
-                 isValid = false;
-              }
-              if(mailingZipCode ==""){
-                document.getElementById('mailingZipCodeError').innerHTML = "Please Enter Mailing Zip Code";
-                 isValid = false;
-              }
-              if(mailingArea == ""){
-                document.getElementById('mailingAreaError').innerHTML = "Please Enter Mailing Area";
-                 isValid = false;
-              }
+
               return isValid;
             }
         </script>
-
-    </body>
+		
+	</body>
 </html>
