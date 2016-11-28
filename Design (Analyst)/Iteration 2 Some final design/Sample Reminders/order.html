@@ -109,11 +109,11 @@
                         </li>
                     </ul>
                         
-                        <ul class="event-list" id="undergradDocu">
+                        <div id="undergradDocu">
                              <!-- TOR Documents -->
-<!--                            <h2 class="docuGroup">  </h2>-->
-                            <a href="#undergradTOR" class="docuGroup" data-toggle="collapse">Transcript of Records</a>
-  							<div id="undergradTOR" class="collapse">
+							
+                            <button class="docuGroup" id="undergradTOR">Transcript of Records</button>
+						<ul class="event-list" id="TORdocu">
                             <li class = "item">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
                                     <h2 class="title" style = "font-size: 18px;">Official Transcript of Records for Employment</h2>
@@ -158,12 +158,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li> <!-- End Item -->	
-							</div>                      
+                            </li> <!-- End Item -->	 
+							</ul>
                              <!-- Certification Documents -->
-                            <h2 class="docuGroup"> Certification </h2>
-                            
-                            <li class = "item">	<!-- Start Item -->			
+							<button class="docuGroup" id="undergradCert">Certification</button>
+                            <ul class="event-list" id="UGCERTdocu">
+                            <li class = "item" id="CD">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
                                     <h2 class="title" style = "font-size: 18px;">Ranking by Degree Program</h2><br>
                                     <div> 
@@ -193,7 +193,7 @@
                                 </div>
                             </li> <!-- End Item -->	
                             
-                            <li class = "item">	<!-- Start Item -->			
+                            <li class = "item" id="CD">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
                                     <h2 class="title" style = "font-size: 18px;">Dean's List</h2><br>
                                     <div> 
@@ -207,43 +207,14 @@
                                     </div>
                                 </div>
                             </li> <!-- End Item -->
-                        </ul> <!-- End of Documents Avail to Undergrad studies ONLY -->
-                    
-                        <ul class="event-list" id="graduateDocu">    <!-- Start of Graduate Studies Documents-->
-							<h2 class="docuGroup"> Transcript of Records </h2>
-                            <li class = "item">	<!-- Start Item -->			
-                                <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                                    <h2 class="title" style = "font-size: 18px;">Official Transcript of Records for Employment</h2><br>
-                                    <div> 
-                                        <div class = "col-xs-6" style = "border-right: 1px solid #bdbdbd;">
-                                            <p class="desc"><span style = "font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                            <p class="desc"><span style = "font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                                        </div>
-                                        <div class = "col-xs-6">
-                                            <button class = "btn btn-default order-button" style = "width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> <!-- End Item -->	
-
-                            <li class = "item">	<!-- Start Item -->			
-                                <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                                    <h2 class="title" style = "font-size: 18px;">Official Transcript of Records for Evaluation</h2><br>
-                                    <div> 
-                                        <div class = "col-xs-6" style = "border-right: 1px solid #bdbdbd;">
-                                            <p class="desc"><span style = "font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                            <p class="desc"><span style = "font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                                        </div>
-                                        <div class = "col-xs-6">
-                                            <button class = "btn btn-default order-button" style = "width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> <!-- End Item -->	
-                            
-                             <!-- Certification Documents -->
-                            <h2 class="docuGroup"> Certification </h2>
-                            
+						</ul>
+						</div>
+                         <!-- End of Documents Avail to Undergrad studies ONLY -->
+						
+						<div id="graduateDocu">	<!-- Start of Graduate Studies Documents-->
+                             <!-- Certification Documents -->     
+							<button class="docuGroup" id="graduateCert">Certification</button>
+                            <ul class="event-list" id="GCERTdocu">
                             <li class = "item">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
                                     <h2 class="title" style = "font-size: 18px;">Completion of Academic Units</h2><br>
@@ -275,58 +246,10 @@
                                 </div>
                             </li> <!-- End Item -->	
                         
-                        </ul>
+							</ul>
+						</div>
                         
                         
-                        <ul class="event-list" id="bothStudies"> <!-- Start of Documents Avail to both studies -->
-                            <li class = "item">	<!-- Start Item -->			
-                                <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                                    <h2 class="title" style = "font-size: 18px;">Trimestral Calendar</h2><br>
-                                    <div> 
-                                        <div class = "col-xs-6" style = "border-right: 1px solid #bdbdbd;">
-                                            <p class="desc"><span style = "font-weight: 500;">Regular Price:</span> &nbsp;110.00</p>
-                                            <p class="desc"><span style = "font-weight: 500;">Express Price:</span> &nbsp;220.00</p>
-                                        </div>
-                                        <div class = "col-xs-6">
-                                            <button class = "btn btn-default order-button" style = "width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> <!-- End Item -->	
-
-                            <li class = "item">	<!-- Start Item -->			
-                                <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                                    <h2 class="title" style = "font-size: 18px;">Cumulative GPA</h2><br>
-                                    <div> 
-                                        <div class = "col-xs-6" style = "border-right: 1px solid #bdbdbd;">
-                                            <p class="desc"><span style = "font-weight: 500;">Regular Price:</span> &nbsp;110.00</p>
-                                            <p class="desc"><span style = "font-weight: 500;">Express Price:</span> &nbsp;220.00</p>
-                                        </div>
-                                        <div class = "col-xs-6">
-                                            <button class = "btn btn-default order-button" style = "width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> <!-- End Item -->	
-                            
-                            <li class = "item">	<!-- Start Item -->			
-                                <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                                    <h2 class="title" style = "font-size: 18px;">Enrollment</h2><br>
-                                    <div> 
-                                        <div class = "col-xs-6" style = "border-right: 1px solid #bdbdbd;">
-                                            <p class="desc"><span style = "font-weight: 500;">Regular Price:</span> &nbsp;110.00</p>
-                                            <p class="desc"><span style = "font-weight: 500;">Express Price:</span> &nbsp;220.00</p>
-                                        </div>
-                                        <div class = "col-xs-6">
-                                            <button class = "btn btn-default order-button" style = "width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> <!-- End Item -->	
-                        </ul>
-                        
-                </div>
-            </div>
         </div>
 		
 						<!-- Modal -->
@@ -373,18 +296,37 @@
         <!-- JavaScript -->
         <script src="js/jquery-3.0.0.min.js"></script>
         <script src="js/bootstrap.js"></script>
-        
+    
+	<script>
+	$('#undergradTOR').click(function(){
+		$("#TORdocu").toggle();
+	});	
+	</script>
+	
+	<script>
+	$('#undergradCert').click(function(){
+		$("#UGCERTdocu").toggle();
+	});	
+	</script>
+	
+		<script>
+	$('#graduateCert').click(function(){
+		$("#GCERTdocu").toggle();
+	});	
+	</script>
     <script>
         $(document).ready(function(){
                 $("#undergradDocu").hide();
                 $("#graduateDocu").hide();
                 $("#bothStudies").hide();
+				$("#TORdocu").hide();
+				$("#UGCERTdocu").hide();
+				$("#GCERTdocu").hide();
             $('#degree').click(function() {
                 if(this.value == 'bachelor'){
                 $("#undergradDocu").show();
                 $("#bothStudies").show();
-                $("#graduateDocu").hide();
-                
+                $("#graduateDocu").hide();  
             }else if(this.value == 'master' || this.value == 'doctorate'){
                 $("#undergradDocu").hide();
                 $("#bothStudies").show();

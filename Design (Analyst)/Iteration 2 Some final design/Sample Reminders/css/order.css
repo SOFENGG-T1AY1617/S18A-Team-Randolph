@@ -56,6 +56,8 @@ button#shipping:focus, button#pickup:focus{
 	text-align: center;
 	color: white;
 	font-size: 20px;
+	width: 555px;
+	margin-bottom: 7px;
 }
 
 .logo {
