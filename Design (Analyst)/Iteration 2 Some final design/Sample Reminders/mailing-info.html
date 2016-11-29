@@ -90,7 +90,8 @@
             
                 <div id = "mailingAddress">
                     <div class = "row" id = "existingMform">
-                        <span style = "font-size: 16px;font-family: lato;">Choose Existing Mailing Address</span>
+					
+                        <input type="radio" name="mailing-info" value="currentAddress"><span style = "font-size: 16px;font-family: lato; margin: 15px;">Deliver to Current Address</span>
                         <div class="line-separator"></div><br>
                         
                         <form class="form-horizontal" role="form"> <!-- Start Existing Form -->
@@ -120,18 +121,12 @@
                                 
                               </div>
                                 
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                      <div class="pull-right">
-                                        <button type="submit" class="btn btn-success">Choose Address & Proceed</button>
-                                      </div>
-                                    </div>
-                                  </div>
                             </fieldset>
                           </form> <!-- End Existing Form -->
-                    </div>
-                    <span style = "font-size: 16px;font-family: lato;">Create New Mailing Address</span>
-                    <div class="line-separator"></div><br>
+						  
+						  <input type="radio" name="mailing-info" value="currentAddress"><span style = "font-size: 16px;font-family: lato; margin: 15px;">Deliver to Alternative Address</span>						
+						<div class="line-separator"></div><br>
+					
                     <div class="row" id = "newMform"> <!-- Form Start -->
                       <form class="form-horizontal" role="form"> 
                             <fieldset>
@@ -181,17 +176,11 @@
                                 </div>
                                 
                               </div>
-                                
-                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                      <div class="pull-right">
-                                        <button type="submit" class="btn btn-default">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Choose & Proceed</button>
-                                      </div>
-                                    </div>
-                                  </div>
                             </fieldset>
                           </form> 
+                    </div>
+					
+                     
                     </div><!-- /.row --> <!-- Form End -->
                 </div>
 				
@@ -203,7 +192,7 @@
 					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back</button></a>
 					
 			  <a href="checkout.html"><button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right">
-					  Proceed to Checkout <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
+					  Proceed to Next Step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
             </div>
         </div>
             
