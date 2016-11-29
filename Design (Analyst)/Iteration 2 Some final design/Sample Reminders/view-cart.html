@@ -55,13 +55,13 @@
                             <h4 class="list-group-item-heading stephead">Step 2</h4>
                             <p class="list-group-item-text">Mailing Info</p>
                         </a></li>
-                        <li class = "stepBtn"><a href="checkout.html">
+                        <li class = "active"><a href="view-cart.html">
                             <h4 class="list-group-item-heading stephead">Step 3</h4>
-                            <p class="list-group-item-text">Checkout</p>
+                            <p class="list-group-item-text">View Cart</p>
                         </a></li>
-                        <li class = "active"><a href="payment">
+                        <li class = "stepBtn"><a href="checkout.html">
                             <h4 class="list-group-item-heading stephead">Step 4</h4>
-                            <p class="list-group-item-text">Payment</p>
+                            <p class="list-group-item-text">Checkout</p>
                         </a></li>
                     </ul>
                 </div>
@@ -72,79 +72,13 @@
         <div class = "container item-list-cont" style = "margin-top: 170px;">   
             <div class="row">                
                 <div class="col-sm-10 col-md-8 stepHeader">
-                    <h3 class="text-label">Summary of Transaction</h3>
+                    <h3 class="text-label">Cart</h3>
                     <hr>
                     <br>
-                    
-                    <table class="table table-hover">
-                        <thead class="table-header" style="text-align: center">
-                            <tr><td colspan="2">Transaction Details</td></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Reference No.</strong></td>
-                                <td> 1165129647</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td> Hazel Anne Brosas </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Current Address </strong></td>
-                                <td> Block 7 Lot 4 Camella Homes Milan Sienna St. San Pedro, Laguna,   Philippines, 4023 </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Contact No.</strong></td>
-                                <td> 09281149348 </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Email</strong></td>
-                                <td> hazel_brosas@dlsu.edu.ph </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Place of Birth</strong></td>
-                                <td> Laguna </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <table class="table table-hover">
-                        <thead class="table-header" style="text-align: center">
-                            <tr><td colspan="2">Delivery Details</td></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Mailing Address</strong></td>
-                                <td> 6 Pluto St. Bricktown Subdivision Barangay Moonwalk, Paranaque, Philippines, 1700</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Delivery Area</strong></td>
-                                <td> Metro Manila </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Delivery Charge</strong></td>
-                                <td> Php 128.00 </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Processing Type</strong></td>
-                                <td> Regular Processing </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Date Due to the Courier</strong></td>
-                                <td> Dec 1 2016 </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Estimated Delivery Date</strong></td>
-                                <td> Dec 2 2016 </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
                     <table class="table table-hover">
                         <thead class="table-header">
                             <tr>
                                 <th>Product</th>
-                                <th></th>
                                 <th>Quantity</th>
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Total</th>
@@ -156,38 +90,55 @@
                                 <td class="col-sm-8 col-md-6">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h4 class="media-heading"><a href="#">Official Transcript of Records (for Employment for Graduates)</a></h4>
-                                        <h5 class="media-heading"> for degree <a href="#">Bachelor - BS CS</a></h5>
+                                        <h4 class="media-heading"><a href="#">Product name</a></h4>
+                                        <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                                        <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                                     </div>
                                 </div></td>
-                                <td></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>3</strong></td>
+                                <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                                </td>
                                 <td class="col-sm-1 col-md-1 text-center"><strong>P200.00</strong></td>
                                 <td class="col-sm-2 col-md-2 text-center"><strong>P600.00</strong></td>
-                                
+                                <td class="col-sm-1 col-md-1">
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </button></td>
                             </tr> <!-- End item -->
-                            
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
-                                <td width="20%"><h5>Total Delivery Cost<br>Total Document Cost</h5><h3>Total Cost</h3></td>
+                                <td width="20%"><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
                                 
-                                <td class="text-right"><h5><strong>P128.00<br>P600.00</strong></h5><h3>P728.00</h3></td>
+                                <td class="text-right"><h5><strong>P600.00<br>P128.00</strong></h5><h3>P31.53</h3></td>
                             </tr>
                         </tfoot>
                     </table>
-				
+					
+					
+                <h3 class="text-label">Delivery Information</h3>
+     				<hr><br>
+                	<p><b>Location:</b></p>
+						<select>
+						  <option value="mailing-address1">Block 7 Lot 4 Camella Homes Milan Sienna St. San Pedro, Laguna,   Philippines, 4023</option>
+						  <option value="mailing-address2">10 Pluto St. Bricktown Subdivision Barangay Moonwalk, Paranaque, Philippines, 1700</option>
+						</select>
+        		 
+					<br><br>
 				<div>
 					<a href="mailing-info.html"><button type="submit" class="btn" style="color: white; float: left; background-color: #5cb85c;">
 					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back</button></a>
 					
 					
-			  	<a href="done.html"><button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px">
-					  Proceed to Payment <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
+			  	<a href="payment.html"><button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px">
+					  Proceed to Next Step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
 					<span>&nbsp; &nbsp;</span>
+				<a href="order.html"><button type="button" class="btn btn-default" style="float: right">
+						<span class="glyphicon glyphicon-shopping-cart"></span> Add other items
+					</button></a>
 					
 				</div>
 					
