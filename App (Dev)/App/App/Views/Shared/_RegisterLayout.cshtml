@@ -21,139 +21,201 @@
     <link href="~/Content/register.css" rel="stylesheet">
     <script src="~/Scripts/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->   
 </head>
-<body style = "padding-bottom: 20px;">
-
-
-
-    @using (Html.BeginForm("register", "Transaction", FormMethod.Post))
-    {
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+<body style="padding-bottom: 20px;">
+    <nav class="navbar-fixed-top">
+        <div class="container-fluid" style="padding-left: 25px; padding-bottom: 3px; background-color: #fefefe; border-bottom: 1px solid #e0e0e0;">
+            <a href="/">
+                <div class="nav navbar-left navleft" style="margin-top: 5px; height: 60px;">
+                    <img src="~/Content/res/logo.png" class="navbar-brand img-responsive logo" />
+                    <div class="navbar-text title" style="color: #00703c; font-family: Lato; font-weight: 500; margin-top: 8px; letter-spacing: 0.5px;">Online Request for Documents<br><p style="font-size: 14px;">Office of the Registrar</p></div>
                 </div>
-                <input type="text" name="userID" class="form-control formstyle" id="userID" placeholder="userID" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="lastName" class="form-control formstyle" id="lastName" placeholder="last" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="firstName" class="form-control formstyle" id="firstName" placeholder="first" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                @*4*@
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="middleName" class="form-control formstyle" id="middleName" placeholder="middle" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="gender" class="form-control formstyle" id="gender" placeholder="gender" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="number" name="birthYear" class="form-control formstyle" id="birthYar" placeholder="year" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="number" name="birthMonth" class="form-control formstyle" id="birthMonth" placeholder="month" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                @*4*@
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="number" name="birthDay" class="form-control formstyle" id="birthDay" placeholder="day" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="citizenship" class="form-control formstyle" id="citizenship" placeholder="citizen" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="placeOfBirth" class="form-control formstyle" id="placeOfBirth" placeholder="place" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="currentAddress" class="form-control formstyle" id="currentAddress" placeholder="address" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                @*4*@
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="phoneNo" class="form-control formstyle" id="phoneNo" placeholder="phone" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="alternatePhoneNo" class="form-control formstyle" id="alternatePhoneNo" placeholder="altPhone" value="" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="email" class="form-control formstyle" id="email" placeholder="email" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="text" name="alternateEmail" class="form-control formstyle" id="alternateEmail" placeholder="altEmail" value="" style="height: 40px;">
-            </div>
-            <br>
-            <div class="input-group">
-                @*4*@
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </div>
-                <input type="Password" name="password" class="form-control formstyle" id="password" placeholder="Password" style="height: 40px;">
-            </div>
+            </a>
         </div>
-        <center>
-            <a href="/" class="formstyle">Forgot Password?</a>
-            @RenderBody()
-        </center>
-                    <input type="submit" value="Log in" class="btn btn-primary btn-block formstyle" style="background-color: #00703c; margin-bottom: 10px;" />
-    }
+    </nav>
+
+    @RenderBody()
 
 
     <!-- Javascript -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        function addNow() {
+            nowDate = moment().tz("Europe/London").format('YYYY-MM-DD');
+            nowTime = moment().tz("Europe/London").format('HH:mm:ss');
+            document.getElementById('registration-date').value = nowDate;
+            document.getElementById('registration-time').value = nowTime;
+            set = setTimeout(function () { addNow(); }, 1000);
+        }
+
+        function stopNow() {
+            clearTimeout(set);
+        }
+
+        function validateForm() {
+
+            var lastName = document.forms["registerForm"]["lastName"].value;
+            var firstName = document.forms["registerForm"]["firstName"].value;
+            var middleName = document.forms["registerForm"]["middleName"].value;
+            var birthday = document.forms["registerForm"]["birthday"].value;
+            var citizenship = document.forms["registerForm"]["citizenship"].value;
+            var birthPlace = document.forms["registerForm"]["birthPlace"].value;
+            var address = document.forms["registerForm"]["address"].value;
+            var city = document.forms["registerForm"]["city"].value;
+            var country = document.forms["registerForm"]["country"].value;
+            var zipCode = document.forms["registerForm"]["zipCode"].value;
+            var phoneNumber = document.forms["registerForm"]["phoneNumber"].value;
+            var altPhoneNumber = document.forms["registerForm"]["altPhoneNumber"].value;
+            var email = document.forms["registerForm"]["email"].value;
+            var altEmail = document.forms["registerForm"]["altEmail"].value;
+            var password = document.forms["registerForm"]["password"].value;
+            var rePassword = document.forms["registerForm"]["rePassword"].value;
+            var highSchool = document.forms["registerForm"]["highSchool"].value;
+            var IDNumber = document.forms["registerForm"]["IDNumber"].value;
+            var degree = document.forms["registerForm"]["degree"].value;
+            var graduateDate = document.forms["registerForm"]["graduateDate"].value;
+            var lastTerm = document.forms["registerForm"]["lastTerm"].value;
+            var lastTermStart = document.forms["registerForm"]["lastTermStart"].value;
+            var lastTermEnd = document.forms["registerForm"]["lastTermEnd"].value;
+            var lastSchool = document.forms["registerForm"]["lastSchool"].value;
+            var admissionYear = document.forms["registerForm"]["admissionYear"].value;
+            var campusAttended = document.forms["registerForm"]["campusAttended"].value;
+            var isValid = true;
+
+            if (lastName == "") {
+                document.getElementById('lastNameError').innerHTML = "Please Enter your Last Name";
+                isValid = false;
+            }
+            if (firstName == "") {
+                document.getElementById('firstNameError').innerHTML = "Please Enter your First Name";
+                isValid = false;
+            }
+            if (middleName == "") {
+                document.getElementById('middleNameError').innerHTML = "Please Enter your Midddle Name";
+                isValid = false;
+            }
+            if (!document.getElementById('genderMale').checked && !document.getElementById('genderFemale').checked) {
+                document.getElementById('genderError').innerHTML = "Please Select your Gender";
+                isValid = false;
+            }
+            if (birthday == "") {
+                document.getElementById('birthdayError').innerHTML = "Please Select your Birthday";
+                isValid = false;
+            }
+            if (citizenship == "") {
+                document.getElementById('citizenshipError').innerHTML = "Please enter your Citizenship";
+                isValid = false;
+            }
+            if (birthPlace == "") {
+                document.getElementById('birthPlaceError').innerHTML = "Please Select your Birthplace";
+                isValid = false;
+            }
+            if (address == "") {
+                document.getElementById('addressError').innerHTML = "Please Enter your Address";
+                isValid = false;
+            }
+
+            if (city == "") {
+                document.getElementById('cityError').innerHTML = "Please enter your City";
+                isValid = false;
+            }
+            if (country == "") {
+                document.getElementById('countryError').innerHTML = "Please enter your Country";
+                isValid = false;
+            }
+            if (zipCode == "") {
+                document.getElementById('zipCodeError').innerHTML = "Please enter your Zip Code";
+                isValid = false;
+            }
+            if (phoneNumber == "" || phoneNumber.substring(0, 1) != "09") {
+                document.getElementById('phoneNumberError').innerHTML = "Please enter a valid Phone Number";
+                isValid = false;
+            }
+            if (altPhoneNumber == phoneNumber && altPhoneNumber != "" && phoneNumber.substring(0, 1) != "09") {
+                if (phoneNumber.substring(0, 1) != "09") {
+                    document.getElementById('altPhoneNumberError').innerHTML = "Please enter a valid Number";
+                } else {
+                    document.getElementById('altPhoneNumberError').innerHTML = "Please enter a different Number";
+                }
+            }
+            var isEmail = validateEmail(email);
+            if (email == "" || !isEmail) {
+                document.getElementById('emailError').innerHTML = "Please enter a Valid Email";
+                isValid = false;
+            }
+            isEmail = validateEmail(altEmail);
+            if ((altEmail == email && altEmail != "") || !isEmail) {
+                if (!validateEmail(altEmail) && altEmail != "") {
+                    document.getElementById('altEmailError').innerHTML = "Please enter a valid Email";
+                } else if (altEmail != "") {
+                    document.getElementById('altEmailError').innerHTML = "Please enter a different Email";
+                }
+                isValid = false;
+            }
+            var length = password.length;
+            if (password == "" || length < 6) {
+                if (password == "") {
+                    document.getElementById('passwordError').innerHTML = "Please enter a password";
+                } else {
+                    document.getElementById('passwordError').innerHTML = "Password must at least be 6 characters";
+                }
+                isValid = false;
+            }
+            if (rePassword != password) {
+                document.getElementById('rePasswordError').innerHTML = "Password does not match";
+                isValid = false;
+            }
+
+            if (highSchool == "") {
+                document.getElementById('highSchoolError').innerHTML = "Please enter your HighSchool";
+                isValid = false;
+            }
+            if (!document.getElementById('bachelor').checked && !document.getElementById('masteral').checked && !document.getElementById('doctorate').checked) {
+                document.getElementById('degreeLevelError').innerHTML = "Please Select your Degree Level";
+                isValid = false;
+            }
+            if (document.getElementById('notGraduated').checked && !document.getElementById('firstYear').checked && !document.getElementById('secondYear').checked && !document.getElementById('thirdYear').checked
+                && !document.getElementById('fourthYear').checked) {
+                document.getElementById('yearLevelError').innerHTML = "Please Select your Year Level";
+                isValid = false;
+            }
+            if (document.getElementById('notGraduated').checked && (lastTerm == "" || lastTermStart == "" || lastTermEnd == "")) {
+                document.getElementById('lastTermError').innerHTML = "Please Enter your recent Term";
+                isValid = false;
+            }
+            if (document.getElementById('isGraduated').checked && graduateDate == "") {
+                document.getElementById('graduateDateError').innerHTML = "Please Enter Date Graduated";
+                isValid = false;
+            }
+            if (degree == "") {
+                document.getElementById('degreeError').innerHTML = "Please Enter your degree";
+                isValid = false;
+            }
+            if (IDNumber == "") {
+                document.getElementById('IDNumberError').innerHTML = "Please Enter your ID Number";
+                isValid = false;
+            }
+            if (!document.getElementById('newStudent').checked && !document.getElementById('transferee').checked && !document.getElementById('crossEnrollee').checked) {
+                document.getElementById('admissionError').innerHTML = "Please Select your Admission";
+                isValid = false;
+            }
+            if (lastSchool == "") {
+                document.getElementById('lastSchoolError').innerHTML = "Please Enter your Last School Attended";
+                isValid = false;
+            }
+            if (admissionYear == "") {
+                document.getElementById('admissionYearError').innerHTML = "Please Enter year Admitted";
+                isValid = false;
+            }
+            if (campusAttended == "") {
+                document.getElementById('campusAttendedError').innerHTML = "Please Select Campus Attended";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
 </body>
+
 </html>

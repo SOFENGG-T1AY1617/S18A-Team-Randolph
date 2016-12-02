@@ -117,6 +117,7 @@
     <Content Include="Content\normalize.css" />
     <Content Include="Content\order.css" />
     <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\register.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\res\left.jpg" />
     <Content Include="Content\res\logo.png" />
@@ -182,7 +183,6 @@
     <Content Include="Views\Transaction\order.cshtml" />
     <Content Include="Views\Transaction\cart.cshtml" />
     <Content Include="Views\Transaction\info.cshtml" />
-    <Content Include="Views\Transaction\confirm.cshtml" />
     <Content Include="Views\Transaction\success.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
