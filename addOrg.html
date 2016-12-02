@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="padding: 3%">
+        <script type="text/javascript">
+            function addFromDropdowns(dropdown1, dropdown2, dropdown3, dropdown4) {
+                var list = document.getElementById('list-orgs');
+                var li = document.createElement('li');
+                var inputs = [
+                    document.getElementById(dropdown1).value,
+                    document.getElementById(dropdown2).value,
+                    document.getElementById(dropdown3).value,
+                    document.getElementById(dropdown4).value
+                ];
+
+                /*===== sample: G & W (2014-2016): Staffer =====*/
+                var listItem = inputs[0] + " (" + inputs[1] + "-" + inputs[2] + ")" + ": " + inputs[3];
+                li.innerHTML = listItem;
+
+                var button = document.createElement('button');
+                button.innerHTML = "X";
+                button.onclick =
+                        function () {
+                            li.remove();
+                        };
+                li.appendChild(button);
+
+                list.appendChild(li);
+            }
+            
+        </script>
+        
+        <select id="dropdown-orgs">
+            <option>G & W</option>
+            <option>GGFM</option>
+            <option>MM</option>
+        </select>
+        <select id="dropdown-year1">
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+        </select>
+        <select id="dropdown-year2">
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+        </select>
+        <select id="dropdown-position">
+            <option>Non-Technical Staff</option>
+            <option>Technical Staff</option>
+            <option>Executive</option>
+        </select>
+        <button onclick="addFromDropdowns('dropdown-orgs', 'dropdown-year1', 'dropdown-year2', 'dropdown-position')">ADD</button>
+        <ul id="list-orgs">
+
+        </ul>
+    </body>
+</html>
