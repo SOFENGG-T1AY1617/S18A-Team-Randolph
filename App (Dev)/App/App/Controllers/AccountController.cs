@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using App.Models;
+using System.Web.Routing;
 
 namespace App.Controllers
 {
@@ -30,11 +31,6 @@ namespace App.Controllers
 
         public ActionResult regerror()
         {
-            string message = "";
-            // put code for validation (like, wrong email address, etc)
-
-
-            ViewBag.message = message;
             return View();
         }
 
@@ -46,10 +42,8 @@ namespace App.Controllers
         [HttpPost]
         public ActionResult verify(string email, string password)
         {
-            //Console.WriteLine(email, password);
             ViewBag.String = "email: " + email + " password: " + password;
-
-            //ViewData["string"] = "email " + email + " password " + password;
+            
 
             var acc = manager.getAccount(email, password);
 
@@ -60,44 +54,152 @@ namespace App.Controllers
             }
             else
             {
-                //ViewBag.exist = true;
-                //ViewBag.String = "Account exists!";
-                // ViewBag.acc = acc;
                 Session["user"] = acc;
                 return RedirectToAction("order", "Transaction");
 
             }
-
-            //RedirectToRoute("Transaction/Step1");
         }
 
         [HttpPost]
-        public ActionResult save(int userID, string lastName, string firstName, string middleName, char gender, int birthYear,
-                                     int birthMonth, int birthDay, string citizenship, string placeOfBirth, string currentAddress,
-                                     string phoneNo, string alternatePhoneNo, string email, string alternateEmail, string password)
+        public ActionResult save(string idNumber, string lastName, string firstName, string middleName, string gender, string birthday, string citizenship, 
+            string birthPlace, string address,string phoneNumber, string altPhoneNumber, string email, string altEmail, string password, string rePassword)
         {
+            int errorCtr = 0;
+
             Account acc = new Account();
 
-            acc.userID = userID;
-            acc.lastName = lastName;
-            acc.firstName = firstName;
-            acc.middleName = middleName;
-            acc.gender = gender;
-            acc.birthYear = birthYear;
-            acc.birthMonth = birthMonth;
-            acc.birthDay = birthDay;
-            acc.citizenship = citizenship;
-            acc.email = email;
-            acc.alternateEmail = alternateEmail;
-            acc.password = password;
-            acc.placeOfBirth = placeOfBirth;
-            acc.currentAddress = currentAddress;
-            acc.phoneNo = phoneNo;
-            acc.alternatePhoneNo = alternatePhoneNo;
+            if (!(idNumber == ""))
+            {
+                acc.idNumber = idNumber;
+            }
 
-            manager.saveAccount(acc);
+            if(!(lastName == ""))
+            {
+                acc.lastName = lastName;
+            } else
+            {
+                errorCtr++;
+                ViewBag.lastNameError = "Please enter your last name";
+            }
+            
+            if(!(firstName == ""))
+            {
+                acc.firstName = firstName;
+            } else
+            {
+                errorCtr++;
+                ViewBag.firstNameError = "Please enter your first name";
+            }
+            
+            if(!(middleName == ""))
+            {
+                acc.middleName = middleName;
+            } else
+            {
+                errorCtr++;
+                ViewBag.middleNameError = "Please enter your middle name";
+            }
 
-            return RedirectToAction("Index", "Home");
+            if (!(gender == ""))
+            {
+                if (gender == "Male")
+                    acc.gender = 'M';
+                else acc.gender = 'F';
+            } else
+            {
+                errorCtr++;
+                ViewBag.genderError = "Please select your gender";
+            }
+
+            if(!(birthday == ""))
+            {
+                string year = birthday[0] + "" + birthday[1] + "" + birthday[2] + "" + birthday[3] + "";
+                string month = birthday[5] + "" + birthday[6] + "";
+                string day = birthday[8] + "" + birthday[9] + "";
+
+                acc.birthYear = Int32.Parse(year);
+                acc.birthMonth = Int32.Parse(month);
+                acc.birthDay = Int32.Parse(day);
+            } else
+            {
+                errorCtr++;
+                ViewBag.birthdayError = "Please select your birthday";
+            }
+
+            if (!(citizenship == ""))
+            {
+                acc.citizenship = citizenship;
+            } else
+            {
+                errorCtr++;
+                ViewBag.citizenshipError = "Please select your citizenship";
+            }
+
+            if (!(email == ""))
+            {
+                acc.email = email;
+            } else
+            {
+                errorCtr++;
+                ViewBag.emailError = "Please enter your email address";
+            }
+
+            acc.alternateEmail = altEmail;
+
+            if (!(password == ""))
+            {
+                if (password == rePassword)
+                {
+                    acc.password = password;
+                } else
+                {
+                    errorCtr++;
+                    ViewBag.passwordError = "Password do not match";
+                }
+            } else
+            {
+                errorCtr++;
+                ViewBag.passwordError = "Please enter your password";
+            }
+
+            if (!(birthPlace == ""))
+            {
+                acc.placeOfBirth = birthPlace;
+            } else
+            {
+                errorCtr++;
+                ViewBag.birthPlaceError = "Please enter your birthplace";
+            }
+            
+            if (!(address == ""))
+            {
+                acc.currentAddress = address;
+            } else
+            {
+                errorCtr++;
+                ViewBag.addressError = "Please enter your address";
+            }
+            
+            if (!(phoneNumber == ""))
+            {
+                acc.phoneNo = phoneNumber;
+            } else
+            {
+                errorCtr++;
+                ViewBag.phoneNumError = "Please enter your phone number";
+            }
+
+            acc.alternatePhoneNo = altPhoneNumber;    
+            
+            if (errorCtr == 0)
+            {
+                acc = manager.saveAccount(acc);
+                Session["user"] = acc;
+                return RedirectToAction("Order", "Transaction"); // go to next step
+            } else
+            {
+                return View("register", acc);
+            }
         }
     }
 }
