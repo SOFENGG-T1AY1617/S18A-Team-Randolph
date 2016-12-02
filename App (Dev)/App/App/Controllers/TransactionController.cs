@@ -43,14 +43,6 @@ namespace App.Controllers
             return View();
         }
 
-        public ActionResult cart()
-        {
-            // confirm
-            var user = Session["user"] as Account;
-            ViewBag.name = user.firstName;
-            return View();
-        }
-
         public ActionResult success()
         {
             // checkout and done
