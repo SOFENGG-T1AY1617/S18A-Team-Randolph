@@ -112,7 +112,7 @@
                         <div id="undergradDocu">
                              <!-- TOR Documents -->
 							
-                            <button class="docuGroup" id="undergradTOR">Transcript of Records</button>
+                            <button class="docuGroup" id="undergradTOR">Transcript of Records<i style="float:right;" class="fa fa-sort-desc" aria-hidden="true"></i></button>
 						<ul class="event-list" id="TORdocu">
                             <li class = "item">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
@@ -161,7 +161,7 @@
                             </li> <!-- End Item -->	 
 							</ul>
                              <!-- Certification Documents -->
-							<button class="docuGroup" id="undergradCert">Certification</button>
+							<button class="docuGroup" id="undergradCert">Certification<i style="float:right;" class="fa fa-sort-desc" aria-hidden="true"></i></button>
                             <ul class="event-list" id="UGCERTdocu">
                             <li class = "item" id="CD">	<!-- Start Item -->			
                                 <div class="info" style = "padding-top: 20px; padding-left: 25px; padding-right: 0px;">
@@ -297,26 +297,8 @@
         <script src="js/jquery-3.0.0.min.js"></script>
         <script src="js/bootstrap.js"></script>
     
-	<script>
-	$('#undergradTOR').click(function(){
-		$("#TORdocu").toggle();
-	});	
-	</script>
-	
-	<script>
-	$('#undergradCert').click(function(){
-		$("#UGCERTdocu").toggle();
-	});	
-	</script>
-	
-		<script>
-	$('#graduateCert').click(function(){
-		$("#GCERTdocu").toggle();
-	});	
-	</script>
     <script>
         $(document).ready(function(){
-                $("#undergradDocu").hide();
                 $("#graduateDocu").hide();
                 $("#bothStudies").hide();
 				$("#TORdocu").hide();
@@ -338,6 +320,17 @@
         });
         
         
+	$('#undergradTOR').click(function(){
+		$("#TORdocu").toggle();
+	});	
+
+	$('#undergradCert').click(function(){
+		$("#UGCERTdocu").toggle();
+	});	
+
+	$('#graduateCert').click(function(){
+		$("#GCERTdocu").toggle();
+	});	
     </script>
         
     </body>
