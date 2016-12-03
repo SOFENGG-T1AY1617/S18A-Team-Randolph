@@ -127,3 +127,9 @@
         margin-right: 0;
     }
 }
+
+/*** others ***/
+thead{
+    background-color: #00703c;
+    color: white;
+}
