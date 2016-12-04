@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <table cellpadding="20">
+            <tr>
+                <td>
+                    College
+                    <select id="dropdownCollege"
+                            onchange="updateCourses(this, document.getElementById('dropdownCourses'))">
+                        <option>---</option>
+                        <option>COB</option>
+                        <option>CCS</option>
+                        <option>CED</option>
+                        <option>CLA</option>
+                        <option>COE</option>
+                        <option>COL</option>
+                        <option>COS</option>
+                        <option>SOE</option>
+                    </select>
+                </td>
+                <td>
+                    Course
+                    <select id="dropdownCourses">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript">
+            /*** FUNCTION: changes Dropdown 2's options after selecting an option from Dropdown 1 ***/
+            function updateCourses(dropdown1, dropdown2) {
+
+                //where you keep the choices that you want to go in Dropdown 2
+                //========== INCOMPLETE LIST ==========//
+                var COB = [
+                    'BS - Accountancy',
+                    'BS - Advertising Management'
+                ];
+                var SOE = [
+                    'BS - Applied Economics',
+                    'AB - Economics'
+                ];
+                var CCS = [
+                    'BS - Computer Science',
+                    'BS - Information Technology',
+                    'BS - Information System'
+                ];
+                var CED = [
+                    'BSE - Major in English',
+                    'BSE - Major in Biology',
+                    'BSE - Major in Mathematics'
+                ];
+                var CLA = [
+                    'BA - History',
+                    'BA - Development Studies',
+                    'BA - Literature'
+                ];
+                var COS = [
+                    'BS - Biology',
+                    'BS - Premed Physics',
+                    'BS - Statistics'
+                ];
+                var COE = [
+                    'BS - Chemical Engineering',
+                    'BS - Computer Engineering'
+                ];
+                var COL = [
+                    'BS - Political Science??'
+                ];
+
+
+
+                //code where the values of Dropdown 2 will change based on the selection at Dropdown 1
+                //========== EDIT AT YOUR OWN RISK ==========//
+
+                //empties the dropdown
+                dropdown2.options.length = 0;
+
+                switch (dropdown1.value) {
+                    case 'COB':
+                        for (i = 0; i < COB.length; i++) {
+                            createOption(dropdown2, COB[i], COB[i]);
+                        }
+                        break;
+                    case 'CCS':
+                        for (i = 0; i < CCS.length; i++) {
+                            createOption(dropdown2, CCS[i], CCS[i]);
+                        }
+                        break;
+                    case 'CED':
+                        for (i = 0; i < CED.length; i++) {
+                            createOption(dropdown2, CED[i], CED[i]);
+                        }
+                        break;
+                    case 'CLA':
+                        for (i = 0; i < CLA.length; i++) {
+                            createOption(dropdown2, CLA[i], CLA[i]);
+                        }
+                        break;
+                    case 'COE':
+                        for (i = 0; i < COE.length; i++) {
+                            createOption(dropdown2, COE[i], COE[i]);
+                        }
+                        break;
+                    case 'COL':
+                        for (i = 0; i < COL.length; i++) {
+                            createOption(dropdown2, COL[i], COL[i]);
+                        }
+                        break;
+                    case 'COS':
+                        for (i = 0; i < COS.length; i++) {
+                            createOption(dropdown2, COS[i], COS[i]);
+                        }
+                        break;
+                    case 'SOE':
+                        for (i = 0; i < SOE.length; i++) {
+                            createOption(dropdown2, SOE[i], SOE[i]);
+                        }
+                        break;
+                }
+            }
+
+            //meh just a function that would make adding options less of a hassle..
+            //========== EDIT AT YOUR OWN RISK ==========//
+            function createOption(dropdown, text, value) {
+                var option = document.createElement('option');
+                option.value = value;
+                option.text = text;
+                dropdown.options.add(option);
+            }
+        </script>
+    </body>
+
+
+</html>

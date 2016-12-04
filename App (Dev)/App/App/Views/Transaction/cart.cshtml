@@ -4,80 +4,115 @@
     Layout = "~/Views/Shared/_TransactionLayout.cshtml";
 }
 
-@section scripts {
+@section btnStep {
+    <!--btnStep-->
+    <div class="row btnStep" style="margin-top: 7px;">
+        <div class="col-xs-9 stepHeader">
+            <ul class="nav nav-pills nav-justified thumbnail" style="width: 810px;">
+                <li class="stepBtn">
+                    <a href="order">
+                        <h4 class="list-group-item-heading stephead">Step 1</h4>
+                        <p class="list-group-item-text">Order Documents</p>
+                    </a>
+                </li>
+                <li class="stepBtn">
+                    <a href="info">
+                        <h4 class="list-group-item-heading stephead">Step 2</h4>
+                        <p class="list-group-item-text">Mailing Info</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="cart">
+                        <h4 class="list-group-item-heading stephead">Step 3</h4>
+                        <p class="list-group-item-text">View Cart</p>
+                    </a>
+                </li>
+                <li class="stepBtn">
+                    <a href="success">
+                        <h4 class="list-group-item-heading stephead">Step 4</h4>
+                        <p class="list-group-item-text">Checkout</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.btnStep -->
+
 }
 
-@section btnStep { }
-
 @section body {
-<div class="container" style="margin-top: 70px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-10 col-md-offset-1">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
-                            <th> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <!-- Start item -->
-                            <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                        <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-                                        <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+    <div class="container" style="margin-top: 70px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Total</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!-- Start item -->
+                                <td class="col-sm-8 col-md-6">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="#">Product name</a></h4>
+                                            <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                            </td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
-                            <td class="col-sm-1 col-md-1">
-                                <button type="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-remove"></span> Remove
-                                </button>
-                            </td>
-                        </tr> <!-- End item -->
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
-                            <td class="text-right"><h5><strong>P0.00<br>P0.00</strong></h5><h3>P0.00</h3></td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>
-                                <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("order", "Transaction")'">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                                </button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("info", "Transaction")'">
-                                    Checkout <span class="glyphicon glyphicon-play"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                                </td>
+                                <td class="col-sm-1 col-md-1" style="text-align: center">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                                </td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <button type="button" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-remove"></span> Remove
+                                    </button>
+                                </td>
+                            </tr> <!-- End item -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
+                                <td class="text-right"><h5><strong>P0.00<br>P0.00</strong></h5><h3>P0.00</h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("order", "Transaction")'">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("info", "Transaction")'">
+                                        Checkout <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 }
+
+
+
+
 

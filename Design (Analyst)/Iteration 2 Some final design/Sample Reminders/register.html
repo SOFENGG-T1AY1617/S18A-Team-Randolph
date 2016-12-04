@@ -97,9 +97,9 @@
                       <div class="form-group">
                           <label class="col-sm-2" for="textinput">Gender</label>
 							<div class="col-sm-4">
-								<input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male</input>
+								<input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male
 								<span>&nbsp; &nbsp; </span>
-								<input type="radio"name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female</input>
+								<input type="radio"name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female
 								<label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
 							</div>
 
@@ -114,7 +114,7 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="textinput">Citizenship</label>
                         <div class="col-sm-4">
-							<select class="form-control" name="citizenhip">
+							<select class="form-control" id="citizenship">
 							  <option value="">Select Citizenship</option>
 							  <option value="afghan">Afghan</option>
 							  <option value="albanian">Albanian</option>
@@ -387,7 +387,7 @@
                      <!-- Academic Information Start -->
                     <fieldset>
                       <!-- Form Name -->
-                      <legend>&nbsp Academic Information</legend>
+                      <legend>&nbsp; Academic Information</legend>
 
                       <!-- Text input-->
                       
@@ -406,11 +406,12 @@
                           <label class="col-sm-12 label-category">College Information</label>
                           <label class="col-sm-2" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="col-sm-10" style = "padding-top: 7px; margin-botton: 2px;">
-                            <input type="radio" name="degreeLevel" id="bachelor">&nbsp;&nbsp;Bachelor's Degree</input>
+                            <input type="radio" name="degreeLevel" id="bachelor">&nbsp;&nbsp;Bachelor's Degree
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree</input>
+                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree</input>
+                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree
+							<br>
                             <label id="degreeLevelError" class="label-error"></label>
                         </div>
 						
@@ -466,8 +467,9 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="textinput">Year Level</label>
                             <div class = "col-sm-10">
-                                <input type="radio" id ="firstYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st</input> &nbsp;&nbsp;<input type="radio" id="secondYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd</input>&nbsp;&nbsp;
-                                <input type="radio" id= "thirdYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd</input>&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th</input>
+                                <input type="radio" id ="firstYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;1st &nbsp;&nbsp;
+								<input type="radio" id="secondYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;2nd&nbsp;&nbsp;
+                                <input type="radio" id= "thirdYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;3rd&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style = "margin-top: 12px;">&nbsp;&nbsp;4th
                             </div>
                             <label id="yearLevelError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
                       </div>
@@ -476,11 +478,11 @@
                       <div class="form-group">
                           <label class="col-sm-2" for="textinput">Admitted as</label>
                         <div class="col-sm-9" style = "padding-top: 7px;">
-                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student</input>
+                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee</input>
+                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee</input>
+                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee
                             <br>
                               <label id="admissionError" class="label-error"></label>
                         </div>
@@ -519,17 +521,22 @@
                             <label id="campusAttendedError" class="label-error"></label>
                         </div>
                       </div>
-                    </fieldset>
-                   <!-- Academic Information End -->
-               
-        
-				<div class="line-separator"></div><br><br>
+					  
+					  <div class="line-separator"></div>
 				
+				<div class="form-group">
 				<a href="index.html"><button type="button" class="btn" style="background-color: #5cb85c; color: white; float: left">
 					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back</button></a>
 					
-			  <a href="order.html"><button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right">
-					  Proceed to Checkout <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
+			 	<a href="order.html"><button type="submit" onsubmit="return validateForm()" class="btn" style="background-color: #5cb85c; color: white; float: right">
+					 Proceed to Step 1 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
+                    </div>
+				</fieldset>
+					</form>
+                   <!-- Academic Information End -->
+               
+        
+				
                             </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
         </div>
@@ -565,7 +572,6 @@
               var citizenship = document.forms["registerForm"]["citizenship"].value;
               var birthPlace = document.forms["registerForm"]["birthPlace"].value;
               var address = document.forms["registerForm"]["address"].value;
-              var street = document.forms["registerForm"]["street"].value;
               var city = document.forms["registerForm"]["city"].value;
               var country = document.forms["registerForm"]["country"].value;
               var zipCode = document.forms["registerForm"]["zipCode"].value;
@@ -585,11 +591,6 @@
               var lastSchool =  document.forms["registerForm"]["lastSchool"].value;
               var admissionYear =  document.forms["registerForm"]["admissionYear"].value;
               var campusAttended =  document.forms["registerForm"]["campusAttended"].value;
-              var mailingAddress = document.forms["registerForm"]["mailingAddress"].value;
-              var mailingCity = document.forms["registerForm"]["mailingCity"].value;
-              var mailingStreet = document.forms["registerForm"]["mailingStreet"].value;
-              var mailingZipCode = document.forms["registerForm"]["mailingZipCode"].value;
-              var mailingArea = document.forms["registerForm"]["mailingArea"].value;
               var isValid = true;
 
               if (lastName == "") {
@@ -624,10 +625,7 @@
                 document.getElementById('addressError').innerHTML = "Please Enter your Address";
                 isValid= false;
               }
-              if(street==""){
-                document.getElementById('streetError').innerHTML = "Please Enter your street";
-                isValid= false;
-              }
+             
               if(city==""){
                 document.getElementById('cityError').innerHTML = "Please enter your City";
                 isValid= false;
@@ -724,29 +722,10 @@
                 document.getElementById('campusAttendedError').innerHTML = "Please Select Campus Attended";
                  isValid = false;
               }
-              if(mailingAddress ==""){
-                document.getElementById('mailingAddressError').innerHTML = "Please Enter Mailing Address";
-                 isValid = false;
-              }
-              if(mailingCity ==""){
-                document.getElementById('mailingCityError').innerHTML = "Please Enter Mailing City";
-                 isValid = false;
-              }
-              if(mailingStreet ==""){
-                document.getElementById('mailingStreetError').innerHTML = "Please Enter Mailing Street";
-                 isValid = false;
-              }
-              if(mailingZipCode ==""){
-                document.getElementById('mailingZipCodeError').innerHTML = "Please Enter Mailing Zip Code";
-                 isValid = false;
-              }
-              if(mailingArea == ""){
-                document.getElementById('mailingAreaError').innerHTML = "Please Enter Mailing Area";
-                 isValid = false;
-              }
+
               return isValid;
             }
         </script>
-
-    </body>
+		
+	</body>
 </html>

@@ -23,30 +23,31 @@ namespace App.Controllers
             // ViewBag.documents = <listname>;
             var user = Session["user"] as Account;
             ViewBag.name = user.firstName;
+            //ViewBag.degrees = user.degrees;
             return View();
         }
 
         public ActionResult cart()
         {
             // view cart
+            var user = Session["user"] as Account;
+            ViewBag.name = user.firstName;
             return View();
         }
 
         public ActionResult info()
         {
             // fill up infos (mailing info, personal, academic)
-            return View();
-        }
-
-        public ActionResult confirm()
-        {
-            // confirm
+            var user = Session["user"] as Account;
+            ViewBag.name = user.firstName;
             return View();
         }
 
         public ActionResult success()
         {
             // checkout and done
+            var user = Session["user"] as Account;
+            ViewBag.name = user.firstName;
             return View();
         }
     }

@@ -11,6 +11,7 @@ namespace App.Models
     public class Account
     {
         public int userID { get; set; }
+        public string idNumber { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string middleName { get; set; }
@@ -53,18 +54,37 @@ namespace App.Models
                         while (reader.Read())
                         {
                             account.userID = reader.GetInt32(0);
-                            account.lastName = reader.GetString(1);
-                            account.firstName = reader.GetString(2);
-                            account.middleName = reader.GetString(3);
-                            account.gender = reader.GetChar(4);
-                            account.birthYear = reader.GetInt32(5);
-                            account.birthMonth = reader.GetInt32(6);
-                            account.birthDay = reader.GetInt32(7);
-                            account.citizenship = reader.GetString(8);
-                            account.email = reader.GetString(13);
-                            account.password = reader.GetString(15);
-                            account.degrees = dm.getDegree(account.userID);
-                            account.mailInfos = mim.getMailInfos(account.userID);
+                            account.idNumber = reader.GetString(1);
+                            account.lastName = reader.GetString(2);
+                            account.firstName = reader.GetString(3);
+                            account.middleName = reader.GetString(4);
+                            account.gender = reader.GetChar(5);
+                            account.birthYear = reader.GetInt32(6);
+                            account.birthMonth = reader.GetInt32(7);
+                            account.birthDay = reader.GetInt32(8);
+                            account.citizenship = reader.GetString(9);
+                            account.placeOfBirth = reader.GetString(10);
+                            account.currentAddress = reader.GetString(11);
+                            account.phoneNo = reader.GetString(12);
+
+                            if (!reader.IsDBNull(13))
+                            {
+                                account.alternatePhoneNo = reader.GetString(13);
+                            }
+                            else account.alternatePhoneNo = "";
+
+
+                            account.email = reader.GetString(14);
+
+                            if (!reader.IsDBNull(15))
+                            {
+                                account.alternateEmail = reader.GetString(15);
+                            }
+                            else account.alternateEmail = "";
+
+                            account.password = reader.GetString(16);
+                            //account.degrees = dm.getDegree(account.userID);
+                            //account.mailInfos = mim.getMailInfos(account.userID);
                         }
 
                         if (!reader.HasRows)
@@ -74,34 +94,34 @@ namespace App.Models
                     }
                 }
             }
-            
+
             conn.Close();
             return account;
         }
 
-        public void saveAccount(Account acc)
+        public Account saveAccount(Account acc)
         {
             Account account = acc;
             MySqlConnection conn = new MySqlConnection(db.getConnString());
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            
+
             using (conn)
             {
                 using (adapter)
                 {
                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.user", conn);
 
-                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.user"
-                                                             + " (userID, lastName, firstName, middleName, gender, birthYear, birthMonth,"
+                    adapter.InsertCommand = new MySqlCommand("INSERT INTO requestdocdb.user"
+                                                             + " (idNumber, lastName, firstName, middleName, gender, birthYear, birthMonth,"
                                                              + " birthDay, citizenship, placeOfBirth, currentAddress, phoneNo,"
                                                              + " alternatePhoneNo, email, alternateEmail, password) "
-                                                             + "VALUES (@userID, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
+                                                             + "VALUES (@idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
                                                              + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
                                                              + "@alternatePhoneNo, @email, @alternateEmail, @password)", conn);
 
 
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userId"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("idNumber", MySqlDbType.VarChar, 11, "idNumber"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastName", MySqlDbType.VarChar, 100, "lastName"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("firstName", MySqlDbType.VarChar, 100, "firstName"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("middleName", MySqlDbType.VarChar, 100, "middleName"));
@@ -122,11 +142,9 @@ namespace App.Models
                     {
                         adapter.Fill(dataSet, "user");
 
-                        Console.WriteLine("There are {0} rows in the table", dataSet.Tables[0].Rows.Count);
-
                         DataRow newRow = dataSet.Tables[0].NewRow();
 
-                        newRow["userID"] = acc.userID;
+                        newRow["idNumber"] = acc.idNumber;
                         newRow["lastName"] = acc.lastName;
                         newRow["firstName"] = acc.firstName;
                         newRow["middleName"] = acc.middleName;
@@ -149,8 +167,9 @@ namespace App.Models
                     }
                 }
             }
-            
+
             conn.Close();
+            return this.getAccount(acc.email, acc.password);
         }
     }
 }

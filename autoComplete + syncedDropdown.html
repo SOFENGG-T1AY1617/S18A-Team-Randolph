@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>jQuery UI Autocomplete - Default functionality</title>
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	    <link rel="stylesheet" href="/resources/demos/style.css">
+	    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	    <script>
+			
+	   /*
+	    function() getCourse(college) {
+		  		var college = college.value;
+		  
+			  var courses ["0"] = [
+				'BEE major in Early Childhood Education (EED-ECED)',
+				'BSE major in Biology (BSE-BIO)',
+				'BSE major in Chemistry (BSE-CHE)',
+				'BSE major in English (BSE-ENG)',
+				'BSE major in Mathematics (BSE-MAT)',
+				'BSE major in Mathematics with specialization in Computer Application (BSE-CAP)',
+				'BSE major in Physical Sciences (BSE-PSC)',
+				'BSE major in Physics (BSE-PHY)',
+				'BS in Educational Psychology (BS-EPSY)'
+			  ];
+
+				  $("#course").val("");
+				$( "#course" ).autocomplete({
+			  source: courses [c]
+			});
+		*/
+			
+		const courses = [];
+		//
+		// BAGCED
+		courses["0"] = [
+		'BEE major in Early Childhood Education (EED-ECED)',
+		'BSE major in Biology (BSE-BIO)',
+		'BSE major in Chemistry (BSE-CHE)',
+		'BSE major in English (BSE-ENG)',
+		'BSE major in Mathematics (BSE-MAT)',
+		'BSE major in Mathematics with specialization in Computer Application (BSE-CAP)',
+		'BSE major in Physical Sciences (BSE-PSC)',
+		'BSE major in Physics (BSE-PHY)',
+		'BS in Educational Psychology (BS-EPSY)'
+		];
+		// CCS
+		courses["1"] = [
+		'BS in Computer Science (CS)',
+		'BS in Computer Science with specialization in Instructional Systems Technology (CS-IST)',
+		'BS in Computer Science with specialization in Software Technology (CS-ST)',
+		'BS in Computer Science with specialization in Network Engineering (CS-NE)',
+		'BS in Computer Science with Specialization in Software Technology minor in Game Development (CS-ST)',
+		'BS in Computer Science (CSS)',
+		'BS in Computer Science major in Computer Systems Engineering (CS-CSE)',
+		'BS in Information System (BSISS)',
+		'BS in Information System (BSINSYS)',
+		'BS in Information Technology (BSIT)'
+		];
+		// CLA
+		courses["2"] = [
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development (AB-OSDM)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Accountancy (OSD-BSA)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Advertising Management (OSD-ADV)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Applied Corporate Management (OSD-APC)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Business Management (OSD-MGT)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Legal Management (OSD-LGL)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Management of Financial Institutions (OSD-FIN)',
+		'AB in Behavioral Sciences major in Organizational and Social Systems Development and BS in Marketing (OSD-MKT)',
+		'AB in Development Studies (AB-DSM)',
+		'AB in History (AB-HIM)',
+		'AB in International Studies major in American Studies (AB-ISA)',
+		'AB in International Studies major in American Studies and BS in Accountancy (ISA-BSA)',
+		'AB in International Studies major in American Studies and BS in Advertising Management (ISA-ADV)',
+		'AB in International Studies major in American Studies and BS in Applied Corporate Management (ISA-APC)',
+		'AB in International Studies major in American Studies and BS in Business Management (ISA-MGT)',
+		'AB in International Studies major in American Studies and BS in Legal Management (ISA-LGL)',
+		'AB in International Studies major in American Studies and BS in Management of Financial Institutions (ISA-FIN)',
+		'AB in International Studies major in American Studies and BS in Marketing Management (ISA-MKT)',
+		'AB in International Studies major in Chinese Studies (AB-ISC)',
+		'AB in International Studies major in European Studies (AB-ISE)',
+		'AB in International Studies major in European Studies and BS in Accountancy (ISE-BSA)',
+		'AB in International Studies major in European Studies and BS in Advertising Management (ISE-ADV)',
+		'AB in International Studies major in European Studies and BS in Applied Corporate Management (ISE-APC)',
+		'AB in International Studies major in European Studies and BS in Business Management (ISE-MGT)',
+		'AB in International Studies major in European Studies and BS in Legal Management (ISE-LGL)',
+		'AB in International Studies major in European Studies and BS in Management of Financial Institutions (ISE-FIN)',
+		'AB in International Studies major in European Studies and BS in Marketing Management (ISE-MKT)',
+		'AB in International Studies major in Japanese Studies (AB-ISJ)',
+		'AB in International Studies major in Japanese Studies and BS in Accountancy (ISJ-BSA)',
+		'AB in International Studies major in Japanese Studies and BS in Advertising Management (ISJ-ADV)',
+		'AB in International Studies major in Japanese Studies and BS in Applied Corporate Management (ISJ-APC)',
+		'AB in International Studies major in Japanese Studies and BS in Business Management (ISJ-MGT)',
+		'AB in International Studies major in Japanese Studies and BS in Legal Management (ISJ-LGL)',
+		'AB in International Studies major in Japanese Studies and BS in Management of Financial Institutions (ISJ-FIN)',
+		'AB in International Studies major in Japanese Studies and BS in Marketing Management (ISJ-MKT)',
+		'AB in Literature (AB-LIM)',
+		'AB in Philippine Studies major in Filipino in Mass Media (AB-PHM)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Accountancy (PHM-BSA)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Advertising Management (PHM-ADV)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Applied Corporate Management (PHM-APC)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Business Management (PHM-MGT)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Legal Management (PHM-LGL)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Management of Financial Institutions (PHM-FIN)',
+		'AB in Philippine Studies major in Filipino in Mass Media and BS in Marketing Management (PHM-MKT)',
+		'AB major in Communication Arts (AB-CAM)',
+		'AB major in Communication Arts and BS in Accountancy (CAM-BSA)',
+		'AB major in Communication Arts and BS in Advertising Management (CAM-ADV)',
+		'AB major in Communication Arts and BS in Applied Corporate Management (CAM-APC)',
+		'AB major in Communication Arts and BS in Business Management (CAM-MGT)',
+		'AB major in Communication Arts and BS in Legal Management (CAM-LGL)',
+		'AB major in Communication Arts and BS in Management of Financial Institutions (CAM-FIN)',
+		'AB major in Communication Arts and BS in Marketing Management (CAM-MKT)',
+		'AB major in Development Studies and BS in Accountancy (DSM-BSA)',
+		'AB major in Development Studies and BS in Advertising Management (DSM-ADV)',
+		'AB major in Development Studies and BS in Applied Corporate Management (DSM-APC)',
+		'AB major in Development Studies and BS in Business Management (DSM-MGT)',
+		'AB major in Development Studies and BS in Legal Management (DSM-LGL)',
+		'AB major in Development Studies and BS in Management of Financial Institutions (DSM-FIN)',
+		'AB major in Development Studies and BS in Marketing Management (DSM-MKT)',
+		'AB major in History and BS in Accountancy (HIM-BSA)',
+		'AB major in History and BS in Advertising Management (HIM-ADV)',
+		'AB major in History and BS in Applied Corporate Management (HIM-APC)',
+		'AB major in History and BS in Business Management (HIM-MGT)',
+		'AB major in History and BS in Legal Management (HIM-LGL)',
+		'AB major in History and BS in Management of Financial Institutions (HIM-FIN)',
+		'AB major in History and BS in Marketing Management (HIM-MKT)',
+		'AB major in Literature and BS in Accountancy (LIM-BSA)',
+		'AB major in Literature and BS in Advertising Management (LIM-ADV)',
+		'AB major in Literature and BS in Applied Corporate Management (LIM-APC)',
+		'AB major in Literature and BS in Business Management (LIM-MGT)',
+		'AB major in Literature and BS in Legal Management (LIM-LGL)',
+		'AB major in Literature and BS in Management of Financial Institutions (LIM-FIN)',
+		'AB major in Literature and BS in Marketing Management (LIM-MKT)',
+		'AB major in Organizational Communication (AB-OCM)',
+		'AB major in Organizational Communication and BS in Accountancy (OCM-BSA)',
+		'AB major in Organizational Communication and BS in Advertising Management (OCM-ADV)',
+		'AB major in Organizational Communication and BS in Applied Corporate Management (OCM-APC)',
+		'AB major in Organizational Communication and BS in Business Management (OCM-MGT)',
+		'AB major in Organizational Communication and BS in Legal Management (OCM-LGL)',
+		'AB major in Organizational Communication and BS in Management of Financial Institutions (OCM-FIN)',
+		'AB major in Organizational Communication and BS in Marketing Management (OCM-MKT)',
+		'AB major in Philosophy (AB-PLM)',
+		'AB major in Philosophy and BS in Accountancy (PLM-BSA)',
+		'AB major in Philosophy and BS in Advertising Management (PLM-ADV)',
+		'AB major in Philosophy and BS in Applied Corporate Management (PLM-APC)',
+		'AB major in Philosophy and BS in Business Management (PLM-MGT)',
+		'AB major in Philosophy and BS in Legal Management (PLM-LGL)',
+		'AB major in Philosophy and BS in Management of Financial Institutions (PLM-FIN)',
+		'AB major in Philosophy and BS in Marketing Management (PLM-MKT)',
+		'AB major in Political Science (AB-POM)',
+		'AB major in Political Science and BS in Accountancy (POM-BSA)',
+		'AB major in Political Science and BS in Advertising Management (POM-ADV)',
+		'AB major in Political Science and BS in Applied Corporate Management (POM-APC)',
+		'AB major in Political Science and BS in Business Management (POM-MGT)',
+		'AB major in Political Science and BS in Legal Management (POM-LGL)',
+		'AB major in Political Science and BS in Management of Financial Institutions (POM-FIN)',
+		'AB major in Political Science and BS in Marketing Management (POM-MKT)',
+		'AB major in Psychology (AB-PSM)',
+		'AB major in Psychology and BS in Accountancy (PSM-BSA)',
+		'AB major in Psychology and BS in Advertising Management (PSM-ADV)',
+		'AB major in Psychology and BS in Applied Corporate Management (PSM-APC)',
+		'AB major in Psychology and BS in Business Management (PSM-MGT)',
+		'AB major in Psychology and BS in Legal Management (PSM-LGL)',
+		'AB major in Psychology and BS in Management of Financial Institutions (PSM-FIN)',
+		'AB major in Psychology and BS in Marketing Management (PSM-MKT)',
+		'BS in Psychology (BS-PSYC)',
+		'BA in Communication major in Media Arts'
+		];
+		// COS
+		courses["3"] = [
+		'BS in Biochemistry (BSBCHEM)',
+		'BS in Biology (BS-BIO)',
+		'BS in Chemistry (BS-CHY)',
+		'BS in Chemistry minor in Business Studies (BS-CHYB)',
+		'BS in Human Biology (HUM-BIO)',
+		'BS in Mathematics with specialization in Business Applications (MTH-BAP)',
+		'BS in Mathematics with specialization in Computer Applications (MTH-CAP)',
+		'BS in Physics minor in Economics (BSPHYEC)',
+		'BS in Physics minor in Finance (BSPHYFI)',
+		'BS in Physics with specialization in Materials Science (PHY-MAT)',
+		'BS in Physics with specialization in Medical Instrumentation (PHY-MED)',
+		'BS in Premed Physics (PHY-PMD)',
+		'BS in Statistics major in Actuarial Science (BS-STAT)'
+		];
+		//GCOE
+		courses["4"] = [
+		'BS in Chemical Engineering (CHE)',
+		'BS in Civil Engineering (CIV)',
+		'BS in Civil Engineering with specialization in Structural Engineering (CIV)',
+		'BS in Civil Engineering with specialization in Construction Technology and Management (CIV)',
+		'BS in Civil Engineering with specialization in Hydraulics and Water Resources Management (CIV)',
+		'BS in Civil Engineering with specialization in Transportation Engineering (CIV)',
+		'BS in Computer Engineering (CIV)',
+		'BS in Computer Engineering (CPES)',
+		'BS in Electronics Engineering (ECE2S)',
+		'BS in Electronics Engineering (ECE2)',
+		'BS in Industrial Engineering (IE)',
+		'BS in Industrial Engineering (IES)',
+		'BS in Industrial Management Engineering minor in Information Technology (IME-IT)',
+		'BS in Industrial Management Engineering minor in Information Technology and Master of Science in Industrial Engineering (BSMSIET)',
+		'BS in Industrial Management Engineering minor in Service Management (IME-SM)',
+		'BS in Industrial Management Engineering minor in Service Management and Master of Science in Industrial Engineering (BSMSIES)',
+		'BS in Manufacturing Engineering & Management with specialization in Mechatronics & Robotics Engineering (MEM-MR)',
+		'BS in Manufacturing Engineering & Management with specialization in Mechatronics & Robotics Engineering (MEM-MRS)',
+		'BS in Manufacturing Engineering and Management with specialization in Biomedical Engineering (MEM-BME)',
+		'BS in Mechanical Engineering (MEE)',
+		'BS in Mechanical Engineering with concentration in Mechatronics (MEES)',
+		'BS in Electronics and Communications Engineering '
+		];
+		// RVRCOB
+		courses["5"] = [
+		'BS in Accountancy (BSA)',
+		'BS in Advertising Management (ADV)',
+		'BS in Applied Corporate Management (APC)',
+		'BS in Business Management (MGTS)',
+		'BS in Business Management (MGT)',
+		'BS in Entrepreneurship (BS-ENTS)',
+		'BS in Entrepreneurship (BS-ENT)',
+		'BS in Interdisciplinary Business Studies (IBS)',
+		'BS in Legal Management (LGL)',
+		'BS in Management of Financial Institutions (FIN)',
+		'BS in Marketing Management (MKT)',
+		'BS in Business Administration major in Entrepreneurship ',
+		'BS in Business Administration major in Management ',
+		'BS in Business Administration major in Operations Management ',
+		];
+		// SOE
+		courses["6"] = [
+		'AB major in Economics (AB-ECM)',
+		'AB major in Economics and BS in Accountancy (ECM-BSA)',
+		'AB major in Economics and BS in Advertising Management (ECM-ADV)',
+		'AB major in Economics and BS in Applied Corporate Management (ECM-APC)',
+		'AB major in Economics and BS in Business Management (ECM-MGT)',
+		'AB major in Economics and BS in Legal Management (ECM-LGL)',
+		'AB major in Economics and BS in Management of Financial Institutions (ECM-FIN)',
+		'AB major in Economics and BS in Marketing Management (ECM-MKT)',
+		'BS in Applied Economics (BS-AEL)',
+		'BS in Applied Economics major in Financial Economics (BS-AEF)',
+		'BS in Applied Economics major in Financial Economics and BS in Accountancy (AEF-BSA)',
+		'BS in Applied Economics major in Financial Economics and BS in Advertising Management (AEF-ADV)',
+		'BS in Applied Economics major in Financial Economics and BS in Applied Corporate Management (AEF-APC)',
+		'BS in Applied Economics major in Financial Economics and BS in Business Management (AEF-MGT)',
+		'BS in Applied Economics major in Financial Economics and BS in Legal Management (AEF-LGL)',
+		'BS in Applied Economics major in Financial Economics and BS in Management of Financial Institutions (AEF-FIN)',
+		'BS in Applied Economics major in Financial Economics and BS in Marketing Management (AEF-MKT)',
+		'BS in Applied Economics major in Industrial Economics (BS-AEI)',
+		'BS in Applied Economics major in Industrial Economics and BS in Accountancy (AEI-BSA)',
+		'BS in Applied Economics major in Industrial Economics and BS in Advertising Management (AEI-ADV)',
+		'BS in Applied Economics major in Industrial Economics and BS in Applied Corporate Management (AEI-APC)',
+		'BS in Applied Economics major in Industrial Economics and BS in Business Management (AEI-MGT)',
+		'BS in Applied Economics major in Industrial Economics and BS in Legal Management (AEI-MGT)',
+		'BS in Applied Economics major in Industrial Economics and BS in Management of Financial Institutions (AEI-FIN)',
+		'BS in Applied Economics major in Industrial Economics and BS in Marketing Management (AEI-MKT)',
+		'AB major in Economics (AB-ECM)',
+		'AB major in Economics and BS in Accountancy (ECM-BSA)',
+		'AB major in Economics and BS in Applied Corporate Management (ECM-APC)',
+		'AB major in Economics and BS in Business Management (ECM-MGT)',
+		'AB major in Economics and BS in Advertising Management (ECM-ADV)',
+		'AB major in Economics and BS in Marketing Management (ECM-MKT)',
+		'AB major in Economics and BS in Legal Management (ECM-LGL)',
+		'AB major in Economics and BS in Management of Financial Institutions (ECM-FIN)'
+		];
+		// COL
+		courses["7"] = [
+			'Juris Doctor (JDCTR)'
+		];
+
+		courses["8"] = [
+		'BA-MA in Behavioral Science in Organizational and Social System Development (BAMAOSD)',
+		'Certificate in Teaching Religion (CERTREL)',
+		'Doctor of Arts in Language and Literature major in Literature (DALLLIT)',
+		'Doctor of Education major in Religious Education and Values Education (DERVED)',
+		'Doctor of Fine Arts in Creative Writing (DFACREA)',
+		'Doctor of Philosophy in Applied Theology (PHDTHEO)',
+		'Doctor of Philosophy in Araling Filipino (PHARFIL)',
+		'Doctor of Philosophy in Development Studies (DDEVEST)',
+		'Doctor of Philosophy in Literature (PHDLITT)',
+		'Doctor of Philosophy in Philosophy (PDPHILO)',
+		'Doctor of Philosophy in Philosophy (PDLADPH)',
+		'Doctor of Philosophy in Psychology major in Clinical Psychology (PSY-CLP)',
+		'Doctor of Philosophy in Psychology major in Human Development (PSY-HMD)',
+		'Doctor of Philosophy in Psychology major in Industrial/Organizational Psychology (PSY-IOP)',
+		'Doctor of Philosophy in Sociology (PHDSOC)',
+		'Doktor sa Pilosopiya sa Araling Filipino-Wika, Kultura, Midya (PHARFIL)',
+		'AB in Behavioral Sciences and Master of Arts in Behavioral Sciences with specialization in Organizational and Social Systems Development (Ladderized Program) ',
+		'Master of Arts in Behavioral Sciences (MABESC)',
+		'Master of Arts in Philippine Studies (MAPHIST)',
+		'Master in History (NTMHIST)',
+		'Master in Philosophy (MATPHIL*)',
+		'Master in Sociology (NTMSOCI)',
+		'Master ng Sining sa Araling Filipino-Wika, Kultura, Midya (MAARFIL)',
+		'Master of Arts in Applied Theology (MA-THEO)',
+		'Master of Arts in Behavioral Science with a track in Environmental Studies (MBESES11)',
+		'Master of Arts in Behavioral Science with a track in Organizational and Social Systems Development (MBEOSD11)',
+		'Master of Arts in Communication (MACOMMS)',
+		'Master of Arts in Communication major in Applied Media Technology Studies (MACOMMS)',
+		'Master of Arts in Development Policy (MADEPOL)',
+		'Master of Arts in History (MAHISTO)',
+		'Master of Arts in International Studies major in Asian Studies (MAIS-AS)',
+		'Master of Arts in International Studies major in European Studies (MAIS-ES)',
+		'Master of Arts in Language and Literature major in Literature (MALLLIT)',
+		'Master of Arts in Philosophy (MAPHILO)',
+		'Master of Arts in Political Science (MAPOLSC)',
+		'Master of Arts in Religious Education (MARELED)',
+		'Master of Fine Arts in Creative Writing (MFACREA)',
+		'Master of Health Social Science (MAHESOS)',
+		'Master of Science in Psychology major in Clinical Psychology (MSPSYCP)',
+		'Master of Science in Psychology major in Human Development (MSPSYHD)',
+		'Master of Science in Psychology major in Industrial/Organizational Psychology (MSPSYIO)',
+		'PhD in Applied Theology major in Formative Counseling (MAPHATR)',
+		'PhD in Applied Theology major in Religious Education (MAPHATF)',
+		'Diploma in Entrepreneurship (DIP-ENT)',
+		'Diploma in Financial Engineering (DIP-FE)',
+		'Diploma in Industrial Relations Management (DIPIRM)',
+		'Diploma in Management (PGDM)',
+		'Diploma in Marketing (DIPMKTG)',
+		'Doctor of Business Administration (DBA)',
+		'Doctor of Philosophy in Business (PHDBUS09)',
+		'Master in Risk and Insurance Management (MRISINS)',
+		'Master of Business Administration (MBA)',
+		'Master of Marketing Communications (MMC)',
+		'Master of Science in Accountancy (MSA)',
+		'Master of Science in Computational Finance (MSCF)',
+		'Master of Science in Entrepreneurship (MS-ENT)',
+		'Master of Science in Financial Engineering (MS-FE)',
+		'Master of Science in Industrial Relations Management (MSIRM)',
+		'Master of Science in Marketing (MSMKTG)',
+		'Doctor of Philosophy in Economics (PDLADEC)',
+		'Master in Applied Economics (M-AE)',
+		'Master of Science in Economics (MSECO12)',
+		'BS in Applied Economics (Honors) (Ladderized) (BS-AEL)',
+		'Doctor of Philosophy in Chemical Engineering (PHD-CHE)',
+		'Doctor of Philosophy in Civil Engineering (PHDCE)',
+		'Doctor of Philosophy in Electronics and Communications Engineering (PHD-ECE)',
+		'Doctor of Philosophy in Industrial Engineering (PHD-IE)',
+		'Doctor of Philosophy in Mechanical Engineering (PHD-ME)',
+		'Master of Engineering major in Chemical Engineering (MEP-CHE)',
+		'Master of Engineering major in Civil Engineering (MEP-CE)',
+		'Master of Engineering major in Electronics and Communications Engineering (MEP-ECE)',
+		'Master of Engineering major in Environmental Engineering and Management (MEP-ENVI)',
+		'Master of Engineering major in Industrial Engineering (MEP-IE)',
+		'Master of Engineering major in Manufacturing Engineering (MEP-MFG)',
+		'Master of Engineering major in Mechanical Engineering (MEP-ME)',
+		'Master of Science in Chemical Engineering (MS-CHE)',
+		'Master of Science in Civil Engineering (MS-CE)',
+		'Master of Science in Electronics and Communications Engineering (MS-ECE)',
+		'Master of Science in Environmental Engineering and Management (MSENVI)',
+		'Master of Science in Industrial Engineering (MS-IE)',
+		'Master of Science in Manufacturing Engineering (MS-MFGE)',
+		'Master of Science in Mechanical Engineering (MS-ME)',
+		'BS in Industrial Engineering and Master of Science in Industrial Engineering Minor in Information Technology (Ladderized Program)',
+		'BS in Industrial Engineering and Master of Science in Industrial Engineering Minor in Service Management (Ladderized Program)',
+		'Doctor of Philosophy in Computer Science (PHDCS)',
+		'Master in Information Technology (Non-Thesis) (NTMIT14)',
+		'Master of Computer Science (MCS)',
+		'Master of Science in Computer Science (MSCS)',
+		'Master of Science in Information Technology (MSIT)',
+		'PhD in Information Technology (DITECH10)',
+		'Doctor of Philosophy in Biology (PHD-BIO)',
+		'Doctor of Philosophy in Chemistry (PHDCHY12)',
+		'Doctor of Philosophy in Mathematics (PHD-MTH)',
+		'Doctor of Philosophy in Mathematics (PHDSMTH)',
+		'Doctor of Philosophy in Physics (PHD-PHY)',
+		'Doctor of Philosophy in Physics (PHDSPHY)',
+		'Master in Biology (NTMBIO)',
+		'Master in Chemistry (NTMCHEM)',
+		'Master in Mathematics (NTMMATH)',
+		'Master in Physics (NTMPHY)',
+		'Master of Science in Biology (MS-BIO)',
+		'Master of Science in Chemistry (MS-CHEM)',
+		'Master of Science in Environmental Science and Ecosystem Management (MS-ESEM)',
+		'Master of Science in Mathematics (MS-MATH)',
+		'Master of Science in Physics (MS-PHY)',
+		'Master of Science in Statistics (MSSTAT)',
+		'Diploma in Teaching English as a Second/Foreign Language (DIPESFL)',
+		'Doctor of Philosophy in Applied Linguistics (PHDAPLN)',
+		'Doctor of Philosophy in Applied Linguistics (Straight Program) (PHDAPLS)',
+		'Doctor of Philosophy in Counseling Psychology (DPCPSY09)',
+		'Doctor of Philosophy in Education major in Educational Leadership and Management (PHDELM)',
+		'Doctor of Philosophy in Education major in Educational Leadership and Management - Executive Program (PHDELMX)',
+		'Doctor of Philosophy in Educational Psychology (DEPSYC)',
+		'Doctor of Philosophy in Science Education major in Biology (DSEDBIO)',
+		'Doctor of Philosophy in Science Education major in Chemistry (DSEDCHE)',
+		'Doctor of Philosophy in Science Education major in Mathematics (DSEDMAT)',
+		'Doctor of Philosophy in Science Education major in Physics (DSEDPHY)',
+		'Master in Learning and Teaching (MALTEA09)',
+		'Master in Teaching General Science in Basic Education (MEDGSCI)',
+		'Master of Arts in Applied Theology (Non-Thesis) (NTMTHEO)',
+		'Master of Arts in Counseling (MACLING)',
+		'Master of Arts in Counseling (Non-Thesis) (NTMACLG)',
+		'Master of Arts in Education major in Early Childhood Education (MAEDECD)',
+		'Master of Arts in Education major in Educational Leadership and Management (MAEDELM)',
+		'Master of Arts in Education major in Special Education (MAEDELM)',
+		'Master of Arts in Education major in Student Affairs and Services Management (MAESASM)',
+		'Master of Arts in English Language Education (MAELED)',
+		'Master of Arts in Teaching major in English Language (MAT-EL)',
+		'Master of Education major in Biology (NTMEBIO)',
+		'Master of Education major in Chemistry (NTMECHE)',
+		'Master of Education major in Early Childhood Education (Non Thesis) (NTMECED)',
+		'Master of Education major in Educational Leadership (NTMEDEL)',
+		'Master of Education major in Educational Leadership and Management (NTMEELM)',
+		'Master of Education major in Mathematics (NTMEMAT)',
+		'Master of Education major in Physics (NTMEPHY)',
+		'Master of Education major in Religious and Values Education (NTMERVE)',
+		'Master of Education major in Special Education (NTMSPED)',
+		'Master of Science in Teaching major in Biology (MST-BIO)',
+		'Master of Science in Teaching major in Chemistry (MSTCHEM)',
+		'Master of Science in Teaching major in Mathematics (MSTMATH)',
+		'Master of Science in Teaching major in Physics (MST-PHY)',
+		'Teacher Certificate Program (TCPEDUC)'
+		];
+		
+		var counter = 0;	
+		
+		function updateCourses(college) {
+			var c = college.value;
+			$("#course").val("");
+			$( "#course" ).autocomplete({
+				source: courses[c]
+			}); 
+		}
+
+
+	    function changeCollege() {
+			alert("Students taking their MASTERS or DOCTORATE DEGREE must select Graduate Studies");
+		    $('#college option:contains(Graduate Studies)').prop({selected: true});
+		    updateCourses(document.getElementById("college"));
+		}
+
+  	    </script>
+    
+    </head>
+    
+    <body style="padding: 3%">
+	<script type="text/javascript">
+		
+		
+		function addDropdowns(college, course) {
+			//check for duplicate
+			var list = document.getElementById('list-course');
+			var duplicateExists = 0;
+			
+			//if course == foreach courses in ul list course
+				//there is a duplicate
+			if(duplicateExists == 0) {
+				if(counter >= 5){
+					alert("Maximum of 5 courses");
+				}
+				else if(counter < 5){
+					counter++;
+
+					var li = document.createElement('li');
+					var colleges = [
+						'BAGCED',
+						'CCS',
+						'CLA',
+						'COS',
+						'GCOE',
+						'RVRCOB',
+						'SOE',
+						'COL',
+						'GS'
+					];
+
+
+					var inputs = [
+						colleges[document.getElementById(college).value],
+						document.getElementById(course).value,
+					];
+
+					/*===== sample: G & W (2014-2016): Staffer =====*/
+					var listItem = inputs[0] + " - " + inputs[1];
+					li.innerHTML = listItem;
+
+					var button = document.createElement('button');
+					button.innerHTML = " X ";
+					button.onclick =
+							function () {
+								li.remove();
+								counter--;
+							};
+					li.appendChild(button);
+
+					list.appendChild(li);	
+				}
+			}
+		}
+            
+        </script>
+
+        
+        
+		<div>
+			<label>Undergraduate/Graduate Status:&nbsp;&nbsp;</label>
+			<label class="radio-inline">
+				<input type="radio" name="undergraduate_status" value="UNDERGRADUATE">Undergraduate
+			</label>
+			<label class="radio-inline">
+				<input type="radio" onclick="changeCollege()"  name="undergraduate_status" value="GRADUATE">Graduate
+			</label>
+		</div>
+		
+
+        <div>
+			<label>College</label>
+			
+			<select id="college" name="college" data-placement="top" data-toggle="tooltip" title="Students taking their MASTERS or DOCTORATE DEGREE must select Graduate Studies" onchange="updateCourses(this)">
+				<option disabled selected> --- Select College --- </option>
+				<option value='8'>Graduate Studies</option>
+				<option value='0'>Br. Andrew Gonzalez College of Education (BAGCED)</option>
+				<option value='1'>College of Computer Studies (CCS)</option>
+				<option value='2'>College of Liberal Arts (CLA)</option>
+				<option value='3'>College of Science (COS)</option>
+				<option value='4'>Gokongwei College of Engineering (GCOE)</option>
+				<option value='5'>Ramon V. del Rosario College of Business (RVRCOB)</option>
+				<option value='6'>School of Economics (SOE)</option>
+				<option value='7'>College of Law (COL)</option>
+			</select>		
+		</div>
+		
+		<div class="ui-widget">
+ 			<label for="course">Degree Programs</label>
+  			<input id="course">
+		</div>
+
+        <button onclick="addDropdowns('college', 'course')">View</button>
+        
+		<ul id="list-course">
+
+        </ul>
+    </body>
+</html>
