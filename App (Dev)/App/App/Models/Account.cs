@@ -83,7 +83,7 @@ namespace App.Models
                             else account.alternateEmail = "";
 
                             account.password = reader.GetString(16);
-                            //account.degrees = dm.getDegree(account.userID);
+                            account.degrees = dm.getDegree(account.userID);
                             //account.mailInfos = mim.getMailInfos(account.userID);
                         }
 

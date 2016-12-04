@@ -23,7 +23,7 @@ namespace App.Controllers
             // ViewBag.documents = <listname>;
             var user = Session["user"] as Account;
             ViewBag.name = user.firstName;
-            //ViewBag.degrees = user.degrees;
+            ViewBag.degrees = user.degrees;
             return View();
         }
 
