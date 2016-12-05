@@ -65,124 +65,53 @@
                     <center>
                         <span class="lbldegree">Degree</span> &nbsp;&nbsp;
                         <select class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
-                            <option value="volvo">Bachelor</option>
-                            <option value="saab">Master</option>
-                            <option value="mercedes">Doctorate</option>
+                            @{ 
+                                var degrees = ViewBag.degrees;
+                                foreach(var degree in degrees)
+                                {
+                                    if (degree.level=="Bachelor")
+                                    {
+                                        <option value="undergraduate">@degree.degreeName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="graduate">@degree.degreeName</option>
+                                    }
+                                }
+                            }
                         </select>
                     </center>
                 </li>
 
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
+                @{
+                    var bDocs = ViewBag.bachelorsDocuments;
+                    foreach(var doc in bDocs)
+                    {
+                    <li class="item">
+                        <!-- Start Item -->
+                        <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
+                            <h2 class="title" style="font-size: 18px;">@doc.docuName</h2><br>
+                            <div>
+                                <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
+                                    @if(doc.regularPrice!=-1)
+                                    {
+                                    <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;@doc.regularPrice</p>
+                                    }
+                                    @if(doc.expressPrice!=-1)
+                                    {                                    
+                                    <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;@doc.expressPrice</p>
+                                    }
+                                </div>
+                                <div class="col-xs-6">
+                                    <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li> <!-- End Item -->
+                    </li> <!-- End Item -->
+                    }
+                }
 
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
-
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
-
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
-
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
-
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
-
-                <li class="item">
-                    <!-- Start Item -->
-                    <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                        <h2 class="title" style="font-size: 18px;">Official Transcript of Records (for Employment)</h2><br>
-                        <div>
-                            <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
-                                <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;150.00</p>
-                                <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;300.00</p>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> <!-- End Item -->
+                <!-- End Item -->
             </ul>
         </div>
     </div>

@@ -22,6 +22,10 @@ namespace App.Controllers
             // get documents info from db put in a list
             // ViewBag.documents = <listname>;
             var user = Session["user"] as Account;
+            var documentManager = new documentManager();
+            ViewBag.bachelorsDocuments = documentManager.getAvailableDocument("Bachelors");
+            ViewBag.mastersDocuments = documentManager.getAvailableDocument("Masters");
+            ViewBag.doctorateDocuments = documentManager.getAvailableDocument("Doctorate");
             ViewBag.name = user.firstName;
             ViewBag.degrees = user.degrees;
             return View();

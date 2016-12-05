@@ -83,8 +83,24 @@ namespace App.Models
                                     Document doc = new Models.Document();
                                     doc.docuID = reader.GetInt32(0);
                                     doc.docuName = reader.GetString(1);
-                                    doc.regularPrice = reader.GetFloat(2);
+                                    if (!reader.IsDBNull(2))
+                                    {
+                                        doc.regularPrice = reader.GetFloat(2);
+                                    }   
+                                    else
+                                    {
+                                        doc.regularPrice = -1;
+                                    }
+                                    if (!reader.IsDBNull(3))
+                                    {
                                     doc.expressPrice = reader.GetFloat(3);
+                                    }
+                                    else
+                                    {
+                                        doc.expressPrice = -1;
+                                    }
+
+                            
                                     doc.type = reader.GetString(4);
 
                                     listDoc.Add(doc);
@@ -116,12 +132,12 @@ namespace App.Models
                             if(sDegree.Equals("Bachelors"))
                             {
                                 //get both and undergrad
-                                cmd.CommandText = "SELECT * FROM document WHERE docuType LIKE 'both' OR docuType LIKE 'Undergrad';";
+                                cmd.CommandText = "SELECT * FROM document WHERE type LIKE 'both' OR type LIKE 'Undergrad';";
                             }
                             else
                             {
                                 //get grad
-                                cmd.CommandText = "SELECT * FROM document WHERE docuType LIKE 'Grad';";
+                                cmd.CommandText = "SELECT * FROM document WHERE type LIKE 'both' OR 'Grad';";
                             }
 
                             using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -131,9 +147,23 @@ namespace App.Models
                                     Document doc = new Models.Document();
                                     doc.docuID = reader.GetInt32(0);
                                     doc.docuName = reader.GetString(1);
-                                    doc.regularPrice = reader.GetFloat(2);
-                                    doc.expressPrice = reader.GetFloat(3);
-                                    doc.type = reader.GetString(4);
+                                    if (!reader.IsDBNull(2))
+                                    {
+                                        doc.regularPrice = reader.GetFloat(2);
+                                    }
+                                    else
+                                    {
+                                        doc.regularPrice = -1;
+                                    }
+                                    if (!reader.IsDBNull(3))
+                                    {
+                                        doc.expressPrice = reader.GetFloat(3);
+                                    }
+                                    else
+                                    {
+                                        doc.expressPrice = -1;
+                                    }
+                            doc.type = reader.GetString(4);
 
                                     listDoc.Add(doc);
                                     doc = new Models.Document();
