@@ -5,7 +5,7 @@
 }
 
 @section scripts {
-    
+
 }
 
 @section btnStep{
@@ -43,6 +43,24 @@
     <!-- /.btnStep -->
 }
 
+@section headerScript{
+<script>
+    function display(degree) {
+        if (degree == 'undergraduate') {
+            $('.undergradDoc').show();
+            $('.gradDoc').hide();
+        } else if (degree == 'graduate') {
+            $('.gradDoc').show();
+            $('.undergradDoc').hide();
+        }
+        else {
+            $('.gradDoc').hide();
+            $('.undergradDoc').hide();
+        }
+    }
+</script>
+}
+
 @section body {
     
 <div style="position: fixed; bottom: 0; right: 0; margin-right: 180px; margin-bottom: 20px;">
@@ -64,8 +82,9 @@
                 <li class="item" style="height: 50px; margin-bottom: 10px; background-color: #fafafa; border: 1px solid #eeeeee; padding-top: 7px; padding-left: 10px; border-top-right-radius: 0.5em; border-top-left-radius: 0.5em;">
                     <center>
                         <span class="lbldegree">Degree</span> &nbsp;&nbsp;
-                        <select class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
-                            @{ 
+                        <select onchange="display(this.value)" class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
+                           <option value="">Select a degree</option>
+                             @{ 
                                 var degrees = ViewBag.degrees;
                                 foreach(var degree in degrees)
                                 {
@@ -87,7 +106,7 @@
                     var bDocs = ViewBag.bachelorsDocuments;
                     foreach(var doc in bDocs)
                     {
-                    <li class="item">
+                    <li class="item undergradDoc" style="display:none"> 
                         <!-- Start Item -->
                         <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
                             <h2 class="title" style="font-size: 18px;">@doc.docuName</h2><br>
@@ -109,6 +128,32 @@
                         </div>
                     </li> <!-- End Item -->
                     }
+                    var mDocs = ViewBag.mastersDocuments;
+                    foreach (var doc in mDocs)
+                    {
+                        <li class="item gradDoc" style="display:none">
+                            <!-- Start Item -->
+                            <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
+                                <h2 class="title" style="font-size: 18px;">@doc.docuName</h2><br>
+                                <div>
+                                    <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
+                                        @if (doc.regularPrice != -1)
+                                        {
+                                            <p class="desc"><span style="font-weight: 500;">Regular Price:</span> &nbsp;@doc.regularPrice</p>
+                                        }
+                                        @if (doc.expressPrice != -1)
+                                        {
+                                            <p class="desc"><span style="font-weight: 500;">Express Price:</span> &nbsp;@doc.expressPrice</p>
+                                        }
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> <!-- End Item -->
+                    }
+
                 }
 
                 <!-- End Item -->
