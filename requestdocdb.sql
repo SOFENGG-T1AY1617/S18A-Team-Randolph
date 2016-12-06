@@ -36,7 +36,7 @@ CREATE TABLE `degreesofuser` (
   `userID` int(11) NOT NULL,
   `lastSchoolAttendedPrevDlsu` varchar(45) NOT NULL,
   PRIMARY KEY (`degreeID`,`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `degreesofuser` (
 
 LOCK TABLES `degreesofuser` WRITE;
 /*!40000 ALTER TABLE `degreesofuser` DISABLE KEYS */;
-INSERT INTO `degreesofuser` VALUES (1,'Bachelors','3rd',2013,'DLSU-Manila','Undergraduate','No',3,2,'Philippine Cultural College'),(2,'Bachelors','4th',2013,'DLSU-Manila','Undergraduate','No',4,3,'Philippine Cultural College'),(3,'Bachelors','3rd',2013,'DLSU-Manila','Undergraduate','No',3,1,'Muntinlupa Science High School');
+INSERT INTO `degreesofuser` VALUES (1,'Bachelors','3rd',2013,'DLSU-Manila','Undergraduate','No',3,2,'Philippine Cultural College'),(2,'BS-IT','Bachelor',2013,'DLSU-Manila','New Student','No',4,3,'Philippine Cultural College'),(3,'AB-COM','Bachelor',2013,'DLSU-Manila','Cross Enrollee','No',3,1,'Muntinlupa Science High School'),(4,'BS-CS-ST','Bachelor',2014,'DLSU-Manila','New Student','No',3,7,'DLSZ'),(5,'MBA','Doctorate',2018,'DLSU-Manila','New Student','Yes',4,7,'DLSZ');
 /*!40000 ALTER TABLE `degreesofuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES (1,'Official Transcript of Records for Employment',150,NULL,'Transcript of Records','both',' *for Students with ID no. 80XXXX (those who entered DLSU-M in 1980) and below'),(2,'Official Transcript of Records for Employment',150,300,'Transcript of Records','both',NULL),(3,'Official Transcript of Records for Evaluation',150,300,'Transcript of Records','both',NULL),(4,'Ranking in Degree Program',110,200,'Certification','undergrad',NULL),(5,'Ranking by College',110,220,'Certification','undergrad',NULL),(6,'Dean\'s List',110,220,'Certification','undergrad',NULL),(7,'Completion for Academic Units',110,NULL,'Certification','grad',NULL),(8,'Trimestral Calendar',110,220,'Certification','both',NULL),(9,'Cumulative GPA',110,220,'Certification','both',NULL),(10,'Enrollment',110,220,'Certification','both',NULL),(11,'Grading System',110,220,'Certification','both',NULL),(12,'Graduation / With Honors',110,220,'Certification','both',NULL),(13,'Medium of Instruction (English)',110,220,'Certification','both',NULL),(14,'Tuition and Miscellaneous Fees Breakdown (Current Term)',40,NULL,'Certification','both',NULL),(15,'Tuition and Miscellaneous Fees Breakdown (starting SY2000-01)',110,220,'Certification','both',NULL),(16,'Units Earned',110,220,'Certification','both',NULL),(17,'Course (Subject) Description',110,NULL,'Certification','both',' - Max of 5 courses per certification) *IMPORTANT*: Indicate the title of the course in the *Other Instructions*'),(18,'Official Transcript of Records (Previous to DLSU)',50,NULL,'Certified True Copy','both',NULL),(19,'Form 137 (High School Transcript)',50,NULL,'Certified True Copy','both',NULL),(20,'Form 138 (High School Card)',50,NULL,'Certified True Copy','both',NULL),(21,'Espiritu, Paolo Montesa',200,NULL,'Certified True Copy','both','(CTC TOR-2 and Cert of Grad-2)'),(22,'Special Credentials',0,NULL,'Others','both',NULL),(23,'Special Handling (WES)',150,300,'Others','both',NULL);
+INSERT INTO `document` VALUES (1,'Official Transcript of Records for Employment (Batch 1980)',150,NULL,'Transcript of Records','both',' *for Students with ID no. 80XXXX (those who entered DLSU-M in 1980) and below'),(2,'Official Transcript of Records for Employment',150,300,'Transcript of Records','both',NULL),(3,'Official Transcript of Records for Evaluation',150,300,'Transcript of Records','both',NULL),(4,'Ranking in Degree Program',110,200,'Certification','undergrad',NULL),(5,'Ranking by College',110,220,'Certification','undergrad',NULL),(6,'Dean\'s List',110,220,'Certification','undergrad',NULL),(7,'Completion for Academic Units',110,NULL,'Certification','grad',NULL),(8,'Trimestral Calendar',110,220,'Certification','both',NULL),(9,'Cumulative GPA',110,220,'Certification','both',NULL),(10,'Enrollment',110,220,'Certification','both',NULL),(11,'Grading System',110,220,'Certification','both',NULL),(12,'Graduation / With Honors',110,220,'Certification','both',NULL),(13,'Medium of Instruction (English)',110,220,'Certification','both',NULL),(14,'Tuition and Miscellaneous Fees Breakdown (Current Term)',40,NULL,'Certification','both',NULL),(15,'Tuition and Miscellaneous Fees Breakdown (starting SY2000-01)',110,220,'Certification','both',NULL),(16,'Units Earned',110,220,'Certification','both',NULL),(17,'Course (Subject) Description',110,NULL,'Certification','both',' - Max of 5 courses per certification) *IMPORTANT*: Indicate the title of the course in the *Other Instructions*'),(18,'Official Transcript of Records (Previous to DLSU)',50,NULL,'Certified True Copy','both',NULL),(19,'Form 137 (High School Transcript)',50,NULL,'Certified True Copy','both',NULL),(20,'Form 138 (High School Card)',50,NULL,'Certified True Copy','both',NULL),(21,'Espiritu, Paolo Montesa',200,NULL,'Certified True Copy','both','(CTC TOR-2 and Cert of Grad-2)'),(22,'Special Credentials',0,NULL,'Others','both',NULL),(23,'Special Handling (WES)',150,300,'Others','both',NULL);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +213,7 @@ CREATE TABLE `user` (
   `alternateEmail` varchar(100) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123');
+INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123'),(7,11428376,'Yu','Randolph Nathaniel','Malveda','M',1996,11,28,'Filipino','Manila','162 Sarangani St. AAVA','9178955038',NULL,'randolph_yu@dlsu.edu.ph',NULL,'randolphyu');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -235,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-01 10:36:32
+-- Dump completed on 2016-12-06 10:36:28
