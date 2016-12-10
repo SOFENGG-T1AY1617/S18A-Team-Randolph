@@ -20,6 +20,7 @@
 
         <!-- Custom CSS-->
         <link href="css/register.css" rel="stylesheet">
+        <script src="js/register.js"></script>
         <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
     </head>
 
@@ -43,13 +44,13 @@
                         <div class="form-group">
                         <label class="col-sm-2" for="textinput">Email Address</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="Email Address" class="form-control" name="email">
+                          <input type="email" placeholder="Email Address" class="form-control" name="email">
                           <label id="emailError" class="label-error"></label>
                         </div>
 						  
 						 <label class="col-sm-2" for="textinput">Alternate Email (optional)</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="Alternate Email Address (Optional)" class="form-control" name="altEmail">
+                          <input type="email" placeholder="Alternate Email Address (Optional)" class="form-control" name="altEmail">
                           <label id="altEmailError" class="label-error"></label>
                         </div>
                       </div>
@@ -116,6 +117,8 @@
                         <div class="col-sm-4">
 							<select class="form-control" id="citizenship">
 							  <option value="">Select Citizenship</option>
+                              <option value="filipino">Filipino</option>
+                              <option value="chinese">Chinese</option>
 							  <option value="afghan">Afghan</option>
 							  <option value="albanian">Albanian</option>
 							  <option value="algerian">Algerian</option>
@@ -155,7 +158,6 @@
 							  <option value="central african">Central African</option>
 							  <option value="chadian">Chadian</option>
 							  <option value="chilean">Chilean</option>
-							  <option value="chinese">Chinese</option>
 							  <option value="colombian">Colombian</option>
 							  <option value="comoran">Comoran</option>
 							  <option value="congolese">Congolese</option>
@@ -177,7 +179,6 @@
 							  <option value="estonian">Estonian</option>
 							  <option value="ethiopian">Ethiopian</option>
 							  <option value="fijian">Fijian</option>
-							  <option value="filipino">Filipino</option>
 							  <option value="finnish">Finnish</option>
 							  <option value="french">French</option>
 							  <option value="gabonese">Gabonese</option>
@@ -357,7 +358,7 @@
 
                         <label class="col-sm-2" for="textinput">Zip Code</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="Zip Code" class="form-control" name="zipCode">
+                          <input type="text" placeholder="Zip Code" class="form-control" name="zipCode" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="zipCodeError" class="label-error"></label>
                         </div>
                       </div>
@@ -366,13 +367,13 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="textinput">Cellphone Number</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength=11>
                           <label id="phoneNumberError" class="label-error"></label>
                         </div>
 
-                        <label class="col-sm-2" for="textinput">Alternate  Number*</label>
+                        <label class="col-sm-2" for="textinput">Alternative Number (optional)</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber"onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                          <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength=11>
                           <label id="altPhoneNumberError" class="label-error"></label>
                         </div>
                       </div>
@@ -421,13 +422,13 @@
                       <div class="form-group padding-top: 7px;">
                         <label class="col-sm-2" for="textinput">ID Number*</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="ID Number (Optional)" class="form-control" name="IDNumber">
+                          <input type="text" placeholder="ID Number (Optional)" class="form-control" name="IDNumber"  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="IDNumberError" class="label-error"></label>
                         </div>
 
                         <label class="col-sm-2" for="textinput">Degree Program</label>
                         <div class="col-sm-4">
-                          <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degree">
+                          <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degree" onkeypress="return limitToAlphabets(event, this); ">
                           <label id="degreeError" class="label-error"></label>
                         </div>
                       </div>
@@ -455,9 +456,15 @@
                                 <input type="radio" name="gradRadio" style = "margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on
                             </div>
                             <div class = "col-sm-6">
-                                <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 50px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">   Term, A.Y &nbsp;&nbsp;
-                                <input type="text" placeholder="14" class="form-control" style = "width: 30px; display: inline-block;" name="lastTermStart" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                                - <input type="text" placeholder="15" class="form-control" style = "width: 30px; display: inline-block" name="lastTermEnd" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                <!--<input type="text" placeholder="e.g 1st, 2nd" class="form-control" style = "width: 50px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">-->
+                                <select class="form-control" style="width: 75px; display: inline;">
+                                    <option>1st</option>
+                                    <option>2nd</option>
+                                    <option>3rd</option>
+                                </select>
+                                Term, A.Y &nbsp;&nbsp;
+                                <input type="text" placeholder="14" class="form-control" style = "width: 45px; display: inline-block;" name="lastTermStart" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                - <input type="text" placeholder="15" class="form-control" style = "width: 45px; display: inline-block" name="lastTermEnd" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                 <label id="lastTermError" class="label-error"></label>
                             </div>
                         </div>
@@ -505,7 +512,7 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="textinput">Year Admitted</label>
                         <div class="col-sm-3">
-                          <input type="text" placeholder="e.g 2014, 2015" class="form-control" name="admissionYear">
+                          <input type="text" placeholder="e.g 2014, 2015" class="form-control" name="admissionYear" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                           <label id="admissionYearError" class="label-error"></label>
                         </div>
 
