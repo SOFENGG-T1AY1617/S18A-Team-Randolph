@@ -70,7 +70,7 @@
 </div>
 
 <div style="position: fixed; bottom: 0; left: 0; margin-left: 260px; margin-bottom: 20px; ">
-    <button class="btn btn-default">
+    <button class="btn btn-default" disabled>
         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Go Back
     </button>
 </div>
@@ -83,22 +83,26 @@
                     <center>
                         <span class="lbldegree">Degree</span> &nbsp;&nbsp;
                         <select onchange="display(this.value)" class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
-                           <option value="">Select a degree</option>
-                             @{ 
+                            <option value="">Select a degree</option>
+                            @{
                                 var degrees = ViewBag.degrees;
-                                foreach(var degree in degrees)
+                                if (degrees != null)
                                 {
-                                    if (degree.level=="Bachelor")
+                                    foreach (var degree in degrees)
                                     {
-                                        <option value="undergraduate">@degree.degreeName</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="graduate">@degree.degreeName</option>
+                                        if (degree.level == "Bachelor")
+                                        {
+                                            <option value="undergraduate">@degree.degreeName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="graduate">@degree.degreeName</option>
+                                        }
                                     }
                                 }
                             }
                         </select>
+
                     </center>
                 </li>
 

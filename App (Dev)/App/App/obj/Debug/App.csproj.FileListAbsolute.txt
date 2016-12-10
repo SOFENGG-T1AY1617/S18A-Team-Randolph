@@ -81,3 +81,4 @@ H:\Term 7\SOFENGG\Machine Project\Repo\App (Dev)\App\App\bin\WebMatrix.WebData.x
 H:\Term 7\SOFENGG\Machine Project\Repo\App (Dev)\App\App\bin\WebMatrix.Data.xml
 H:\Term 7\SOFENGG\Machine Project\Repo\App (Dev)\App\App\obj\Debug\App.dll
 H:\Term 7\SOFENGG\Machine Project\Repo\App (Dev)\App\App\obj\Debug\App.pdb
+H:\Term 7\SOFENGG\Machine Project\Repo\App (Dev)\App\App\obj\Debug\App.csprojResolveAssemblyReference.cache

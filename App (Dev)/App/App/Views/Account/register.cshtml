@@ -20,9 +20,9 @@
                             <label id="emailError" class="label-error">@ViewBag.emailError</label>
                         </div>
 
-                        <label class="col-sm-2" for="textinput">Alternate Email</label><span style="color: red;">*</span>
+                        <label class="col-sm-2" for="textinput">Alternate Email <p class="optional">*</p></label>
                         <div class="col-sm-4">
-                            <input type="text" placeholder="" class="form-control" name="altEmail">
+                            <input type="text" placeholder="" class="form-control" name="altEmail"><br />
                         </div>
                     </div>
                     <!-- Text input-->
@@ -625,11 +625,11 @@
                         <label class="col-sm-12 label-category">College Information</label>
                         <label class="col-sm-2" for="textinput">Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="col-sm-10" style="padding-top: 7px; margin-botton: 2px;">
-                            <input type="radio" name="degreeLevel" id="bachelors">&nbsp;&nbsp;Bachelor's Degree
+                            <label><input type="radio" name="degreeLevel" id="bachelors">&nbsp;&nbsp;Bachelor's Degree</label>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree
+                            <label><input type="radio" name="degreeLevel" id="masteral">&nbsp;&nbsp;Masteral Degree</label>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree
+                            <label><input type="radio" name="degreeLevel" id="doctorate">&nbsp;&nbsp;Doctorate Degree</label>
                             <br>
                             <label id="degreeLevelError" class="label-error"></label>
                         </div>
@@ -656,7 +656,7 @@
                         <label class="col-sm-2" for="textinput">Graduate?</label>
                         <div class="col-sm-9">
                             <div class="col-sm-5">
-                                <input type="radio" name="gradRadio" style="margin-top: 12px;" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last:
+                                <label><input type="radio" name="gradRadio" style="margin-top: 12px;" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last:</label>
                             </div>
                             <div class="col-sm-4">
                                 <input class="form-control" name="graduateDate" type="date">
@@ -671,7 +671,7 @@
                         <label class="col-sm-2" for="textinput"></label>
                         <div class="col-sm-9">
                             <div class="col-sm-5">
-                                <input type="radio" name="gradRadio" style="margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on
+                                <label><input type="radio" name="gradRadio" style="margin-top: 12px;" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on</label>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" placeholder="e.g 1st, 2nd" class="form-control" style="width: 50px; display: inline-block;" name="lastTerm" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">   Term, A.Y &nbsp;&nbsp;
@@ -686,9 +686,10 @@
                     <div class="form-group">
                         <label class="col-sm-2" for="textinput">Year Level</label>
                         <div class="col-sm-10">
-                            <input type="radio" id="firstYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;1st &nbsp;&nbsp;
-                            <input type="radio" id="secondYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;2nd&nbsp;&nbsp;
-                            <input type="radio" id="thirdYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;3rd&nbsp;&nbsp;<input type="radio" id="fourthYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;4th
+                            <label><input type="radio" id="firstYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;1st &nbsp;&nbsp;</label>
+                            <label><input type="radio" id="secondYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;2nd&nbsp;&nbsp;</label>
+                            <label><input type="radio" id="thirdYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;3rd&nbsp;&nbsp;</label>
+                            <label><input type="radio" id="fourthYear" name="yrlvl" style="margin-top: 12px;">&nbsp;&nbsp;4th</label>
                         </div>
                         <label id="yearLevelError" class="col-md-offset-5 label-error" style="padding-left:1em;"></label>
                     </div>
@@ -697,11 +698,11 @@
                     <div class="form-group">
                         <label class="col-sm-2" for="textinput">Admitted as</label>
                         <div class="col-sm-9" style="padding-top: 7px;">
-                            <input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student
+                            <label><input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student</label>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee
+                            <label><input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee</label>
                             &nbsp; &nbsp; &nbsp;
-                            <input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee
+                            <label><input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee</label>
                             <br>
                             <label id="admissionError" class="label-error"></label>
                         </div>
