@@ -5,6 +5,20 @@
 }
 
 @section scripts {
+<script>
+        $('#orderModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var documentTitle = button.data('document') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            var degreeDropdown = document.getElementById("degreeDropdown")
+            var selectedDegree = degreeDropdown.options[degreeDropdown.selectedIndex].text
+            modal.find('.modal-title').text(documentTitle)
+            modal.find('#degreeProfile').text("Academic Profile: "+ selectedDegree)
+        })
+</script>
+
 
 }
 
@@ -82,7 +96,7 @@
                 <li class="item" style="height: 50px; margin-bottom: 10px; background-color: #fafafa; border: 1px solid #eeeeee; padding-top: 7px; padding-left: 10px; border-top-right-radius: 0.5em; border-top-left-radius: 0.5em;">
                     <center>
                         <span class="lbldegree">Degree</span> &nbsp;&nbsp;
-                        <select onchange="display(this.value)" class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
+                        <select id="degreeDropdown" onchange="display(this.value)" class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
                             <option value="">Select a degree</option>
                             @{
                                 var degrees = ViewBag.degrees;
@@ -126,7 +140,7 @@
                                     }
                                 </div>
                                 <div class="col-xs-6">
-                                    <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
+                                    <button type ="button" class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +165,7 @@
                                         }
                                     </div>
                                     <div class="col-xs-6">
-                                        <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;">Order</button>
+                                        <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
                                     </div>
                                 </div>
                             </div>
@@ -160,8 +174,42 @@
 
                 }
 
-                <!-- End Item -->
+           
             </ul>
+            <!-- Modal -->
+            <div id="orderModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="font-weight: bold;">~document name~</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="degreeProfile" style="font-weight: bold;">Academic Profile:</p>
+                            <p style="font-weight: bold;">
+                                No. of Copies:
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <input class="form-control" type="number" min="0" max="5" value="1" style="width: 40px">
+                                    </div>
+                                </div>
+                            </p>
+
+                            <p style="font-weight: bold;">
+                                Insert Document Into:
+                                <label class="radio-inline"><input type="radio" name="packaging">Brown Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging">White Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging">None</label>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Add to Cart</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div> <!-- END OF MODAL-->
         </div>
     </div>
 </div>
