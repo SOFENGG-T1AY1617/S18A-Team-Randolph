@@ -1,0 +1,237 @@
+﻿
+@{
+	ViewBag.Title = "Admin Delivery";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">ESH Admin</a>
+			</div>
+			<!-- Top Menu Items -->
+			<ul class="nav navbar-right top-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Administrator <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav" style="margin-top: 25px;">
+					<li>
+						<a href="admin-index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+					</li>
+					<li>
+						<a href="admin-delivery.html"><i class="fa fa-fw fa-asterisk"></i> Maintain Delivery Charges</a>
+					</li>
+					<li>
+						<a href="admin-documentcharges.html"><i class="fa fa-fw fa-asterisk"></i> Maintain Document Charges</a>
+					</li>
+					<li>
+						<a href="admin-updatedate"><i class="fa fa-fw fa-calendar"></i> Update Operational Date</a>
+					</li>
+					<li>
+						<a href="admin-orderlist.html"><i class="fa fa-fw fa-shopping-cart"></i> View Orders</a>
+					</li>
+					<li>
+						<a href="admin-search.html"><i class="fa fa-fw fa-search"></i> Search Previous Orders</a>
+					</li>
+					<li>
+						<a href="admin-monitor.html"><i class="fa fa-fw fa-bullhorn"></i> Monitor Document Production</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+
+		<div id="page-wrapper">
+
+			<div class="container-fluid">
+
+				<!-- Page Heading -->
+				<div id="page-content-wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:100px">
+								<div class="col-md-12" style="padding-top: 20px">
+									<span>Status: </span>
+									<select class="form-control" style=" width: 150px; height: 35px; display: inline-block;" id="status">
+										<option value="processing">Processing</option>
+										<option value="pending"> Pending  </option>
+										<option value="completed"> Completed  </option>
+									</select>
+									<br></br>
+									<div id="processing" class="status">
+										<h3><b>Processing Documents</b></h3>
+										<hr>
+										<table class="table table-condensed">
+											<thead>
+												<tr id="listhead">
+													<th>Transaction No.</th>
+													<th>Date of Transaction</th>
+													<th>Due Date(to Courier)</th>
+													<th>Name</th>
+													<th>Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>25 Nov 2016</td>
+													<td>3 Dec 2016</td>
+													<td>Yu, Randolph Nathaniel M.</td>
+													<td>Php 150.00</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>24 Nov 2016</td>
+													<td>10 Dec 2016</td>
+													<td>Choi, Jonghyun</td>
+													<td>Php 200.00</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>16 Nov 2016</td>
+													<td>23 Nov 2016</td>
+													<td>Herrera, Cedric Jose D.</td>
+													<td>Php 300.00</td>
+												<tr>
+													<td>4</td>
+													<td>28 Nov 2016</td>
+													<td>1 Dec 2016</td>
+													<td>Francisco, Harold Wilson F.</td>
+													<td>Php 100.00</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>10 Nov 2016</td>
+													<td>27 Nov 2016</td>
+													<td>Malonzo, Juan Lorenzo P.</td>
+													<td>Php 100.00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div id="pending" class="status">
+										<h3><b>Pending Documents</b></h3>
+										<hr>
+										<table class="table table-condensed">
+											<thead>
+												<tr id="listhead">
+													<th>Transaction No.</th>
+													<th>Date of Transaction</th>
+													<th>Due Date(to Courier)</th>
+													<th>Name</th>
+													<th>Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>7</td>
+													<td>7 Dec 2016</td>
+													<td>10 Dec 2016</td>
+													<td>Brosas, Hazel Anne L.</td>
+													<td>Php 150.00</td>
+												</tr>
+												<tr>
+													<td>14</td>
+													<td>24 Nov 2016</td>
+													<td>26 Nov 2016</td>
+													<td>Lim, Eugene G.</td>
+													<td>Php 200.00</td>
+												</tr>
+												<tr>
+													<td>20</td>
+													<td>16 Nov 2016</td>
+													<td>221 Nov 2016</td>
+													<td>Gardose, Neilson Keith P.</td>
+													<td>Php 300.00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div id="completed" class="status">
+										<h3><b>Completed Documents</b></h3>
+										<hr>
+										<table class="table table-condensed">
+											<thead>
+												<tr id="listhead">
+													<th>Transaction No.</th>
+													<th>Date of Transaction</th>
+													<th>Due Date(to Courier)</th>
+													<th>Name</th>
+													<th>Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>8</td>
+													<td>25 Dec 2016</td>
+													<td>30 Dec 2016</td>
+													<td>Marcelo, Micaella Louise R.</td>
+													<td>Php 900.00</td>
+												</tr>
+												<tr>
+													<td>21</td>
+													<td>15 Mar 2017</td>
+													<td>18 Mar 2017</td>
+													<td>Cheng, Clarisse Bernadette M.</td>
+													<td>Php 500.00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container-fluid -->
+
+		<!-- jQuery -->
+	<script src="~/js/jquery.js"></script>
+
+	<script type="text/javascript">
+		jQuery(function ($) {
+			$(document).ready(function () {
+				$('.status').hide();
+				$('#processing').show();
+				$('#status').change(function () {
+					$('.status').hide();
+					$('#' + $(this).val()).show();
+				})
+			});
+		});
+
+	</script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="~/js/bootstrap.min.js"></script>
+</body>
