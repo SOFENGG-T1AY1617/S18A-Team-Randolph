@@ -655,9 +655,6 @@
 
 		function validate() {
 			// check account flag
-		   
-
-
 			if (emailFlag == true || altEmailFlag == true || passwordFlag == true)
 				accountFlag = true;
 			else accountFlag = false;
@@ -677,14 +674,11 @@
 				academicFlag = true;
 			else academicFlag = false;
 
-			alert("account: " + accountFlag + "\npersonal: " + personalFlag + "\nacademic: " + academicFlag);
-
-			/*
+			
 			if (accountFlag == true || personalFlag == true || academicFlag == true) {
 				document.getElementById('error').innerHTML = "Error exists. Kindly review your submission.";
 				return false;
 			} else return true;
-			*/
 		}
 
 		const courses = [];
