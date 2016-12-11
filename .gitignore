@@ -1,0 +1,10 @@
+*.config
+App (Dev)/App/App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache
+*.config
+App (Dev)/App/App/bin/App.pdb
+*.config
+App (Dev)/App/App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+App (Dev)/App/App/bin/App.dll
+*.pdb
+*.txt
