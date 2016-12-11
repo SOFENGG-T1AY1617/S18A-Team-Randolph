@@ -12,10 +12,22 @@
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             var modal = $(this)
+            var regularPrice = button.data('regularprice')
+            var expressPrice = button.data('expressprice')
             var degreeDropdown = document.getElementById("degreeDropdown")
             var selectedDegree = degreeDropdown.options[degreeDropdown.selectedIndex].text
             modal.find('.modal-title').text(documentTitle)
-            modal.find('#degreeProfile').text("Academic Profile: "+ selectedDegree)
+            modal.find('#degreeProfile').text("Academic Profile: " + selectedDegree)
+            if (regularPrice == -1) {
+                modal.find('#regularRate').hide()
+            } else {
+                modal.find('#regularRate').show()
+            }
+            if (expressPrice == -1) {
+                modal.find('#expressRate').hide()
+            } else {
+                modal.find('#expressRate').show()
+            }
         })
 </script>
 
@@ -100,7 +112,7 @@
                 <li class="item" style="height: 50px; margin-bottom: 10px; background-color: #fafafa; border: 1px solid #eeeeee; padding-top: 7px; padding-left: 10px; border-top-right-radius: 0.5em; border-top-left-radius: 0.5em;">
                     <center>
                         <span class="lbldegree">Degree</span> &nbsp;&nbsp;
-                        <select id="degreeDropdown" onchange="display(this.value)" class="form-control" style=" width: 150px; height: 35px; display: inline-block;">
+                        <select id="degreeDropdown" onchange="display(this.value)" class="form-control" style="width: 150px; height: 35px; display: inline-block;">
                             <option value="">Select a degree</option>
                             @{
                                 var degrees = ViewBag.degrees;
@@ -199,12 +211,17 @@
                                     </div>
                                 </div>
                             </p>
+                            <p style="font-weight: bold;">
+                                Delivery Rate:
+                                <label class="radio-inline" id="regularRate"><input type="radio" name="packaging" value="regular">Regular</label>
+                                <label class="radio-inline" id="expressRate"><input type="radio" name="packaging" value="express">Express</label>
+                            </p>
 
                             <p style="font-weight: bold;">
                                 Insert Document Into:
-                                <label class="radio-inline"><input type="radio" name="packaging">Brown Envelope</label>
-                                <label class="radio-inline"><input type="radio" name="packaging">White Envelope</label>
-                                <label class="radio-inline"><input type="radio" name="packaging">None</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" value="brown">Brown Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" value="white">White Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" value="none">None</label>
                             </p>
                         </div>
                         <div class="modal-footer">
