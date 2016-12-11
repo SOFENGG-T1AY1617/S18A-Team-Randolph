@@ -57,6 +57,12 @@ namespace App.Controllers
         }
 
         // GET: Admin
+        public ActionResult adminTransactionHistory()
+        {
+            return View();
+        }
+
+        // GET: Admin
         public ActionResult adminUpdateDate()
         {
             return View();

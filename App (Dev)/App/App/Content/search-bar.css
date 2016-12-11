@@ -26,12 +26,12 @@ body {
     border-bottom-left-radius: 4px;
 }
 #title {
-    left: px;
+    position: relative;
 }
 @media screen and (min-width: 768px) {
     #adv-search {
         width: 550px;
         margin: 0 auto;
-        left: 50px;
+        left: 175px;
     }
 }
