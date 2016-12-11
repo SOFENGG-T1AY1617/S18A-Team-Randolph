@@ -63,9 +63,28 @@
 
 }
 @section viewCart{
-    <ul class="dropdown-menu" id="viewCart" style="list-style: none;">
-        <li>Document - Price - Quantity</li>
-    </ul>
+    <ul class="dropdown-menu" id="viewCart" style="list-style: none; width: 600px;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+            </thead>
+            <li>
+            <td>Transcript of Records</td>
+            <td> 1</td>
+            <td> Php 100.00</td>
+            <td>
+                <button type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+            </li>
+        </table>
+</ul>
  }
 @section btnStep{
     <!--btnStep-->
