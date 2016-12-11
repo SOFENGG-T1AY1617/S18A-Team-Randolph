@@ -1,5 +1,4 @@
 .optional {
-    color: red;
     display: inline;
 }
 
@@ -7,6 +6,10 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    align-items: center;
+}
+.formz {
+    display:flex;
     align-items: center;
 }
 
@@ -23,8 +26,10 @@
 }
 .label-error{
   color: red;
-  font-size: 12px;
+  font-size: 10px;
   margin-bottom: -10px;
+  font-family: Lato;
+  font-weight: 500;
 }
 .label-category{
   font-family: 'Roboto', sans-serif;
@@ -35,6 +40,7 @@
 label{
     text-align: left;
 }
+
 
 legend{
     background-color: #00703c;

@@ -30,6 +30,7 @@ namespace App.Models
         public List<Degree> degrees { get; set; }
         public List<Transaction> transactions { get; set; }
         public List<MailingInformation> mailInfos { get; set; }
+        public List<Document> cart { get; set; }
     }
 
     class AccountManager
@@ -85,6 +86,7 @@ namespace App.Models
                             account.password = reader.GetString(16);
                             account.degrees = dm.getDegree(account.userID);
                             //account.mailInfos = mim.getMailInfos(account.userID);
+                            account.cart = new List<Document>();
                         }
 
                         if (!reader.HasRows)
@@ -171,5 +173,7 @@ namespace App.Models
             conn.Close();
             return this.getAccount(acc.email, acc.password);
         }
+        
     }
+    
 }
