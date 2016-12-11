@@ -12,19 +12,20 @@
                 <fieldset>
                     <!-- Form Name -->
                     <legend style="font-family: Lato; font-weight: 300; letter-spacing: 0.5px;">Account Information</legend>
-                    <div class="form-group">                        
+                    <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Email Address</label><br />
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" id="email" class="form-control" name="email" onchange="validateEmail();">
                             <label id="emailError" class="label-error">@ViewBag.emailError</label>
                             <br />
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Password</label><br />
-                            <input type="password" placeholder="be at least 8-32 characters" class="form-control" name="password">
+                            <input type="password" id="password" placeholder="be at least 8-32 characters" class="form-control" name="password" onchange="validatePassword();">
                             <label id="passwordError" class="label-error">@ViewBag.passwordError</label>
-                        </div>                        
+                        </div>
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Alternate Email <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label><br />
-                            <input type="email" placeholder="" class="form-control" name="altEmail">
+                            <input type="email" id="altEmail" class="form-control" name="altEmail" onchange="validateAltEmail();">
+                            <label id="altEmailError" class="label-error">@ViewBag.emailError</label>
                         </div>
                     </div>
                 </fieldset>
@@ -40,17 +41,17 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" placeholder="Last Name" name="lastName" class="form-control">
+                            <input type="text" id="lastName" placeholder="Last Name" name="lastName" class="form-control" onchange="validateLastName()">
                             <label id="lastNameError" class="label-error">@ViewBag.lastNameError</label>
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" placeholder="First Name" name="firstName" class="form-control">
+                            <input type="text" id="firstName" placeholder="First Name" name="firstName" class="form-control" onchange="validateFirstName()">
                             <label id="firstNameError" class="label-error">@ViewBag.firstNameError</label>
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" placeholder="Middle Name" name="middleName" class="form-control">
+                            <input type="text" id="middleName" placeholder="Middle Name" name="middleName" class="form-control" onchange="validateMiddleName()">
                             <label id="middleNameError" class="label-error">@ViewBag.middleNameError</label>
                         </div>
                     </div>
@@ -59,15 +60,15 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Gender</label><br />
-                            <label style="font-weight: 500; font-family: Lato;"><input type="radio" name="gender" id="genderMale" value="Male">&nbsp;&nbsp;Male</label>
+                            <label style="font-weight: 500; font-family: Lato;"><input type="radio" name="gender" id="genderMale" value="Male" onchange="validateGender()">&nbsp;&nbsp;Male</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <label style="font-weight: 500; font-family: Lato;"><input type="radio" name="gender" id="genderFemale" value="Female">&nbsp;&nbsp;Female</label>
+                            <label style="font-weight: 500; font-family: Lato;"><input type="radio" name="gender" id="genderFemale" value="Female" onchange="validateGender()">&nbsp;&nbsp;Female</label>
                             <label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;">@ViewBag.genderError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Birthday</label>
-                            <input class="form-control" name="birthday" type="date">
+                            <input class="form-control" id="birthday" name="birthday" type="date" onchange="validateBirthday()">
                             <label id="birthdayError" class="label-error">@ViewBag.birthdayError</label>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Citizenship</label>
-                            <select class="form-control" name="citizenship" id="citizenship">
+                            <select class="form-control" name="citizenship" id="citizenship" onchange="validateCitizenship()">
                                 <option selected disabled>Select Citizenship</option>
                                 <option value="Filipino">Filipino</option>
                                 <option value="Chinese">Chinese</option>
@@ -278,7 +279,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Place of Birth</label>
-                            <input type="text" class="form-control" name="birthPlace">
+                            <input type="text" id="birthPlace" class="form-control" name="birthPlace" onchange="validateBirthPlace();">
                             <label id="birthPlaceError" class="label-error">@ViewBag.birthPlaceError</label>
                         </div>
                     </div>
@@ -286,13 +287,13 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Street</label>
-                            <input type="text" class="form-control" name="street">
+                            <input type="text" class="form-control" name="street" id="street" onchange="validateStreet();">
                             <label id="streetError" class="label-error"></label>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">City</label>
-                            <input type="text" class="form-control" name="city">
+                            <input type="text" class="form-control" name="city" id="city" onchange="validateCity();">
                             <label id="cityError" class="label-error"></label>
                         </div>
                     </div>
@@ -301,7 +302,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Current Address</label>
-                            <input type="text" class="form-control" name="address">
+                            <input type="text" class="form-control" name="address" id="address" onchange="validateAddress();">
                             <label id="addressError" class="label-error">@ViewBag.addressError</label>
                         </div>
                     </div>
@@ -310,7 +311,7 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Country</label><br />
-                            <select class="form-control" id="citizenship" name="country">
+                            <select class="form-control" name="country" id="country" onchange="validateCountry()">
                                 <option disabled selected>Select Country</option>
                                 <option value="Filipino">Philippines</option>
                                 <option value="Chinese">China</option>
@@ -566,7 +567,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Zip Code</label>
-                            <input type="text" class="form-control" name="zipCode">
+                            <input type="text" class="form-control" name="zipCode" id="zipCode" onchange="validateZipCode();">
                             <label id="zipCodeError" class="label-error"></label>
                         </div>
                     </div>
@@ -575,14 +576,13 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Cellphone Number</label>
-                            <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <input type="text" placeholder="any country number format" class="form-control" name="phoneNumber" id="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" onchange="validatePhone()">
                             <label id="phoneNumberError" class="label-error">@ViewBag.phoneNumError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label style="font-family: Lato; font-weight: 500;" for="textinput">Alternate Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
-                            <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                            <label id="altPhoneNumberError" class="label-error"></label>
+                            <input type="text" placeholder="any country number format" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                         </div>
                     </div>
                 </fieldset>
@@ -603,7 +603,7 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">High School</label>
-                            <input type="text" class="form-control" name="highSchool">
+                            <input type="text" class="form-control" name="highSchool" id="highSchool" onchange="validateHighSchool();">
                             <label id="highSchoolError" class="label-error"></label>
                         </div>
                     </div>
@@ -619,7 +619,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Level</label><br />
-                            <select class="form-control" id="degreeLevel" name="degreeLevel">
+                            <select class="form-control" id="degreeLevel" name="degreeLevel" onchange="validateDegreeLevel();">
                                 <option disabled selected>Select Degree Level</option>
                                 <option value="bachelor" id="bachelor">Bachelor's</option>
                                 <option value="masteral" id="masteral">Masteral</option>
@@ -630,15 +630,15 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">ID Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
-                            <input type="text" class="form-control" name="IDNumber">
-                            <label id="IDNumberError" class="label-error"></label>
+                            <input type="text" class="form-control" name="IDNumber" id="idNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <label id="IdNumberError" class="label-error"></label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">College</label>
-                            <select class="form-control" id="college" name="college" data-placement="top" onchange="updateCourses(this)">
+                            <select class="form-control" id="college" name="college" data-placement="top" onchange="updateCourses(this); validateCollege();">
                                 <option disabled selected>Select College</option>
                                 <option value='8'>Graduate Studies</option>
                                 <option value='0'>Br. Andrew Gonzalez College of Education (BAGCED)</option>
@@ -655,20 +655,20 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Degree Program</label>
-                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course">
-                            <label id="degreeProgramError" class="label-error"></label>
+                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();">
+                            <label id="courseError" class="label-error"></label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Graduate?</label>
+                            <label id="graduatedError" class="label-error"></label>
                         </div>
-
                         <div class="col-sm-6">
-                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;"><input type="radio" name="gradRadio" id="isGraduated">&nbsp;&nbsp;Yes, I graduated last:</label><br />
+                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;"><input type="radio" name="gradRadio" id="isGraduated" value="1" onchange="disable()" checked>&nbsp;&nbsp;Yes, I graduated last:</label><br />
                             <div class="col-sm-8">
-                                <select class="form-control" id="monthGraduate" name="monthGraduate" data-placement="top">
+                                <select class="form-control" id="monthGraduate" name="monthGraduate" data-placement="top" onchange="validateGraduateMonth();">
                                     <option disabled selected>Select Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -683,18 +683,23 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
+                                <label id="graduateMonthError" class="label-error"></label>
                             </div>
-                            
+
                             <div class="col-sm-4">
-                                <input class="form-control col-sm-2" name="yearGraduate" placeholder="Year" type="number" min="1900" step="1">
+                                <input class="form-control" name="yearGraduate" id="yearGraduate" placeholder="Year" type="number" min="1900" step="1" onchange="validateGraduateYear();" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                <label id="graduateYearError" class="label-error"></label>
                             </div><br /><br />
                             <hr />
                         </div>
 
                         <div class="col-sm-6">
-                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;"><input type="radio" name="gradRadio" id="notGraduated">&nbsp;&nbsp;No, I attended DLSU on:</label><br />
-                            <div class="col-sm-5">
-                                <select class="form-control" id="lastTerm" name="yrLvl" data-placement="top">
+                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;">
+                                <input type="radio" name="gradRadio" id="notGraduated" value="0" onchange="disable()">&nbsp;&nbsp;No, I attended DLSU on:
+                            </label>
+                            <br />
+                            <div class="col-sm-6">
+                                <select class="form-control" id="yrLvl" name="yrLvl" data-placement="top" disabled onchange="validateYrLvl();">
                                     <option disabled selected>Year Level</option>
                                     <option value="1">First Year</option>
                                     <option value="2">Second Year</option>
@@ -706,9 +711,11 @@
                                     <option value="8">Eighth Year</option>
                                 </select>
                             </div>
+                            <label id="yrLvlError" class="label-error"></label>
+
                             <br /><br />
                             <div class="col-sm-5">
-                                <select class="form-control" id="lastTerm" name="lastTerm" data-placement="top">
+                                <select class="form-control" id="lastTerm" name="lastTerm" data-placement="top" disabled onchange="validateTerm();">
                                     <option disabled selected>Term</option>
                                     <option value="1">1st</option>
                                     <option value="2">2nd</option>
@@ -717,30 +724,33 @@
                             </div>
                             Term, A.Y &nbsp;&nbsp;
 
-                            <input type="text" placeholder="14" class="form-control" style="width: 50px; display: inline-block;" name="lastTermStart" id ="lastTermStart" onchange="plusone('lastTermStart','lastTermEnd')">
-                            - <input type="text" placeholder="15" class="form-control" style="width: 50px; display: inline-block;" name="lastTermEnd" id ="lastTermEnd" onkeypress="" disabled>
-                            <hr />
+                            <input type="text" placeholder="14" class="form-control" style="width: 50px; display: inline-block;" name="lastTermStart" id="lastTermStart" onchange="plusone('lastTermStart', 'lastTermEnd'); validateLastTermStart();" disabled>
+                            - <input type="text" placeholder="15" class="form-control" style="width: 50px; display: inline-block;" name="lastTermEnd" id="lastTermEnd" onkeypress="" disabled><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<label id="termError" class="label-error"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label id="lastTermStartError" class="label-error"></label>
+                            <hr style="margin-top: 1px;" />
                         </div>
                     </div>
+
                     <br /><br />
                     <div class="form-group">
                         <div class="row" style="margin-top: 12px; margin-left: 1px; margin-right: 1px;">
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Admitted as</label><br />
 
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="newStudent" name="admissionRadio">&nbsp;&nbsp;New Student</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="newStudent" name="admissionRadio" checked onchange="isTransferee();  validateAdmittedAs();">&nbsp;&nbsp;New Student</label>
                                 &nbsp; &nbsp; &nbsp;&nbsp;
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="transferee" name="admissionRadio">&nbsp;&nbsp;Transferee</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="transferee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Transferee</label>
                                 &nbsp; &nbsp; &nbsp;&nbsp;
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="crossEnrollee" name="admissionRadio">&nbsp;&nbsp;Cross Enrollee</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="crossEnrollee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Cross Enrollee</label>
                                 <br>
                                 <label id="admissionError" class="label-error"></label>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Year Admitted</label><br />
-                                <input class="form-control col-sm-2" style="width: 100px;" name="admissionYear" placeholder="Year" type="number" min="1900" step="1">
-                                <label id="admissionYearError" class="label-error"></label>
+                                <input class="form-control col-sm-2" style="width: 100px;" name="admissionYear" placeholder="Year" type="number" min="1900" step="1" id="yearAdmitted" onchange="validateYearAdmitted();">
+                                &nbsp;&nbsp;<label id="admissionYearError" class="label-error"></label>
                             </div>
                         </div>
                     </div>
@@ -749,13 +759,13 @@
                         <div class="row" style="margin-top: 12px; margin-left: 1px; margin-right: 1px;">
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Last School Attended</label><br />
-                                <input type="text" class="form-control" name="lastSchool" disabled>
+                                <input type="text" class="form-control" name="lastSchool" disabled id="lastSchool" onchange="validateLastSchool();">
                                 <label id="lastSchoolError" class="label-error"></label>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Campus Attended</label><br />
-                                <select class="form-control" id="campusAttended">
+                                <select class="form-control" id="campusAttended" onchange="validateCampusAttended();">
                                     <option disabled selected>Select Campus</option>
                                     <option value="BGC">BGC</option>
                                     <option value="Makati">Makati</option>
@@ -771,7 +781,8 @@
                 <!-- Academic Information End -->
             </div><!-- /.col-lg-12 -->
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" />
+                <label id="error" class="label-error"></label>
+                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="return validate();" />
                 <input type="button" value="Back" class="btn btn-default" style="float: right;" onclick="location.href='@Url.Action("Index", "Home")'" />
             </div>
         </div><!-- /.row -->
