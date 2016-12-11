@@ -41,10 +41,9 @@
 }
 
 @section body {
-    <div class="container" style="margin-top: 170px;">
-        <div class="container">
+    <div class="container item-list-cont" style="margin-top: 170px;">
             <div class="row">
-                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div class="col-sm-10 col-md-8 stepHeader">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -87,32 +86,29 @@
                                 <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
                                 <td class="text-right"><h5><strong>P0.00<br>P0.00</strong></h5><h3>P0.00</h3></td>
                             </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
-                                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("order", "Transaction")'">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("info", "Transaction")'">
-                                        Checkout <span class="glyphicon glyphicon-play"></span>
-                                    </button>
-                                </td>
-                            </tr>
+
                         </tfoot>
                     </table>
+
+                    <div>
+                        <button type="submit" class="btn" style="color: white; float: left; background-color: #5cb85c;" onclick="location.href='@Url.Action("info", "Transaction")'">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back
+                        </button>
+
+                        <button type="button" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px" onclick="location.href='@Url.Action("success", "Transaction")'">
+                            Proceed to Next Step <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button type="button" class="btn btn-default" style="float: right" onclick="location.href='@Url.Action("order", "Transaction")'">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Add other items
+                        </button>
+                        <span>&nbsp; &nbsp;</span>
+
+                    </div>
+
+                    >
                 </div>
             </div>
-        </div>
     </div>
 
 
 }
-
-
-
-
-
