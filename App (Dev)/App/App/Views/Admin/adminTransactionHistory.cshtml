@@ -1,6 +1,6 @@
 ﻿
 @{
-	ViewBag.Title = "Maintain Delivery Charges";
+	ViewBag.Title = "Verify User Accounts";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -17,35 +17,41 @@
 							<div class="col-lg-12" style="margin-bottom:100px">
 								<div class="col-md-12" style="padding-top: 20px">
 									<div id="monitoring">
-										<h3><b>Delivery Charges </b></h3>
+										<h3><b>Transaction History</b></h3>
 										<hr>
 										<table class="table table-condensed">
 											<thead>
 												<tr id="listhead">
-													<th>Document name</th>
-													<th>Amount of Document</th>
+													<th>Transaction No.</th>
+													<th>No. of Documents</th>
+													<th>Total Amount</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>Afghanistan</td>
-													<td><form><input type="text" class="form-control" id=""></form></td>
+													<th>1</th>
+													<th>2</th>
+													<th>Php 400.00</th>
 												</tr>
 												<tr>
-													<td>Albania</td>
-													<td><form><input type="text" class="form-control" id=""></form></td>
+													<th>63</th>
+													<th>5</th>
+													<th>Php 650.00</th>
 												</tr>
 												<tr>
-													<td>Algeria</td>
-													<td><form><input type="text" class="form-control" id=""></form></td>
+													<th>67</th>
+													<th>7</th>
+													<th>Php 1000.00</th>
 												</tr>
 												<tr>
-													<td>Andorra</td>
-													<td><form><input type="text" class="form-control" id=""></form></td>
+													<th>89</th>
+													<th>4</th>
+													<th>Php 475.00</th>
 												</tr>
 												<tr>
-													<td>Angola</td>
-													<td><form><input type="text" class="form-control" id=""></form></td>
+													<th>92</th>
+													<th>3</th>
+													<th>Php 550.00</th>
 												</tr>
 											</tbody>
 										</table>
@@ -62,10 +68,10 @@
 		</div>
 		<!-- /.container-fluid -->
 
-		<!-- jQuery -->
-		<script src="~/js/jquery.js"></script>
+	<!-- jQuery -->
+	<script src="~/js/jquery.js"></script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		jQuery(function ($) {
 			$(document).ready(function () {
 				$('.status').hide();
@@ -77,9 +83,8 @@
 			});
 		});
 
-		</script>
-		<!-- Bootstrap Core JavaScript -->
-		<script src="~/js/bootstrap.min.js"></script>
-
-
+	</script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="~/js/bootstrap.min.js"></script>
 </body>
+
