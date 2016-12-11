@@ -1,4 +1,5 @@
 ﻿using App.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,11 @@ namespace App.Controllers
             ViewBag.bachelorsDocuments = documentManager.getAvailableDocument("Bachelors");
             ViewBag.mastersDocuments = documentManager.getAvailableDocument("Masters");
             ViewBag.doctorateDocuments = documentManager.getAvailableDocument("Doctorate");
-            ViewBag.name = user.firstName;
             ViewBag.degrees = user.degrees;
+            ViewBag.name = user.firstName;
+
+            ViewBag.documentsJSON = JsonConvert.SerializeObject(documentManager.getAllDocuments());
+            ViewBag.degreesJSON = JsonConvert.SerializeObject(user.degrees);
             return View();
         }
 

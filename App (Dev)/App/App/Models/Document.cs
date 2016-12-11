@@ -180,5 +180,58 @@ namespace App.Models
                     conn.Close();
                     return listDoc;
             }
+        public List<Document> getAllDocuments() // Bachelors, Masters, Doctorate
+        {
+            List<Document> listDoc = new List<Document>();
+            MySqlConnection conn = null;
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+            
+                        cmd.CommandText = "SELECT * FROM document;";
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Document doc = new Models.Document();
+                            doc.docuID = reader.GetInt32(0);
+                            doc.docuName = reader.GetString(1);
+                            if (!reader.IsDBNull(2))
+                            {
+                                doc.regularPrice = reader.GetFloat(2);
+                            }
+                            else
+                            {
+                                doc.regularPrice = -1;
+                            }
+                            if (!reader.IsDBNull(3))
+                            {
+                                doc.expressPrice = reader.GetFloat(3);
+                            }
+                            else
+                            {
+                                doc.expressPrice = -1;
+                            }
+                            doc.type = reader.GetString(4);
+
+                            listDoc.Add(doc);
+                            doc = new Models.Document();
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            listDoc = null;
+                        }
+                    }
+                }
+            }
+
+            conn.Close();
+            return listDoc;
+        }
     }
 }

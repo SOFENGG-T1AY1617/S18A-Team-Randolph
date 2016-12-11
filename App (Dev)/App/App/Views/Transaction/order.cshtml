@@ -14,6 +14,7 @@
             var modal = $(this)
             var regularPrice = button.data('regularprice')
             var expressPrice = button.data('expressprice')
+            var docuID = button.data('documentid')
             var degreeDropdown = document.getElementById("degreeDropdown")
             var selectedDegree = degreeDropdown.options[degreeDropdown.selectedIndex].text
             modal.find('.modal-title').text(documentTitle)
@@ -28,14 +29,42 @@
             } else {
                 modal.find('#expressRate').show()
             }
+            modal.find('#expressPrice').val(expressPrice)
+            modal.find('#regularPrice').val(regularPrice)
+            modal.find('#docuID').val(docuID)
         })
+        window.onload = function(){
+            document.getElementById("addCart").onclick = function add(){
+                var docuID = $("#docuID").val()
+                if($('#regRadio').is(':checked')){
+                    var rate = "regular"
+                    var price = $("#regularPrice").val()
+                }else{
+                    var rate = "express"
+                    var price = $("#expressPrice").val()
+                }
+                if($('#brownEnvelope').is(':checked')){
+                    var packaging = "brown envelope"
+                }
+                else if($('#whiteEnvelope').is(':checked')){
+                    var packaging = "white envelope"
+                }else{
+                    var packaging = "none"
+                }
+                var quantity = $("#quantity").val()
+                var degreeDropdown = document.getElementById("degreeDropdown")
+                var degree = degreeDropdown.options[degreeDropdown.selectedIndex].text
+                
+                addCart(docuID,rate,packaging,quantity,degree, price)
+            }
+        }
 </script>
 
 
 }
 @section viewCart{
-    <ul class="dropdown-menu">
-        
+    <ul class="dropdown-menu" id="viewCart" style="list-style: none;">
+        <li>Document - Price - Quantity</li>
     </ul>
  }
 @section btnStep{
@@ -75,10 +104,12 @@
 
 @section headerScript{
 <script>
+    sessionStorage.docs = @Html.Raw(ViewBag.documentsJSON);
     function display(degree) {
         if (degree == 'undergraduate') {
             $('.undergradDoc').show();
             $('.gradDoc').hide();
+            
         } else if (degree == 'graduate') {
             $('.gradDoc').show();
             $('.undergradDoc').hide();
@@ -143,7 +174,7 @@
                     <li class="item undergradDoc" style="display:none"> 
                         <!-- Start Item -->
                         <div class="info" style="padding-top: 20px; padding-left: 25px; padding-right: 0px;">
-                            <h2 class="title" style="font-size: 18px;">@doc.docuName</h2><br>
+                            <h2 class="title" style="font-size: 18px;" value="@doc.docuID">@doc.docuName</h2><br>
                             <div>
                                 <div class="col-xs-6" style="border-right: 1px solid #bdbdbd;">
                                     @if(doc.regularPrice!=-1)
@@ -156,7 +187,7 @@
                                     }
                                 </div>
                                 <div class="col-xs-6">
-                                    <button type ="button" class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
+                                    <button type ="button" class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal" data-documentid="@doc.docuID" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +212,7 @@
                                         }
                                     </div>
                                     <div class="col-xs-6">
-                                        <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
+                                        <button class="btn btn-default order-button" style="width: 150px; height: 35px; margin-left: 15%; margin-top: 5%;" data-toggle="modal" data-target="#orderModal"  data-documentid="@doc.docuID" data-document="@doc.docuName" data-regularprice="@doc.regularPrice" data-expressprice="@doc.expressPrice">Order</button>
                                     </div>
                                 </div>
                             </div>
@@ -200,6 +231,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" style="font-weight: bold;">~document name~</h4>
+                            <input type="hidden" id="docuID" value="">
                         </div>
                         <div class="modal-body">
                             <p id="degreeProfile" style="font-weight: bold;">Academic Profile:</p>
@@ -207,25 +239,27 @@
                                 No. of Copies:
                                 <div class="row">
                                     <div class="col-xs-2">
-                                        <input class="form-control" type="number" min="0" max="5" value="1" style="width: 50px">
+                                        <input class="form-control" id="quantity" type="number" min="0" max="5" value="1" style="width: 50px">
                                     </div>
                                 </div>
                             </p>
                             <p style="font-weight: bold;">
                                 Delivery Rate:
-                                <label class="radio-inline" id="regularRate"><input type="radio" name="packaging" value="regular">Regular</label>
-                                <label class="radio-inline" id="expressRate"><input type="radio" name="packaging" value="express">Express</label>
+                                <label class="radio-inline" id="regularRate"><input type="radio" name="rates" id="regRadio" value="regular">Regular</label>
+                                <input type="hidden" id="regularPrice" value="">
+                                <label class="radio-inline" id="expressRate"><input type="radio" name="rates" id="expRadio" value="express">Express</label>
+                                <input type="hidden" id="expressPrice" value="">
                             </p>
 
                             <p style="font-weight: bold;">
                                 Insert Document Into:
-                                <label class="radio-inline"><input type="radio" name="packaging" value="brown">Brown Envelope</label>
-                                <label class="radio-inline"><input type="radio" name="packaging" value="white">White Envelope</label>
-                                <label class="radio-inline"><input type="radio" name="packaging" value="none">None</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" id="brownEnvelope" value="brown">Brown Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" id="whiteEnvelope" value="white">White Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" id="none" value="none">None</label>
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Add to Cart</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="addCart">Add to Cart</button>
                         </div>
                     </div>
 
