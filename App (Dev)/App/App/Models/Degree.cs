@@ -20,6 +20,10 @@ namespace App.Models
         public int yearLevel { get; set; }
         public int userID { get; set; }
         public string lastSchoolAttendedPrevDlsu { get; set; }
+        public int graduatedYear { get; set; }
+        public int graduatedMonth { get; set; }
+        public int term { get; set; }
+        public string academicYear { get; set; }
 
     }
 
@@ -42,9 +46,9 @@ namespace App.Models
 
                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.degreesofuser"
                                                              + " (degreeID, degreeName, level, yearAdmitted, campusAttended, admittedAs, graduated,"
-                                                             + " yearLevel, userID, lastSchoolAttendedPrevDlsu) "
+                                                             + " yearLevel, userID, lastSchoolAttendedPrevDlsu, graduatedYear, graduatedMonth, term, academicYear) "
                                                              + "VALUES (@degreeID, @degreeName, @level, @yearAdmitted, @campusAttended, @admittedAs, @graduated, "
-                                                             + "@yearLevel, @userID, @lastSchoolAttendedPrevDlsu)", conn);
+                                                             + "@yearLevel, @userID, @lastSchoolAttendedPrevDlsu, @graduatedYear, @graduatedMonth, @term, @academicYear)", conn);
 
 
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("degreeID", MySqlDbType.Int32, 11, "degreeID"));
@@ -57,6 +61,10 @@ namespace App.Models
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("yearLevel", MySqlDbType.Int32, 11, "yearLevel"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastSchoolAttendedPrevDlsu", MySqlDbType.VarChar, 100, "lastSchoolAttendedPrevDlsu"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("graduatedYear", MySqlDbType.Int32, 11, "graduatedYear"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("graduatedMonth", MySqlDbType.Int32, 11, "graduatedMonth"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("term", MySqlDbType.Int32, 11, "term"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("academicYear", MySqlDbType.VarChar, 9, "academicYear"));
 
                     using (DataSet dataSet = new DataSet())
                     {
@@ -74,6 +82,10 @@ namespace App.Models
                         newRow["yearLevel"] = deg.yearLevel;
                         newRow["userID"] = deg.userID;
                         newRow["lastSchoolAttendedPrevDlsu"] = deg.lastSchoolAttendedPrevDlsu;
+                        newRow["graduatedYear"] = deg.lastSchoolAttendedPrevDlsu;
+                        newRow["graduatedMonth"] = deg.graduatedYear;
+                        newRow["term"] = deg.graduatedMonth;
+                        newRow["academicYear"] = deg.academicYear;
 
                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -110,6 +122,10 @@ namespace App.Models
                             degree.yearLevel = reader.GetInt32(7);
                             degree.userID = reader.GetInt32(8);
                             degree.lastSchoolAttendedPrevDlsu = reader.GetString(9);
+                            degree.graduatedYear = reader.GetInt32(11);
+                            degree.graduatedMonth = reader.GetInt32(11);
+                            degree.term = reader.GetInt32(11);
+                            degree.academicYear = reader.GetString(9);
 
                             listDeg.Add(degree);
                             degree = new Models.Degree();
