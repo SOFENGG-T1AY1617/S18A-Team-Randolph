@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="search-bar.css">
 
     <!-- Custom CSS -->
     <link href="css/admin.css" rel="stylesheet">
@@ -58,14 +59,7 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Administrator <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
+                        <li id = "menud">
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
@@ -78,7 +72,7 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                         <a href="admin-index.html"><i class="fa fa-fw fa-home"></i> Home</a>
                     </li>
                     <li>
-                        <a href="admin-delivery.html"><i class="fa fa-fw fa-asterisk"></i> Maintain Delivery Charges</a>
+                        <a href="admin-delivery.html"><i class="fa fa-fw fa-plane"></i> Maintain Delivery Charges</a>
                     </li>
                     <li>
                         <a href="admin-documentcharges.html"><i class="fa fa-fw fa-asterisk"></i> Maintain Document Charges</a>
@@ -87,16 +81,19 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                         <a href="admin-updatedate.html"><i class="fa fa-fw fa-calendar"></i> Update Operational Date</a>
                     </li>
                     <li>
-						<a href="admin-orderlist.html"><i class="fa fa-fw fa-shopping-cart"></i> View Orders</a>
+                        <a href="admin-orderlist.html"><i class="fa fa-fw fa-shopping-cart"></i> View Orders</a>
                     </li>
                     <li>
                         <a href="admin-search.html"><i class="fa fa-fw fa-search"></i> Search Previous Orders</a>
                     </li>
-					<li>
+                    <li>
                         <a href="admin-monitor.html"><i class="fa fa-fw fa-bullhorn"></i> Monitor Document Production</a>
                     </li>
+                    <li>
+                        <a href="admin-verify.html"><i class="fa fa-fw fa-user"></i> Verify User Accounts</a>
+                    </li>
                 </ul>
-			</div>
+            </div>
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -125,18 +122,18 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
+                                        <i class="fa fa-plus fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">7</div>
-                                        <div>blah blah blah</div>
+                                        <div class="huge"></div>
+                                        <div style="font-size:30px">Add Admin</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="admin-register.html">
                                 <div class="panel-footer"style="color:#00703c">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right" ></i></span>
+                                    <span class="pull-left">Register an Admin</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -150,13 +147,13 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">14</div>
+                                        <div class="huge" style="font-size:54px">14</div>
                                         <div>New Transactions</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="#">
-                                <div class="panel-footer"style="color:#00703c">
+                                <div class="panel-footer" style="color:#00703c">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
@@ -172,13 +169,13 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">62</div>
+                                        <div class="huge" style="font-size:54px">31</div>
                                         <div>New Users</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="#">
-                                <div class="panel-footer"style="color:#00703c">
+                                <div class="panel-footer" style="color:#00703c">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
@@ -194,13 +191,13 @@ https://github.com/SOFENGG-T1AY1617/S18A-Team-Randolph.git
                                         <i class="fa fa-book fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">35</div>
-                                        <div>Transaction Changes</div>
+                                        <div class="huge" style="font-size:54px">5</div>
+                                        <div>Transaction Change</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="#">
-                                <div class="panel-footer"style="color:#00703c">
+                                <div class="panel-footer" style="color:#00703c">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
