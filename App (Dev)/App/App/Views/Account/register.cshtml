@@ -15,11 +15,11 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Email Address</label><br />
-                            <input type="email" id="email" class="form-control" name="email" onchange="validateEmail();">
+                            <input type="email" id="email" class="form-control" name="email" onchange="validateEmail();" required>
                             <label id="emailError" class="label-error">@ViewBag.emailError</label>
                             <br />
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Password</label><br />
-                            <input type="password" id="password" placeholder="be at least 8-32 characters" class="form-control" name="password" onchange="validatePassword();">
+                            <input type="password" id="password" placeholder="be at least 8-32 characters" class="form-control" name="password" onchange="validatePassword();" required>
                             <label id="passwordError" class="label-error">@ViewBag.passwordError</label>
                         </div>
                         <div class="col-sm-6">
@@ -41,17 +41,17 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" id="lastName" placeholder="Last Name" name="lastName" class="form-control" onchange="validateLastName()">
+                            <input type="text" id="lastName" placeholder="Last Name" name="lastName" class="form-control" onchange="validateLastName()" required>
                             <label id="lastNameError" class="label-error">@ViewBag.lastNameError</label>
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" id="firstName" placeholder="First Name" name="firstName" class="form-control" onchange="validateFirstName()">
+                            <input type="text" id="firstName" placeholder="First Name" name="firstName" class="form-control" onchange="validateFirstName()" required>
                             <label id="firstNameError" class="label-error">@ViewBag.firstNameError</label>
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" id="middleName" placeholder="Middle Name" name="middleName" class="form-control" onchange="validateMiddleName()">
+                            <input type="text" id="middleName" placeholder="Middle Name" name="middleName" class="form-control" onchange="validateMiddleName()" required>
                             <label id="middleNameError" class="label-error">@ViewBag.middleNameError</label>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Birthday</label>
-                            <input class="form-control" id="birthday" name="birthday" type="date" onchange="validateBirthday()">
+                            <input class="form-control" id="birthday" name="birthday" type="date" onchange="validateBirthday()" required>
                             <label id="birthdayError" class="label-error">@ViewBag.birthdayError</label>
                         </div>
                     </div>
@@ -279,7 +279,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Place of Birth</label>
-                            <input type="text" id="birthPlace" class="form-control" name="birthPlace" onchange="validateBirthPlace();">
+                            <input type="text" id="birthPlace" class="form-control" name="birthPlace" onchange="validateBirthPlace();" required>
                             <label id="birthPlaceError" class="label-error">@ViewBag.birthPlaceError</label>
                         </div>
                     </div>
@@ -287,13 +287,13 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Street</label>
-                            <input type="text" class="form-control" name="street" id="street" onchange="validateStreet();">
+                            <input type="text" class="form-control" name="street" id="street" onchange="validateStreet();" required>
                             <label id="streetError" class="label-error"></label>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">City</label>
-                            <input type="text" class="form-control" name="city" id="city" onchange="validateCity();">
+                            <input type="text" class="form-control" name="city" id="city" onchange="validateCity();" required>
                             <label id="cityError" class="label-error"></label>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Current Address</label>
-                            <input type="text" class="form-control" name="address" id="address" onchange="validateAddress();">
+                            <input type="text" class="form-control" name="address" id="address" onchange="validateAddress();" required>
                             <label id="addressError" class="label-error">@ViewBag.addressError</label>
                         </div>
                     </div>
@@ -567,7 +567,7 @@
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Zip Code</label>
-                            <input type="text" class="form-control" name="zipCode" id="zipCode" onchange="validateZipCode();">
+                            <input type="text" class="form-control" name="zipCode" id="zipCode" onchange="validateZipCode();" required>
                             <label id="zipCodeError" class="label-error"></label>
                         </div>
                     </div>
@@ -576,13 +576,13 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Cellphone Number</label>
-                            <input type="text" maxlength="20" placeholder="any country number format" class="form-control" name="phoneNumber" id="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" onchange="validatePhone()">
+                            <input type="text" maxlength="20" placeholder="any country number format" class="form-control" name="phoneNumber" id="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" onchange="validatePhone()" required>
                             <label id="phoneNumberError" class="label-error">@ViewBag.phoneNumError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label style="font-family: Lato; font-weight: 500;" for="textinput">Alternate Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
-                            <input type="text" placeholder="any country number format" maxlength="20" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <input type="text" placeholder="any country number format" maxlength="20" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="altPhoneNumber" onchange="validateAltPhone()">
                             <label id="altPhoneNumberError" class="label-error"></label>
 
                         </div>
@@ -605,7 +605,7 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">High School</label>
-                            <input type="text" class="form-control" name="highSchool" id="highSchool" onchange="validateHighSchool();">
+                            <input type="text" class="form-control" name="highSchool" id="highSchool" onchange="validateHighSchool();" required>
                             <label id="highSchoolError" class="label-error"></label>
                         </div>
                     </div>
@@ -657,7 +657,7 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Degree Program</label>
-                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();">
+                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();" required>
                             <label id="courseError" class="label-error"></label>
                         </div>
                     </div>
@@ -726,7 +726,7 @@
                             </div>
                             Term, A.Y &nbsp;&nbsp;
 
-                            <input type="text" placeholder="14" class="form-control" style="width: 50px; display: inline-block;" name="lastTermStart" id="lastTermStart" onchange="plusone('lastTermStart', 'lastTermEnd'); validateLastTermStart();" disabled>
+                            <input type="text" placeholder="14" class="form-control" style="width: 50px; display: inline-block;" name="lastTermStart" id="lastTermStart" onchange="plusone('lastTermStart', 'lastTermEnd'); validateLastTermStart();" disabled required>
                             - <input type="text" placeholder="15" class="form-control" style="width: 50px; display: inline-block;" name="lastTermEnd" id="lastTermEnd" onkeypress="" disabled><br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<label id="termError" class="label-error"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label id="lastTermStartError" class="label-error"></label>
@@ -751,7 +751,7 @@
 
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Year Admitted</label><br />
-                                <input class="form-control col-sm-2" style="width: 100px;" name="admissionYear" placeholder="Year" type="number" min="1900" step="1" id="yearAdmitted" onchange="validateYearAdmitted();">
+                                <input class="form-control col-sm-2" style="width: 100px;" name="admissionYear" placeholder="Year" type="number" min="1900" step="1" id="yearAdmitted" onchange="validateYearAdmitted();" required>
                                 &nbsp;&nbsp;<label id="admissionYearError" class="label-error"></label>
                             </div>
                         </div>
@@ -784,7 +784,7 @@
             </div><!-- /.col-lg-12 -->
             <div class="form-group">
                 <label id="error" class="label-error"></label>
-                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="return validate();" />
+                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="validate();" />
                 <input type="button" value="Back" class="btn btn-default" style="float: right;" onclick="location.href='@Url.Action("Index", "Home")'" />
             </div>
         </div><!-- /.row -->
