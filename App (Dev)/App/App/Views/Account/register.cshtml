@@ -575,13 +575,13 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Cellphone Number</label>
-                            <input type="text" maxlength="20" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="phoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                             <label id="phoneNumberError" class="label-error">@ViewBag.phoneNumError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label style="font-family: Lato; font-weight: 500;" for="textinput">Alternate Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
-                            <input type="text" maxlength="20" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <input type="text" placeholder="09xxxxxxxxx" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                             <label id="altPhoneNumberError" class="label-error"></label>
                         </div>
                     </div>
