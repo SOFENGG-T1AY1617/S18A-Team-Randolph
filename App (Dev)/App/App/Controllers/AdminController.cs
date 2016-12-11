@@ -15,13 +15,7 @@ namespace App.Controllers
         }
 
         // GET: Admin
-        public ActionResult adminDeliveryEdit()
-        {
-            return View();
-        }
-
-        // GET: Admin
-        public ActionResult adminDocumentCharges()
+        public ActionResult adminDocumentChanges()
         {
             return View();
         }
@@ -45,12 +39,6 @@ namespace App.Controllers
         }
 
         // GET: Admin
-        public ActionResult adminRegister()
-        {
-            return View();
-        }
-
-        // GET: Admin
         public ActionResult adminSearch()
         {
             return View();
@@ -62,11 +50,6 @@ namespace App.Controllers
             return View();
         }
 
-        // GET: Admin
-        public ActionResult adminVerify()
-        {
-            return View();
-        }
 
     }
 }

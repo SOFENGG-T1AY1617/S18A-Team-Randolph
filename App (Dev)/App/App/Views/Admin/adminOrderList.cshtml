@@ -31,7 +31,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="S18A-Team-Randolph/Design (Analyst)/FINAL FLOW/login.html"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+							<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -49,7 +49,7 @@
 						<a href="admin-documentcharges.html"><i class="fa fa-fw fa-asterisk"></i> Maintain Document Charges</a>
 					</li>
 					<li>
-						<a href="admin-updatedate.html"><i class="fa fa-fw fa-calendar"></i> Update Operational Date</a>
+						<a href="admin-updatedate"><i class="fa fa-fw fa-calendar"></i> Update Operational Date</a>
 					</li>
 					<li>
 						<a href="admin-orderlist.html"><i class="fa fa-fw fa-shopping-cart"></i> View Orders</a>
@@ -75,6 +75,12 @@
 						<div class="row">
 							<div class="col-lg-12" style="margin-bottom:100px">
 								<div class="col-md-12" style="padding-top: 20px">
+									<span>Status: </span>
+									<select class="form-control" style=" width: 150px; height: 35px; display: inline-block;" id="status">
+										<option value="processing">Processing</option>
+										<option value="pending"> Pending  </option>
+										<option value="completed"> Completed  </option>
+									</select>
 									<br></br>
 									<div id="processing" class="status">
 										<h3><b>Processing Documents</b></h3>
@@ -205,16 +211,13 @@
 					</div>
 				</div>
 			</div>
-			<span>Status: </span>
-			<select class="form-control"  id="status" style="width: 150px; height: 35px; display: inline-block;">
-				<option value="processing">Processing</option>
-				<option value="pending"> Pending  </option>
-				<option value="completed"> Completed  </option>
-			</select>
 			<!-- /.row -->
 
 		</div>
 		<!-- /.container-fluid -->
+
+	@*</div>*@
+	<!-- /#page-wrapper -->
 
 	<!-- jQuery -->
 	<script src="~/js/jquery.js"></script>

@@ -6,29 +6,20 @@
 
 @section scripts {
 <script type="text/javascript">
-    jQuery(function($) {
-        $(document).ready( function() {
-            $(function () {
-                $("#pickupArea").hide();
-                $("#mailingAddress").hide();
-
-                $("#pickup").click(function(){
-                    $("#pickupArea").show();
-                    $("#mailingAddress").hide();
-                    setColor("pickup");
-                });
-
-                $("#shipping").click(function(){
-                    $("#existingMform").show();
-                    $("#newMform").show();
-                    $("#mailingAddress").show();
-                    $("#pickupArea").hide();
-                });
-
-            });
+    $(document).ready(function () {
+        $("#pickupArea").show();
+        $("#mailingAddress").hide();
+        $("#pickup").click(function () {
+            $("#pickupArea").show();
+            $("#mailingAddress").hide();
+        });
+        $("#shipping").click(function () {
+            $("#existingMform").show();
+            $("#newMform").show();
+            $("#mailingAddress").show();
+            $("#pickupArea").hide();
         });
     });
-
 </script>
 }
 
@@ -74,10 +65,8 @@
         <div class="page-header" style="margin: 0;">
             <span style="font-size: 16px;font-family: lato;">Delivery Option</span> &nbsp; &nbsp;
             <div class="btn-group">
-                <button type="button" value="pickup" id="pickup" class="btn btn-default" style="width: 100px;">Pick-up</button>
-                <button type="button" value="shipping" id="shipping" class="btn btn-default" style="width: 100px;">Shipping</button>
-                <span>&nbsp; &nbsp;</span>
-                <a href="delivery.html"> <button class="btn btn-default navbtn circ" type="submit" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="fa fa-paper-plane" aria-hidden="true" style="margin-top: 5px;"></span></button></a>
+                <button type="button" id="pickup" class="btn btn-success" style="width: 100px;">Pick-up</button>
+                <button type="button" id="shipping" class="btn btn-success" style="width: 100px;">Shipping</button>
             </div>
         </div>
         <br>
@@ -89,7 +78,13 @@
                 <option>De La Salle University - Taft</option>
             </select>
             <br>
-            
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="pull-right">
+                    <br>
+                    <button type="submit" class="btn btn-default" onclick="location.href='@Url.Action("order", "Transaction")'">Go Back</button>
+                    <button type="submit" class="btn btn-success" onclick="location.href='@Url.Action("confirm", "Transaction")'">Proceed to Checkout <span class="glyphicon glyphicon-play"></button>
+                </div>
+            </div>
         </div>
 
         <div id="mailingAddress">
@@ -205,14 +200,6 @@
         </div>
 
         <div class="line-separator"></div><br>
-        
-        <button type="submit" class="btn btn-default" style="float: left" onclick="location.href='@Url.Action("order", "Transaction")'">
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back
-        </button>
-
-        <button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right" onclick="location.href='@Url.Action("confirm", "Transaction")'">
-            Proceed to Next Step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-        </button>
     </div>
 </div>
 }
