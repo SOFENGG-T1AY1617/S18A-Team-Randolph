@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="author" content="">
+
+        <title>De La Salle University - Manila: Online Request for Documents</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+        <!-- Custom Google Web Font -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300,700,900,500' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+
+        <!-- Custom CSS-->
+        <link href="css/order.css" rel="stylesheet">
+		<link href="css/checkout.css" rel="stylesheet">
+        <link href="css/event-list.css" rel="stylesheet">
+        <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->   
+    </head>
+
+    <body style = "padding-bottom: 50px;">
+        <nav class = "navbar-fixed-top">
+            <div class = "container-fluid" style = "padding-left: 25px; padding-bottom: 3px; background-color: #fefefe; border-bottom: 1px solid #e0e0e0;">
+                <a href = "/"><div class = "nav navbar-left navleft" style = "margin-top: 5px; height: 60px;">
+                    <img src = "res/logo.png" class = "navbar-brand img-responsive logo"/>
+                    <div class = "navbar-text title" style = "color: #00703c; font-family: Lato; font-weight: 500; margin-top: 8px; letter-spacing: 0.5px;">Online Request for Documents<br><p style = "font-size: 14px;">Office of the Registrar</p></div>
+                </div></a>
+                
+                <div class = "nav navbar-right navright" style = "margin-right: 10px;">
+                    <button class="btn btn-default navbtn namebtn" type="submit" style = "background: transparent; border: none; border-radius: 0px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style = "margin-top: 5px; color: #00703c;"></span> <span class = "username">&nbsp;Hazel Anne</span></button>
+                    
+                    <button class="btn btn-default navbtn circ dropdown-toggle" type="submit" style = "border-radius: 100%; background-color: #00703c; color: #fefefe;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style = "margin-top: 5px;"></span></button>
+                    
+                    <button class="btn btn-default navbtn circ" type="submit" style = "border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style = "margin-top: 5px;"></span></button>
+                </div>
+            </div>
+            
+            <!--btnStep-->
+            <div class="row btnStep" style = "margin-top: 7px;">
+                <div class="col-xs-9 stepHeader">
+                    <ul class="nav nav-pills nav-justified thumbnail" style = "width: 810px;">
+                        <li class = "stepBtn"><a href="order.html">
+                            <h4 class="list-group-item-heading stephead">Step 1</h4>
+                            <p class="list-group-item-text">Order Documents</p>
+                        </a></li>
+                        <li class = "stepBtn"><a href="mailing-info.html">
+                            <h4 class="list-group-item-heading stephead">Step 2</h4>
+                            <p class="list-group-item-text">Mailing Info</p>
+                        </a></li>
+                        <li class = "stepBtn"><a href="view-cart.html">
+                            <h4 class="list-group-item-heading stephead">Step 3</h4>
+                            <p class="list-group-item-text">View Cart</p>
+                        </a></li>
+                        <li class = "stepBtn"><a href="checkout.html">
+                            <h4 class="list-group-item-heading stephead">Step 4</h4>
+                            <p class="list-group-item-text">Checkout</p>
+                        </a></li>
+						 <li class = "active"><a href="payment.html">
+                            <h4 class="list-group-item-heading stephead">Step 5</h4>
+                            <p class="list-group-item-text">Payment</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.btnStep -->
+        </nav>
+        
+        <div class = "container item-list-cont" style = "margin-top: 170px;">
+            <div class = "col-sm-10 col-md-8 stepHeader">
+                
+            
+                 <form class="form-horizontal" name="paymentForm" onsubmit="return validateForm()" role="form"> <!-- Payment -->
+	
+						<fieldset>
+                      <!-- Form Name -->
+                      <h3 class="text-label">Payment Details</h3>
+					<hr><br>
+						
+					<div class="form-group">
+					  <label class="col-sm-4" for="textinput">Reference Number:</label>
+						<div class="col-sm-4">
+							
+						</div>
+			  		</div>
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-sm-2" for="textinput">Payor's Name</label>
+                        <div class="col-sm-3">
+                          <input type="text" placeholder="Last Name" name="lastName" class="form-control">
+                          <label id="lastNameError" class="label-error"></label>
+                        </div>
+
+                        <div class="col-sm-4">
+                          <input type="text" placeholder="First Name" name="firstName" class="form-control">
+                          <label id="firstNameError" class="label-error"></label>
+                        </div>
+
+                        <div class="col-sm-3">
+                          <input type="text" placeholder="Middle Name" name="middleName" class="form-control">
+                          <label id="middleNameError" class="label-error"></label>
+                        </div>
+                      </div>
+
+                        <!-- Text input-->
+                      <div class="form-group">
+                          <label class="col-sm-3" for="textinput">Currency</label>
+							<div class="col-sm-4">
+								<input type="radio" name="optradio" id="currencyPHP" value="PHP">&nbsp;&nbsp;PHP
+								<span>&nbsp; &nbsp; </span>
+								<input type="radio"name="optradio" id="currencyUSD" value="USD">&nbsp;&nbsp;USD
+								<label id="currencyError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
+							</div>
+                      </div>
+							
+					<div class="form-group">
+					  <label class="col-sm-3" for="textinput">Payment Provider</label>
+						<div class="col-sm-5">
+							<input type="radio" name="optpayment" id="bdo" value="BDO">&nbsp;&nbsp;BDO
+							<span>&nbsp; &nbsp; </span>
+							<input type="radio"name="optpayment" id="paynamics" value="Paynamics">&nbsp;&nbsp;Paynamics
+							<label id="providerError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
+						</div>
+                      </div>
+
+					 </fieldset>
+				</form>
+				
+                
+                <div class="line-separator"></div><br><br>
+				
+				<a href="order.html"><button type="submit" class="btn btn-default" style="float: left">
+					  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back</button></a>
+					
+			  <a href="done.html"><button type="submit" onsubmit="return validateForm()" class="btn" style="background-color: #5cb85c; color: white; float: right">Proceed to Next Step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></a>
+            </div>
+        </div>
+            
+        <!-- JavaScript -->
+        <script src="js/jquery-1.10.2.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script type="text/javascript">
+            function validateForm() {
+
+              var lastName = document.forms["registerForm"]["lastName"].value;
+              var firstName = document.forms["registerForm"]["firstName"].value;
+              var middleName = document.forms["registerForm"]["middleName"].value;
+
+              var isValid = true;
+
+              if (lastName == "") {
+                 document.getElementById('lastNameError').innerHTML = "Please Enter your Last Name";
+                 isValid = false;
+              }
+              if (firstName == "") {
+                 document.getElementById('firstNameError').innerHTML = "Please Enter your First Name";
+                  isValid = false;
+              }
+              if (middleName == "") {
+                 document.getElementById('middleNameError').innerHTML = "Please Enter your Midddle Name";
+                  isValid = false;
+              }
+              if(!document.getElementById('currecyPHP').checked && !document.getElementById('currencyUSD').checked){
+                document.getElementById('currencyError').innerHTML = "Please choose a currency";
+                 isValid = false;
+              }
+				if(!document.getElementById('bdo').checked && !document.getElementById('paynamics').checked){
+                document.getElementById('providerError').innerHTML = "Please choose a provider";
+                 isValid = false;
+              }
+             
+
+              return isValid;
+            }
+        </script>
+    </body>
+</html>
