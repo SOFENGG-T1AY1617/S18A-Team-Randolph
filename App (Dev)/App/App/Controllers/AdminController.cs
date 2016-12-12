@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,40 @@ namespace App.Controllers
 {
     public class AdminController : Controller
     {
+        adminVerifyManager verifyManager = new adminVerifyManager();
+        adminDeliveryManager delivManager = new adminDeliveryManager();
+        adminDocumentManager docuManager = new adminDocumentManager();
+
         // GET: Admin
         public ActionResult adminDelivery()
         {
-            return View();
+            var delivList = delivManager.getDeliveryList();
+
+            return View(delivList);
         }
 
         // GET: Admin
         public ActionResult adminDeliveryEdit()
         {
-            return View();
+            var delivList = delivManager.getDeliveryList();
+
+            return View(delivList);
+        }
+
+        [HttpPost]
+        public ActionResult changeDelivRate(String location, float price)
+        {
+            delivManager.editDelivRate(location, price);
+
+            return RedirectToAction("adminDeliveryEdit");
         }
 
         // GET: Admin
         public ActionResult adminDocumentCharges()
         {
-            return View();
+            var docuList = docuManager.getDocuList();
+
+            return View(docuList);
         }
 
         // GET: Admin
@@ -70,8 +89,11 @@ namespace App.Controllers
 
         // GET: Admin
         public ActionResult adminVerify()
-        {
-            return View();
+        {           
+            var userList = verifyManager.getUserList();
+            //ViewBag.idNumber = userList[1].idNumber;
+
+            return View(userList);
         }
 
     }

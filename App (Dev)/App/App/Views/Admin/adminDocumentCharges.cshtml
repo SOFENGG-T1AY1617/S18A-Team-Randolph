@@ -1,7 +1,12 @@
 ﻿
 @{
+   <link href="~/Content/adminDocument.css" rel="stylesheet" type="text/css" />
+
 	ViewBag.Title = "Maintain Document Charges";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+	WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+
 }
 
 <body>
@@ -19,42 +24,19 @@
 									<div id="monitoring">
 										<h3><b>Document Charges</b></h3>
 										<hr>
-										<table class="table table-condensed">
-											<thead>
-												<tr id="listhead">
-													<th>Document Name</th>
-													<th>Regular Amount</th>
-													<th>Express Amount</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Cumulative GPA</td>
-													<td>Php 150.00</td>
-													<td>Php 300.00</td>
-												</tr>
-												<tr>
-													<td>Enrollment</td>
-													<td>Php 500.00</td>
-													<td>Php 700.00</td>
-												</tr>
-												<tr>
-													<td>Grading System</td>
-													<td>Php 200.00</td>
-													<td>Php 350.00</td>
-												</tr>
-												<tr>
-													<td>Official Transcript of Records</td>
-													<td>Php 100.00</td>
-													<td>Php 300.00</td>
-												</tr>
-												<tr>
-													<td>Trimestral Calendar</td>
-													<td>Php 300.00</td>
-													<td>Php 550.00</td>
-												</tr>
-											</tbody>
-										</table>
+										 
+										@grid.GetHtml(tableStyle: "webgrid-table",
+													  headerStyle: "webgrid-header",
+													  footerStyle: "webgrid-footer",
+													  alternatingRowStyle: "webgrid-alternating-row",
+													  columns: new[]
+										{
+											grid.Column("docuName", "Document Name", style:"name"), 
+											grid.Column("regularPrice", "Regular Price", style: "regPrice"),
+											grid.Column("expressPrice", "Express Price", style: "expPrice"),
+											grid.Column(format: @<a href="#" title="edit" style="color:#00703c">Edit</a>, style:"edit")
+										})
+
 									</div>
 								</div>
 							</div>

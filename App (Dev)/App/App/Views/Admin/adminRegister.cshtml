@@ -2,6 +2,128 @@
 @{
     ViewBag.Title = "adminDeliveryEdit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    <link rel="stylesheet" type="text/css" href="admin-register.css">
 }
 
+<body>
+<div id="page-wrapper">
 
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="margin-bottom:100px">
+                        <div class="col-md-12" style="padding-top: 20px">
+                            <div id="monitoring">
+                                <h3><b>Register</b></h3>
+                                <hr>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form class="form-horizontal" name="registerForm" onsubmit="return validateForm()" role="form">
+                                                <!-- Personal Information Start -->
+                                                <fieldset>
+                                                    <!-- Form Name -->
+                                                    <legend>Account Information</legend>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="textinput">Email Address</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="email" placeholder="Email Address" class="form-control" name="email">
+                                                            <label id="emailError" class="label-error"></label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Text input-->
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="textinput">Password</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="password" placeholder="Password" class="form-control" name="password">
+                                                            <label id="passwordError" class="label-error"></label>
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+                                                </fieldset>
+
+                                                <fieldset>
+                                                    <!-- Form Name -->
+                                                    <legend>Personal Information</legend>
+
+                                                    <!-- Text input-->
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="textinput">Full Name</label>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" placeholder="Last Name" name="lastName" class="form-control">
+                                                            <label id="lastNameError" class="label-error"></label>
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <input type="text" placeholder="First Name" name="firstName" class="form-control">
+                                                            <label id="firstNameError" class="label-error"></label>
+                                                        </div>
+
+                                                        <div class="col-sm-3">
+                                                            <input type="text" placeholder="Middle Name" name="middleName" class="form-control">
+                                                            <label id="middleNameError" class="label-error"></label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="textinput">Gender</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" name="optradio" id="genderMale" value="Male">&nbsp;&nbsp;Male
+                                                            <span>&nbsp; &nbsp; </span>
+                                                            <input type="radio" name="optradio" id="genderFemale" value="Female">&nbsp;&nbsp;Female
+                                                            <label id="genderError" class="col-sm-12 label-error" style="margin-left:-1em;"></label>
+                                                        </div>
+
+                                                        <label class="col-sm-2" for="textinput">Birthday</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control" name="birthday" type="date">
+                                                            <label id="birthdayError" class="label-error"></label>
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                        </fieldset>
+                                        <br><br><br>
+                                        <div class="col-sm-5 col-xs-5">
+                                            <button id="registerbutton" type="button" class="btn btn-primary btn-lg">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+<!-- jQuery -->
+<script src="~/js/jquery.js"></script>
+
+<script type="text/javascript">
+            jQuery(function ($) {
+                $(document).ready(function () {
+                    $('.status').hide();
+                    $('#processing').show();
+                    $('#status').change(function () {
+                        $('.status').hide();
+                        $('#' + $(this).val()).show();
+                    })
+                });
+            });
+
+</script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/js/bootstrap.min.js"></script>
+
+</body>
