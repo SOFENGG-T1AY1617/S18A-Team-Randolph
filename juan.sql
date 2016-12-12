@@ -35,6 +35,10 @@ CREATE TABLE `degreesofuser` (
   `yearLevel` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `lastSchoolAttendedPrevDlsu` varchar(45) NOT NULL,
+  `graduatedYear` int(11) DEFAULT NULL,
+  `graduatedMonth` int(11) DEFAULT NULL,
+  `term` int(11) DEFAULT NULL,
+  `academicYear` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`degreeID`,`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,7 +49,7 @@ CREATE TABLE `degreesofuser` (
 
 LOCK TABLES `degreesofuser` WRITE;
 /*!40000 ALTER TABLE `degreesofuser` DISABLE KEYS */;
-INSERT INTO `degreesofuser` VALUES (1,'Bachelors','Masters',2013,'DLSU-Manila','Undergraduate','No',3,2,'Philippine Cultural College'),(2,'BS-IT','Bachelor',2013,'DLSU-Manila','New Student','No',4,3,'Philippine Cultural College'),(3,'AB-COM','Bachelor',2013,'DLSU-Manila','Cross Enrollee','No',3,1,'Muntinlupa Science High School'),(4,'BS-CS-ST','Bachelor',2014,'DLSU-Manila','New Student','No',3,7,'DLSZ'),(5,'MBA','Doctorate',2018,'DLSU-Manila','New Student','Yes',4,7,'DLSZ');
+INSERT INTO `degreesofuser` VALUES (1,'Bachelors','Masters',2013,'DLSU-Manila','Undergraduate','No',3,2,'Philippine Cultural College',NULL,NULL,3,'2014-2015'),(2,'BS-IT','Bachelor',2013,'DLSU-Manila','New Student','No',4,3,'Philippine Cultural College',NULL,NULL,3,'2014-2015'),(3,'AB-COM','Bachelor',2013,'DLSU-Manila','Cross Enrollee','No',3,1,'Muntinlupa Science High School',NULL,NULL,3,'2014-2015'),(4,'BS-CS-ST','Bachelor',2014,'DLSU-Manila','New Student','No',3,7,'DLSZ',NULL,NULL,3,'2014-2015'),(5,'MBA','Doctorate',2018,'DLSU-Manila','New Student','Yes',4,7,'DLSZ',2010,3,NULL,NULL);
 /*!40000 ALTER TABLE `degreesofuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,9 +123,9 @@ CREATE TABLE `mailingaddress` (
   `country` varchar(45) NOT NULL,
   `locationID` varchar(45) NOT NULL,
   `userID` varchar(45) NOT NULL,
-  `addressline` varchar(100) NOT NULL,
+  `addressline` varchar(200) DEFAULT NULL,
   `contactperson` varchar(45) NOT NULL,
-  `contactnumber` varchar(20) NOT NULL,
+  `contactnumber` varchar(45) NOT NULL,
   PRIMARY KEY (`mailingID`,`locationID`,`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -132,8 +136,36 @@ CREATE TABLE `mailingaddress` (
 
 LOCK TABLES `mailingaddress` WRITE;
 /*!40000 ALTER TABLE `mailingaddress` DISABLE KEYS */;
-INSERT INTO `mailingaddress` VALUES (1,1116,'Bagbag','Quezon City','Philippines','1','3','','',''),(2,1118,'Fairview','Quezon City','Philippines','1','4','','',''),(3,100000,'DongCheng','Beijing','China','2','5','','',''),(4,1116,'Bagbag','Quezon City','Philippines','1','3','','',''),(5,102200,'Changping','Beijing','China','2','2','','','');
+INSERT INTO `mailingaddress` VALUES (1,1116,'Bagbag','Quezon City','Philippines','1','3',NULL,'',''),(2,1118,'Fairview','Quezon City','Philippines','1','4',NULL,'',''),(3,100000,'DongCheng','Beijing','China','2','5',NULL,'',''),(4,1116,'Bagbag','Quezon City','Philippines','1','3',NULL,'',''),(5,102200,'Changping','Beijing','China','2','2',NULL,'','');
 /*!40000 ALTER TABLE `mailingaddress` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `orderID` int(11) NOT NULL,
+  `docuID` int(11) NOT NULL,
+  `transactionID` int(11) NOT NULL,
+  PRIMARY KEY (`orderID`),
+  KEY `docuID` (`docuID`),
+  KEY `transactionID` (`transactionID`),
+  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`docuID`) REFERENCES `document` (`docuID`),
+  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`transactionID`) REFERENCES `transactions` (`transactionID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -147,6 +179,9 @@ CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL AUTO_INCREMENT,
   `docuID` int(11) NOT NULL,
   `transactionID` int(11) NOT NULL,
+  `deliveryRate` varchar(45) DEFAULT NULL,
+  `packaging` varchar(45) DEFAULT NULL,
+  `degree` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`orderID`,`docuID`,`transactionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -176,9 +211,7 @@ CREATE TABLE `transactions` (
   `dateDue` datetime(1) NOT NULL,
   `estimatedDeliveryDate` datetime(1) NOT NULL,
   `price` float NOT NULL,
-  `rate` varchar(45) DEFAULT NULL,
   `status` varchar(45) NOT NULL DEFAULT 'pending',
-  `transactionscol` varchar(45) NOT NULL,
   PRIMARY KEY (`transactionID`,`userID`,`mailingID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -219,7 +252,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `verified` varchar(45) DEFAULT 'not verified',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +261,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle','not verified'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123','not verified'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123','not verified'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123','not verified'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345','not verified'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123','not verified'),(7,11428376,'Yu','Randolph Nathaniel','Malveda','M',1996,11,28,'Filipino','Manila','162 Sarangani St. AAVA','9178955038',NULL,'randolph_yu@dlsu.edu.ph',NULL,'randolphyu','not verified'),(8,9999999,'J','Ted','WEW','M',1990,5,19,'filipino','Manila','sfSfdfdsml','888888888888','155555555555','test123@dlsu.edu.ph','test456@yahoo.com','123','not verified'),(9,11384123,'Lew','Charles','Med','M',2010,10,10,'chinese','Manila','84 Manila ','09228855221','09821235468','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(10,11384123,'Lew','Charles','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(11,11384123,'Lew','ñ','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(12,11384123,'Lew!','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(13,11384123,'Lew!','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted','ted','123','not verified'),(14,11384123,'123','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted','ted','123','not verified'),(15,11384123,'123','!fsa','Med','M',2010,10,10,'chinese','1234','84 Manila ','123','123','ted','ted','123','not verified'),(16,11213159,'Lipa','Isabel Trisha','delos Reyes','F',1996,4,7,'filipino','Manila','3138 B Limay St Manuguit Subdivision Tondo','09177965826','5015074','isa_lipa@dlsu.edu.ph','isalipa@yahoo.com','123456','not verified'),(17,11320370,'Pelino','Tabitha','Jaleco','F',1995,12,18,'filipino','Pasay','14 azalea st greenwoods cainta rizal Chat Conversation End','09228889004','09164324895','tabitha_pelino@dlsu.edu.ph','tabitha_pelino@yahoo.com','12345','not verified'),(18,11320370,'Pelino','Tabitha','Jaleco','F',1995,12,18,'filipino','Pasay','14 azalea st greenwoods cainta rizal Chat Conversation End','09228889004','09164324895','tabitha_pelino@dlsu.edu.ph','tabitha_pelino@yahoo.com','12345','not verified'),(19,112,'#!@','!@#','!@','F',2030,4,7,'Filipino','Manila','31','12345612','1234','isa_lipa@dlsu.edu.ph','','12345678','not verified');
+INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle','not verified'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123','not verified'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123','not verified'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123','not verified'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345','not verified'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123','not verified'),(7,11428376,'Yu','Randolph Nathaniel','Malveda','M',1996,11,28,'Filipino','Manila','162 Sarangani St. AAVA','9178955038',NULL,'randolph_yu@dlsu.edu.ph',NULL,'randolphyu','not verified'),(8,9999999,'J','Ted','WEW','M',1990,5,19,'filipino','Manila','sfSfdfdsml','888888888888','155555555555','test123@dlsu.edu.ph','test456@yahoo.com','123','not verified'),(9,11384123,'Lew','Charles','Med','M',2010,10,10,'chinese','Manila','84 Manila ','09228855221','09821235468','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(10,11384123,'Lew','Charles','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(11,11384123,'Lew','ñ','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(12,11384123,'Lew!','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted@yahoo.com','tedy@yahoo.com','123','not verified'),(13,11384123,'Lew!','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted','ted','123','not verified'),(14,11384123,'123','!fsa','Med','M',2010,10,10,'chinese','Manila','84 Manila ','123','123','ted','ted','123','not verified'),(15,11384123,'123','!fsa','Med','M',2010,10,10,'chinese','1234','84 Manila ','123','123','ted','ted','123','not verified'),(16,11213159,'Lipa','Isabel Trisha','delos Reyes','F',1996,4,7,'filipino','Manila','3138 B Limay St Manuguit Subdivision Tondo','09177965826','5015074','isa_lipa@dlsu.edu.ph','isalipa@yahoo.com','123456','not verified'),(17,11320370,'Pelino','Tabitha','Jaleco','F',1995,12,18,'filipino','Pasay','14 azalea st greenwoods cainta rizal Chat Conversation End','09228889004','09164324895','tabitha_pelino@dlsu.edu.ph','tabitha_pelino@yahoo.com','12345','not verified'),(18,11320370,'Pelino','Tabitha','Jaleco','F',1995,12,18,'filipino','Pasay','14 azalea st greenwoods cainta rizal Chat Conversation End','09228889004','09164324895','tabitha_pelino@dlsu.edu.ph','tabitha_pelino@yahoo.com','12345','not verified');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -241,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-12  9:01:33
+-- Dump completed on 2016-12-12  9:11:59
