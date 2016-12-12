@@ -15,10 +15,10 @@ namespace App.Models
         public string city { get; set; }
         public string country { get; set; }
         public int locationID { get; set; }
-        public string contactNumber { get; set; }
-        public string contactPerson { get; set; }
         public int userID { get; set; }
         public string addressline { get; set; }
+        public string contactNumber { get; set; }
+        public string contactPerson { get; set; }
     }
 
     public class MailingInfoModel
@@ -36,7 +36,7 @@ namespace App.Models
                 using (adapter)
                 {
                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.mailingaddress"
-                                                             + " (mailingID, zipcode, streetName, city, country, locationID, contactNumber, userID, addressline) "
+                                                             + " (mailingID, zipcode, streetName, city, country, locationID, userID, addressline, contactPerson, contactNumber) "
                                                              + "VALUES (@mailingID, @zipcode, @streetName, @city, @country, @locationID, @userID, @addressline, @contactPerson, @contactNumber)", conn);
 
 
@@ -64,7 +64,12 @@ namespace App.Models
                         newRow["country"] = mailInfo.country;
                         newRow["locationID"] = mailInfo.locationID;
                         newRow["userID"] = mailInfo.userID;
-                        newRow["addressline"] = mailInfo.addressline;
+
+                        if (!(mailInfo.addressline == null))
+                        {
+                            newRow["addressline"] = mailInfo.addressline;
+                        }
+
                         newRow["contactPerson"] = mailInfo.contactPerson;
                         newRow["contactNumber"] = mailInfo.contactNumber;
 
@@ -101,10 +106,11 @@ namespace App.Models
                             mi.locationID = reader.GetInt32(5);
                             mi.userID = reader.GetInt32(6);
 
-                            if(reader.IsDBNull(7))
+                            if (!reader.IsDBNull(7))
                             {
                                 mi.addressline = reader.GetString(7);
                             }
+                            else mi.addressline = "";
 
                             mi.contactPerson = reader.GetString(8);
                             mi.contactNumber = reader.GetString(9);

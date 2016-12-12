@@ -79,13 +79,33 @@ namespace App.Models
                         newRow["campusAttended"] = deg.campusAttended;
                         newRow["admittedAs"] = deg.admittedAs;
                         newRow["graduated"] = deg.graduated;
-                        newRow["yearLevel"] = deg.yearLevel;
+
+                        if (!(deg.lastSchoolAttendedPrevDlsu == null))
+                        {
+                            newRow["lastSchoolAttendedPrevDlsu"] = deg.lastSchoolAttendedPrevDlsu;
+                        }
+
                         newRow["userID"] = deg.userID;
-                        newRow["lastSchoolAttendedPrevDlsu"] = deg.lastSchoolAttendedPrevDlsu;
-                        newRow["graduatedYear"] = deg.lastSchoolAttendedPrevDlsu;
-                        newRow["graduatedMonth"] = deg.graduatedYear;
-                        newRow["term"] = deg.graduatedMonth;
-                        newRow["academicYear"] = deg.academicYear;
+
+                        if (!(deg.graduatedYear == 0))
+                        {
+                            newRow["graduatedYear"] = deg.graduatedYear;
+                        }
+
+                        if (!(deg.graduatedMonth == 0))
+                        {
+                            newRow["graduatedMonth"] = deg.graduatedMonth;
+                        }
+
+                        if (!(deg.term == 0))
+                        {
+                            newRow["term"] = deg.term;
+                        }
+
+                        if (!(deg.academicYear == null))
+                        {
+                            newRow["academicYear"] = deg.academicYear;
+                        }
 
                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -115,39 +135,49 @@ namespace App.Models
                             degree.degreeID = reader.GetInt32(0);
                             degree.degreeName = reader.GetString(1);
 
-                            if(reader.IsDBNull(2))
+                            if (!reader.IsDBNull(2))
                             {
                                 degree.level = reader.GetString(2);
                             }
+                            else degree.level = "";
 
-                            
+
                             degree.yearAdmitted = reader.GetInt32(3);
                             degree.campusAttended = reader.GetString(4);
                             degree.admittedAs = reader.GetString(5);
                             degree.graduated = reader.GetString(6);
-                            degree.yearLevel = reader.GetInt32(7);
+
+                            if (!reader.IsDBNull(7))
+                            {
+                                degree.yearLevel = reader.GetInt32(7);
+                            }
+                            else degree.yearLevel = 0;
+
                             degree.userID = reader.GetInt32(8);
                             degree.lastSchoolAttendedPrevDlsu = reader.GetString(9);
 
-                            if(reader.IsDBNull(10))
+                            if (!reader.IsDBNull(10))
                             {
                                 degree.graduatedYear = reader.GetInt32(10);
                             }
+                            else degree.graduatedYear = 0;
 
-                            if(reader.IsDBNull(11))
+                            if (!reader.IsDBNull(11))
                             {
                                 degree.graduatedMonth = reader.GetInt32(11);
-                            }
+                            } else degree.graduatedMonth = 0;
 
-                            if(reader.IsDBNull(12))
+                            if (!reader.IsDBNull(12))
                             {
-                                degree.term = reader.GetInt32(11);
+                                degree.term = reader.GetInt32(12);
                             }
-                           
-                            if(reader.IsDBNull(13))
+                            else degree.term = 0;
+
+                            if (!reader.IsDBNull(13))
                             {
-                                degree.academicYear = reader.GetString(9);
+                                degree.academicYear = reader.GetString(13);
                             }
+                            else degree.academicYear = "";
 
                             listDeg.Add(degree);
                             degree = new Models.Degree();

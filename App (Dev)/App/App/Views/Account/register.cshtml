@@ -288,13 +288,13 @@
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Street</label>
                             <input type="text" class="form-control" name="street" id="street" onchange="validateStreet();" required>
-                            <label id="streetError" class="label-error"></label>
+                            <label id="streetError" class="label-error">@ViewBag.streetError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">City</label>
                             <input type="text" class="form-control" name="city" id="city" onchange="validateCity();" required>
-                            <label id="cityError" class="label-error"></label>
+                            <label id="cityError" class="label-error">@ViewBag.cityError</label>
                         </div>
                     </div>
 
@@ -568,7 +568,7 @@
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Zip Code</label>
                             <input type="text" class="form-control" name="zipCode" id="zipCode" onchange="validateZipCode();" required>
-                            <label id="zipCodeError" class="label-error"></label>
+                            <label id="zipCodeError" class="label-error">@ViewBag.zipCodeError</label>
                         </div>
                     </div>
 
@@ -583,7 +583,7 @@
                         <div class="col-sm-6">
                             <label style="font-family: Lato; font-weight: 500;" for="textinput">Alternate Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
                             <input type="text" placeholder="any country number format" maxlength="20" class="form-control" name="altPhoneNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="altPhoneNumber" onchange="validateAltPhone()">
-                            <label id="altPhoneNumberError" class="label-error"></label>
+                            <label id="altPhoneNumberError" class="label-error">@ViewBag.altPhoneNumberError</label>
 
                         </div>
                     </div>
@@ -606,7 +606,7 @@
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">High School</label>
                             <input type="text" class="form-control" name="highSchool" id="highSchool" onchange="validateHighSchool();" required>
-                            <label id="highSchoolError" class="label-error"></label>
+                            <label id="highSchoolError" class="label-error">@ViewBag.highSchoolError</label>
                         </div>
                     </div>
 
@@ -627,13 +627,13 @@
                                 <option value="masteral" id="masteral">Masteral</option>
                                 <option value="doctorate" id="doctorate">Doctorate</option>
                             </select>
-                            <label id="degreeLevelError" class="label-error"></label>
+                            <label id="degreeLevelError" class="label-error">@ViewBag.degreeLevelError</label>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">ID Number <p class="optional" style="font-style: italic; font-size: 11px; color: black;">(optional)</p></label>
-                            <input type="text" class="form-control" name="IDNumber" id="idNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                            <label id="IdNumberError" class="label-error"></label>
+                            <input type="text" class="form-control" name="idNumber" id="idNumber" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <label id="IdNumberError" class="label-error">@ViewBag.IdNumberError</label>
                         </div>
                     </div>
 
@@ -652,23 +652,23 @@
                                 <option value='6'>School of Economics (SOE)</option>
                                 <option value='7'>College of Law (COL)</option>
                             </select>
-                            <label id="collegeError" class="label-error"></label>
+                            <label id="collegeError" class="label-error">@ViewBag.collegeError</label>
                         </div>
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Degree Program</label>
                             <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();" required>
-                            <label id="courseError" class="label-error"></label>
+                            <label id="courseError" class="label-error">@ViewBag.courseError</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Graduate?</label>
-                            <label id="graduatedError" class="label-error"></label>
+                            <label id="graduatedError" class="label-error">@ViewBag.graduatedError</label>
                         </div>
                         <div class="col-sm-6">
-                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;"><input type="radio" name="gradRadio" id="isGraduated" value="1" onchange="disable()" checked>&nbsp;&nbsp;Yes, I graduated last:</label><br />
+                            <label style="margin-top: 12px; font-family: Lato; font-weight: 500;"><input type="radio" name="gradRadio" id="isGraduated" value="yes" onchange="disable()" checked>&nbsp;&nbsp;Yes, I graduated last:</label><br />
                             <div class="col-sm-8">
                                 <select class="form-control" id="monthGraduate" name="monthGraduate" data-placement="top" onchange="validateGraduateMonth();">
                                     <option disabled selected>Select Month</option>
@@ -685,19 +685,19 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <label id="graduateMonthError" class="label-error"></label>
+                                <label id="graduateMonthError" class="label-error">@ViewBag.graduateMonthError</label>
                             </div>
 
                             <div class="col-sm-4">
                                 <input class="form-control" name="yearGraduate" id="yearGraduate" placeholder="Year" type="number" min="1900" step="1" onchange="validateGraduateYear();" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                                <label id="graduateYearError" class="label-error"></label>
+                                <label id="graduateYearError" class="label-error">@ViewBag.graduateYearError</label>
                             </div><br /><br />
                             <hr />
                         </div>
 
                         <div class="col-sm-6">
                             <label style="margin-top: 12px; font-family: Lato; font-weight: 500;">
-                                <input type="radio" name="gradRadio" id="notGraduated" value="0" onchange="disable()">&nbsp;&nbsp;No, I attended DLSU on:
+                                <input type="radio" name="gradRadio" id="notGraduated" value="no" onchange="disable()">&nbsp;&nbsp;No, I attended DLSU on:
                             </label>
                             <br />
                             <div class="col-sm-6">
@@ -713,7 +713,7 @@
                                     <option value="8">Eighth Year</option>
                                 </select>
                             </div>
-                            <label id="yrLvlError" class="label-error"></label>
+                            <label id="yrLvlError" class="label-error">@ViewBag.yrLvlError</label>
 
                             <br /><br />
                             <div class="col-sm-5">
@@ -729,7 +729,7 @@
                             <input type="text" placeholder="14" class="form-control" style="width: 50px; display: inline-block;" name="lastTermStart" id="lastTermStart" onchange="plusone('lastTermStart', 'lastTermEnd'); validateLastTermStart();" disabled required>
                             - <input type="text" placeholder="15" class="form-control" style="width: 50px; display: inline-block;" name="lastTermEnd" id="lastTermEnd" onkeypress="" disabled><br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<label id="termError" class="label-error"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <label id="lastTermStartError" class="label-error"></label>
+                            <label id="lastTermStartError" class="label-error">@ViewBag.lastTermStartError</label>
                             <hr style="margin-top: 1px;" />
                         </div>
                     </div>
@@ -740,19 +740,19 @@
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Admitted as</label><br />
 
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="newStudent" name="admissionRadio" checked onchange="isTransferee();  validateAdmittedAs();">&nbsp;&nbsp;New Student</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="newStudent" value="newStudent"name="admissionRadio" checked onchange="isTransferee();  validateAdmittedAs();">&nbsp;&nbsp;New Student</label>
                                 &nbsp; &nbsp; &nbsp;&nbsp;
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="transferee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Transferee</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="transferee" value="transferee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Transferee</label>
                                 &nbsp; &nbsp; &nbsp;&nbsp;
-                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="crossEnrollee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Cross Enrollee</label>
+                                <label style="font-family: Lato; font-weight: 500;"><input type="radio" id="crossEnrollee" value="crossEnrollee" name="admissionRadio" onchange="isTransferee(); validateAdmittedAs();">&nbsp;&nbsp;Cross Enrollee</label>
                                 <br>
-                                <label id="admissionError" class="label-error"></label>
+                                <label id="admissionError" class="label-error">@ViewBag.admissionError</label>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Year Admitted</label><br />
                                 <input class="form-control col-sm-2" style="width: 100px;" name="admissionYear" placeholder="Year" type="number" min="1900" step="1" id="yearAdmitted" onchange="validateYearAdmitted();" required>
-                                &nbsp;&nbsp;<label id="admissionYearError" class="label-error"></label>
+                                &nbsp;&nbsp;<label id="admissionYearError" class="label-error">@ViewBag.admissionYearError</label>
                             </div>
                         </div>
                     </div>
@@ -762,19 +762,19 @@
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Last School Attended</label><br />
                                 <input type="text" class="form-control" name="lastSchool" disabled id="lastSchool" onchange="validateLastSchool();">
-                                <label id="lastSchoolError" class="label-error"></label>
+                                <label id="lastSchoolError" class="label-error">@ViewBag.lastSchoolError</label>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="textinput" style="font-family: Lato; font-weight: 500;">Campus Attended</label><br />
-                                <select class="form-control" id="campusAttended" onchange="validateCampusAttended();">
+                                <select class="form-control" id="campusAttended" name ="campusAttended" onchange="validateCampusAttended();">
                                     <option disabled selected>Select Campus</option>
                                     <option value="BGC">BGC</option>
                                     <option value="Makati">Makati</option>
                                     <option value="STC">STC</option>
                                     <option value="Taft">Taft</option>
                                 </select>
-                                <label id="campusAttendedError" class="label-error"></label>
+                                <label id="campusAttendedError" class="label-error">@ViewBag.campusAttendedError</label>
                             </div>
                         </div>
                     </div>
@@ -784,7 +784,7 @@
             </div><!-- /.col-lg-12 -->
             <div class="form-group">
                 <label id="error" class="label-error"></label>
-                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="validate();" />
+                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="return validate();" />
                 <input type="button" value="Back" class="btn btn-default" style="float: right;" onclick="location.href='@Url.Action("Index", "Home")'" />
             </div>
         </div><!-- /.row -->

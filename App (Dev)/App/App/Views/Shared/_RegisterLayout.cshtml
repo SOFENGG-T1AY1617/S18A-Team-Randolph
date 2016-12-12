@@ -92,6 +92,15 @@
 			else false;
 		}
 
+		function checkLetters(text) {
+		    var letters = /^[a-z\u00C0-\u00ff\sA-Z]+$/;
+
+		    if (letters.test(text))
+		        return true;
+		    else 
+		        return false;
+		}
+
 		function validateEmail() {
 			var email = document.getElementById("email").value;
 			var isEmail = checkEmail(email);
@@ -137,24 +146,19 @@
 		}
 
 		function validateLastName() {
-			var text = document.getElementById("lastName").value;
-			var count = 0;
+		    var text = document.getElementById("lastName").value;
+		    document.getElementById('lastNameError').innerHTML = "";
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
 
-				if (count > 0) {
-					document.getElementById('lastNameError').innerHTML = "Last name must be in text";
-					lnameFlag = true;
-				}
-				else {
-					document.getElementById('lastNameError').innerHTML = "";
-					lnameFlag = false;
-				}
+			    if (checkLetters(text)) {
+			        document.getElementById('lastNameError').innerHTML = "";
+			        lnameFlag = false;
+			    }
+			    else {
+			        document.getElementById('lastNameError').innerHTML = "Last name must be in text";
+			        lnameFlag = true;
+			    }
 			} else {
 				document.getElementById('lastNameError').innerHTML = "Please enter your last name";
 				lnameFlag = true;
@@ -162,23 +166,17 @@
 		}
 
 		function validateFirstName() {
-			var text = document.getElementById("firstName").value;
-			var count = 0;
+		    var text = document.getElementById("firstName").value;
+		    document.getElementById('firstNameError').innerHTML = "";
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
-					document.getElementById('firstNameError').innerHTML = "First name must be in text";
-					fnameFlag = true;
-				}
-				else {
-					document.getElementById('firstNameError').innerHTML = "";
+			    if (checkLetters(text)) {
+			        document.getElementById('firstNameError').innerHTML = "";
 					fnameFlag = false;
+			    }
+				else {
+			        document.getElementById('firstNameError').innerHTML = "First name must be in text";
+			        fnameFlag = true;
 				}
 			} else {
 				document.getElementById('firstNameError').innerHTML = "Please enter your first name";
@@ -187,28 +185,22 @@
 		}
 
 		function validateMiddleName() {
-			var text = document.getElementById("middleName").value;
-			var count = 0;
+		    var text = document.getElementById("middleName").value;
+		    document.getElementById('middleNameError').innerHTML = "";
 
-			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
-					document.getElementById('middleNameError').innerHTML = "Middle name must be in text";
-					mnameFlag = true;
-				}
-				else {
-					document.getElementById('middleNameError').innerHTML = "";
-					mnameFlag = false;
-				}
-			} else {
-				document.getElementById('middleNameError').innerHTML = "Please enter your middle name";
-				mnameFlag = true;
-			}
+		    if (!(text == "")) {
+		        if (checkLetters(text)) {
+		            document.getElementById('middleNameError').innerHTML = "";
+		            mnameFlag = false;
+		        }
+		        else {
+		            document.getElementById('middleNameError').innerHTML = "Middle name must be in text";
+		            mnameFlag = true;
+		        }
+		    } else {
+		        document.getElementById('middleNameError').innerHTML = "Please enter your middle name";
+		        mnameFlag = true;
+		    }
 		}
 
 		function validateGender() {
@@ -259,20 +251,8 @@
 			var count = 0;
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
-					document.getElementById('birthPlaceError').innerHTML = "Birth place must be in text";
-					birthPlaceFlag = true;
-				}
-				else {
-					document.getElementById('birthPlaceError').innerHTML = "";
-					birthPlaceFlag = false;
-				}
+			    document.getElementById('birthPlaceError').innerHTML = "";
+			    birthPlaceFlag = false;
 			} else {
 				document.getElementById('birthPlaceError').innerHTML = "Please enter your place of birth";
 				birthPlaceFlag = true;
@@ -297,20 +277,8 @@
 			var count = 0;
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
-					document.getElementById('cityError').innerHTML = "City must be in text";
-					cityFlag = true;
-				}
-				else {
-					document.getElementById('cityError').innerHTML = "";
-					cityFlag = false;
-				}
+			    document.getElementById('cityError').innerHTML = "";
+			    cityFlag = false;
 			} else {
 				document.getElementById('cityError').innerHTML = "Please enter your city";
 				cityFlag = true;
@@ -390,13 +358,7 @@
 			var count = 0;
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
+			    if (!checkLetters(text)) {
 					document.getElementById('highSchoolError').innerHTML = "High school name must be in text";
 					highschoolFlag = true;
 				}
@@ -440,13 +402,7 @@
 			var count = 0;
 
 			if (!(text == "")) {
-				for (var i = 0; i < text.length; i++) {
-					if (text[i] == "0" || text[i] == "1" || text[i] == "2" || text[i] == "3" || text[i] == "4"
-						|| text[i] == "5" || text[i] == "6" || text[i] == "7" || text[i] == "8" || text[i] == "9")
-						count++;
-				}
-
-				if (count > 0) {
+			    if (!checkLetters(text)) {
 					document.getElementById('courseError').innerHTML = "Degree Program must be in text";
 					degreeProgramFlag = true;
 				}
@@ -624,8 +580,15 @@
 				yearAdmittedFlag = true;
 			}
 			else {
-				document.getElementById('admissionYearError').innerHTML = "";
-				yearAdmittedFlag = false;
+			    if (text >= 1900) {
+			        document.getElementById('admissionYearError').innerHTML = "";
+			        yearAdmittedFlag = false;
+			    } else {
+			        document.getElementById('admissionYearError').innerHTML = "Year above 1900 only";
+			        yearAdmittedFlag = true;
+			    }
+
+				
 			}
 		}
 
@@ -636,8 +599,13 @@
 				lastSchoolAttendedFlag = true;
 			}
 			else {
-				document.getElementById('lastSchoolError').innerHTML = "";
-				lastSchoolAttendedFlag = false;
+			    if (checkLetters(text)) {
+			        document.getElementById('lastSchoolError').innerHTML = "";
+			        lastSchoolAttendedFlag = false;
+			    } else {
+			        document.getElementById('lastSchoolError').innerHTML = "Must be in text";
+			        lastSchoolAttendedFlag = true;
+			    }
 			}
 		}
 
@@ -676,6 +644,7 @@
 
 			
 			if (accountFlag == true || personalFlag == true || academicFlag == true) {
+			    alert("account " + accountFlag + " personal " + personalFlag + " academic " + academicFlag);
 				document.getElementById('error').innerHTML = "Error exists. Kindly review your submission.";
 				return false;
 			} else return true;

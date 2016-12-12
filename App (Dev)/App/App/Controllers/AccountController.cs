@@ -61,12 +61,47 @@ namespace App.Controllers
         }
 
         [HttpPost]
-        public ActionResult save(string idNumber, string lastName, string firstName, string middleName, string gender, string birthday, string citizenship, 
-            string birthPlace, string address,string phoneNumber, string altPhoneNumber, string email, string altEmail, string password)
+        public ActionResult save(string email, string altEmail, string password, 
+            string lastName, string firstName, string middleName, string gender, string birthday, string citizenship, string birthPlace,
+            string street, string city, string address, string country, string zipCode, string phoneNumber, string altPhoneNumber,
+            string highSchool, string degreeLevel, string idNumber, string college, string degreeProgram, string gradRadio,
+            string monthGraduate, string yearGraduate, string yrLvl, string lastTerm, string lastTermStart, string lastTermEnd,
+            string admissionRadio, string admissionYear, string lastSchool, string campusAttended)
         {
+            /*
+             Note: phonenumber for account is also phone number in mailing
+             gradRadio = yes or no
+             yrLvl = 1 to 8
+             lastTerm = 1, 2,3
+             */
+
             int errorCtr = 0;
 
             Account acc = new Account();
+            MailingInformation mail = new MailingInformation();
+            Degree deg = new Degree();
+
+            if (!(email == ""))
+            {
+                acc.email = email;
+            }
+            else
+            {
+                errorCtr++;
+                ViewBag.emailError = "Please enter your email address";
+            }
+
+            acc.alternateEmail = altEmail;
+
+            if (!(password == ""))
+            {
+                acc.password = password;
+            }
+            else
+            {
+                errorCtr++;
+                ViewBag.passwordError = "Please enter your password";
+            }
 
             if (!(idNumber == ""))
             {
@@ -135,26 +170,6 @@ namespace App.Controllers
                 ViewBag.citizenshipError = "Please select your citizenship";
             }
 
-            if (!(email == ""))
-            {
-                acc.email = email;
-            } else
-            {
-                errorCtr++;
-                ViewBag.emailError = "Please enter your email address";
-            }
-
-            acc.alternateEmail = altEmail;
-
-            if (!(password == ""))
-            {
-                acc.password = password;
-            } else
-            {
-                errorCtr++;
-                ViewBag.passwordError = "Please enter your password";
-            }
-
             if (!(birthPlace == ""))
             {
                 acc.placeOfBirth = birthPlace;
@@ -188,6 +203,8 @@ namespace App.Controllers
             {
                 acc = manager.saveAccount(acc);
                 Session["user"] = acc;
+                Session["mail"] = mail;
+                Session["degg"] = deg;
                 return RedirectToAction("Order", "Transaction"); // go to next step
             } else
             {
