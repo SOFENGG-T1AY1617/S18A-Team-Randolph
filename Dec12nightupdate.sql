@@ -212,6 +212,7 @@ CREATE TABLE `transactions` (
   `estimatedDeliveryDate` datetime(1) NOT NULL,
   `price` float NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT 'pending',
+  `transactionDate` datetime NOT NULL,
   PRIMARY KEY (`transactionID`,`userID`,`mailingID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -251,6 +252,7 @@ CREATE TABLE `user` (
   `alternateEmail` varchar(100) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   `verified` varchar(45) DEFAULT 'not verified',
+  `registeredDate` datetime NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -261,7 +263,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle','not verified'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123','not verified'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123','not verified'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123','not verified'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345','not verified'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123','not verified'),(7,11428376,'Yu','Randolph Nathaniel','Malveda','M',1996,11,28,'Filipino','Manila','162 Sarangani St. AAVA','9178955038',NULL,'randolph_yu@dlsu.edu.ph',NULL,'randolphyu','not verified'),(21,NULL,'lopez','jed','garcia','M',1993,9,10,'Filipino','quezon','springville','09235678890','','jed_lopez@gmail.com','','hello123','not verified');
+INSERT INTO `user` VALUES (1,11310162,'Buluran','Aaron Benedict','Maravillas','M',1996,12,25,'Filipino','Caloocan','9th Ave Caloocan City','9332539467',NULL,'buluran_aaron@dlsu.edu.ph',NULL,'bamboozle','not verified','0000-00-00 00:00:00'),(2,11318724,'Sun','Jan Christian','Dante','M',1996,9,12,'Filipino','Manila','Fairview Quezon City','9328720808',NULL,'jan_sun@dlsu.edu.ph',NULL,'ball123','not verified','0000-00-00 00:00:00'),(3,11342498,'Lim','Eugene','Go','M',1996,5,1,'Filipino','Manila','Quirino Hi-way Novaliches Quezon City','9228833857',NULL,'eugene_lim96@yahoo.com',NULL,'test123','not verified','0000-00-00 00:00:00'),(4,11423123,'Marcelo','Micaella','Reyes','F',1997,1,2,'Filipino','Manila','Banawe Quezon City','9178576765',NULL,'marcelo_micaella@dlsu.edu.ph',NULL,'mica123','not verified','0000-00-00 00:00:00'),(5,11425598,'Brosas','Hazel Anne','Legaspi','F',1998,11,8,'Filipino','Laguna','BF Homes Milan San Pedro Laguna','9420992385',NULL,'hazel_brosas@dlsu.edu.ph',NULL,'12345','not verified','0000-00-00 00:00:00'),(6,11428236,'Malonzo','Juan Lorenzo','Peñaranda','M',1997,10,27,'Filipino','Manila','55 Milflores st. Twinville subd. Concepcion Marikina City','9052770864',NULL,'malonzo_juan@dlsu.edu.ph',NULL,'juan123','not verified','0000-00-00 00:00:00'),(7,11428376,'Yu','Randolph Nathaniel','Malveda','M',1996,11,28,'Filipino','Manila','162 Sarangani St. AAVA','9178955038',NULL,'randolph_yu@dlsu.edu.ph',NULL,'randolphyu','not verified','0000-00-00 00:00:00'),(21,NULL,'lopez','jed','garcia','M',1993,9,10,'Filipino','quezon','springville','09235678890','','jed_lopez@gmail.com','','hello123','not verified','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -274,4 +276,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-12 19:36:15
+-- Dump completed on 2016-12-12 20:27:12
