@@ -68,3 +68,26 @@ function viewCart(){
             '    </button></td></tr>');
     }
 }
+function populateEditCart(){
+  var cart = JSON.parse(sessionStorage.cart);
+  for(var i=0; i<cart.length; i++){
+    $('#editCartTable').append('<tr>'+
+                                '<td class="col-sm-8 col-md-6">'+
+                                    '<div class="media">'+
+                                        '<div class="media-body">'+
+                                            '<h4 class="media-heading" style="color:#00703c;">'+cart[i].docuName+'</h4>'+
+                                            '<h5 class="media-heading" style="color:#00703c;"> degree: '+cart[i].degree+'</h5>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</td>'+
+                                '<td class="col-sm-1 col-md-1" style="text-align: center">'+
+                                    '<input type="number" class="form-control" id="cartQuantity" value="'+cart[i].quantity+'" max="5" min="1">'+
+                                '</td>'+
+                                '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price+'</strong></td>'+
+                                '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price * cart[i].quantity+'</strong></td>'+
+                                '<td class="col-sm-1 col-md-1">'+
+                                    '<button type="button" class="btn btn-danger" onclick="removeCart('+cart[i].docuID+')">'+
+                                        '<span class="glyphicon glyphicon-remove"></span> Remove'+
+                                    '</button></td></tr>')
+  }
+}
