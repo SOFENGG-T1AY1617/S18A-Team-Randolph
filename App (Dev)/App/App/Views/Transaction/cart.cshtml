@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_TransactionLayout.cshtml";
 }
 @section viewCart{
-    <ul class="dropdown-menu" id="viewCart" style="list-style: none; width: 600px;">
-        <table class="table table-hover">
+    <ul class="dropdown-menu" style="list-style: none; width: 600px;">
+        <table class="table table-hover" id="cartTable">
             <thead>
                 <tr>
                     <th>Product</th>
@@ -18,6 +18,11 @@
         </table>
     </ul>
 }
+@section headerScript{
+       <script>
+           window.onload = populateEditCart;
+       </script>
+ }
 @section btnStep {
     <!--btnStep-->
     <div class="row btnStep" style="margin-top: 7px;">
@@ -58,7 +63,7 @@
     <div class="container item-list-cont" style="margin-top: 170px;">
             <div class="row">
                 <div class="col-sm-10 col-md-8 stepHeader">
-                    <table class="table table-hover">
+                    <table class="table table-hover" >
                         <thead>
                             <tr>
                                 <th>Product</th>
@@ -68,29 +73,8 @@
                                 <th> </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <!-- Start item -->
-                                <td class="col-sm-8 col-md-6">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                            <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-                                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                                </td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>P0.00</strong></td>
-                                <td class="col-sm-1 col-md-1">
-                                    <button type="button" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-remove"></span> Remove
-                                    </button>
-                                </td>
-                            </tr> <!-- End item -->
+                        <tbody id="editCartTable">
+                            
                         </tbody>
                         <tfoot>
                             <tr>
