@@ -114,7 +114,13 @@ namespace App.Models
                             Degree degree = new Models.Degree();
                             degree.degreeID = reader.GetInt32(0);
                             degree.degreeName = reader.GetString(1);
-                            degree.level = reader.GetString(2);
+
+                            if(reader.IsDBNull(2))
+                            {
+                                degree.level = reader.GetString(2);
+                            }
+
+                            
                             degree.yearAdmitted = reader.GetInt32(3);
                             degree.campusAttended = reader.GetString(4);
                             degree.admittedAs = reader.GetString(5);
@@ -122,10 +128,26 @@ namespace App.Models
                             degree.yearLevel = reader.GetInt32(7);
                             degree.userID = reader.GetInt32(8);
                             degree.lastSchoolAttendedPrevDlsu = reader.GetString(9);
-                            degree.graduatedYear = reader.GetInt32(11);
-                            degree.graduatedMonth = reader.GetInt32(11);
-                            degree.term = reader.GetInt32(11);
-                            degree.academicYear = reader.GetString(9);
+
+                            if(reader.IsDBNull(10))
+                            {
+                                degree.graduatedYear = reader.GetInt32(10);
+                            }
+
+                            if(reader.IsDBNull(11))
+                            {
+                                degree.graduatedMonth = reader.GetInt32(11);
+                            }
+
+                            if(reader.IsDBNull(12))
+                            {
+                                degree.term = reader.GetInt32(11);
+                            }
+                           
+                            if(reader.IsDBNull(13))
+                            {
+                                degree.academicYear = reader.GetString(9);
+                            }
 
                             listDeg.Add(degree);
                             degree = new Models.Degree();
