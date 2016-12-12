@@ -36,3 +36,33 @@ legend{
     color: white;
     text-align: center;
 }
+
+.edit-button{
+	float: right;
+	margin-right: auto;
+	border: 0;
+	background: none;
+	box-shadow:none;
+	border-radius: 0px;	
+}
+
+.delete-button{
+	float: right; 
+	border: 0;
+	background: none;
+	box-shadow:none;
+	border-radius: 0px;	
+	padding-left: 5px;
+}
+
+.mailingInfo, .collegeInfo{
+	background-color:rgb(242, 242, 242);
+	align-content: center;
+	text-align: center;
+}
+
+.header{
+	background-color: rgb(117, 117, 117);
+	text-align: left;
+	padding-bottom: 3px;
+}
