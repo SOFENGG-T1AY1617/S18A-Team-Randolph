@@ -62,7 +62,7 @@ namespace App.Controllers
 
         [HttpPost]
         public ActionResult save(string idNumber, string lastName, string firstName, string middleName, string gender, string birthday, string citizenship, 
-            string birthPlace, string address,string phoneNumber, string altPhoneNumber, string email, string altEmail, string password, string rePassword)
+            string birthPlace, string address,string phoneNumber, string altPhoneNumber, string email, string altEmail, string password)
         {
             int errorCtr = 0;
 
@@ -148,14 +148,7 @@ namespace App.Controllers
 
             if (!(password == ""))
             {
-                if (password == rePassword)
-                {
-                    acc.password = password;
-                } else
-                {
-                    errorCtr++;
-                    ViewBag.passwordError = "Password do not match";
-                }
+                acc.password = password;
             } else
             {
                 errorCtr++;
