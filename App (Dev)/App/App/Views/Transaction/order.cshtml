@@ -32,6 +32,7 @@
             modal.find('#expressPrice').val(expressPrice)
             modal.find('#regularPrice').val(regularPrice)
             modal.find('#docuID').val(docuID)
+            modal.find('#docuName').val(documentTitle)
         })
         window.onload = function(){
             document.getElementById("addCart").onclick = function add(){
@@ -54,14 +55,15 @@
                 var quantity = $("#quantity").val()
                 var degreeDropdown = document.getElementById("degreeDropdown")
                 var degree = degreeDropdown.options[degreeDropdown.selectedIndex].text
-                
-                addCart(docuID,rate,packaging,quantity,degree, price)
+                var docuName = $("#docuName").val()
+                addCart(docuID, docuName, rate, packaging, quantity,degree, price)
             }
         }
 </script>
 
 
 }
+
 @section viewCart{
     <ul class="dropdown-menu" id="viewCart" style="list-style: none; width: 600px;">
         <table class="table table-hover">
@@ -73,16 +75,7 @@
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 </tr>
             </thead>
-            <li>
-            <td>Transcript of Records</td>
-            <td> 1</td>
-            <td> Php 100.00</td>
-            <td>
-                <button type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </td>
-            </li>
+            
         </table>
 </ul>
  }
@@ -106,7 +99,7 @@
                 <li class="stepBtn">
                     <a href="cart">
                         <h4 class="list-group-item-heading stephead">Step 3</h4>
-                        <p class="list-group-item-text">View Cart</p>
+                        <p class="list-group-item-text">Edit Cart</p>
                     </a>
                 </li>
                 <li class="stepBtn">
@@ -124,6 +117,7 @@
 @section headerScript{
 <script>
     sessionStorage.docs = @Html.Raw(ViewBag.documentsJSON);
+
     function display(degree) {
         if (degree == 'undergraduate') {
             $('.undergradDoc').show();
@@ -251,6 +245,7 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" style="font-weight: bold;">~document name~</h4>
                             <input type="hidden" id="docuID" value="">
+                            <input type="hidden" id="docuName" value="">
                         </div>
                         <div class="modal-body">
                             <p id="degreeProfile" style="font-weight: bold;">Academic Profile:</p>
@@ -264,7 +259,7 @@
                             </p>
                             <p style="font-weight: bold;">
                                 Delivery Rate:
-                                <label class="radio-inline" id="regularRate"><input type="radio" name="rates" id="regRadio" value="regular">Regular</label>
+                                <label class="radio-inline" id="regularRate"><input type="radio" name="rates" id="regRadio" value="regular" checked="checked">Regular</label>
                                 <input type="hidden" id="regularPrice" value="">
                                 <label class="radio-inline" id="expressRate"><input type="radio" name="rates" id="expRadio" value="express">Express</label>
                                 <input type="hidden" id="expressPrice" value="">
@@ -272,7 +267,7 @@
 
                             <p style="font-weight: bold;">
                                 Insert Document Into:
-                                <label class="radio-inline"><input type="radio" name="packaging" id="brownEnvelope" value="brown">Brown Envelope</label>
+                                <label class="radio-inline"><input type="radio" name="packaging" id="brownEnvelope" value="brown" checked="checked">Brown Envelope</label>
                                 <label class="radio-inline"><input type="radio" name="packaging" id="whiteEnvelope" value="white">White Envelope</label>
                                 <label class="radio-inline"><input type="radio" name="packaging" id="none" value="none">None</label>
                             </p>

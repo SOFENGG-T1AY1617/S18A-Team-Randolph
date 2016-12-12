@@ -1,14 +1,14 @@
-function order(docuID, deliveryRate, packaging, quantity, degree, price){
+function order(docuID, docuName, deliveryRate, packaging, quantity, degree, price){
   this.docuID = docuID;
+  this.docuName = docuName;
   this.deliveryRate = deliveryRate;
   this.packaging = packaging;
   this.quantity = quantity;
   this.degree = degree;
   this.price = price;
 }
-function addCart(docuID, deliveryRate, packaging, quantity, degree, price){
-  var newOrder = new order(docuID, deliveryRate, packaging, quantity, degree, price);
-  alert("trying to add to cart");
+function addCart(docuID, docuName, deliveryRate, packaging, quantity, degree, price){
+  var newOrder = new order(docuID, docuName, deliveryRate, packaging, quantity, degree, price);
   if(sessionStorage.getItem("cart") === null){
       var cart = [];
       cart.push(newOrder);
@@ -18,12 +18,17 @@ function addCart(docuID, deliveryRate, packaging, quantity, degree, price){
     cart.push(newOrder);
     sessionStorage.cart = JSON.stringify(cart);
   }
-  alert(sessionStorage.cart);
 }
 
-function removeCart(cartIndex){
+function removeCart(itemID){
   var cart = JSON.parse(sessionStorage.cart);
-  cart[cartIndex].splice(cartIndex,1);
+
+  for(var i=0; i<cart.length; i++){
+    if(cart[i].docuID == itemID){
+        cart.splice(i,1);
+    }
+
+  }
   sessionStorage.cart = JSON.stringify(cart);
 }
 
@@ -46,15 +51,20 @@ function addOrder(cartIndex){
   sessionStorage.cart = JSON.stringify(cart);
 }
 function viewCart(){
-  if((sessionStorage.getItem("cart") != null)){
-    var docs = JSON.parse(sessionStorage.docs);
     var cart = JSON.parse(sessionStorage.cart);
-
     $('#viewCart').empty();
-    for(var i=0; i<cart.length(); i++){
-        var docuName = docs[cart[i].docuID].docuName;
+    $('#viewCart').append('<table id="cartTable"class="table table-hover"><thead><tr><th>Product</th><th>Quantity</th>'+
+    '<th class="text-center">Price</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr></thead></table>');
+    for(var i=0; i<cart.length; i++){
+        var docuName = cart[i].docuName;
         var price = cart[i].price * cart[i].quantity;
-        $('#viewCart').append('<li>'+docuName+' - '+price+ ' - '+cart[i].quantity+'</li>');
+        $('#cartTable').append('<tr>'+
+            '<td>&nbsp;&nbsp;&nbsp;'+docuName+'</td>'+
+            '<td>'+cart[i].quantity+'</td>'+
+            '<td> Php '+ price +'</td>'+
+            '<td>'+
+            '    <button type="button" class="btn btn-danger">'+
+            '        <span class="glyphicon glyphicon-remove" id="removeCart" onclick="removeCart('+cart[i].docuID+')"></span>'+
+            '    </button></td></tr>');
     }
-  }
 }

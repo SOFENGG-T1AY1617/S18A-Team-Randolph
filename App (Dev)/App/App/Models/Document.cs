@@ -180,7 +180,7 @@ namespace App.Models
                     conn.Close();
                     return listDoc;
             }
-        public List<Document> getAllDocuments() // Bachelors, Masters, Doctorate
+        public List<Document> getAllDocuments() // All Documents
         {
             List<Document> listDoc = new List<Document>();
             MySqlConnection conn = null;
