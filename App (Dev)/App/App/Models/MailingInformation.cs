@@ -15,7 +15,8 @@ namespace App.Models
         public string city { get; set; }
         public string country { get; set; }
         public int locationID { get; set; }
-        public string contactNo { get; set; }
+        public string contactNumber { get; set; }
+        public string contactPerson { get; set; }
         public int userID { get; set; }
         public string addressline { get; set; }
     }
@@ -35,8 +36,8 @@ namespace App.Models
                 using (adapter)
                 {
                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.mailingaddress"
-                                                             + " (mailingID, zipcode, streetName, city, country, locationID, contactNo, userID, addressline) "
-                                                             + "VALUES (@mailingID, @zipcode, @streetName, @city, @country, @locationID, @contactNo, @userID, @addressline)", conn);
+                                                             + " (mailingID, zipcode, streetName, city, country, locationID, contactNumber, userID, addressline) "
+                                                             + "VALUES (@mailingID, @zipcode, @streetName, @city, @country, @locationID, @userID, @addressline, @contactPerson, @contactNumber)", conn);
 
 
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("mailingID", MySqlDbType.Int32, 11, "mailingID"));
@@ -45,9 +46,10 @@ namespace App.Models
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("city", MySqlDbType.VarChar, 50, "city"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("country", MySqlDbType.VarChar, 100, "country"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("locationID", MySqlDbType.VarChar, 50, "locationID"));
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("contactNo", MySqlDbType.VarChar, 20, "contactNo"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("addressline", MySqlDbType.VarChar, 200, "addressline"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("contactPerson", MySqlDbType.VarChar, 100, "contactPerson"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("contactNumber", MySqlDbType.VarChar, 20, "contactNumber"));
 
                     using (DataSet dataSet = new DataSet())
                     {
@@ -61,9 +63,10 @@ namespace App.Models
                         newRow["city"] = mailInfo.city;
                         newRow["country"] = mailInfo.country;
                         newRow["locationID"] = mailInfo.locationID;
-                        newRow["contactNo"] = mailInfo.contactNo;
                         newRow["userID"] = mailInfo.userID;
                         newRow["addressline"] = mailInfo.addressline;
+                        newRow["contactPerson"] = mailInfo.contactPerson;
+                        newRow["contactNumber"] = mailInfo.contactNumber;
 
                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -90,15 +93,21 @@ namespace App.Models
                         while (reader.Read())
                         {
                             MailingInformation mi = new Models.MailingInformation();
-                            mi.userID = reader.GetInt32(0);
+                            mi.mailingID = reader.GetInt32(0);
                             mi.zipcode = reader.GetString(1);
                             mi.streetname = reader.GetString(2);
                             mi.city = reader.GetString(3);
                             mi.country = reader.GetString(4);
                             mi.locationID = reader.GetInt32(5);
-                            mi.contactNo = reader.GetString(6);
-                            mi.userID = reader.GetInt32(7);
-                            mi.addressline = reader.GetString(8);
+                            mi.userID = reader.GetInt32(6);
+
+                            if(reader.IsDBNull(7))
+                            {
+                                mi.addressline = reader.GetString(7);
+                            }
+
+                            mi.contactPerson = reader.GetString(8);
+                            mi.contactNumber = reader.GetString(9);
 
                             listmailinfo.Add(mi);
                         }
