@@ -58,7 +58,7 @@
 		var emailFlag = false, passwordFlag = false, altEmailFlag = false;
 		// personal information
 		var lnameFlag = false, fnameFlag = false, mnameFlag = false, genderFlag = false, birthdayFlag = false;
-		var citizenshipFlag = false, birthPlaceFlag = false, streetFlag = false, cityFlag = false, addressFlag = false;
+		var citizenshipFlag = false, birthPlaceFlag = false, streetFlag = false, cityFlag = false, addressFlag = false, delivAreaFlag = false;
 		var countryFlag = false, zipFlag = false, phoneNumberFlag = false, altNumberFlag = false;
 		// academic information
 		var highschoolFlag = false, degreeLevelFlag = false, idNumberFlag = false, collegeFlag = false, degreeProgramFlag = false,
@@ -93,12 +93,12 @@
 		}
 
 		function checkLetters(text) {
-		    var letters = /^[a-z\u00C0-\u00ff\sA-Z]+$/;
+			var letters = /^[a-z\u00C0-\u00ff\sA-Z]+$/;
 
-		    if (letters.test(text))
-		        return true;
-		    else 
-		        return false;
+			if (letters.test(text))
+				return true;
+			else 
+				return false;
 		}
 
 		function validateEmail() {
@@ -146,19 +146,19 @@
 		}
 
 		function validateLastName() {
-		    var text = document.getElementById("lastName").value;
-		    document.getElementById('lastNameError').innerHTML = "";
+			var text = document.getElementById("lastName").value;
+			document.getElementById('lastNameError').innerHTML = "";
 
 			if (!(text == "")) {
 
-			    if (checkLetters(text)) {
-			        document.getElementById('lastNameError').innerHTML = "";
-			        lnameFlag = false;
-			    }
-			    else {
-			        document.getElementById('lastNameError').innerHTML = "Last name must be in text";
-			        lnameFlag = true;
-			    }
+				if (checkLetters(text)) {
+					document.getElementById('lastNameError').innerHTML = "";
+					lnameFlag = false;
+				}
+				else {
+					document.getElementById('lastNameError').innerHTML = "Last name must be in text";
+					lnameFlag = true;
+				}
 			} else {
 				document.getElementById('lastNameError').innerHTML = "Please enter your last name";
 				lnameFlag = true;
@@ -166,17 +166,17 @@
 		}
 
 		function validateFirstName() {
-		    var text = document.getElementById("firstName").value;
-		    document.getElementById('firstNameError').innerHTML = "";
+			var text = document.getElementById("firstName").value;
+			document.getElementById('firstNameError').innerHTML = "";
 
 			if (!(text == "")) {
-			    if (checkLetters(text)) {
-			        document.getElementById('firstNameError').innerHTML = "";
+				if (checkLetters(text)) {
+					document.getElementById('firstNameError').innerHTML = "";
 					fnameFlag = false;
-			    }
+				}
 				else {
-			        document.getElementById('firstNameError').innerHTML = "First name must be in text";
-			        fnameFlag = true;
+					document.getElementById('firstNameError').innerHTML = "First name must be in text";
+					fnameFlag = true;
 				}
 			} else {
 				document.getElementById('firstNameError').innerHTML = "Please enter your first name";
@@ -185,22 +185,22 @@
 		}
 
 		function validateMiddleName() {
-		    var text = document.getElementById("middleName").value;
-		    document.getElementById('middleNameError').innerHTML = "";
+			var text = document.getElementById("middleName").value;
+			document.getElementById('middleNameError').innerHTML = "";
 
-		    if (!(text == "")) {
-		        if (checkLetters(text)) {
-		            document.getElementById('middleNameError').innerHTML = "";
-		            mnameFlag = false;
-		        }
-		        else {
-		            document.getElementById('middleNameError').innerHTML = "Middle name must be in text";
-		            mnameFlag = true;
-		        }
-		    } else {
-		        document.getElementById('middleNameError').innerHTML = "Please enter your middle name";
-		        mnameFlag = true;
-		    }
+			if (!(text == "")) {
+				if (checkLetters(text)) {
+					document.getElementById('middleNameError').innerHTML = "";
+					mnameFlag = false;
+				}
+				else {
+					document.getElementById('middleNameError').innerHTML = "Middle name must be in text";
+					mnameFlag = true;
+				}
+			} else {
+				document.getElementById('middleNameError').innerHTML = "Please enter your middle name";
+				mnameFlag = true;
+			}
 		}
 
 		function validateGender() {
@@ -234,31 +234,21 @@
 			}
 		}
 
-		function validateCitizenship() {
-			var text = document.getElementById("citizenship").value;
-			if (text == "Select Citizenship") {
-				document.getElementById('citizenshipError').innerHTML = "Please select your citizenship";
-				citizenshipFlag = true;
-			}
-			else {
-				document.getElementById('citizenshipError').innerHTML = "";
-				citizenshipFlag = false;
-			}
-		}
+		c
 
 		function validateBirthPlace() {
 			var text = document.getElementById("birthPlace").value;
 			var count = 0;
 
 			if (!(text == "")) {
-			    document.getElementById('birthPlaceError').innerHTML = "";
-			    birthPlaceFlag = false;
+				document.getElementById('birthPlaceError').innerHTML = "";
+				birthPlaceFlag = false;
 			} else {
 				document.getElementById('birthPlaceError').innerHTML = "Please enter your place of birth";
 				birthPlaceFlag = true;
 			}
 		}
-
+		
 		function validateStreet() {
 			var text = document.getElementById("street").value;
 			var count = 0;
@@ -277,8 +267,8 @@
 			var count = 0;
 
 			if (!(text == "")) {
-			    document.getElementById('cityError').innerHTML = "";
-			    cityFlag = false;
+				document.getElementById('cityError').innerHTML = "";
+				cityFlag = false;
 			} else {
 				document.getElementById('cityError').innerHTML = "Please enter your city";
 				cityFlag = true;
@@ -295,6 +285,18 @@
 			} else {
 				document.getElementById('addressError').innerHTML = "Please enter your current address";
 				addressFlag = true;
+			}
+		}
+
+		function validateDelivArea() {
+			var text = document.getElementById("delivArea").value;
+			if (text == "Select Delivery Area") {
+				document.getElementById('delivAreaError').innerHTML = "Please select your delivery area";
+				delivAreaFlag = true;
+			}
+			else {
+			    document.getElementById('delivAreaError').innerHTML = "";
+			    delivAreaFlag = false;
 			}
 		}
 
@@ -358,7 +360,7 @@
 			var count = 0;
 
 			if (!(text == "")) {
-			    if (!checkLetters(text)) {
+				if (!checkLetters(text)) {
 					document.getElementById('highSchoolError').innerHTML = "High school name must be in text";
 					highschoolFlag = true;
 				}
@@ -402,7 +404,7 @@
 			var count = 0;
 
 			if (!(text == "")) {
-			    if (!checkLetters(text)) {
+				if (!checkLetters(text)) {
 					document.getElementById('courseError').innerHTML = "Degree Program must be in text";
 					degreeProgramFlag = true;
 				}
@@ -580,13 +582,13 @@
 				yearAdmittedFlag = true;
 			}
 			else {
-			    if (text >= 1900) {
-			        document.getElementById('admissionYearError').innerHTML = "";
-			        yearAdmittedFlag = false;
-			    } else {
-			        document.getElementById('admissionYearError').innerHTML = "Year above 1900 only";
-			        yearAdmittedFlag = true;
-			    }
+				if (text >= 1900) {
+					document.getElementById('admissionYearError').innerHTML = "";
+					yearAdmittedFlag = false;
+				} else {
+					document.getElementById('admissionYearError').innerHTML = "Year above 1900 only";
+					yearAdmittedFlag = true;
+				}
 
 				
 			}
@@ -599,13 +601,13 @@
 				lastSchoolAttendedFlag = true;
 			}
 			else {
-			    if (checkLetters(text)) {
-			        document.getElementById('lastSchoolError').innerHTML = "";
-			        lastSchoolAttendedFlag = false;
-			    } else {
-			        document.getElementById('lastSchoolError').innerHTML = "Must be in text";
-			        lastSchoolAttendedFlag = true;
-			    }
+				if (checkLetters(text)) {
+					document.getElementById('lastSchoolError').innerHTML = "";
+					lastSchoolAttendedFlag = false;
+				} else {
+					document.getElementById('lastSchoolError').innerHTML = "Must be in text";
+					lastSchoolAttendedFlag = true;
+				}
 			}
 		}
 
@@ -630,7 +632,7 @@
 			// check personal flag
 			if (lnameFlag == true || fnameFlag == true || mnameFlag == true || genderFlag == true || birthdayFlag == true
 				|| citizenshipFlag == true || birthPlaceFlag == true || streetFlag == true || cityFlag == true || addressFlag == true
-				|| countryFlag == true || zipFlag == true || phoneNumberFlag == true || altNumberFlag == true)
+				|| countryFlag == true || zipFlag == true || phoneNumberFlag == true || altNumberFlag == true || delivAreaFlag == true)
 				personalFlag = true;
 			else personalFlag = false;
 
@@ -644,10 +646,11 @@
 
 			
 			if (accountFlag == true || personalFlag == true || academicFlag == true) {
-			    alert("account " + accountFlag + " personal " + personalFlag + " academic " + academicFlag);
-				document.getElementById('error').innerHTML = "Error exists. Kindly review your submission.";
-				return false;
-			} else return true;
+			    //alert("account " + accountFlag + " personal " + personalFlag + " academic " + academicFlag);
+			    document.getElementById('error').innerHTML = "Error exists. Kindly review your submission.";
+			} else {
+			    document.getElementById("registerForm").submit();
+			}
 		}
 
 		const courses = [];
