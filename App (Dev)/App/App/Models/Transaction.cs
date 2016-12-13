@@ -126,10 +126,10 @@ namespace App.Models
 
             public void checkout(string jsonCart, Transaction tran)
             {
-                List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
+                List<Document> cart = JsonConvert.DeserializeObject<List<Document>>(jsonCart);
 
                 //Vars to Access DB
-                orderManager orDB = new orderManager();
+                documentManager orDB = new documentManager();
 
                 // [                                             -SAMPLE JSON-
                 //     {
@@ -155,7 +155,7 @@ namespace App.Models
 
                 for(int i = 0; i < cart.Count(); i++)
                 {
-                    orDB.saveOrder(cart.ElementAt(i), tran.transactionID);
+                    orDB.saveDocument(cart.ElementAt(i), tran.transactionID);
                 }
             }
     }

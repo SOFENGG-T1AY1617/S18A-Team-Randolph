@@ -70,7 +70,7 @@ namespace App.Controllers
         [HttpPost]
         public ActionResult checkOut(string json)
         {
-            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(json);
+            List<Document> cart = JsonConvert.DeserializeObject<List<Document>>(json);
             for (int i = 0; i < cart.Count; i++)
             {
                 Debug.WriteLine(cart.ElementAt(i).docuName);

@@ -20,7 +20,7 @@ namespace App.Models
     {
             private DatabaseConnector db = new DatabaseConnector();
 
-            public void saveDocument(Document temp)
+            public void saveDocument(Document temp, int transid)
             {
                     Document doc = temp;
                     MySqlConnection conn = new MySqlConnection(db.getConnString());
