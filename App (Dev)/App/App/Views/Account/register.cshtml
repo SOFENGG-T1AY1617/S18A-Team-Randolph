@@ -694,7 +694,7 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Degree Program</label>
-                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();" required>
+                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onkeypress="updateCourses();" onchange="validateCourse();" required>
                             <label id="courseError" class="label-error">@ViewBag.courseError</label>
                         </div>
                     </div>
