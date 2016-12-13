@@ -98,7 +98,7 @@ namespace App.Models
                                 account.verified = false;
                             else account.verified = true;
 
-                            account.registeredDate = reader.GetDateTime(18);
+                            //account.registeredDate = reader.GetDateTime(18);
                             account.degrees = dm.getDegree(account.userID);
                             account.mailInfos = mim.getMailInfos(account.userID);
                             account.cart = new List<Document>();
@@ -135,7 +135,7 @@ namespace App.Models
                                                              + " alternatePhoneNo, email, alternateEmail, password, registeredDate) "
                                                              + "VALUES (@userid, @idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
                                                              + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
-                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, @registeredDate)", conn);
+                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, NOW())", conn);
 
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("idNumber", MySqlDbType.VarChar, 11, "idNumber"));
@@ -154,7 +154,6 @@ namespace App.Models
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("email", MySqlDbType.VarChar, 100, "email"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("alternateEmail", MySqlDbType.VarChar, 100, "alternateEmail"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("password", MySqlDbType.VarChar, 100, "password"));
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("registeredDate", MySqlDbType.DateTime, 100, "registeredDate"));
 
                     using (DataSet dataSet = new DataSet())
                     {
@@ -194,7 +193,6 @@ namespace App.Models
                         }
                         
                         newRow["password"] = acc.password;
-                        newRow["registeredDate"] = acc.registeredDate;
 
                         dataSet.Tables[0].Rows.Add(newRow);
 

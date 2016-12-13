@@ -19,6 +19,7 @@ namespace App.Models
         public string addressline { get; set; }
         public string contactNumber { get; set; }
         public string contactPerson { get; set; }
+        public string locationName { get; set; }
     }
 
     public class MailingInfoModel
@@ -85,6 +86,7 @@ namespace App.Models
         public List<MailingInformation> getMailInfos(int userID)
         {
             List<MailingInformation> listmailinfo = new List<MailingInformation>();
+            DeliveryRateManager delivManager = new DeliveryRateManager();
             MySqlConnection conn = null;
 
             using (conn = new MySqlConnection(db.getConnString()))
@@ -114,6 +116,7 @@ namespace App.Models
 
                             mi.contactPerson = reader.GetString(8);
                             mi.contactNumber = reader.GetString(9);
+                            mi.locationName = delivManager.getLocation(mi.locationID);
 
                             listmailinfo.Add(mi);
                         }
@@ -128,6 +131,53 @@ namespace App.Models
 
             conn.Close();
             return listmailinfo;
+        }
+
+        public MailingInformation getMail(int mailingID)
+        {
+            MailingInformation mi = new MailingInformation();
+            DeliveryRateManager delivManager = new DeliveryRateManager();
+            MySqlConnection conn = null;
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM mailingaddress WHERE mailingID LIKE '" + mailingID + "';";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            mi.mailingID = reader.GetInt32(0);
+                            mi.zipcode = reader.GetString(1);
+                            mi.streetname = reader.GetString(2);
+                            mi.city = reader.GetString(3);
+                            mi.country = reader.GetString(4);
+                            mi.locationID = reader.GetInt32(5);
+                            mi.userID = reader.GetInt32(6);
+
+                            if (!reader.IsDBNull(7))
+                            {
+                                mi.addressline = reader.GetString(7);
+                            }
+                            else mi.addressline = "";
+
+                            mi.contactPerson = reader.GetString(8);
+                            mi.contactNumber = reader.GetString(9);
+                            mi.locationName = delivManager.getLocation(mi.locationID);
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            mi = null;
+                        }
+                    }
+                }
+            }
+
+            conn.Close();
+            return mi;
         }
     }
 }

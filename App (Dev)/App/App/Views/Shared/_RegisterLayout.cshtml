@@ -646,9 +646,9 @@
 
 			
 			if (accountFlag == true || personalFlag == true || academicFlag == true) {
-			    //alert("account " + accountFlag + " personal " + personalFlag + " academic " + academicFlag);
 			    document.getElementById('error').innerHTML = "Error exists. Kindly review your submission.";
 			} else {
+			    document.getElementById('error').innerHTML = "";
 			    document.getElementById("registerForm").submit();
 			}
 		}

@@ -49,6 +49,7 @@ namespace App.Controllers
             // fill up infos (mailing info, personal, academic)
             var user = Session["user"] as Account;
             ViewBag.name = user.firstName;
+            ViewBag.mailInfos = user.mailInfos;
             return View();
         }
 
@@ -65,6 +66,46 @@ namespace App.Controllers
             ViewBag.placeOfBirth = user.placeOfBirth;
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult exist(string existID)
+        {
+            var user = Session["user"] as Account;
+            MailingInfoModel manager = new MailingInfoModel();
+
+            MailingInformation mail = manager.getMail(Int32.Parse(existID)); // eto yung mail
+            Session["mail"] = mail;
+            //return RedirectToAction("cart", "Transaction"); // go to next step
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        [HttpPost]
+        public ActionResult SaveInfo(string newAddress, string newZipCode, string newStreet, string newCity, string newCountry,
+            string newDelivArea, string newContactNum, string newContactPerson)
+        {
+            var user = Session["user"] as Account;
+            MailingInformation mail = new MailingInformation();
+            DeliveryRateManager delivManager = new DeliveryRateManager();
+            MailingInfoModel manager = new MailingInfoModel();
+            mail.addressline = newAddress;
+            mail.city = newCity;
+            mail.streetname = newStreet;
+            mail.zipcode = newZipCode;
+            mail.contactNumber = newContactNum;
+            mail.contactPerson = newContactPerson;
+            mail.country = newCountry;
+            mail.userID = user.userID;
+            mail.locationID = delivManager.getLocationID(newDelivArea);
+
+            manager.addMailingInfo(mail);
+            AccountManager aman = new AccountManager();
+            Account acc = aman.getAccount(user.email, user.password);
+            Session["user"] = acc;
+            //return RedirectToAction("cart", "Transaction"); // go to next step
+            return RedirectToAction("Index", "Home");
+
         }
 
         [HttpPost]
