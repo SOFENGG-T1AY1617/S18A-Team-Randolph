@@ -234,4 +234,53 @@ namespace App.Models
             return listDoc;
         }
     }
+
+    class adminDocumentManager
+    {
+        private DatabaseConnector db = new DatabaseConnector();
+
+        public List<Document> getDocuList()
+        {
+            List<Document> docuList = new List<Document>();
+            Document docu = new Document();
+
+            MySqlConnection conn = null;
+            DataTable dt = new DataTable();
+            MySqlDataAdapter sda = new MySqlDataAdapter();
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "select docuName, CONCAT('Php ', regularPrice) as 'Reg', CONCAT('Php ', expressPrice) as 'Exp' from document; ";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            docu = new Document();
+
+                            docu.docuName = reader.GetString(0);
+                            docu.regularPrice = reader.GetFloat(1);
+
+                            if (!(reader.IsDBNull(2)))
+                            {
+                                docu.expressPrice = reader.GetFloat(2);
+                            }
+                            
+
+                            docuList.Add(docu);
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            docu = null;
+                        }
+                    }
+                }
+            }
+
+            return docuList;
+        }
+    }
 }

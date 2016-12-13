@@ -10,7 +10,17 @@ namespace App.Models
 {
     public class Admin
     {
-
+        public int adminID { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string idNumber { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string middleName { get; set; }
+        public char gender { get; set; }
+        public int birthYear { get; set; }
+        public int birthDay { get; set; }
+        public int birthMonth { get; set; }
     }
 
     public class delivery
@@ -19,26 +29,117 @@ namespace App.Models
         public String price { get; set; } 
     }
 
-    public class user
-    {
-        public int userID { get; set; }
-        public String idNumber { get; set; }
-        public string name { get; set; }
-        public string verified { get; set; }
-    }
-
-    public class docu
-    {
-        public String docuName { get; set; }
-        public String regularPrice { get; set; }
-        public String expressPrice { get; set; }
-    }
-
-    class adminDocumentManager
+    class adminManager
     {
         private DatabaseConnector db = new DatabaseConnector();
 
-        public List<docu> getDocuList()
+        public Admin saveAdmin(Admin acc)
+        {
+            Admin admin = acc;
+            MySqlConnection conn = new MySqlConnection(db.getConnString());
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            using (conn)
+            {
+                using (adapter)
+                {
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.admin", conn);
+
+                    adapter.InsertCommand = new MySqlCommand("INSERT INTO requestdocdb.admin"
+                                                             + " (adminID, email, password, lastName, firstName, middleName, gender,"
+                                                             + " birthYear, birthMonth, birthDay) "
+                                                             + "VALUES (@adminID, @email, @password, @lastName, @firstName, @middleName, @gender,"
+                                                             + " @birthYear, @birthMonth, @birthDay)", conn);
+
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("adminID", MySqlDbType.Int32, 11, "adminID"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("email", MySqlDbType.VarChar, 100, "email"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("password", MySqlDbType.VarChar, 100, "password"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastName", MySqlDbType.VarChar, 100, "lastName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("firstName", MySqlDbType.VarChar, 100, "firstName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("middleName", MySqlDbType.VarChar, 100, "middleName"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("gender", MySqlDbType.VarChar, 1, "gender"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthYear", MySqlDbType.Int32, 11, "birthYear"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthMonth", MySqlDbType.Int32, 11, "birthMonth"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("birthDay", MySqlDbType.Int32, 11, "birthDay"));
+
+
+                    using (DataSet dataSet = new DataSet())
+                    {
+                        adapter.Fill(dataSet, "admin");
+
+                        DataRow newRow = dataSet.Tables[0].NewRow();
+
+                        newRow["adminID"] = acc.adminID;
+                        newRow["email"] = acc.email;
+                        newRow["password"] = acc.password;
+                        newRow["lastName"] = acc.lastName;
+                        newRow["firstName"] = acc.firstName;
+                        newRow["middleName"] = acc.middleName;
+                        newRow["gender"] = acc.gender;
+                        newRow["birthYear"] = acc.birthYear;
+                        newRow["birthMonth"] = acc.birthMonth;
+                        newRow["birthDay"] = acc.birthDay;
+
+
+                        dataSet.Tables[0].Rows.Add(newRow);
+
+                        adapter.Update(dataSet, "admin");
+                    }
+                }
+            }
+
+            conn.Close();
+            return this.getAccount(acc.email, acc.password);
+        }
+
+        public Admin getAccount(string email, string password)
+        {
+            Admin admin = new Models.Admin();
+            MySqlConnection conn = null;
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM admin WHERE email LIKE '" + email + "' and password like '" + password + "';";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            admin.adminID = reader.GetInt32(0);
+                            admin.email = reader.GetString(1);
+                            admin.password = reader.GetString(2);
+                            admin.lastName = reader.GetString(3);
+                            admin.firstName = reader.GetString(4);
+                            admin.middleName = reader.GetString(5);
+                            admin.gender = reader.GetChar(6);
+                            admin.birthYear = reader.GetInt32(7);
+                            admin.birthMonth = reader.GetInt32(8);
+                            admin.birthDay = reader.GetInt32(9);
+                            
+
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            admin = null;
+                        }
+                    }
+                }
+            }
+
+            conn.Close();
+            return admin;
+        }
+    }
+
+    class adminMonitorManager
+    {
+        private DatabaseConnector db = new DatabaseConnector();
+
+        public List<docu> getMonitorList()
         {
             List<docu> docuList = new List<docu>();
             docu docu = new docu();
@@ -62,7 +163,7 @@ namespace App.Models
                             docu.docuName = reader.GetString(0);
                             docu.regularPrice = reader.GetString(1);
 
-                            if(reader.IsDBNull(2))
+                            if (reader.IsDBNull(2))
                             {
                                 docu.expressPrice = "Not Available";
                             }
@@ -154,49 +255,5 @@ namespace App.Models
 
     }
 
-    class adminVerifyManager{
-
-        private DatabaseConnector db = new DatabaseConnector();
-        
-
-        public List<user> getUserList()
-        {
-            List<user> userList = new List<user>();
-            user user = new user();
-
-            MySqlConnection conn = null;
-            DataTable dt = new DataTable();
-            MySqlDataAdapter sda = new MySqlDataAdapter();
-
-            using (conn = new MySqlConnection(db.getConnString()))
-            {
-                conn.Open();
-                using (MySqlCommand cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT requestdocdb.user.idNumber, CONCAT(CONCAT(requestdocdb.user.lastName, ', '), requestdocdb.user.firstName) as 'Name', requestdocdb.user.verified FROM requestdocdb.user;";
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            user = new user();
-
-                            //user.userID = reader.GetInt32(0);
-                            user.idNumber = reader.GetString(0);
-                            user.name = reader.GetString(1);
-                            user.verified = reader.GetString(2);
-
-                            userList.Add(user);
-                        }
-
-                        if (!reader.HasRows)
-                        {
-                            user = null;
-                        }
-                    }
-                }
-            }
-
-            return userList;
-        }
-    }
+    
 }
