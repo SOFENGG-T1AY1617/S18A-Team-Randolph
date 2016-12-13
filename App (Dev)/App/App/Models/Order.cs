@@ -13,7 +13,7 @@ namespace App.Models
         [JsonProperty("docuID")]
         public int docuID { get; set; }
         [JsonProperty("docuName")]
-        public int docuName { get; set; }
+        public string docuName { get; set; }
         [JsonProperty("deliveryRate")]
         public string deliveryRate { get; set; }
         [JsonProperty("packaging")]
@@ -48,7 +48,7 @@ namespace App.Models
                                                              + "VALUES (@docuID, @docuName, @deliveryRate, @packaging, @quantity, @degree, @price)", conn);
 
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuID", MySqlDbType.Int32, 11, "docuID"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.Int32, 11, "docuName"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.VarChar, 100, "docuName"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("deliveryRate", MySqlDbType.VarChar, 100, "deliveryRate"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("packaging", MySqlDbType.VarChar, 100, "packaging"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("quantity", MySqlDbType.Int32, 11, "quantity"));
@@ -99,11 +99,11 @@ namespace App.Models
                                     Order or = new Models.Order();
 
                                     or.docuID = reader.GetInt32(0);
-                                    or.docuName = reader.GetInt32(1);
+                                    or.docuName = reader.GetString(1);
                                     or.deliveryRate = reader.GetString(2);
                                     or.packaging = reader.GetString(3);
                                     or.quantity = reader.GetInt32(4);
-                                    or.degree = reader.GetFloat(5);
+                                    or.degree = reader.GetString(5);
                                     or.price = reader.GetInt32(6);
 
                                     listOr.Add(or);

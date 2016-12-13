@@ -83,52 +83,53 @@ namespace App.Models
                     }
             }
 
-        
-            public List<Transaction> getTransaction(int userID)
+
+        public List<Transaction> getTransaction(int userID)
+        {
+            List<Transaction> listTran = new List<Transaction>();
+            MySqlConnection conn = null;
+
+            using (conn = new MySqlConnection(db.getConnString()))
             {
-                List<Transaction> listTran = new List<Transaction>();
-                MySqlConnection conn = null;
-
-                using (conn = new MySqlConnection(db.getConnString()))
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = conn.CreateCommand())
+                    cmd.CommandText = "SELECT * FROM transactions WHERE userID LIKE '" + userID + "';";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "SELECT * FROM transactions WHERE userID LIKE '" + userID + "';";
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                Transaction tran = new Models.Transaction();
-                                tran.userID = reader.GetInt32(0);
-                                tran.price =  reader.GetInt32(1);
-                                tran.transcationID = reader.GetFloat(2);
-                                tran.mailingID = reader.GetInt32(3);
-                                tran.deliveryProcessing = reader.GetString(4);
-                                tran.estimatedDeliveryDate = reader.GetString(5);
-                                tran.dateRequested = reader.GetString(6);
-                                tran.dateDue = reader.GetString(7);
-                                tran.orderID = reader.GetInt32(8);
+                            Transaction tran = new Models.Transaction();
+                            tran.userID = reader.GetInt32(0);
+                            tran.price = reader.GetInt32(1);
+                            tran.transactionID = reader.GetInt32(2);
+                            tran.mailingID = reader.GetInt32(3);
+                            tran.deliveryProcessing = reader.GetString(4);
+                            tran.estimatedDeliveryDate = reader.GetString(5);
+                            tran.dateRequested = reader.GetString(6);
+                            tran.dateDue = reader.GetString(7);
+                            tran.orderID = reader.GetInt32(8);
 
-                                listTran.Add(tran);
-                                tran = new Models.Transaction();
-                            }
+                            listTran.Add(tran);
+                            tran = new Models.Transaction();
+                        }
 
-                            if (!reader.HasRows)
-                            {
-                                listTran = null;
-                            }
+                        if (!reader.HasRows)
+                        {
+                            listTran = null;
                         }
                     }
+                }
+                return listTran;
             }
+        }
 
             public void checkout(string jsonCart, Transaction tran)
             {
                 List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
 
                 //Vars to Access DB
-                Transaction tranDB = new Transaction();
-                Order orDB = new Order();
+                orderManager orDB = new orderManager();
 
                 // [                                             -SAMPLE JSON-
                 //     {
@@ -154,7 +155,7 @@ namespace App.Models
 
                 for(int i = 0; i < cart.Count(); i++)
                 {
-                    orDB.saveOrder(cart.ElementAt(i), tran.transcationID);
+                    orDB.saveOrder(cart.ElementAt(i), tran.transactionID);
                 }
             }
     }

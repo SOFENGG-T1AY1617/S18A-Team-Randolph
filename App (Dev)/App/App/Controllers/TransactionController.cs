@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -55,8 +56,29 @@ namespace App.Controllers
         {
             // checkout and done
             var user = Session["user"] as Account;
-            ViewBag.name = user.firstName;
+            ViewBag.userID = user.userID;
+            ViewBag.firstName = user.firstName;
+            ViewBag.lastName = user.lastName;
+            ViewBag.currentAddress = user.currentAddress;
+            ViewBag.contactNumber = user.phoneNo;
+            ViewBag.email = user.email;
+            ViewBag.placeOfBirth = user.placeOfBirth;
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult checkOut(string json)
+        {
+            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(json);
+            for (int i = 0; i < cart.Count; i++)
+            {
+                Debug.WriteLine(cart.ElementAt(i).docuName);
+                Debug.WriteLine(cart.Count);
+            }
+            return RedirectToAction("success", "Transaction");
+
+            
         }
     }
 }

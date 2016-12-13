@@ -21,6 +21,17 @@
 @section headerScript{
        <script>
            window.onload = populateEditCart;
+
+           function checkOut(){
+               $.ajax({
+                   type: 'post',
+                   dataType: 'json',
+                   url: '@Url.Action("checkout","Transaction")',
+                   data: { "json": sessionStorage.cart },
+                   
+                   // contentType: 'application/json', <-- no need this.
+               });
+           }
        </script>
  }
 @section btnStep {
@@ -93,7 +104,7 @@
                             <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back
                         </button>
 
-                        <button type="button" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px" onclick="location.href='@Url.Action("success", "Transaction")'">
+                        <button type="button" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px" onclick="checkOut()">
                             Proceed to Next Step <span class="glyphicon glyphicon-play"></span>
                         </button>
                         <button type="button" class="btn" style="background-color: #e2dfdf; float: right" onclick="location.href='@Url.Action("order", "Transaction")'">
