@@ -15,6 +15,7 @@ namespace App.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string middleName { get; set; }
+        public string name { get; set; }              //FOR ADMIN
         public char gender { get; set; }
         public int birthYear { get; set; }
         public int birthDay { get; set; }
@@ -205,5 +206,52 @@ namespace App.Models
         }
         
     }
-    
+
+    class adminVerifyManager
+    {
+
+        private DatabaseConnector db = new DatabaseConnector();
+
+
+        public List<Account> getUserList()
+        {
+            List<Account> userList = new List<Account>();
+            Account user = new Account();
+
+            MySqlConnection conn = null;
+            DataTable dt = new DataTable();
+            MySqlDataAdapter sda = new MySqlDataAdapter();
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT requestdocdb.user.idNumber, CONCAT(CONCAT(requestdocdb.user.lastName, ', '), requestdocdb.user.firstName) as 'Name', requestdocdb.user.verified FROM requestdocdb.user;";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            user = new Account();
+
+                            //user.userID = reader.GetInt32(0);
+                            user.idNumber = reader.GetString(0);
+                            user.name = reader.GetString(1);
+                            user.verified = reader.GetBoolean(2);
+
+                            userList.Add(user);
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            user = null;
+                        }
+                    }
+                }
+            }
+
+            return userList;
+        }
+    }
+
 }

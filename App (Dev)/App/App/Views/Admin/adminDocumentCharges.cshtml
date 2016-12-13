@@ -31,10 +31,16 @@
 													  alternatingRowStyle: "webgrid-alternating-row",
 													  columns: new[]
 										{
-											grid.Column("docuName", "Document Name", style:"name"), 
+											grid.Column("docuName", "Document Name", style:"name"),
 											grid.Column("regularPrice", "Regular Price", style: "regPrice"),
 											grid.Column("expressPrice", "Express Price", style: "expPrice"),
-											grid.Column(format: @<a href="#" title="edit" style="color:#00703c">Edit</a>, style:"edit")
+
+											@*grid.Column("", format: @<button class="edit-book" id="@item.BookId">Edit</button>),*@
+
+											grid.Column(format: @<a href="#" style="color:#00703c" data-toggle="modal" data-target="#editModal">EDIT</a>, style:"edit")
+
+
+											@*grid.Column(format: @<a href="#" title="edit" style="color:#00703c">Edit</a>, style:"edit")*@
 										})
 
 									</div>
