@@ -58,6 +58,15 @@ namespace App.Controllers
         {
             var monitorList = monitorManager.getMonitorList();
 
+            if(monitorList.Equals(null))
+            {
+                ViewBag.status = "null";
+            }
+            else
+            {
+                ViewBag.status = "not";
+            }
+
             return View(monitorList);
         }
 
@@ -95,7 +104,6 @@ namespace App.Controllers
         public ActionResult adminVerify()
         {           
             var userList = verifyManager.getUserList();
-            //ViewBag.idNumber = userList[1].idNumber;
 
             return View(userList);
         }

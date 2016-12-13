@@ -23,6 +23,14 @@ namespace App.Models
         public int birthMonth { get; set; }
     }
 
+    public class monitor
+    {
+        public int transactionID { get; set; }
+        public string transactionDate { get; set; }
+        public string docuName { get; set; }
+        public string status { get; set; }
+    }
+
     public class delivery
     {
         public String location { get; set; }
@@ -139,10 +147,10 @@ namespace App.Models
     {
         private DatabaseConnector db = new DatabaseConnector();
 
-        public List<docu> getMonitorList()
+        public List<monitor> getMonitorList()
         {
-            List<docu> docuList = new List<docu>();
-            docu docu = new docu();
+            List<monitor> moniList = new List<monitor>();
+            monitor moni = new monitor();
 
             MySqlConnection conn = null;
             DataTable dt = new DataTable();
@@ -153,40 +161,30 @@ namespace App.Models
                 conn.Open();
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "select docuName, CONCAT('Php ', regularPrice) as 'Reg', CONCAT('Php ', expressPrice) as 'Exp' from document; ";
+                    cmd.CommandText = "select transactions.transactionID, dateRequested, docuName, status from transactions, orders, document where transactions.transactionID = orders.transactionID and orders.docuID = document.docuID order by transactions.transactionID; ";
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            docu = new docu();
+                            moni = new monitor();
 
-                            docu.docuName = reader.GetString(0);
-                            docu.regularPrice = reader.GetString(1);
+                            moni.transactionID = reader.GetInt32(0);
+                            moni.transactionDate = reader.GetString(1);
+                            moni.docuName = reader.GetString(2);
+                            moni.status = reader.GetString(3);
 
-                            if (reader.IsDBNull(2))
-                            {
-                                docu.expressPrice = "Not Available";
-                            }
-                            else
-                            {
-                                docu.expressPrice = reader.GetString(2);
-
-                            }
-
-
-
-                            docuList.Add(docu);
+                            moniList.Add(moni);
                         }
 
                         if (!reader.HasRows)
                         {
-                            docu = null;
+                            moni = null;
                         }
                     }
                 }
             }
 
-            return docuList;
+            return moniList;
         }
     }
 
