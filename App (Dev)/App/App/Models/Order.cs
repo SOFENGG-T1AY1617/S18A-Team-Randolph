@@ -4,14 +4,27 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace App.Models
 {
     public class Order
     {
-        public int transactionID { get; set; }
+        [JsonProperty("docuID")]
         public int docuID { get; set; }
-        public int orderID { get; set; }
+        [JsonProperty("docuName")]
+        public int docuName { get; set; }
+        [JsonProperty("deliveryRate")]
+        public string deliveryRate { get; set; }
+        [JsonProperty("packaging")]
+        public string packaging { get; set; }
+        [JsonProperty("quantity")]
+        public int quantity { get; set; }
+        [JsonProperty("degree")]
+        public string degree { get; set; }
+        [JsonProperty("price")]
+        public int price { get; set; }
+
     }
 
     class orderManager
@@ -20,7 +33,7 @@ namespace App.Models
 
             public void saveOrder(Order temp)
             {
-                    Order or = temp;
+                  /*  Order or = temp;
                     MySqlConnection conn = new MySqlConnection(db.getConnString());
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -54,10 +67,10 @@ namespace App.Models
                                         adapter.Update(dataSet, "order");
                                     }
                             }
-                    }
+                    } */
             }
 
-            //returns list of orders for that transaction
+            //return is list but only return one order
             public List<Order> getOrder(int transactionID)
             {
                     List<Order> listOr = new List<Order>();
@@ -75,9 +88,9 @@ namespace App.Models
                                 while (reader.Read())
                                 {
                                     Order or = new Models.Order();
-                                    or.transactionID = reader.GetInt32(0);
+                                   // or.transactionID = reader.GetInt32(0);
                                     or.docuID = reader.GetInt32(1);
-                                    or.orderID = reader.GetInt32(2);
+                                    //or.orderID = reader.GetInt32(2);
 
                                     listOr.Add(or);
                                     or = new Models.Order();

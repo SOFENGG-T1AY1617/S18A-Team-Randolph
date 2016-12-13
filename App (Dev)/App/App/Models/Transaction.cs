@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace App.Models
 {
@@ -80,6 +81,9 @@ namespace App.Models
             }
 
         //return type is list but return one transaction
-       
+        public void checkout(string jsonCart)
+        {
+            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
+        }
     }
 }
