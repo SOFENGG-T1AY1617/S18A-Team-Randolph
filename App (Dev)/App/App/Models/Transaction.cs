@@ -43,12 +43,15 @@ namespace App.Models
                                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.transactions", conn);
 
                                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.transactions"
-                                                             + " (userID, price, transcationID, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue, orderID) "
-                                                             + "VALUES (@userID, @price, @transcationID, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue, @orderID)", conn);
+                                                             + " (userID, price, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue, orderID) "
+                                                             + "VALUES (@userID, @price, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue, @orderID)", conn);
+
+                                    // + " (userID, price, transcationID, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue, orderID) "
+                                    // + "VALUES (@userID, @price, @transcationID, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue, @orderID)", conn);
 
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("price", MySqlDbType.Float, 4, "price"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
+                                    // adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("mailingID", MySqlDbType.Int32, 11, "mailingID"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("deliveryProcessing", MySqlDbType.VarChar, 100, "deliveryProcessing"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("estimatedDeliveryDate", MySqlDbType.VarChar, 100, "estimatedDeliveryDate"));
@@ -64,7 +67,7 @@ namespace App.Models
 
                                         newRow["userID"] = tran.userID;
                                         newRow["price"] = tran.price;
-                                        newRow["transcationID"] = tran.transactionID;
+                                        //newRow["transcationID"] = tran.transactionID;
                                         newRow["mailingID"] = tran.mailingID;
                                         newRow["deliveryProcessing"] = tran.deliveryProcessing;
                                         newRow["estimatedDeliveryDate"] = tran.estimatedDeliveryDate;
@@ -80,10 +83,79 @@ namespace App.Models
                     }
             }
 
-        //return type is list but return one transaction
-        public void checkout(string jsonCart)
-        {
-            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
-        }
+        
+            public List<Transaction> getTransaction(int userID)
+            {
+                List<Transaction> listTran = new List<Transaction>();
+                MySqlConnection conn = null;
+
+                using (conn = new MySqlConnection(db.getConnString()))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "SELECT * FROM transactions WHERE userID LIKE '" + userID + "';";
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Transaction tran = new Models.Transaction();
+                                tran.userID = reader.GetInt32(0);
+                                tran.price =  reader.GetInt32(1);
+                                tran.transcationID = reader.GetFloat(2);
+                                tran.mailingID = reader.GetInt32(3);
+                                tran.deliveryProcessing = reader.GetString(4);
+                                tran.estimatedDeliveryDate = reader.GetString(5);
+                                tran.dateRequested = reader.GetString(6);
+                                tran.dateDue = reader.GetString(7);
+                                tran.orderID = reader.GetInt32(8);
+
+                                listTran.Add(tran);
+                                tran = new Models.Transaction();
+                            }
+
+                            if (!reader.HasRows)
+                            {
+                                listTran = null;
+                            }
+                        }
+                    }
+            }
+
+            public void checkout(string jsonCart, Transaction tran)
+            {
+                List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
+
+                //Vars to Access DB
+                Transaction tranDB = new Transaction();
+                Order orDB = new Order();
+
+                // [                                             -SAMPLE JSON-
+                //     {
+                //         "docuID":"1",
+                //         "docuName":"Official Transcript of Records for Employment(Batch 1980)",
+                //         "deliveryRate" : "Regular",
+                //         "packaging":"brown envelope",
+                //         "quantity":"1",
+                //         "degree":"MBA",
+                //         "price":"150"
+                //     },
+                //     {
+                //         "docuID":"1",
+                //         "docuName":"Ranking in Degree",
+                //         "deliveryRate" : "Regular",
+                //         "packaging":"brown envelope",
+                //         "quantity":"1",
+                //         "degree":"MBA",
+                //         "price":"150"
+                //     }
+                // ]
+
+
+                for(int i = 0; i < cart.Count(); i++)
+                {
+                    orDB.saveOrder(cart.ElementAt(i), tran.transcationID);
+                }
+            }
     }
 }
