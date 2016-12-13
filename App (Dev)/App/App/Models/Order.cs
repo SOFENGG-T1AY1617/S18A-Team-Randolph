@@ -4,21 +4,33 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace App.Models
 {
     public class Order
     {
-        public int transactionID { get; set; }
+        [JsonProperty("docuID")]
         public int docuID { get; set; }
-        public int orderID { get; set; }
+        [JsonProperty("docuName")]
+        public int docuName { get; set; }
+        [JsonProperty("deliveryRate")]
+        public string deliveryRate { get; set; }
+        [JsonProperty("packaging")]
+        public string packaging { get; set; }
+        [JsonProperty("quantity")]
+        public int quantity { get; set; }
+        [JsonProperty("degree")]
+        public string degree { get; set; }
+        [JsonProperty("price")]
+        public float price { get; set; }
     }
 
     class orderManager
     {
             private DatabaseConnector db = new DatabaseConnector();
 
-            public void saveOrder(Order temp)
+            public void saveOrder(Order temp, int transactionID)
             {
                     Order or = temp;
                     MySqlConnection conn = new MySqlConnection(db.getConnString());
@@ -31,13 +43,18 @@ namespace App.Models
                             {
                                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.order", conn);
 
-                                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.order"
-                                                             + " (transactionID, docuID, orderID) "
-                                                             + "VALUES (@transactionID, @docuID, @orderID)", conn);
+                                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.order"//transactions!
+                                                             + " (docuID, docuName, deliveryRate, packaging, quantity, degree, price) "
+                                                             + "VALUES (@docuID, @docuName, @deliveryRate, @packaging, @quantity, @degree, @price)", conn);
 
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuID", MySqlDbType.Int32, 11, "docuID"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("orderID", MySqlDbType.Int32, 11, "orderID"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.Int32, 11, "docuName"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("deliveryRate", MySqlDbType.VarChar, 100, "deliveryRate"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("packaging", MySqlDbType.VarChar, 100, "packaging"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("quantity", MySqlDbType.Int32, 11, "quantity"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("degree", MySqlDbType.VarChar, 100, "degree"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("price", MySqlDbType.Float, 4, "price"));
+                                    // adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
 
                                     using (DataSet dataSet = new DataSet())
                                     {
@@ -45,9 +62,14 @@ namespace App.Models
 
                                         DataRow newRow = dataSet.Tables[0].NewRow();
 
-                                        newRow["transactionID"] = or.transactionID;
                                         newRow["docuID"] = or.docuID;
-                                        newRow["orderID"] = or.orderID;
+                                        newRow["docuName"] = or.docuName;
+                                        newRow["deliveryRate"] = or.deliveryRate;
+                                        newRow["packaging"] = or.packaging;
+                                        newRow["quantity"] = or.quantity;
+                                        newRow["degree"] = or.degree;
+                                        newRow["price"] = or.price;
+                                       //newRow["transactionID"] = transactionID;
 
                                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -57,7 +79,7 @@ namespace App.Models
                     }
             }
 
-            //returns list of orders for that transaction
+            //return is list but only return one order
             public List<Order> getOrder(int transactionID)
             {
                     List<Order> listOr = new List<Order>();
@@ -75,9 +97,14 @@ namespace App.Models
                                 while (reader.Read())
                                 {
                                     Order or = new Models.Order();
-                                    or.transactionID = reader.GetInt32(0);
-                                    or.docuID = reader.GetInt32(1);
-                                    or.orderID = reader.GetInt32(2);
+
+                                    or.docuID = reader.GetInt32(0);
+                                    or.docuName = reader.GetInt32(1);
+                                    or.deliveryRate = reader.GetString(2);
+                                    or.packaging = reader.GetString(3);
+                                    or.quantity = reader.GetInt32(4);
+                                    or.degree = reader.GetFloat(5);
+                                    or.price = reader.GetInt32(6);
 
                                     listOr.Add(or);
                                     or = new Models.Order();

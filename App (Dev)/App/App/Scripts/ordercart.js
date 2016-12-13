@@ -13,10 +13,27 @@ function addCart(docuID, docuName, deliveryRate, packaging, quantity, degree, pr
       var cart = [];
       cart.push(newOrder);
       sessionStorage.cart = JSON.stringify(cart);
+      return true;
   }else{
     var cart = JSON.parse(sessionStorage.cart);
-    cart.push(newOrder);
-    sessionStorage.cart = JSON.stringify(cart);
+    var isNew = true;
+    for(var i=0; i<cart.length; i++){
+      if(docuID == cart[i].docuID && degree == cart[i].degree){
+        isNew = false;
+        if(cart[i].quantity + quantity <=5){
+          cart[i].quantity += quantity;
+          return true;
+        }else{
+          alert("You cannot order more than 5 of the same document!");
+          return false;
+        }
+      }
+    }
+    if(isNew){
+      cart.push(newOrder);
+      sessionStorage.cart = JSON.stringify(cart);
+      return true;
+    }
   }
 }
 
@@ -51,12 +68,13 @@ function addOrder(cartIndex){
   sessionStorage.cart = JSON.stringify(cart);
 }
 function viewCart(){
-    var cart = JSON.parse(sessionStorage.cart);
     $('#viewCart').empty();
     $('#viewCart').append('<table id="cartTable"class="table table-hover"><thead><tr><th>Product</th><th>Quantity</th>'+
     '<th class="text-center">Price</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr></thead></table>');
+    if(sessionStorage.cart != null){
+    var cart = JSON.parse(sessionStorage.cart);
     for(var i=0; i<cart.length; i++){
-        var docuName = cart[i].docuName;
+        var docuName = cart[i].docuName+"("+cart[i].degree+")";
         var price = cart[i].price * cart[i].quantity;
         $('#cartTable').append('<tr>'+
             '<td>&nbsp;&nbsp;&nbsp;'+docuName+'</td>'+
@@ -67,6 +85,7 @@ function viewCart(){
             '        <span class="glyphicon glyphicon-remove" id="removeCart" onclick="removeCart('+cart[i].docuID+')"></span>'+
             '    </button></td></tr>');
     }
+  }
 }
 function populateEditCart(){
   var cart = JSON.parse(sessionStorage.cart);
@@ -75,7 +94,7 @@ function populateEditCart(){
                                 '<td class="col-sm-8 col-md-6">'+
                                     '<div class="media">'+
                                         '<div class="media-body">'+
-                                            '<h4 class="media-heading" style="color:#00703c;">'+cart[i].docuName+'</h4>'+
+                                            '<h4 class="media-heading" style="color:#00703c;">'+cart[i].docuName'</h4>'+
                                             '<h5 class="media-heading" style="color:#00703c;"> degree: '+cart[i].degree+'</h5>'+
                                         '</div>'+
                                     '</div>'+
