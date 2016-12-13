@@ -15,6 +15,7 @@ namespace App.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string middleName { get; set; }
+        public string name { get; set; }              //FOR ADMIN
         public char gender { get; set; }
         public int birthYear { get; set; }
         public int birthDay { get; set; }
@@ -99,7 +100,7 @@ namespace App.Models
 
                             account.registeredDate = reader.GetDateTime(18);
                             account.degrees = dm.getDegree(account.userID);
-                            //account.mailInfos = mim.getMailInfos(account.userID);
+                            account.mailInfos = mim.getMailInfos(account.userID);
                             account.cart = new List<Document>();
                         }
 
@@ -134,7 +135,7 @@ namespace App.Models
                                                              + " alternatePhoneNo, email, alternateEmail, password, registeredDate) "
                                                              + "VALUES (@userid, @idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
                                                              + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
-                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, NOW())", conn);
+                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, @registeredDate)", conn);
 
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("idNumber", MySqlDbType.VarChar, 11, "idNumber"));
@@ -153,6 +154,7 @@ namespace App.Models
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("email", MySqlDbType.VarChar, 100, "email"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("alternateEmail", MySqlDbType.VarChar, 100, "alternateEmail"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("password", MySqlDbType.VarChar, 100, "password"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("registeredDate", MySqlDbType.DateTime, 100, "registeredDate"));
 
                     using (DataSet dataSet = new DataSet())
                     {
@@ -192,6 +194,7 @@ namespace App.Models
                         }
                         
                         newRow["password"] = acc.password;
+                        newRow["registeredDate"] = acc.registeredDate;
 
                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -205,5 +208,52 @@ namespace App.Models
         }
         
     }
-    
+
+    class adminVerifyManager
+    {
+
+        private DatabaseConnector db = new DatabaseConnector();
+
+
+        public List<Account> getUserList()
+        {
+            List<Account> userList = new List<Account>();
+            Account user = new Account();
+
+            MySqlConnection conn = null;
+            DataTable dt = new DataTable();
+            MySqlDataAdapter sda = new MySqlDataAdapter();
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT requestdocdb.user.idNumber, CONCAT(CONCAT(requestdocdb.user.lastName, ', '), requestdocdb.user.firstName) as 'Name', requestdocdb.user.verified FROM requestdocdb.user;";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            user = new Account();
+
+                            //user.userID = reader.GetInt32(0);
+                            user.idNumber = reader.GetString(0);
+                            user.name = reader.GetString(1);
+                            user.verified = reader.GetBoolean(2);
+
+                            userList.Add(user);
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            user = null;
+                        }
+                    }
+                }
+            }
+
+            return userList;
+        }
+    }
+
 }

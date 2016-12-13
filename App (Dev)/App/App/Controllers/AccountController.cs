@@ -106,7 +106,7 @@ namespace App.Controllers
             acc.currentAddress = address;
             acc.phoneNo = phoneNumber;
             acc.alternatePhoneNo = altPhoneNumber;
-
+            acc.registeredDate = DateTime.Now;
             acc = manager.saveAccount(acc);
 
             // mailing

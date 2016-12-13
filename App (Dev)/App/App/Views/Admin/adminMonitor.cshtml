@@ -2,6 +2,9 @@
 @{
 	ViewBag.Title = "Monitor Document Production";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+	WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+
 }
 
 <body>
@@ -19,47 +22,19 @@
 							<div id="monitoring">
 								<h3><b>Document Production</b></h3>
 								<hr>
-								<table class="table table-condensed">
-									<thead>
-										<tr id="listhead">
-											<th>Transaction No.</th>
-											<th>Date of Transaction</th>
-											<th>Document</th>
-											<th>Production Stage</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>25 Nov 2016</td>
-											<td>Official Transcript of Records (for Employment)</td>
-											<td>Processing</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>25 Nov 2016</td>
-											<td>Course Description (Max 5 Subjects)</td>
-											<td>Processing</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>24 Nov 2016</td>
-											<td>Ranking by Degree Program</td>
-											<td>Pending</td>
-										<tr>
-											<td>2</td>
-											<td>24 Nov 2016</td>
-											<td>Trimestral Calendar</td>
-											<td>Processing</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>16 Nov 2016</td>
-											<td>Cumulative GPA</td>
-											<td>Pending</td>
-										</tr>
-									</tbody>
-								</table>
+								
+								@grid.GetHtml(tableStyle: "webgrid-table",
+													  headerStyle: "webgrid-header",
+													  footerStyle: "webgrid-footer",
+													  alternatingRowStyle: "webgrid-alternating-row",
+													  columns: new[]
+										{
+											grid.Column("idNumber", "ID Number", style:"idNumber"),
+											grid.Column("name", "Name", style: "name"),
+											grid.Column("verified", "Verification Status", style: "verified"),
+											grid.Column("History", format: @<span style="font-weight:bold">Transaction History</span>, style:"tranHisto")
+										})
+
 							</div>
 						</div>
 					</div>
