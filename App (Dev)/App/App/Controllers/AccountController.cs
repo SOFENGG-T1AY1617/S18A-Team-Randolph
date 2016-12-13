@@ -11,6 +11,10 @@ namespace App.Controllers
     public class AccountController : Controller
     {
         AccountManager manager = new AccountManager();
+        degreeManager degManager = new degreeManager();
+        documentManager docuManager = new documentManager();
+        DeliveryRateManager delivManager = new DeliveryRateManager();
+        MailingInfoModel mailManager = new MailingInfoModel();
 
         public ActionResult Index()
         {
@@ -63,153 +67,86 @@ namespace App.Controllers
         [HttpPost]
         public ActionResult save(string email, string altEmail, string password, 
             string lastName, string firstName, string middleName, string gender, string birthday, string citizenship, string birthPlace,
-            string street, string city, string address, string country, string zipCode, string phoneNumber, string altPhoneNumber,
+            string street, string city, string address, string country, string zipCode, string phoneNumber, string altPhoneNumber, string delivArea,
             string highSchool, string degreeLevel, string idNumber, string college, string degreeProgram, string gradRadio,
             string monthGraduate, string yearGraduate, string yrLvl, string lastTerm, string lastTermStart, string lastTermEnd,
             string admissionRadio, string admissionYear, string lastSchool, string campusAttended)
         {
-            /*
-             Note: phonenumber for account is also phone number in mailing
-             gradRadio = yes or no
-             yrLvl = 1 to 8
-             lastTerm = 1, 2,3
-             */
-
-            int errorCtr = 0;
 
             Account acc = new Account();
             MailingInformation mail = new MailingInformation();
+            DeliveryRate deliv = new DeliveryRate();
             Degree deg = new Degree();
 
-            if (!(email == ""))
-            {
-                acc.email = email;
-            }
-            else
-            {
-                errorCtr++;
-                ViewBag.emailError = "Please enter your email address";
-            }
-
+            // account
+            acc.email = email;
             acc.alternateEmail = altEmail;
+            acc.password = password;
 
-            if (!(password == ""))
-            {
-                acc.password = password;
-            }
-            else
-            {
-                errorCtr++;
-                ViewBag.passwordError = "Please enter your password";
-            }
+            // personal
+            acc.idNumber = idNumber;
+            acc.lastName = lastName;
+            acc.firstName = firstName;
+            acc.middleName = middleName;
 
-            if (!(idNumber == ""))
-            {
-                acc.idNumber = idNumber;
-            }
+            if (gender == "Male")
+                acc.gender = 'M';
+            else acc.gender = 'F';
 
-            if(!(lastName == ""))
-            {
-                acc.lastName = lastName;
-            } else
-            {
-                errorCtr++;
-                ViewBag.lastNameError = "Please enter your last name";
-            }
-            
-            if(!(firstName == ""))
-            {
-                acc.firstName = firstName;
-            } else
-            {
-                errorCtr++;
-                ViewBag.firstNameError = "Please enter your first name";
-            }
-            
-            if(!(middleName == ""))
-            {
-                acc.middleName = middleName;
-            } else
-            {
-                errorCtr++;
-                ViewBag.middleNameError = "Please enter your middle name";
-            }
+            string year = birthday[0] + "" + birthday[1] + "" + birthday[2] + "" + birthday[3] + "";
+            string month = birthday[5] + "" + birthday[6] + "";
+            string day = birthday[8] + "" + birthday[9] + "";
 
-            if (!(gender == ""))
-            {
-                if (gender == "Male")
-                    acc.gender = 'M';
-                else acc.gender = 'F';
-            } else
-            {
-                errorCtr++;
-                ViewBag.genderError = "Please select your gender";
-            }
+            acc.birthYear = Int32.Parse(year);
+            acc.birthMonth = Int32.Parse(month);
+            acc.birthDay = Int32.Parse(day);
 
-            if(!(birthday == ""))
-            {
-                string year = birthday[0] + "" + birthday[1] + "" + birthday[2] + "" + birthday[3] + "";
-                string month = birthday[5] + "" + birthday[6] + "";
-                string day = birthday[8] + "" + birthday[9] + "";
+            acc.citizenship = citizenship;
+            acc.placeOfBirth = birthPlace;
+            acc.currentAddress = address;
+            acc.phoneNo = phoneNumber;
+            acc.alternatePhoneNo = altPhoneNumber;
 
-                acc.birthYear = Int32.Parse(year);
-                acc.birthMonth = Int32.Parse(month);
-                acc.birthDay = Int32.Parse(day);
-            } else
-            {
-                errorCtr++;
-                ViewBag.birthdayError = "Please select your birthday";
-            }
+            acc = manager.saveAccount(acc);
 
-            if (!(citizenship == ""))
-            {
-                acc.citizenship = citizenship;
-            } else
-            {
-                errorCtr++;
-                ViewBag.citizenshipError = "Please select your citizenship";
-            }
+            // mailing
+            deliv = delivManager.getDeliveryRate(delivArea);
 
-            if (!(birthPlace == ""))
-            {
-                acc.placeOfBirth = birthPlace;
-            } else
-            {
-                errorCtr++;
-                ViewBag.birthPlaceError = "Please enter your birthplace";
-            }
-            
-            if (!(address == ""))
-            {
-                acc.currentAddress = address;
-            } else
-            {
-                errorCtr++;
-                ViewBag.addressError = "Please enter your address";
-            }
-            
-            if (!(phoneNumber == ""))
-            {
-                acc.phoneNo = phoneNumber;
-            } else
-            {
-                errorCtr++;
-                ViewBag.phoneNumError = "Please enter your phone number";
-            }
+            mail.zipcode = zipCode;
+            mail.streetname = street;
+            mail.city = city;
+            mail.country = country;
+            mail.locationID = deliv.locationId;
+            mail.userID = acc.userID;
+            mail.addressline = address;
+            mail.contactPerson = firstName + " " + lastName;
+            mail.contactNumber = phoneNumber;
 
-            acc.alternatePhoneNo = altPhoneNumber;    
-            
-            if (errorCtr == 0)
-            {
-                acc = manager.saveAccount(acc);
-                Session["user"] = acc;
-                Session["mail"] = mail;
-                Session["degg"] = deg;
-                return RedirectToAction("Order", "Transaction"); // go to next step
-            } else
-            {
-                return View("register", acc);
-            }
+            mailManager.addMailingInfo(mail);
+            acc.mailInfos = mailManager.getMailInfos(acc.userID);
+
+            // academic
+            deg.degreeName = degreeProgram;
+            deg.level = degreeLevel;
+            deg.yearAdmitted = Int32.Parse(admissionYear);
+            deg.campusAttended = campusAttended;
+            deg.admittedAs = admissionRadio;
+            deg.graduated = gradRadio;
+            deg.yearLevel = Int32.Parse(yrLvl);
+            deg.userID = acc.userID;
+            deg.lastSchoolAttendedPrevDlsu = lastSchool;
+            deg.graduatedYear = Int32.Parse(yearGraduate);
+            deg.graduatedMonth = Int32.Parse(monthGraduate);
+            deg.term = Int32.Parse(lastTerm);
+            int start = Int32.Parse(lastTermStart);
+            deg.academicYear = (start + 2000) + "-" + (start + 1 + 2000);
+
+            degManager.saveDegree(deg);
+            acc.degrees = degManager.getDegree(acc.userID);
+
+            Session["user"] = acc;
+            //return RedirectToAction("Order", "Transaction"); // go to next step
+            return RedirectToAction("Index", "Home");
         }
     }
 }

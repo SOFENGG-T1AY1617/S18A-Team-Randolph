@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_RegisterLayout.cshtml";
 }
 
-@using (Html.BeginForm("save", "Account", FormMethod.Post))
+@using (Html.BeginForm("save", "Account", FormMethod.Post, new { id = "registerForm" }))
 {
     <div class="container cont" style="margin-top: 100px;">
         <div class="row">
@@ -307,6 +307,43 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left:0;">
+                            <div class="col-sm-6">
+                                <label for="textinput" style="font-family: Lato; font-weight: 500;">Delivery Area</label><br />
+                                <select class="form-control" name="delivArea" id="delivArea" onchange="validateDelivArea()">
+                                    <option disabled selected>Select Delivery Area</option>
+                                    <option>Metro Manila</option>
+                                    <option>Africa</option>
+                                    <option>Australia</option>
+                                    <option>Brunei</option>
+                                    <option>Canada</option>
+                                    <option>Europe</option>
+                                    <option>Fiji Island</option>
+                                    <option>Guam</option>
+                                    <option>Hongkong/Singapore</option>
+                                    <option>Indonesia/Malaysia/Taiwan/Thailand</option>
+                                    <option>Japan</option>
+                                    <option>Luzon</option>
+                                    <option>Mexico City</option>
+                                    <option>Middle East</option>
+                                    <option>Mindanao</option>
+                                    <option>New Zealand</option>
+                                    <option>Papua New Guinea</option>
+                                    <option>South America</option>
+                                    <option>USA</option>
+                                    <option>Vietnam</option>
+                                    <option>Visayas</option>
+                                </select>
+                                <label id="delivAreaError" class="label-error">@ViewBag.delivAreaError</label>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <p style="margin-top: 25px; font-style:italic;">* For delivery information purposes only</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
                     <!-- Text input-->
                     <div class="form-group">
                         <div class="col-sm-6">
@@ -657,7 +694,7 @@
 
                         <div class="col-sm-12">
                             <label for="textinput" style="font-family: Lato; font-weight: 500;">Degree Program</label>
-                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onchange="validateCourse();" required>
+                            <input type="text" placeholder="e.g. BSCS-S, MBA" class="form-control" name="degreeProgram" id="course" onkeypress="updateCourses();" onchange="validateCourse();" required>
                             <label id="courseError" class="label-error">@ViewBag.courseError</label>
                         </div>
                     </div>
@@ -783,8 +820,8 @@
                 <!-- Academic Information End -->
             </div><!-- /.col-lg-12 -->
             <div class="form-group">
-                <label id="error" class="label-error"></label>
-                <input type="submit" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="return validate();" />
+                <label id="error" class="label-error" style="font-size: 14px;"></label>
+                <input type="button" value="Register" class="btn btn-success" style="float: right; margin-left: 10px; margin-right: 15px;" onclick="validate();" />
                 <input type="button" value="Back" class="btn btn-default" style="float: right;" onclick="location.href='@Url.Action("Index", "Home")'" />
             </div>
         </div><!-- /.row -->
