@@ -137,7 +137,7 @@ namespace App.Models
                             else
                             {
                                 //get grad
-                                cmd.CommandText = "SELECT * FROM document WHERE type LIKE 'both' OR 'Grad';";
+                                cmd.CommandText = "SELECT * FROM document WHERE type LIKE 'both' OR type LIKE 'Grad';";
                             }
 
                             using (MySqlDataReader reader = cmd.ExecuteReader())
