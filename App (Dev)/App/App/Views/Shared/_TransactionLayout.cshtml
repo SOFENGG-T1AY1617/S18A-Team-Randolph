@@ -26,6 +26,7 @@
     <link href="~/Content/event-list.css" rel="stylesheet">
     <link href="~/Content/checkout.css" rel="stylesheet">
     <link href="~/Content/contact-panel.css" rel="stylesheet">
+    <link href="~/Content/index.css" rel="stylesheet">
 
     <script src="~/Scripts/ordercart.js"></script>
     @RenderSection("headerScript", required: false);
@@ -47,7 +48,7 @@
                     <button class="btn btn-default navbtn circ dropdown dropdown-toggle" id="viewCartButton" onclick="viewCart()"style="border-radius: 100%; background-color: #00703c; color: #fefefe;" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
                     @RenderSection("viewCart", true)
                 </li>
-                    <li class="btn btn-default navbtn circ" type="submit" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="margin-top: 5px;"></span></li>
+                    <li class="btn btn-default navbtn circ" data-toggle="modal" data-target="#myModal" type="button" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="margin-top: 5px;"></span></li>
                 </ul>
 
                 </div>
@@ -60,7 +61,45 @@
 
     @RenderSection("body", true)
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content" style="font-family: Lato; line-height: 1.72222;color: rgb(0, 86, 46);">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <h4 class="modal-title" id="myModalLabel">
+                        <b> Policies and Procedures </b>
+                    </h4>
+                </div>
+
+                <div class="modal-body" style="padding-bottom: 0%; font-size: 14px; ">
+                    <p class="modalTxt">1. &nbsp This Online Request for Documents consists of 5 steps, which can be completed in approximately 10 minutes.</p>
+                    <p class="modalTxt">2. &nbsp The processing period indicated herein (whether regular or express) is different and distinct from the delivery period which is dependent on the location you have specified.</p>
+                    <p class="modalTxt">3. &nbsp This Online Request for Documents includes an online payment facility using your international credit card. Accepted credit cards are <b><u>Visa, Mastercard, JCB and American Express</u></b>. The Request is deemed submitted to the Office of the University Registrar and valid for processing upon approval of the credit card payment.</p>
+                    <p class="modalTxt">4. &nbsp Because of the automated nature of this online request for documents and payment, <b><u>no request for cancellation, substitution, refund</u></b> and the like may be entertained.</p>
+                    <p class="modalTxt">5. &nbsp The processing of request for documents carries with it the responsibility of securing clearances from certain offices / units in the university. If, for any reason, your name is in any of these lists, we regret that we cannot process your request and we will inform you accordingly.</p>
+                    <p class="modalTxt">6. &nbsp Unauthorized request is punishable by law.</p>
+                    <p class="modalTxt">7. &nbsp Please note that this service only ships to <b><u>certain countries</u></b>. Go <a href="delivery.html" target="_blank"><u>here</u></a> to view the full list.</p>
+                    <p class="modalTxt">8. &nbsp For questions or follow-up please e-mail <b><u>registrar@dlsu.edu.ph</u></b></p>
+                    <div class="line-separator"></div>
+
+                </div>
+
+               
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
     <!-- JavaScript -->
+
+    <script src="~/Scripts/html5shiv.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/script.js"></script>
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
