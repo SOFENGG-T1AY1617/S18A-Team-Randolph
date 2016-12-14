@@ -45,13 +45,12 @@ namespace App.Models
                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.degreesofuser", conn);
 
                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.degreesofuser"
-                                                             + " (degreeID, degreeName, level, yearAdmitted, campusAttended, admittedAs, graduated,"
+                                                             + " (degreeName, level, yearAdmitted, campusAttended, admittedAs, graduated,"
                                                              + " yearLevel, userID, lastSchoolAttendedPrevDlsu, graduatedYear, graduatedMonth, term, academicYear) "
-                                                             + "VALUES (@degreeID, @degreeName, @level, @yearAdmitted, @campusAttended, @admittedAs, @graduated, "
+                                                             + "VALUES (@degreeName, @level, @yearAdmitted, @campusAttended, @admittedAs, @graduated, "
                                                              + "@yearLevel, @userID, @lastSchoolAttendedPrevDlsu, @graduatedYear, @graduatedMonth, @term, @academicYear)", conn);
 
-
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("degreeID", MySqlDbType.Int32, 11, "degreeID"));
+                    
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("degreeName", MySqlDbType.VarChar, 50, "degreeName"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("level", MySqlDbType.VarChar, 50, "level"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("yearAdmitted", MySqlDbType.Int32, 11, "yearAdmitted"));
@@ -71,8 +70,7 @@ namespace App.Models
                         adapter.Fill(dataSet, "degreesofuser");
 
                         DataRow newRow = dataSet.Tables[0].NewRow();
-
-                        newRow["degreeID"] = deg.degreeID;
+                        
                         newRow["degreeName"] = deg.degreeName;
                         newRow["level"] = deg.level;
                         newRow["yearAdmitted"] = deg.yearAdmitted;

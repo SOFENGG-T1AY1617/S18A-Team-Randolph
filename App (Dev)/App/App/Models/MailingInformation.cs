@@ -36,12 +36,14 @@ namespace App.Models
             {
                 using (adapter)
                 {
-                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.mailingaddress"
-                                                             + " (mailingID, zipcode, streetName, city, country, locationID, userID, addressline, contactPerson, contactNumber) "
-                                                             + "VALUES (@mailingID, @zipcode, @streetName, @city, @country, @locationID, @userID, @addressline, @contactPerson, @contactNumber)", conn);
+                    
+                    MySqlCommand command = new MySqlCommand("insert into requestdocdb.mailingaddress"
+                                                             + " (zipcode, streetName, city, country, locationID, userID, addressline, contactPerson, contactNumber) "
+                                                             + "VALUES (@zipcode, @streetName, @city, @country, @locationID, @userID, @addressline, @contactPerson, @contactNumber)", conn);
 
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.mailingaddress", conn);
+                    adapter.InsertCommand = command;
 
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("mailingID", MySqlDbType.Int32, 11, "mailingID"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("zipcode", MySqlDbType.VarChar, 50, "zipcode"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("streetName", MySqlDbType.VarChar, 50, "streetName"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("city", MySqlDbType.VarChar, 50, "city"));
@@ -58,7 +60,6 @@ namespace App.Models
 
                         DataRow newRow = dataSet.Tables[0].NewRow();
 
-                        newRow["mailingID"] = mailInfo.mailingID;
                         newRow["zipcode"] = mailInfo.zipcode;
                         newRow["streetName"] = mailInfo.streetname;
                         newRow["city"] = mailInfo.city;

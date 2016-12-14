@@ -34,10 +34,9 @@ namespace App.Models
                                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.document", conn);
 
                                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.document"
-                                                             + " (docuID, docuName, regularPrice, expressPrice, docType) "
-                                                             + "VALUES (@docuID, @docuName, @regularPrice, @expressPrice, @docType)", conn);
-
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuID", MySqlDbType.Int32, 11, "docuID"));
+                                                             + " (docuName, regularPrice, expressPrice, docType) "
+                                                             + "VALUES (@docuName, @regularPrice, @expressPrice, @docType)", conn);
+                    
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.VarChar, 100, "docuName"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("regularPrice", MySqlDbType.Float, 4, "regularPrice"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("expressPrice", MySqlDbType.Float, 4, "expressPrice"));
@@ -49,7 +48,6 @@ namespace App.Models
 
                                         DataRow newRow = dataSet.Tables[0].NewRow();
 
-                                        newRow["docuID"] = doc.docuID;
                                         newRow["docuName"] = doc.docuName;
                                         newRow["regularPrice"] = doc.regularPrice;
                                         newRow["expressPrice"] = doc.expressPrice;

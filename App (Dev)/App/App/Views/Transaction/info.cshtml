@@ -30,6 +30,10 @@
             });
         });
 
+        function choosePickup() {
+            mailingID = -2;
+        }
+
         function chooseAddress(id) {
             mailingID = id;
         }
@@ -38,6 +42,8 @@
             if (mailingID != -1) {
                 $("#existID").val(mailingID);
                 document.getElementById("existForm").submit();
+            } else if(mailingID == -2) {
+                document.getElementById("pickupForm").submit();
             } else {
                 // validation
                 document.getElementById("mailingForm").submit();
@@ -118,13 +124,15 @@
             <br>
             <div id="pickupArea">
                 <span style="font-size: 16px;font-family: lato;">Choose Area</span> &nbsp; &nbsp;
-                <select class="form-control" id="pickupArea" style="width: 400px;">
-                    <option>De La Salle University - BGC</option>
-                    <option>De La Salle University - Makati</option>
-                    <option>De La Salle University - Taft</option>
-                </select>
-                <br>
-
+                @using (Html.BeginForm("pickup", "Transaction", FormMethod.Post, new { id = "pickupForm" }))
+                {
+                    <select class="form-control" id="pickupArea" name="pickupArea" style="width: 400px;" onchange="choosePickup()">
+                        <option value="BGC">De La Salle University - BGC</option>
+                        <option value="Makati">De La Salle University - Makati</option>
+                        <option value="Taft">De La Salle University - Taft</option>
+                    </select>
+                    <br>
+                }
             </div>
 
             <div id="mailingAddress">
@@ -221,8 +229,8 @@
                                 <div class="col-sm-5">
                                     <select class="form-control" name="newCountry" id="country">
                                         <option disabled selected>Select Country</option>
-                                        <option value="Filipino">Philippines</option>
-                                        <option value="Chinese">China</option>
+                                        <option value="Philippines">Philippines</option>
+                                        <option value="China">China</option>
                                         <option value="South Korea">South Korea</option>
                                         <option disabled><hr /></option>
                                         <option value="Afganistan">Afghanistan</option>
@@ -541,7 +549,7 @@
                 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back
             </button>
 
-            <button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right" onclick="location.href='@Url.Action("confirm", "Transaction")'">
+            <button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right" onclick="submitAddress();">
                 Proceed to Next Step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
             </button>
         </div>

@@ -130,14 +130,13 @@ namespace App.Models
                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.user", conn);
 
                     adapter.InsertCommand = new MySqlCommand("INSERT INTO requestdocdb.user"
-                                                             + " (userID, idNumber, lastName, firstName, middleName, gender, birthYear, birthMonth,"
+                                                             + " (idNumber, lastName, firstName, middleName, gender, birthYear, birthMonth,"
                                                              + " birthDay, citizenship, placeOfBirth, currentAddress, phoneNo,"
                                                              + " alternatePhoneNo, email, alternateEmail, password, registeredDate) "
-                                                             + "VALUES (@userid, @idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
+                                                             + "VALUES (@idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
                                                              + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
                                                              + "@alternatePhoneNo, @email, @alternateEmail, @password, NOW())", conn);
-
-                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("userID", MySqlDbType.Int32, 11, "userID"));
+                    
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("idNumber", MySqlDbType.VarChar, 11, "idNumber"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastName", MySqlDbType.VarChar, 100, "lastName"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("firstName", MySqlDbType.VarChar, 100, "firstName"));
@@ -160,9 +159,7 @@ namespace App.Models
                         adapter.Fill(dataSet, "user");
 
                         DataRow newRow = dataSet.Tables[0].NewRow();
-
-                        newRow["userID"] = acc.userID;
-
+                        
                         if(!(acc.idNumber == null))
                         {
                             newRow["idNumber"] = acc.idNumber;
