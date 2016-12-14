@@ -91,19 +91,19 @@
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="cart">
+                    <a href="@Url.Action("cart","Transaction")">
                         <h4 class="list-group-item-heading stephead">Step 2</h4>
                         <p class="list-group-item-text">Edit Cart</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="#">
+                    <a href="@Url.Action("info","Transaction")">
                         <h4 class="list-group-item-heading stephead">Step 3</h4>
                         <p class="list-group-item-text">Delivery Info</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="#">
+                    <a href="@Url.Action("success","Transaction")">
                         <h4 class="list-group-item-heading stephead">Step 4</h4>
                         <p class="list-group-item-text">Checkout</p>
                     </a>
@@ -259,7 +259,7 @@
                                 No. of Copies:
                                 <div class="row">
                                     <div class="col-xs-2">
-                                        <input class="form-control" id="quantity" type="number" min="0" max="5" value="1" style="width: 50px">
+                                        <input class="form-control" id="quantity" type="number" min="1" max="5" value="1" style="width: 50px">
                                     </div>
                                 </div>
                             </p>

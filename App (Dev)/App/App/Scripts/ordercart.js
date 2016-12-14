@@ -70,7 +70,7 @@ function reloadRemoveCart(itemID, degree){
   }
   sessionStorage.cart = JSON.stringify(cart);
 }
-window.location.reload();
+
 function minusOrder(cartIndex){
   var cart = JSON.parse(sessionStorage.cart);
   if(cart[cartIndex].quantity == 1){
@@ -95,6 +95,13 @@ function editQuantity(docuID,degree,newQuantity){
     var cart = JSON.parse(sessionStorage.cart);
 
   }
+}
+function changeQuantity(input){
+  var tempQuantity = $(input).val()
+    if(tempQuantity > 5 || tempQuantity <=0){
+      alert("Only a maximum of 5 is allowed");
+    }
+    $(input).val(5);
 }
 function viewCart(){
     $('#viewCart').empty();
@@ -130,7 +137,7 @@ function populateEditCart(){
                                     '</div>'+
                                 '</td>'+
                                 '<td class="col-sm-1 col-md-1" style="text-align: center">'+
-                                    '<input type="number" class="form-control" id="cartQuantity" value="'+cart[i].quantity+'" max="5" min="1">'+
+                                    '<input type="number" class="form-control"onchange="changeQuantity(this);"onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange(); id="cartQuantity" value="'+cart[i].quantity+'" max="5" min="1">'+
                                 '</td>'+
                                 '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price+'</strong></td>'+
                                 '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price * cart[i].quantity+'</strong></td>'+
