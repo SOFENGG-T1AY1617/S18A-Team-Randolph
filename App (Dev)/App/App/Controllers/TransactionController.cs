@@ -68,6 +68,7 @@ namespace App.Controllers
             string deliveryMethod = Session["deliveryMethod"] as string;
 
             ViewBag.name = user.firstName;
+            ViewBag.userID = user.userID;
             ViewBag.fullName = user.firstName + " " + user.lastName;
             ViewBag.currentAddress = user.currentAddress;
             ViewBag.contactNumber = user.phoneNo;
@@ -151,15 +152,66 @@ namespace App.Controllers
         }
 
         [HttpPost]
-        public ActionResult checkOut(string json)
+        public void checkout(string jsonCart, int userID, float price, int mailingID)
         {
-            List<Document> cart = JsonConvert.DeserializeObject<List<Document>>(json);
-            for (int i = 0; i < cart.Count; i++)
+            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
+            Transaction temp = new Transaction();
+            Debug.WriteLine("userID: "+userID);
+            Debug.WriteLine("Mailing: " + mailingID);
+            string deliveryProcessing;
+            bool hasExpress = false;
+            bool hasRegular = false;
+
+            for (int i = 0; i < cart.Count(); i++)
             {
-                Debug.WriteLine(cart.ElementAt(i).docuName);
-                Debug.WriteLine(cart.Count);
+                if ((cart.ElementAt(i).deliveryRate).Equals("regular"))
+                {
+                    hasRegular = true;
+                }
+
+                if ((cart.ElementAt(i).deliveryRate).Equals("express"))
+                {
+                    hasExpress = true;
+                }
             }
-            return RedirectToAction("cart", "Transaction");
+
+            DateTime dateValue = DateTime.Now;
+            DateTime dateToday = DateTime.Now;
+            temp.dateRequested = dateToday.ToString("yyyy-MM-ddHH:mm:ss");
+            if (hasExpress && hasRegular)
+            {
+                deliveryProcessing = "mutant";
+                temp.dateDue = dateValue.AddDays(3).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+            else if (hasExpress)
+            {
+                deliveryProcessing = "express";
+                temp.dateDue = dateValue.AddDays(3).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+            else
+            {
+                deliveryProcessing = "regular";
+                temp.dateDue = dateValue.AddDays(6).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+
+            temp.userID = userID;
+            temp.price = price;
+            temp.mailingID = mailingID;
+            temp.deliveryProcessing = deliveryProcessing;
+          
+
+            transactionManager tManager = new transactionManager();
+            tManager.saveTransaction(temp);
+            //Vars to Access DB
+            orderManager orDB = new orderManager();
+
+            for (int i = 0; i < cart.Count(); i++)
+            {
+                orDB.saveOrder(cart.ElementAt(i), tManager.getTransaction(userID).ElementAt(0).transactionID);
+            }
         }
     }
 }

@@ -21,13 +21,12 @@ namespace App.Models
         public string dateRequested { get; set; } 
         public string dateDue { get; set; }
         //-----------------------------------------------
-        public int orderID { get; set; }
     }
 
     class transactionManager
     {
             private DatabaseConnector db = new DatabaseConnector();
-            private DateTime dateValue;
+        
 
             public void saveTransaction(Transaction temp)
             {
@@ -43,8 +42,8 @@ namespace App.Models
                                     adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.transactions", conn);
 
                                     adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.transactions"
-                                                             + " (userID, price, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue, orderID) "
-                                                             + "VALUES (@userID, @price, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue, @orderID)", conn);
+                                                             + " (userID, price, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue) "
+                                                             + "VALUES (@userID, @price, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue)", conn);
 
                                     // + " (userID, price, transcationID, mailingID, deliveryProcessing, estimatedDeliveryDate, dateRequested, dateDue, orderID) "
                                     // + "VALUES (@userID, @price, @transcationID, @mailingID, @deliveryProcessing, @estimatedDeliveryDate, @dateRequested, @dateDue, @orderID)", conn);
@@ -57,7 +56,7 @@ namespace App.Models
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("estimatedDeliveryDate", MySqlDbType.VarChar, 100, "estimatedDeliveryDate"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("dateRequested", MySqlDbType.VarChar, 100, "dateRequested"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("dateDue", MySqlDbType.VarChar, 100, "dateDue"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("orderID", MySqlDbType.Int32, 11, "orderID"));
+                                    //adapter.InsertCommand.Parameters.Add(new MySqlParameter("orderID", MySqlDbType.Int32, 11, "orderID"));
 
                                     using (DataSet dataSet = new DataSet())
                                     {
@@ -73,7 +72,7 @@ namespace App.Models
                                         newRow["estimatedDeliveryDate"] = tran.estimatedDeliveryDate;
                                         newRow["dateRequested"] = tran.dateRequested;
                                         newRow["dateDue"] = tran.dateDue;
-                                        newRow["orderID"] = tran.orderID;
+                                        //newRow["orderID"] = tran.orderID;
 
                                         dataSet.Tables[0].Rows.Add(newRow);
 
@@ -100,15 +99,14 @@ namespace App.Models
                         while (reader.Read())
                         {
                             Transaction tran = new Models.Transaction();
-                            tran.userID = reader.GetInt32(0);
-                            tran.price = reader.GetInt32(1);
-                            tran.transactionID = reader.GetInt32(2);
-                            tran.mailingID = reader.GetInt32(3);
-                            tran.deliveryProcessing = reader.GetString(4);
-                            tran.estimatedDeliveryDate = reader.GetString(5);
-                            tran.dateRequested = reader.GetString(6);
-                            tran.dateDue = reader.GetString(7);
-                            tran.orderID = reader.GetInt32(8);
+                            tran.userID = reader.GetInt32(1);
+                            tran.price = reader.GetInt32(7);
+                            tran.transactionID = reader.GetInt32(0);
+                            tran.mailingID = reader.GetInt32(2);
+                            tran.deliveryProcessing = reader.GetString(3);
+                            tran.estimatedDeliveryDate = reader.GetString(6);
+                            tran.dateRequested = reader.GetString(4);
+                            tran.dateDue = reader.GetString(5);
 
                             listTran.Add(tran);
                             tran = new Models.Transaction();
@@ -124,44 +122,66 @@ namespace App.Models
             }
         }
 
-            public void checkout(string jsonCart, int userID, float price, int mailingID)
-            {
-                List<Document> cart = JsonConvert.DeserializeObject<List<Document>>(jsonCart);
-                Transaction temp = new Transaction();
-                string deliveryProcessing;
-                bool hasExpress = false;
-                bool hasRegular = false;
-                transactionManager tManager = new transactionManager();
-                tManager.saveTransaction(temp);
-                //Vars to Access DB
-                documentManager orDB = new documentManager();
-                
-                // [                                             -SAMPLE JSON-
-                //     {
-                //         "docuID":"1",
-                //         "docuName":"Official Transcript of Records for Employment(Batch 1980)",
-                //         "deliveryRate" : "Regular",
-                //         "packaging":"brown envelope",
-                //         "quantity":"1",
-                //         "degree":"MBA",
-                //         "price":"150"
-                //     },
-                //     {
-                //         "docuID":"1",
-                //         "docuName":"Ranking in Degree",
-                //         "deliveryRate" : "Regular",
-                //         "packaging":"brown envelope",
-                //         "quantity":"1",
-                //         "degree":"MBA",
-                //         "price":"150"
-                //     }
-                // ]
+        public void checkout(string jsonCart, int userID, float price, int mailingID)
+        {
+            List<Order> cart = JsonConvert.DeserializeObject<List<Order>>(jsonCart);
+            Transaction temp = new Transaction();
+            string deliveryProcessing;
+            bool hasExpress = false;
+            bool hasRegular = false;
 
-                
-                for(int i = 0; i < cart.Count(); i++)
+            for (int i = 0; i < cart.Count(); i++)
+            {
+                if ((cart.ElementAt(i).deliveryRate).Equals("regular"))
                 {
-                    orDB.saveDocument(cart.ElementAt(i), temp.transactionID);
+                    hasRegular = true;
+                }
+
+                if ((cart.ElementAt(i).deliveryRate).Equals("express"))
+                {
+                    hasExpress = true;
                 }
             }
+
+            DateTime dateValue = DateTime.Now;
+            DateTime dateToday = DateTime.Now;
+            temp.dateRequested = dateToday.ToString("yyyy-MM-ddHH:mm:ss");
+            if (hasExpress && hasRegular)
+            {
+                deliveryProcessing = "mutant";
+                temp.dateDue = dateValue.AddDays(3).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+            else if (hasExpress)
+            {
+                deliveryProcessing = "express";
+                temp.dateDue = dateValue.AddDays(3).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+            else
+            {
+                deliveryProcessing = "regular";
+                temp.dateDue = dateValue.AddDays(6).ToString("yyyy-MM-ddHH:mm:ss");
+                temp.estimatedDeliveryDate = temp.dateDue;
+            }
+
+            temp.userID = userID;
+            temp.price = price;
+            temp.mailingID = mailingID;
+            temp.deliveryProcessing = deliveryProcessing;
+          
+
+            transactionManager tManager = new transactionManager();
+            tManager.saveTransaction(temp);
+            //Vars to Access DB
+            orderManager orDB = new orderManager();
+
+            for (int i = 0; i < cart.Count(); i++)
+            {
+                orDB.saveOrder(cart.ElementAt(i), tManager.getTransaction(userID).ElementAt(0).transactionID);
+            }
+        }
     }
+
+
 }

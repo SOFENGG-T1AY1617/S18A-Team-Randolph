@@ -41,39 +41,40 @@ namespace App.Models
                     {
                             using(adapter)
                             {
-                                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.order", conn);
+                                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.orders", conn);
 
-                                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.order"//transactions!
-                                                             + " (docuID, docuName, deliveryRate, packaging, quantity, degree, price) "
-                                                             + "VALUES (@docuID, @docuName, @deliveryRate, @packaging, @quantity, @degree, @price)", conn);
+                                    adapter.InsertCommand = new MySqlCommand("insert into requestdocdb.orders"
+                                                             + " (docuID, transactionID, deliveryRate, packaging, quantity, degree) "
+                                                             + "VALUES (@docuID, @transactionID, @deliveryRate, @packaging, @quantity, @degree)", conn);
 
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuID", MySqlDbType.Int32, 11, "docuID"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.VarChar, 100, "docuName"));
+                                    //adapter.InsertCommand.Parameters.Add(new MySqlParameter("docuName", MySqlDbType.VarChar, 100, "docuName"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("deliveryRate", MySqlDbType.VarChar, 100, "deliveryRate"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("packaging", MySqlDbType.VarChar, 100, "packaging"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("quantity", MySqlDbType.Int32, 11, "quantity"));
                                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("degree", MySqlDbType.VarChar, 100, "degree"));
-                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("price", MySqlDbType.Float, 4, "price"));
-                                    // adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
+                                    //adapter.InsertCommand.Parameters.Add(new MySqlParameter("price", MySqlDbType.Float, 4, "price"));
+                                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("transactionID", MySqlDbType.Int32, 11, "transactionID"));
 
                                     using (DataSet dataSet = new DataSet())
                                     {
-                                        adapter.Fill(dataSet, "order");
+                                        adapter.Fill(dataSet, "orders");
 
                                         DataRow newRow = dataSet.Tables[0].NewRow();
 
                                         newRow["docuID"] = or.docuID;
-                                        newRow["docuName"] = or.docuName;
+                                       // newRow["docuName"] = or.docuName;
                                         newRow["deliveryRate"] = or.deliveryRate;
                                         newRow["packaging"] = or.packaging;
                                         newRow["quantity"] = or.quantity;
                                         newRow["degree"] = or.degree;
-                                        newRow["price"] = or.price;
-                                       //newRow["transactionID"] = transactionID;
+                             
+                                        //newRow["price"] = or.price;
+                                       newRow["transactionID"] = transactionID;
 
                                         dataSet.Tables[0].Rows.Add(newRow);
 
-                                        adapter.Update(dataSet, "order");
+                                        adapter.Update(dataSet, "orders");
                                     }
                             }
                     }
@@ -90,7 +91,7 @@ namespace App.Models
                         conn.Open();
                         using (MySqlCommand cmd = conn.CreateCommand())
                         {
-                            cmd.CommandText = "SELECT * FROM order WHERE transactionID LIKE '" + transactionID + "';";
+                            cmd.CommandText = "SELECT * FROM orders WHERE transactionID LIKE '" + transactionID + "';";
 
                             using (MySqlDataReader reader = cmd.ExecuteReader())
                             {
@@ -98,13 +99,13 @@ namespace App.Models
                                 {
                                     Order or = new Models.Order();
 
-                                    or.docuID = reader.GetInt32(0);
-                                    or.docuName = reader.GetString(1);
-                                    or.deliveryRate = reader.GetString(2);
-                                    or.packaging = reader.GetString(3);
-                                    or.quantity = reader.GetInt32(4);
+                                    or.docuID = reader.GetInt32(1);
+                                   // or.docuName = reader.GetString();
+                                    or.deliveryRate = reader.GetString(3);
+                                    or.packaging = reader.GetString(4);
+                                    or.quantity = reader.GetInt32(6);
                                     or.degree = reader.GetString(5);
-                                    or.price = reader.GetInt32(6);
+                                   // or.price = reader.GetInt32(6);
 
                                     listOr.Add(or);
                                     or = new Models.Order();
