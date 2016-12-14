@@ -29,7 +29,7 @@ namespace App.Models
         public string alternatePhoneNo { get; set; }
         public string alternateEmail { get; set; }
         public Boolean verified { get; set; }
-        public DateTime registeredDate { get; set; }
+        public string registeredDate { get; set; }
         public List<Degree> degrees { get; set; }
         public List<Transaction> transactions { get; set; }
         public List<MailingInformation> mailInfos { get; set; }
@@ -98,7 +98,7 @@ namespace App.Models
                                 account.verified = false;
                             else account.verified = true;
 
-                            //account.registeredDate = reader.GetDateTime(18);
+                            account.registeredDate = reader.GetString(18);
                             account.degrees = dm.getDegree(account.userID);
                             account.mailInfos = mim.getMailInfos(account.userID);
                             account.cart = new List<Document>();
@@ -135,7 +135,7 @@ namespace App.Models
                                                              + " alternatePhoneNo, email, alternateEmail, password, registeredDate) "
                                                              + "VALUES (@idNumber, @lastName, @firstName, @middleName, @gender, @birthYear, @birthMonth, "
                                                              + "@birthDay, @citizenship, @placeOfBirth, @currentAddress, @phoneNo, "
-                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, NOW())", conn);
+                                                             + "@alternatePhoneNo, @email, @alternateEmail, @password, @registeredDate)", conn);
                     
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("idNumber", MySqlDbType.VarChar, 11, "idNumber"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("lastName", MySqlDbType.VarChar, 100, "lastName"));
@@ -153,6 +153,7 @@ namespace App.Models
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("email", MySqlDbType.VarChar, 100, "email"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("alternateEmail", MySqlDbType.VarChar, 100, "alternateEmail"));
                     adapter.InsertCommand.Parameters.Add(new MySqlParameter("password", MySqlDbType.VarChar, 100, "password"));
+                    adapter.InsertCommand.Parameters.Add(new MySqlParameter("registeredDate", MySqlDbType.VarChar, 100, "registeredDate"));
 
                     using (DataSet dataSet = new DataSet())
                     {
@@ -190,6 +191,8 @@ namespace App.Models
                         }
                         
                         newRow["password"] = acc.password;
+                        string now = DateTime.Today.ToString();
+                        newRow["registeredDate"] = now;
 
                         dataSet.Tables[0].Rows.Add(newRow);
 

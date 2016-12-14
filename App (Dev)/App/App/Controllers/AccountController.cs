@@ -106,7 +106,7 @@ namespace App.Controllers
             acc.currentAddress = address;
             acc.phoneNo = phoneNumber;
             acc.alternatePhoneNo = altPhoneNumber;
-            acc.registeredDate = DateTime.Now;
+            acc.registeredDate = DateTime.Now.ToString();
             acc = manager.saveAccount(acc);
 
             // mailing
@@ -135,18 +135,36 @@ namespace App.Controllers
             deg.yearLevel = Int32.Parse(yrLvl);
             deg.userID = acc.userID;
             deg.lastSchoolAttendedPrevDlsu = lastSchool;
-            deg.graduatedYear = Int32.Parse(yearGraduate);
-            deg.graduatedMonth = Int32.Parse(monthGraduate);
-            deg.term = Int32.Parse(lastTerm);
-            int start = Int32.Parse(lastTermStart);
-            deg.academicYear = (start + 2000) + "-" + (start + 1 + 2000);
+
+            if(yearGraduate != "")
+            {
+                deg.graduatedYear = Int32.Parse(yearGraduate);
+            }
+            
+            if(monthGraduate != "")
+            {
+                deg.graduatedMonth = Int32.Parse(monthGraduate);
+            }
+            
+            if(lastTerm != "")
+            {
+                deg.term = Int32.Parse(lastTerm);
+            }
+
+            if(lastTermStart != "")
+            {
+                int start = Int32.Parse(lastTermStart);
+                deg.academicYear = (start + 2000) + "-" + (start + 1 + 2000);
+            }
+            
+            
 
             degManager.saveDegree(deg);
             acc.degrees = degManager.getDegree(acc.userID);
 
             Session["user"] = acc;
-            //return RedirectToAction("Order", "Transaction"); // go to next step
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Order", "Transaction"); // go to next step
+            //return RedirectToAction("Index", "Home");
         }
     }
 }
