@@ -30,7 +30,7 @@
             });
         });
 
-        function choosePickup() {
+        function changePickup() {
             mailingID = -2;
         }
 
@@ -39,14 +39,16 @@
         }
 
         function submitAddress() {
-            if (mailingID != -1) {
-                $("#existID").val(mailingID);
-                document.getElementById("existForm").submit();
-            } else if(mailingID == -2) {
+            if(mailingID == -2) {
                 document.getElementById("pickupForm").submit();
             } else {
-                // validation
-                document.getElementById("mailingForm").submit();
+                if (mailingID != -1) {
+                    $("#existID").val(mailingID);
+                    document.getElementById("existForm").submit();
+                } else {
+                    // validation
+                    document.getElementById("mailingForm").submit();
+                }
             }
         }
 
@@ -79,26 +81,26 @@
                         <p class="list-group-item-text">Order Documents</p>
                     </a>
                 </li>
+                <li class="stepBtn">
+                    <a href="cart">
+                        <h4 class="list-group-item-heading stephead">Step 2</h4>
+                        <p class="list-group-item-text">Edit Cart</p>
+                    </a>
+                </li>
                 <li class="active">
                     <a href="info">
-                        <h4 class="list-group-item-heading stephead">Step 2</h4>
+                        <h4 class="list-group-item-heading stephead">Step 3</h4>
                         <p class="list-group-item-text">Delivery Info</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="cart">
-                        <h4 class="list-group-item-heading stephead">Step 3</h4>
-                        <p class="list-group-item-text">Edit Cart</p>
-                    </a>
-                </li>
-                <li class="stepBtn">
-                    <a href="success">
+                    <a href="#">
                         <h4 class="list-group-item-heading stephead">Step 4</h4>
                         <p class="list-group-item-text">Checkout</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="">
+                    <a href="#">
                         <h4 class="list-group-item-heading stephead">Step 5</h4>
                         <p class="list-group-item-text">Payment</p>
                     </a>
@@ -126,7 +128,7 @@
                 <span style="font-size: 16px;font-family: lato;">Choose Area</span> &nbsp; &nbsp;
                 @using (Html.BeginForm("pickup", "Transaction", FormMethod.Post, new { id = "pickupForm" }))
                 {
-                    <select class="form-control" id="pickupArea" name="pickupArea" style="width: 400px;" onchange="choosePickup()">
+                    <select class="form-control" id="pickupArea" name="pickupArea" style="width: 400px;" onchange="changePickup()">
                         <option value="BGC">De La Salle University - BGC</option>
                         <option value="Makati">De La Salle University - Makati</option>
                         <option value="Taft">De La Salle University - Taft</option>

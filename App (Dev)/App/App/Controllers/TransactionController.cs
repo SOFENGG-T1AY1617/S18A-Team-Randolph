@@ -12,6 +12,8 @@ namespace App.Controllers
     [System.Runtime.InteropServices.Guid("4DB6BB15-3DDB-40A2-AE96-61EE591F24B3")]
     public class TransactionController : Controller
     {
+        Account user = null;
+        
         // GET: Transaction
         public ActionResult Index()
         {
@@ -24,7 +26,7 @@ namespace App.Controllers
             // order documents
             // get documents info from db put in a list
             // ViewBag.documents = <listname>;
-            var user = Session["user"] as Account;
+            user = Session["user"] as Account;
             var documentManager = new documentManager();
             ViewBag.bachelorsDocuments = documentManager.getAvailableDocument("Bachelors");
             ViewBag.mastersDocuments = documentManager.getAvailableDocument("Masters");
@@ -37,12 +39,15 @@ namespace App.Controllers
             return View();
         }
 
+        public ActionResult payment()
+        {
+            return View();
+        }
+
         public ActionResult cart()
         {
             // view cart
-            var user = Session["user"] as Account;
-            var mail = Session["mail"] as MailingInformation;
-            var deliveryMethod = Session["deliveryMethod"] as string;
+            user = Session["user"] as Account;
             ViewBag.name = user.firstName;
             return View();
         }
@@ -50,7 +55,7 @@ namespace App.Controllers
         public ActionResult info()
         {
             // fill up infos (mailing info, personal, academic)
-            var user = Session["user"] as Account;
+            user = Session["user"] as Account;
             ViewBag.name = user.firstName;
             ViewBag.mailInfos = user.mailInfos;
             return View();
@@ -59,15 +64,35 @@ namespace App.Controllers
         public ActionResult success()
         {
             // checkout and done
-            var user = Session["user"] as Account;
-            ViewBag.userID = user.userID;
-            ViewBag.firstName = user.firstName;
-            ViewBag.lastName = user.lastName;
+            user = Session["user"] as Account;
+            string deliveryMethod = Session["deliveryMethod"] as string;
+
+            ViewBag.name = user.firstName;
+            ViewBag.fullName = user.firstName + " " + user.lastName;
             ViewBag.currentAddress = user.currentAddress;
             ViewBag.contactNumber = user.phoneNo;
             ViewBag.email = user.email;
             ViewBag.placeOfBirth = user.placeOfBirth;
-
+            ViewBag.method = deliveryMethod;
+            if(deliveryMethod == "shipping")
+            {
+                MailingInformation mail = Session["mail"] as MailingInformation;
+                DeliveryRate deliv = new DeliveryRate();
+                DeliveryRateManager dmanager = new DeliveryRateManager();
+                deliv = dmanager.getDeliveryRate(dmanager.getLocation(mail.locationID));
+                ViewBag.mailingAddress = mail.streetname + " " + mail.addressline + " " + mail.city + " " + mail.country + " " + mail.zipcode;
+                ViewBag.delivArea = deliv.location;
+                ViewBag.delivCharge = deliv.price;
+                ViewBag.dateNow = DateTime.Today.ToString();
+                ViewBag.dateCourier = DateTime.Today.AddDays(5).ToString();
+                ViewBag.dueDate = DateTime.Today.AddDays(5+deliv.delay).ToString();
+            } else
+            {
+                var mail = Session["mail"] as string;
+                ViewBag.pickupArea = mail;
+                ViewBag.dateNow = DateTime.Today.ToString();
+                ViewBag.dueDate = DateTime.Today.AddDays(5).ToString();
+            }
             return View();
         }
 
@@ -77,7 +102,7 @@ namespace App.Controllers
             var user = Session["user"] as Account;
             Session["deliveryMethod"] = "pickup";
             Session["mail"] = pickupArea;
-            return RedirectToAction("cart", "Transaction"); // go to next step
+            return RedirectToAction("success", "Transaction"); // go to next step
             //return RedirectToAction("Index", "Home");
 
         }
@@ -91,7 +116,7 @@ namespace App.Controllers
             MailingInformation mail = manager.getMail(Int32.Parse(existID)); // eto yung mail
             Session["deliveryMethod"] = "shipping";
             Session["mail"] = mail;
-            return RedirectToAction("cart", "Transaction"); // go to next step
+            return RedirectToAction("success", "Transaction"); // go to next step
             //return RedirectToAction("Index", "Home");
 
         }
@@ -121,7 +146,7 @@ namespace App.Controllers
             Session["deliveryMethod"] = "shipping";
             Session["user"] = acc;
             Session["mail"] = mail;
-            return RedirectToAction("cart", "Transaction"); // go to next step
+            return RedirectToAction("success", "Transaction"); // go to next step
             //return RedirectToAction("Index", "Home");
         }
 
@@ -134,9 +159,7 @@ namespace App.Controllers
                 Debug.WriteLine(cart.ElementAt(i).docuName);
                 Debug.WriteLine(cart.Count);
             }
-            return RedirectToAction("success", "Transaction");
-
-            
+            return RedirectToAction("cart", "Transaction");
         }
     }
 }

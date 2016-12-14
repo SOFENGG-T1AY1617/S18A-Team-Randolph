@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "success";
+    ViewBag.Title = "Summary";
     Layout = "~/Views/Shared/_TransactionLayout.cshtml";
 }
 
@@ -33,17 +33,17 @@
                         <h4 class="list-group-item-heading stephead">Step 1</h4>
                         <p class="list-group-item-text">Order Documents</p>
                     </a>
-                </li>
+                </li>                
                 <li class="stepBtn">
-                    <a href="info">
+                    <a href="cart">
                         <h4 class="list-group-item-heading stephead">Step 2</h4>
-                        <p class="list-group-item-text">Delivery Info</p>
+                        <p class="list-group-item-text">Edit Cart</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="cart">
+                    <a href="info">
                         <h4 class="list-group-item-heading stephead">Step 3</h4>
-                        <p class="list-group-item-text">Edit Cart</p>
+                        <p class="list-group-item-text">Delivery Info</p>
                     </a>
                 </li>
                 <li class="active">
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="">
+                    <a href="payment">
                         <h4 class="list-group-item-heading stephead">Step 5</h4>
                         <p class="list-group-item-text">Payment</p>
                     </a>
@@ -84,23 +84,23 @@
                     </tr>
                     <tr>
                         <td><strong>Name</strong></td>
-                        <td> Hazel Anne Brosas </td>
+                        <td> @ViewBag.name </td>
                     </tr>
                     <tr>
                         <td><strong>Current Address </strong></td>
-                        <td> Block 7 Lot 4 Camella Homes Milan Sienna St. San Pedro, Laguna,   Philippines, 4023 </td>
+                        <td> @ViewBag.currentAddress </td>
                     </tr>
                     <tr>
                         <td><strong>Contact No.</strong></td>
-                        <td> 09281149348 </td>
+                        <td> @ViewBag.contactNumber </td>
                     </tr>
                     <tr>
                         <td><strong>Email</strong></td>
-                        <td> hazel_brosas@dlsu.edu.ph </td>
+                        <td> @ViewBag.email </td>
                     </tr>
                     <tr>
                         <td><strong>Place of Birth</strong></td>
-                        <td> Laguna </td>
+                        <td> @ViewBag.placeOfBirth </td>
                     </tr>
                 </tbody>
             </table>
@@ -110,30 +110,58 @@
                     <tr><td colspan="2">Delivery Details</td></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Mailing Address</strong></td>
-                        <td> 6 Pluto St. Bricktown Subdivision Barangay Moonwalk, Paranaque, Philippines, 1700</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Delivery Area</strong></td>
-                        <td> Metro Manila </td>
-                    </tr>
-                    <tr>
-                        <td><strong>Delivery Charge</strong></td>
-                        <td> Php 128.00 </td>
-                    </tr>
-                    <tr>
-                        <td><strong>Processing Type</strong></td>
-                        <td> Regular Processing </td>
-                    </tr>
-                    <tr>
-                        <td><strong>Date Due to the Courier</strong></td>
-                        <td> Dec 1 2016 </td>
-                    </tr>
-                    <tr>
-                        <td><strong>Estimated Delivery Date</strong></td>
-                        <td> Dec 2 2016 </td>
-                    </tr>
+                    @if (ViewBag.method == "shipping")
+                    {
+                        <tr>
+                            <td><strong>Mailing Address</strong></td>
+                            <td> @ViewBag.mailingAddress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Delivery Area</strong></td>
+                            <td> @ViewBag.delivArea </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Delivery Charge</strong></td>
+                            <td> Php @ViewBag.delivCharge.00 </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Processing Type</strong></td>
+                            <td> Regular Processing </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date Order/s Processed</strong></td>
+                            <td> @ViewBag.dateNow </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date Due to the Courier</strong></td>
+                            <td> @ViewBag.dateCourier </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimated Delivery Date</strong></td>
+                            <td> @ViewBag.dueDate </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td><strong>Pickup Area</strong></td>
+                            <td> @ViewBag.pickupArea</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Processing Type</strong></td>
+                            <td> Regular Processing </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date Order/s Processed</strong></td>
+                            <td> @ViewBag.dateNow </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimated Pick-up Date</strong></td>
+                            <td> @ViewBag.dueDate </td>
+                        </tr>
+                    }
+
+
                 </tbody>
             </table>
 
@@ -180,14 +208,14 @@
             </table>
 
             <div>
-                <a href="view-cart.html">
+                <a href="info">
                     <button type="submit" class="btn" style="color: white; float: left; background-color: #5cb85c;">
                         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Go Back
                     </button>
                 </a>
 
 
-                <a href="done.html">
+                <a href="payment">
                     <button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px">
                         Proceed to Payment <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                     </button>
