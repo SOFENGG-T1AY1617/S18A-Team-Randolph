@@ -21,17 +21,10 @@
 @section headerScript{
        <script>
            window.onload = populateEditCart;
+           
+       
 
-           function checkOut(){
-               $.ajax({
-                   type: 'post',
-                   dataType: 'json',
-                   url: '@Url.Action("checkout","Transaction")',
-                   data: { "json": sessionStorage.cart },
-                   
-                   // contentType: 'application/json', <-- no need this.
-               });
-           }
+          
        </script>
  }
 @section btnStep {

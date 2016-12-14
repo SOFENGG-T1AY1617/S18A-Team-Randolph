@@ -5,7 +5,18 @@
 }
 
 @section scripts {
+    <script>
+        function checkOut() {
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: '@Url.Action("checkout","Transaction")',
+                data: { "json": sessionStorage.cart },
 
+                // contentType: 'application/json', <-- no need this.
+            });
+        }
+    </script>
 }
 
 @section viewCart{
@@ -216,7 +227,7 @@
 
 
                 <a href="payment">
-                    <button type="submit" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px">
+                    <button type="submit" onclick="checkOut()" class="btn" style="background-color: #5cb85c; color: white; float: right; margin-left: 10px">
                         Proceed to Payment <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                     </button>
                 </a>

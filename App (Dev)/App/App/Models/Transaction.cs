@@ -124,13 +124,18 @@ namespace App.Models
             }
         }
 
-            public void checkout(string jsonCart, Transaction tran)
+            public void checkout(string jsonCart, int userID, float price, int mailingID)
             {
                 List<Document> cart = JsonConvert.DeserializeObject<List<Document>>(jsonCart);
-
+                Transaction temp = new Transaction();
+                string deliveryProcessing;
+                bool hasExpress = false;
+                bool hasRegular = false;
+                transactionManager tManager = new transactionManager();
+                tManager.saveTransaction(temp);
                 //Vars to Access DB
                 documentManager orDB = new documentManager();
-
+                
                 // [                                             -SAMPLE JSON-
                 //     {
                 //         "docuID":"1",
@@ -152,10 +157,10 @@ namespace App.Models
                 //     }
                 // ]
 
-
+                
                 for(int i = 0; i < cart.Count(); i++)
                 {
-                    orDB.saveDocument(cart.ElementAt(i), tran.transactionID);
+                    orDB.saveDocument(cart.ElementAt(i), temp.transactionID);
                 }
             }
     }
