@@ -3,28 +3,10 @@
     ViewBag.Title = "View Cart";
     Layout = "~/Views/Shared/_TransactionLayout.cshtml";
 }
-@section viewCart{
-    <ul class="dropdown-menu" style="list-style: none; width: 600px;">
-        <table class="table table-hover" id="cartTable">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th class="text-center">Price</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                </tr>
-            </thead>
 
-        </table>
-    </ul>
-}
 @section headerScript{
        <script>
-           window.onload = populateEditCart;
-           
-       
-
-          
+           window.onload = populateEditCart;                   
        </script>
  }
 @section btnStep {
@@ -45,13 +27,13 @@
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="#">
+                    <a href="info">
                         <h4 class="list-group-item-heading stephead">Step 3</h4>
                         <p class="list-group-item-text">Delivery Info</p>
                     </a>
                 </li>
                 <li class="stepBtn">
-                    <a href="#">
+                    <a href="success">
                         <h4 class="list-group-item-heading stephead">Step 4</h4>
                         <p class="list-group-item-text">Checkout</p>
                     </a>
@@ -91,8 +73,8 @@
                                 <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
-                                <td><h5>Subtotal<br>Estimated shipping</h5><h3>Total</h3></td>
-                                <td class="text-right"><h5><strong>P0.00<br>P0.00</strong></h5><h3>P0.00</h3></td>
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h3 id="totalPrice">P0.00</h3></td>
                             </tr>
 
                         </tfoot>

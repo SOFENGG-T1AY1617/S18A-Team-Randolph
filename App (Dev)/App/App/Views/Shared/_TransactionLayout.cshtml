@@ -46,7 +46,21 @@
                     <li class="btn btn-default navbtn namebtn" type="submit" style="background: transparent; border: none; border-radius: 0px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-top: 5px; color: #00703c;"></span> <span class="username">&nbsp;@ViewBag.name</span></li>
                 <li class="dropdown">
                     <button class="btn btn-default navbtn circ dropdown dropdown-toggle" id="viewCartButton" onclick="viewCart()"style="border-radius: 100%; background-color: #00703c; color: #fefefe;" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="margin-top: 5px;"></span></button>
-                    @RenderSection("viewCart", true)
+                    <ul class="dropdown-menu" id="viewCart" style="list-style: none; width: 600px;">
+                        <li>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th class="text-center">Price</th>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </li>
+                    </ul>
                 </li>
                     <li class="btn btn-default navbtn circ" data-toggle="modal" data-target="#myModal" type="button" style="border-radius: 100%; background-color: #00703c; color: #fefefe;"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="margin-top: 5px;"></span></li>
                 </ul>
