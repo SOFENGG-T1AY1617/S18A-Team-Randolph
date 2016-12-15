@@ -14,8 +14,8 @@ namespace App.Controllers
         adminDeliveryManager delivManager = new adminDeliveryManager();
         adminDocumentManager docuManager = new adminDocumentManager();
         adminMonitorManager monitorManager = new adminMonitorManager();
+        adminOrderManager orderManager = new adminOrderManager();
 
-        // GET: Admin
         public ActionResult adminDelivery()
         {
             var delivList = delivManager.getDeliveryList();
@@ -23,7 +23,6 @@ namespace App.Controllers
             return View(delivList);
         }
 
-        // GET: Admin
         public ActionResult adminDeliveryEdit()
         {
             var delivList = delivManager.getDeliveryList();
@@ -39,7 +38,6 @@ namespace App.Controllers
             return RedirectToAction("adminDeliveryEdit");
         }
 
-        // GET: Admin
         public ActionResult adminDocumentCharges()
         {
             var docuList = docuManager.getDocuList();
@@ -47,60 +45,47 @@ namespace App.Controllers
             return View(docuList);
         }
 
-        // GET: Admin
         public ActionResult adminIndex()
         {
             return View();
         }
 
-        // GET: Admin
         public ActionResult adminMonitor()
         {
-            var monitorList = monitorManager.getMonitorList();
+            System.Diagnostics.Debug.WriteLine("shit1");
 
-            if(monitorList.Equals(null))
-            {
-                ViewBag.status = "null";
-            }
-            else
-            {
-                ViewBag.status = "not";
-            }
+            var moniList = monitorManager.getMonitorList();
 
-            return View(monitorList);
+            return View(moniList);
         }
 
-        // GET: Admin
         public ActionResult adminOrderList()
         {
-            return View();
+            var orderList = orderManager.getOrderList();
+
+            return View(orderList);
         }
 
-        // GET: Admin
         public ActionResult adminRegister()
         {
             return View();
         }
 
-        // GET: Admin
         public ActionResult adminSearch()
         {
             return View();
         }
 
-        // GET: Admin
         public ActionResult adminTransactionHistory()
         {
             return View();
         }
 
-        // GET: Admin
         public ActionResult adminUpdateDate()
         {
             return View();
         }
 
-        // GET: Admin
         public ActionResult adminVerify()
         {           
             var userList = verifyManager.getUserList();

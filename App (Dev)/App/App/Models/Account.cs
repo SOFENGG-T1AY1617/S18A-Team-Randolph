@@ -29,6 +29,7 @@ namespace App.Models
         public string alternatePhoneNo { get; set; }
         public string alternateEmail { get; set; }
         public Boolean verified { get; set; }
+        public string verifiedString { get; set; }  //FOR ADMIN
         public string registeredDate { get; set; }
         public List<Degree> degrees { get; set; }
         public List<Transaction> transactions { get; set; }
@@ -227,7 +228,7 @@ namespace App.Models
                 conn.Open();
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT requestdocdb.user.idNumber, CONCAT(CONCAT(requestdocdb.user.lastName, ', '), requestdocdb.user.firstName) as 'Name', requestdocdb.user.verified FROM requestdocdb.user;";
+                    cmd.CommandText = "SELECT user.idNumber, CONCAT(CONCAT(user.lastName, ', '), user.firstName) as 'Name', user.verified FROM user;";
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -235,9 +236,17 @@ namespace App.Models
                             user = new Account();
 
                             //user.userID = reader.GetInt32(0);
-                            user.idNumber = reader.GetString(0);
+
+                            if (!reader.IsDBNull(0))
+                            {
+                                user.idNumber = reader.GetString(0);
+                            }
+                            else user.idNumber = "";
+
+
+
                             user.name = reader.GetString(1);
-                            user.verified = reader.GetBoolean(2);
+                            user.verifiedString = reader.GetString(2);
 
                             userList.Add(user);
                         }

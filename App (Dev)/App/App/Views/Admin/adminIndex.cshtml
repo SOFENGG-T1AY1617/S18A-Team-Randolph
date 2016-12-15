@@ -63,8 +63,58 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer" style="color:#00703c">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left" data-toggle="modal" data-target="#detailTransactionModal">View Details</span>
+                                <span class="pull-right" data-toggle="modal" data-target="#detailTransactionModal"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div id="detailTransactionModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><strong>New Transactions</strong></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    <table class="table table-condensed">
+                                                        <thead>
+                                                            <tr id="listhead">
+                                                                <th>Transaction No.</th>
+                                                                <th>Date of Transaction</th>
+                                                                <th>Document</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>99</td>
+                                                                <td>25 Nov 2016</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>100</td>
+                                                                <td>25 Nov 2016</td>
+                                                                <td>Course Description (Max 5 Subjects)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>101</td>
+                                                                <td>24 Nov 2016</td>
+                                                                <td>Ranking by Degree Program</td>
+                                                            <tr>
+                                                                <td>102</td>
+                                                                <td>24 Nov 2016</td>
+                                                                <td>Trimestral Calendar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>103</td>
+                                                                <td>16 Nov 2016</td>
+                                                                <td>Cumulative GPA</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -85,8 +135,52 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer" style="color:#00703c">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left" data-toggle="modal" data-target="#detailUserModal">View Details</span>
+                                <span class="pull-right" data-toggle="modal" data-target="#detailUserModal"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div id="detailUserModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><strong>New Users</strong></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    <table class="table table-condensed">
+                                                        <thead>
+                                                            <tr id="listhead">
+                                                                <th>ID Number</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Sample ID Number</td>
+                                                                <td>Sample Name</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sample ID Number</td>
+                                                                <td>Sample Name</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sample ID Number</td>
+                                                                <td>Sample Name</td>
+                                                            <tr>
+                                                                <td>Sample ID Number</td>
+                                                                <td>Sample Name</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sample ID Number</td>
+                                                                <td>Sample Name</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -107,8 +201,58 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer" style="color:#00703c">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left" data-toggle="modal" data-target="#detailChangeModal">View Details</span>
+                                <span class="pull-right" data-toggle="modal" data-target="#detailChangeModal"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div id="detailChangeModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><strong>Transaction Changes</strong></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    <table class="table table-condensed">
+                                                        <thead>
+                                                            <tr id="listhead">
+                                                                <th>Transaction No.</th>
+                                                                <th>Document Name</th>
+                                                                <th>Production Stage</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                                <td>Completed</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>6</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                                <td>Completed</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>7</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                                <td>Completed</td>
+                                                            <tr>
+                                                                <td>8</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                                <td>Pending</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>9</td>
+                                                                <td>Official Transcript of Records (for Employment)</td>
+                                                                <td>Pending</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </a>

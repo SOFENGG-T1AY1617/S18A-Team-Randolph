@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -26,7 +27,7 @@ namespace App.Models
     public class monitor
     {
         public int transactionID { get; set; }
-        public string transactionDate { get; set; }
+        public string dateRequested { get; set; }
         public string docuName { get; set; }
         public string status { get; set; }
     }
@@ -34,7 +35,8 @@ namespace App.Models
     public class delivery
     {
         public String location { get; set; }
-        public String price { get; set; } 
+        public float price { get; set; } 
+        public string priceStr { get; set; }
     }
 
     class adminManager
@@ -52,9 +54,9 @@ namespace App.Models
             {
                 using (adapter)
                 {
-                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb.admin", conn);
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM requestdocdb2.admin", conn);
 
-                    adapter.InsertCommand = new MySqlCommand("INSERT INTO requestdocdb.admin"
+                    adapter.InsertCommand = new MySqlCommand("INSERT INTO requestdocdb2.admin"
                                                              + " (adminID, email, password, lastName, firstName, middleName, gender,"
                                                              + " birthYear, birthMonth, birthDay) "
                                                              + "VALUES (@adminID, @email, @password, @lastName, @firstName, @middleName, @gender,"
@@ -143,12 +145,62 @@ namespace App.Models
         }
     }
 
+    class adminOrderManager
+    {
+        private DatabaseConnector db = new DatabaseConnector();
+
+        public List<Transaction> getOrderList()
+        {
+            List<Transaction> tranList = new List<Transaction>();
+            Transaction tran = new Transaction();
+
+            MySqlConnection conn = null;
+            DataTable dt = new DataTable();
+            MySqlDataAdapter sda = new MySqlDataAdapter();
+
+            using (conn = new MySqlConnection(db.getConnString()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "select transactionID, dateRequested, dateDue, CONCAT(user.lastName, CONCAT(', ', user.firstName)), price, transactions.status  from transactions, user where transactions.userID = user.idNumber; ";
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tran = new Transaction();
+
+                            tran.transactionID = reader.GetInt16(0);
+                            tran.dateRequested = reader.GetString(1);
+                            tran.dateDue = reader.GetString(2);
+                            tran.userName = reader.GetString(3);
+                            tran.price = reader.GetInt32(4);
+                            tran.priceStr = String.Concat("Php ", (string.Format("{0:N2}", tran.price)));
+                            tran.deliveryProcessing = reader.GetString(5);
+                            
+                            tranList.Add(tran);
+                        }
+
+                        if (!reader.HasRows)
+                        {
+                            tran = null;
+                        }
+                    }
+                }
+            }
+
+            return tranList;
+        }
+    }
+
     class adminMonitorManager
     {
         private DatabaseConnector db = new DatabaseConnector();
 
         public List<monitor> getMonitorList()
         {
+            Debug.WriteLine("shit");
+
             List<monitor> moniList = new List<monitor>();
             monitor moni = new monitor();
 
@@ -161,25 +213,33 @@ namespace App.Models
                 conn.Open();
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "select transactions.transactionID, dateRequested, docuName, status from transactions, orders, document where transactions.transactionID = orders.transactionID and orders.docuID = document.docuID order by transactions.transactionID; ";
+                    cmd.CommandText = "select transactions.transactionID, dateRequested, docuName, transactions.status from transactions, orders, document where transactions.transactionID = orders.transactionID and orders.docuID = document.docuID; ";
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             moni = new monitor();
-
-                            moni.transactionID = reader.GetInt32(0);
-                            moni.transactionDate = reader.GetString(1);
+                           
+                            moni.transactionID = reader.GetInt16(0);
+                            moni.dateRequested = reader.GetString(1);
                             moni.docuName = reader.GetString(2);
                             moni.status = reader.GetString(3);
 
                             moniList.Add(moni);
+
                         }
 
                         if (!reader.HasRows)
                         {
-                            moni = null;
+                            moni = new monitor();
+
+                            moni.transactionID = 0;
+                            moni.dateRequested = "0";
+                            moni.docuName = "0";
+                            moni.status = "0";
                         }
+
+                        moniList.Add(moni);
                     }
                 }
             }
@@ -206,7 +266,7 @@ namespace App.Models
                 conn.Open();
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "select location as 'Delivery Area', CONCAT('Php ', price) as 'Initial Charge' from requestdocdb.deliveryrates order by 'Delivery Area'; ";
+                    cmd.CommandText = "select location as 'Delivery Area', price as 'Initial Charge' from deliveryrates order by 'Delivery Area'; ";
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -214,7 +274,8 @@ namespace App.Models
                             deliv = new delivery();
 
                             deliv.location = reader.GetString(0);
-                            deliv.price = reader.GetString(1);
+                            deliv.price = reader.GetFloat(1);
+                            deliv.priceStr = String.Concat("Php ", (string.Format("{0:N2}", deliv.price)));
 
                             delivList.Add(deliv);
                         }

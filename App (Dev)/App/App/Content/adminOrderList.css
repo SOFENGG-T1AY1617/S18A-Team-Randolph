@@ -1,20 +1,35 @@
 .transID{
 
 font-size:15px;
-width:150px;
+width:180px;
 
 }
 
 .dateReq{
 
 font-size:15px;
-width:200px;
+width:250px;
 
 }
 
-.docuName{
+.dateDue{
 
-width:400px;
+font-size:15px;
+width:250px;
+
+}
+
+.name{
+
+width:300px;
+font-size:15px;
+text-transform:uppercase;
+
+}
+
+.price{
+
+width:130px;
 font-size:15px;
 
 }
