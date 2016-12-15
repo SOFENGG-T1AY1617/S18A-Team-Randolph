@@ -66,28 +66,39 @@ function reloadRemoveCart(itemID, degree){
     if(cart[i].docuID == itemID && cart[i].degree == degree){
         cart.splice(i,1);
     }
-    window.location.reload()
+
   }
   sessionStorage.cart = JSON.stringify(cart);
+  populateEditCart();
 }
 
-function minusOrder(cartIndex){
+function minusOrder(docuID, degree){
   var cart = JSON.parse(sessionStorage.cart);
-  if(cart[cartIndex].quantity == 1){
-    cart[cartIndex].splice(cartIndex,1);
-  }else{
-    cart[cartIndex].quantity -= 1;
+  for(var i=0; i<cart.length; i++){
+    if(cart[i].docuID == docuID && cart[i].degree == degree){
+        if(cart[i].quantity>1){
+          cart[i].quantity -= 1;
+          sessionStorage.cart = JSON.stringify(cart);
+        }else{
+          reloadRemoveCart(docuID, degree);
+        }
+    }
   }
-  sessionStorage.cart = JSON.stringify(cart);
+  populateEditCart();
 }
-function addOrder(cartIndex){
+function plusOrder(docuID, degree){
   var cart = JSON.parse(sessionStorage.cart);
-  if(cart[cartIndex].quantity == 5){
-    window.alert("You cannot order more than 5")
-  }else{
-    cart[cartIndex].quantity -= 1;
+  for(var i=0; i<cart.length; i++){
+    if(cart[i].docuID == docuID && cart[i].degree == degree){
+        if(cart[i].quantity<5){
+          cart[i].quantity += 1;
+          sessionStorage.cart = JSON.stringify(cart);
+        }else{
+          alert("You cannot order more than 5 of the same document!")
+        }
+    }
   }
-  sessionStorage.cart = JSON.stringify(cart);
+  populateEditCart();
 }
 
 function editQuantity(docuID,degree,newQuantity){
@@ -96,12 +107,20 @@ function editQuantity(docuID,degree,newQuantity){
 
   }
 }
-function changeQuantity(input){
+function changeQuantity(input, docuName, degree){
   var tempQuantity = $(input).val()
-    if(tempQuantity > 5 || tempQuantity <=0){
-      alert("Only a maximum of 5 is allowed");
+  var cart = JSON.parse(sessionStorage.cart);
+  var itemIndex;
+  alert(tempQuantity);
+      for(itemIndex = 0; itemIndex<cart.length; itemIndex++){
+        if(cart[i].docuID == itemID && cart[i].degree == degree){
+          alert("gg");
+          cart[i].quantity = tempQuantity;
+          sessionStorage.cart = JSON.stringify(cart);
+        }
+
     }
-    $(input).val(5);
+
 }
 function viewCart(){
     $('#viewCart').empty();
@@ -123,9 +142,19 @@ function viewCart(){
     }
   }
 }
+function getTotalPrice(){
+  var cart = JSON.parse(sessionStorage.cart);
+  var totalPrice = 0.0;
+  for(var i=0; i<cart.length; i++){
+      totalPrice+= cart[i].price * cart[i].quantity;
+  }
+  return totalPrice;
+}
 function populateEditCart(){
   var cart = JSON.parse(sessionStorage.cart);
+  var total = getTotalPrice();
   $('#editCartTable').empty();
+  $('#totalPrice').text('P'+total.toFixed(2));
   for(var i=0; i<cart.length; i++){
     $('#editCartTable').append('<tr>'+
                                 '<td class="col-sm-8 col-md-6">'+
@@ -137,7 +166,8 @@ function populateEditCart(){
                                     '</div>'+
                                 '</td>'+
                                 '<td class="col-sm-1 col-md-1" style="text-align: center">'+
-                                    '<input type="number" class="form-control"onchange="changeQuantity(this);"onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange(); id="cartQuantity" value="'+cart[i].quantity+'" max="5" min="1">'+
+                                    '<p><span class="glyphicon glyphicon-minus" onclick="minusOrder('+cart[i].docuID+',\''+cart[i].degree+'\')"></span>&nbsp;&nbsp;&nbsp;'+cart[i].quantity+'&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-plus" onclick="plusOrder('+cart[i].docuID+',\''+cart[i].degree+'\')"></p>'+
+
                                 '</td>'+
                                 '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price+'</strong></td>'+
                                 '<td class="col-sm-1 col-md-1 text-center"><strong>P'+cart[i].price * cart[i].quantity+'</strong></td>'+

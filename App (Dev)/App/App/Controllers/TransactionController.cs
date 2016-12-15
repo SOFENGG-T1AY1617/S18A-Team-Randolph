@@ -180,7 +180,7 @@ namespace App.Controllers
             temp.dateRequested = dateToday.ToString("yyyy-MM-ddHH:mm:ss");
             if (hasExpress && hasRegular)
             {
-                deliveryProcessing = "mutant";
+                deliveryProcessing = "mixed";
                 temp.dateDue = dateValue.AddDays(3).ToString("yyyy-MM-ddHH:mm:ss");
                 temp.estimatedDeliveryDate = temp.dateDue;
             }
