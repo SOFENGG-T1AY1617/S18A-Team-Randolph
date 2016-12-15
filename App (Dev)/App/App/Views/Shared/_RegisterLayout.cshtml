@@ -234,8 +234,6 @@
 			}
 		}
 
-		c
-
 		function validateBirthPlace() {
 			var text = document.getElementById("birthPlace").value;
 			var count = 0;
@@ -1036,7 +1034,7 @@
 		var counter = 0;
 
 		function updateCourses(college) {
-			var c = college.value;
+		    var c = $("#college").val;
 
 			$("#course").val("");
 			$("#course").autocomplete({

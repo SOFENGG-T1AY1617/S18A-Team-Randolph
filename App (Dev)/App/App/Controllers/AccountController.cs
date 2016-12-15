@@ -126,15 +126,25 @@ namespace App.Controllers
             acc.mailInfos = mailManager.getMailInfos(acc.userID);
 
             // academic
-            deg.degreeName = degreeProgram;
+            /*deg.degreeName = degreeProgram;
             deg.level = degreeLevel;
             deg.yearAdmitted = Int32.Parse(admissionYear);
             deg.campusAttended = campusAttended;
             deg.admittedAs = admissionRadio;
             deg.graduated = gradRadio;
-            deg.yearLevel = Int32.Parse(yrLvl);
+
+            if(yrLvl != "")
+            {
+                deg.yearLevel = Int32.Parse(yrLvl);
+            }
+
+            
             deg.userID = acc.userID;
-            deg.lastSchoolAttendedPrevDlsu = lastSchool;
+
+            if(lastSchool != "")
+            {
+                deg.lastSchoolAttendedPrevDlsu = lastSchool;
+            }
 
             if(yearGraduate != "")
             {
@@ -156,11 +166,11 @@ namespace App.Controllers
                 int start = Int32.Parse(lastTermStart);
                 deg.academicYear = (start + 2000) + "-" + (start + 1 + 2000);
             }
-            
+            */
             
 
-            degManager.saveDegree(deg);
-            acc.degrees = degManager.getDegree(acc.userID);
+            //degManager.saveDegree(deg);
+            //acc.degrees = degManager.getDegree(acc.userID);
 
             Session["user"] = acc;
             return RedirectToAction("Order", "Transaction"); // go to next step
