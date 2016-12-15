@@ -1,7 +1,12 @@
 ﻿
 @{
+	<link href="~/Content/adminOrderList.css" rel="stylesheet" type="text/css" />
+
 	ViewBag.Title = "View Orders";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+	WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+
 }
 
 <body>
@@ -19,131 +24,24 @@
 									<div id="processing" class="status">
 										<h3><b>Processing Documents</b></h3>
 										<hr>
-										<table class="table table-condensed">
-											<thead>
-												<tr id="listhead">
-													<th>Transaction No.</th>
-													<th>Date of Transaction</th>
-													<th>Due Date(to Courier)</th>
-													<th>Name</th>
-													<th>Amount</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>25 Nov 2016</td>
-													<td>3 Dec 2016</td>
-													<td>Yu, Randolph Nathaniel M.</td>
-													<td>Php 150.00</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>24 Nov 2016</td>
-													<td>10 Dec 2016</td>
-													<td>Choi, Jonghyun</td>
-													<td>Php 200.00</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>16 Nov 2016</td>
-													<td>23 Nov 2016</td>
-													<td>Herrera, Cedric Jose D.</td>
-													<td>Php 300.00</td>
-												<tr>
-													<td>4</td>
-													<td>28 Nov 2016</td>
-													<td>1 Dec 2016</td>
-													<td>Francisco, Harold Wilson F.</td>
-													<td>Php 100.00</td>
-												</tr>
-												<tr>
-													<td>5</td>
-													<td>10 Nov 2016</td>
-													<td>27 Nov 2016</td>
-													<td>Malonzo, Juan Lorenzo P.</td>
-													<td>Php 100.00</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
 
-									<div id="pending" class="status">
-										<h3><b>Pending Documents</b></h3>
-										<hr>
-										<table class="table table-condensed">
-											<thead>
-												<tr id="listhead">
-													<th>Transaction No.</th>
-													<th>Date of Transaction</th>
-													<th>Due Date(to Courier)</th>
-													<th>Name</th>
-													<th>Amount</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>7</td>
-													<td>7 Dec 2016</td>
-													<td>10 Dec 2016</td>
-													<td>Brosas, Hazel Anne L.</td>
-													<td>Php 150.00</td>
-												</tr>
-												<tr>
-													<td>14</td>
-													<td>24 Nov 2016</td>
-													<td>26 Nov 2016</td>
-													<td>Lim, Eugene G.</td>
-													<td>Php 200.00</td>
-												</tr>
-												<tr>
-													<td>20</td>
-													<td>16 Nov 2016</td>
-													<td>221 Nov 2016</td>
-													<td>Gardose, Neilson Keith P.</td>
-													<td>Php 300.00</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+										@grid.GetHtml(tableStyle: "webgrid-table",
+													  headerStyle: "webgrid-header",
+													  footerStyle: "webgrid-footer",
+													  alternatingRowStyle: "webgrid-alternating-row",
+													  columns: new[]
+										{
+											grid.Column("transactionID", "Transaction No.", style:"transID"),
+											grid.Column("userName", "Name", style: "name"),
+											grid.Column("dateRequested", "Date Requested", style: "dateReq"),
+											grid.Column("dateDue", "Date Due", style: "dateDue"),
+											grid.Column("priceStr", "Price", style: "price"),
+											grid.Column("deliveryProcessing", "Status", style:"verified")
 
-									<div id="completed" class="status">
-										<h3><b>Completed Documents</b></h3>
-										<hr>
-										<table class="table table-condensed">
-											<thead>
-												<tr id="listhead">
-													<th>Transaction No.</th>
-													<th>Date of Transaction</th>
-													<th>Due Date(to Courier)</th>
-													<th>Name</th>
-													<th>Amount</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>8</td>
-													<td>25 Dec 2016</td>
-													<td>30 Dec 2016</td>
-													<td>Marcelo, Micaella Louise R.</td>
-													<td>Php 900.00</td>
-												</tr>
-												<tr>
-													<td>21</td>
-													<td>15 Mar 2017</td>
-													<td>18 Mar 2017</td>
-													<td>Cheng, Clarisse Bernadette M.</td>
-													<td>Php 500.00</td>
-												</tr>
-											</tbody>
-										</table>
+										})
+
 									</div>
-									<span>Status: </span>
-									<select class="form-control" style="width: 150px; height: 35px; display: inline-block;" id="status">
-										<option value="processing">Processing</option>
-										<option value="pending"> Pending  </option>
-										<option value="completed"> Completed  </option>
-									</select>
+									
 								</div>
 							</div>
 

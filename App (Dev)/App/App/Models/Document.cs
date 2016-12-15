@@ -14,6 +14,9 @@ namespace App.Models
             public float regularPrice { get; set; }
             public float expressPrice { get; set; }
             public string type { get; set; }
+     
+            public string regularPriceStr { get; set; } //ADMIN
+            public string expressPriceStr { get; set; } //ADMIN
     }
 
     class documentManager
@@ -251,7 +254,7 @@ namespace App.Models
                 conn.Open();
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "select docuName, CONCAT('Php ', regularPrice) as 'Reg', CONCAT('Php ', expressPrice) as 'Exp' from document; ";
+                    cmd.CommandText = "select docuName, regularPrice, expressPrice from document; ";
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -260,11 +263,18 @@ namespace App.Models
 
                             docu.docuName = reader.GetString(0);
                             docu.regularPrice = reader.GetFloat(1);
+                            docu.regularPriceStr = String.Concat("Php ", (string.Format("{0:N2}", docu.regularPrice)));
 
                             if (!(reader.IsDBNull(2)))
                             {
                                 docu.expressPrice = reader.GetFloat(2);
+                                docu.expressPriceStr = String.Concat("Php ", (string.Format("{0:N2}", docu.expressPrice)));
                             }
+                            else
+                            {
+                                docu.expressPriceStr = "Not Available";
+                            }
+
                             
 
                             docuList.Add(docu);

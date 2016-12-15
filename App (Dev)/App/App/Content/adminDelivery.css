@@ -1,21 +1,21 @@
 .location{
 
 font-size:15px;
-width:400px;
+width:350px;
 
 }
 
 .price{
-
+font-weight:bold;
 font-size:15px;
-width:300px;
+width:200px;
 
 }
 
 .edit{
 
 font-weight:bold;
-width:150px;
+width:100px;
 font-size:15px;
 text-transform:uppercase;
 color:#00703c;

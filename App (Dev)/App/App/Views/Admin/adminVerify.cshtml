@@ -5,14 +5,13 @@
         ViewBag.Title = "Verify User Accounts";
         Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
-        WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+        WebGrid webGrid = new WebGrid(Model, canPage: false, canSort: false);
 
     }
 
     <body>
 
         <div id="page-wrapper">
-            @*<h1>@ViewBag.idNumber</h1>*@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -25,16 +24,16 @@
                                         <h3><b>User Accounts</b></h3>
                                         <hr>
 
-                                        @grid.GetHtml(tableStyle: "webgrid-table",
+                                        @webGrid.GetHtml(tableStyle: "webgrid-table",
                                                       headerStyle: "webgrid-header",
                                                       footerStyle: "webgrid-footer",
                                                       alternatingRowStyle: "webgrid-alternating-row", 
                                                       columns: new[]
                                         {
-                                            grid.Column("idNumber", "ID Number", style:"idNumber"),
-                                            grid.Column("name", "Name", style: "name"),
-                                            grid.Column("verified", "Verification Status", style: "verified"),
-                                            grid.Column("History", format: @<span style="font-weight:bold">Transaction History</span>, style:"tranHisto")
+                                            webGrid.Column("idNumber", "ID Number", style:"idNumber"),
+                                            webGrid.Column("name", "Name", style: "name"),
+                                            webGrid.Column("verified", "Verification Status", style: "verified"),
+                                            webGrid.Column("History", format: @<span style="font-weight:bold">Transaction History</span>, style:"tranHisto")
                                         })
 
 

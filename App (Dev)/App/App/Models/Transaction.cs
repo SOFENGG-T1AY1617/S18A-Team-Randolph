@@ -21,6 +21,8 @@ namespace App.Models
         public string dateRequested { get; set; } 
         public string dateDue { get; set; }
         //-----------------------------------------------
+        public string userName { get; set; } //FOR ADMIN
+        public string priceStr { get; set; } //FOR ADMIN
     }
 
     class transactionManager
